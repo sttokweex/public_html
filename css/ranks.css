@@ -1,0 +1,135 @@
+.rank-page{
+    display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        background: var(--main-background3);
+        padding: 20px;
+        border-radius: 8px;  
+        user-select:none;
+    } 
+    .rank-page .rank{
+        color: var(--main-color-hight);
+        background: var(--main-background);
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        cursor:pointer;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: solid 1px transparent;
+    }  
+    .rank-page .rank:hover{
+        transform: translateY(-8px);
+        background: #2e303a;
+    }
+    .rank-page .rank:not(.active):hover .progressWag {
+        background: #3a3b4b;
+    }
+    .rank-page .rank.active{background: #2e303a;color: #000!important;border-color: #4e515e;}
+    .rank-page .rank hr{margin: 0.4rem;background: rgb(255 255 255);display: none;}
+    .rank-page .rank img{
+        width: 100%;
+        max-width: 100px;
+    }  
+    .rank-page .rank .description{
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 10px;
+        padding: 0px 10px;
+    } 
+    .rank-page .rank .description .badges{
+    color: currentColor;
+        font-size: 12px;
+        background: #ffffff1f;
+        font-weight: bold;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-radius: 8px;
+        margin-left: 10px;
+    } 
+    
+    .rank-page .rank .needDeposit{
+        font-size: 10px;
+        text-align: center;
+        color: #ffffffa3;
+        padding-top: 10px;
+    }
+    .rank-page .rank .name{
+        font-weight: bold;
+        color: #fff;
+        font-size: 24px;
+    }    
+    
+    
+    .rank .wagerProgress{
+        width: 100%;
+        height: 20px;
+        background-color: #2b2c38;
+        border-radius: 11px;
+    }
+    .rank .wagerProgress::-webkit-progress-bar {
+    background:transparent;
+    border-radius:8px;
+    }
+    .rank .wagerProgress::-webkit-progress-value {
+    background: #f09f2b;
+    border-radius:15px;
+    opacity:1;
+    }
+    .rank .progressWag{
+        position: relative;
+        width: 100%;
+        margin-top: 7px;
+        padding: 5px;
+        background: #17181f;
+        border-radius: 50px;
+    }
+    
+    .rank .progressWag .progres{position: absolute;font-size: 12px;left: 0;right: 0;height: 100%;margin-left: auto;margin-right: auto;color: #fff;top: 66%;transform: translateY(-50%);text-align: center;line-height: 20px;font-weight: bold;}   
+    .rank .progressWag .symbolOk{
+    position: absolute;
+        font-size: 12px;
+        left: 0;
+        right: 0;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        color: #fff;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        line-height: 20px;
+        font-weight: bold;
+        display:none;
+    }   
+    
+    @media screen and (max-width:960px) {
+    .rank-page {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    }   
+    @media screen and (max-width:768px) {
+    .rank-page {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    }   
+    @media screen and (max-width:640px) {
+    .rank-page {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    }  
+    @media screen and (max-width:480px) {
+    .rank-page {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    }  

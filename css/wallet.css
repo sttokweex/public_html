@@ -1,0 +1,168 @@
+.walletInputs{
+    position: relative;    
+    }
+    .validation-message {
+        display:none;
+    position: absolute;
+        z-index: 2;
+        top: -5;
+        color: #ff4b4bd4;
+        background: var(--main-background);
+        font-size: 14px;
+        padding: 5px 8px;
+        border-radius: 8px;
+        white-space: nowrap;
+    }  
+     .walletSentInputs{
+    display: flex;
+        gap: 20px;     
+     }
+     
+     
+    @media screen and (max-width:700px) {
+        
+    .walletSentInputs{
+    display:grid;
+    }
+    
+    }
+    
+    
+    .walletProject {
+    background-clip: padding-box, border-box;
+    background-origin: border-box;
+    gap: 20px;
+    }
+        .walletProject .systems{
+        grid-gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        position: relative;
+        }
+        
+        .walletProject .systems .systemwallet{
+        display: grid;
+        background-image: linear-gradient(to bottom, #232531, #232531), linear-gradient(to bottom, #2b303b 1%, #232531 20%);
+        background-clip: padding-box, border-box;
+        background-origin: border-box;
+        border: 3px solid #f000;
+        border-radius: 8px;
+        color: var(--main-color-medium);
+        padding: 12px;
+        cursor:pointer;
+        transition:.3s;
+        user-select:none;
+            gap: 7px;
+            position:relative;
+        }   
+        .walletProject .systems .systemwallet .bonusdep{
+        position: absolute;
+        right: 5;
+        top: 5;
+        color: #fff;
+        background: #ffffff1f;
+        font-size: 10px;
+        border-radius: 6px;
+        padding: 4px;
+        padding-left: 7px;
+        padding-right: 7px;    
+    }    
+        .walletProject .systems .systemwallet:hover{
+        background-image: linear-gradient(to bottom, #232531, #232531), linear-gradient(to bottom, #e2b3498a 1%, #232531 20%);
+        }       
+     
+    .activeWallet{border-color: #d49d0b!important;background: #242630;} 
+    
+    .walletInputs{
+        display: grid;
+        width: 100%;
+        gap: 10px;    
+    }    
+    
+    .walletInputs .info{
+    display: flex;
+        justify-content: space-between;    
+    }
+    .descriptionWallet{
+        color: var(--main-color-hight);
+        font-weight: bold;    
+    }
+    .walletInputs input{
+    outline: none;
+        border-radius: 8px;
+        background: var(--main-background);
+        color: var(--main-color-hight);
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border: 2px solid #2b303b47;    
+    }
+    .walletInputs input:focus{
+        border:2px solid #a78f3c;
+    }
+    
+    .systems {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .systemwallet {
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+        border: solid 2px #3e3f4a;
+        border-radius: 12px;
+        padding: 14px;
+        font-size: 14px;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+    
+    .systemwallet:hover {
+       border: solid 2px #535463; 
+    }
+    
+    .systemwallet img {
+        max-height: 32px;
+    }
+    
+    .systemwallet span {
+        color: #d9d9d9 !important;
+    }
+
+.walletInputs > div span {
+    color: #a3a4af;
+}
+.walletInputs > div > div span {
+    color: #f5a60b;
+}
+
+.wallet-alert {
+    padding: 8px 10px;
+    background: #3b3c4a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    border-radius: 6px;
+    font-size: 14px;
+    border: dashed 1px #70717c;
+}
+
+.wallet-alert i {
+    color: #e2ae43;
+}
+
+.wallet-select-bank {
+    display:none;
+    background-color: #17181f;
+    color: var(--main-color-hight);
+    border-color: #20222b;
+    padding: 10px;
+    max-width: 340px;
+    width: 100%;
+}

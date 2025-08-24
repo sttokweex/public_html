@@ -1,0 +1,51 @@
+Array
+(
+    [update_id] => 269133963
+    [my_chat_member] => Array
+        (
+            [chat] => Array
+                (
+                    [id] => 7831009735
+                    [first_name] => iceicell
+                    [type] => private
+                )
+
+            [from] => Array
+                (
+                    [id] => 7831009735
+                    [is_bot] => 
+                    [first_name] => iceicell
+                    [language_code] => en
+                )
+
+            [date] => 1754508218
+            [old_chat_member] => Array
+                (
+                    [user] => Array
+                        (
+                            [id] => 7238976720
+                            [is_bot] => 1
+                            [first_name] => Testauthbotcaz
+                            [username] => Testauthbotcaz_bot
+                        )
+
+                    [status] => member
+                )
+
+            [new_chat_member] => Array
+                (
+                    [user] => Array
+                        (
+                            [id] => 7238976720
+                            [is_bot] => 1
+                            [first_name] => Testauthbotcaz
+                            [username] => Testauthbotcaz_bot
+                        )
+
+                    [status] => kicked
+                    [until_date] => 0
+                )
+
+        )
+
+)

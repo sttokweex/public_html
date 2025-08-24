@@ -1,0 +1,125 @@
+table { 
+    border-collapse: separate; 
+    border-spacing: 0 0px; 
+}
+td {
+    border: solid 1px #000;
+    border-style: solid none;
+    padding: 10px;
+    background-color: black;
+}
+td:first-child {
+
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+}
+td:last-child {
+
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+.table>:not(caption)>*>* {
+    padding: 1.2rem 1rem;
+    border: none;
+}    
+@media (max-width: 390px) {
+    .table>:not(caption)>*>* {
+        padding: 1rem 0.5rem;
+        font-size: 0.875rem
+    }
+}
+.table-dark {
+    --bs-table-bg: #1d1e27;
+    --bs-table-striped-bg: #17181f;
+}    
+
+th {
+    border: solid 1px #000;
+    border-style: solid none;
+    padding: 10px;
+    background-color: cyan;
+}
+th:first-child {
+
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+}
+th:last-child {
+
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+.livefeed {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 20px;
+    background: var(--main-background3);
+    border-radius: 12px;
+    transition: .2s all ease;
+    margin-bottom: 1px;
+}
+.heading__icon_pulsing {
+    --tint-size: 120%;
+}
+
+.heading__icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1aa53f;
+    box-shadow: 0 0 0px 8px rgb(26 165 63 / 18%);
+    margin-right: 20px;
+    position: relative;
+}
+.heading__icon_pulsing:after {
+    animation: live-pulse infinite linear 1.2s;
+}
+
+.heading__icon:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgb(70 198 88 / 30%);
+}
+.livefeed h2 {
+    color: var(--main-color-hight);
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+@keyframes live-pulse{
+65% {
+    transform: scale(2);
+    opacity: 1;
+}
+
+100% {
+    transform: scale(1);
+    opacity: 0;
+}    
+}
+
+.livefeedico{
+background: var(--main-gradient);
+    width: 38px;
+    height: 38px;
+    border-radius: 15px;
+    justify-content: center;
+    display: flex;   
+}
+.livefeedico svg{
+    width: 28px;
+}
+.livefeedinfo{
+    display: grid;    
+        font-weight: 600;
+}
+.livefeedmore{
+    display: flex;
+    gap: 10px;    
+}
+td{
+    vertical-align: middle;    
+}

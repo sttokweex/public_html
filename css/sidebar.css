@@ -1,0 +1,169 @@
+
+.sidebar_project{
+    position: fixed;
+    background: var(--main-background3);
+    height: auto;
+    display: grid;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    gap: 10px;
+    width: 280px;
+    top: 80px;
+    z-index: 3;
+    bottom: 0;
+    align-content: baseline;
+        overflow: auto;
+} 
+.sidebar_item{
+    background: #272c37;
+    border-radius: 5px;
+    padding: 10px;    
+}
+.sidebar_item svg{
+    width:20px;
+    height:20px;
+    fill:#748198;
+}
+
+.sidebar_project ul{
+color: #fff;
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+    gap: 10px;
+    display: grid; 
+} 
+.sidebar_project li{background: transparent;padding: 5px 10px;border-radius: 5px;cursor: pointer;display: flex;gap: 10px;position: relative;align-items: center;min-height: 50px;} 
+.sidebar_project li:hover{
+    background: #2b2d39!important;
+    
+} 
+.activeSidebar{
+    background: #24252f!important;
+} 
+.activeSidebar2{
+    background: #292a35!important;
+} 
+.sidebar_project li svg{
+width: 24px;
+fill: #748198;
+} 
+
+.sidebarBanner{
+background: #24252f;
+    padding: 15px 10px 15px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;  
+    background: url(../images/banners/bonus_small.png), #24252f;
+    background-size: 100%;
+    background-position: center;  
+    cursor:pointer;
+    text-decoration: none;
+}
+.sidebarBanner:hover{
+    opacity:0.8;
+}
+.sidebarBannerInfo{
+    display: grid;
+    color: #fff;  
+        font-weight: 700;
+}
+.sidebarBannerInfo .mainDesc{
+    font-size: 14px;
+    color: var(--main-color-hight);    
+}
+.downArrowSvg{filter: invert(1);width: 13px!important;!importan;!importa;!import;!impor;!impo;!imp;!im;!i;!;position: absolute;right: 20;top: 50%;transform: translateY(-50%);}
+
+
+@media screen and (max-width:1800px) {
+    
+.sidebar_project1{
+      width: 185px;  
+}
+
+}
+
+@media screen and (max-width:1280px) {
+    
+.sidebar_project{
+     display:none;
+}
+
+}
+
+
+.sidebar__btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border: 0;
+    background: #272832;
+    height: 34px;
+    padding: 0px 12px;
+    border-radius: 6px;
+    color: #888993;
+    font-weight: 500;
+    flex-direction: row-reverse;
+    gap: 6px;
+    transition: 0.2s ease;
+}
+
+.sidebar__btn-close i {
+    width: 8px;
+    height: 8px;
+    border-left: solid 2px;
+    border-bottom: solid 2px;
+    transform: rotate(45deg);
+}
+
+.sidebar__btn-close:hover {
+    background: #2c2d3a;
+    color: #fff;
+}
+
+.sidebar_project.closed {
+    width: 80px;
+}
+
+.sidebar_project.closed .sidebarBanner  {
+    display: none;
+}
+
+.sidebar_project.closed li span {
+    display: none;
+}
+
+.sidebar_project.closed li {
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar_project.closed .toggle-menu-list {
+    display: none;
+}
+
+.sidebar_project.closed .sidebar__btn-close span {
+    display: none;
+}
+
+.sidebar_project.closed .sidebar__btn-close i {
+    transform: rotate(-135deg)
+}
+
+.sidebar_project.closed #projectGamesList {
+    display: block!important;
+}
+
+.sidebar_project li img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}

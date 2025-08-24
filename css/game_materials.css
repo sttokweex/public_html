@@ -1,0 +1,707 @@
+:root {
+  --padding:20px
+}
+@media screen and (max-width:979px) {
+  :root {
+  --padding:12px
+}
+}
+
+.slot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.slot-header__link {
+  text-decoration: none;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  background: #1d1e27;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  color: #b5b5b5;
+  border: 0;
+  gap: 12px;
+}
+
+.slot-header__link svg {
+  width: 16px;
+}
+
+.slot-header__link:hover {
+  background: #252631;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .slot-header__link.game {
+      display: none;
+  }
+}
+
+.slot {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .slot {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 85%;
+      z-index: 1000;
+      background: #000000;
+  }
+  .slot iframe {
+      height: 100%!important;
+  }
+  .slot-header {
+      padding: 8px 8px;
+      margin: 0;
+  }
+}
+
+.diceRand{
+    grid-gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    position: relative;    
+    align-items:center;
+    user-select:none;
+}  
+.diceRand span{
+background: linear-gradient(45.87deg, #a37627 6.6%, #b9b259 102.94%);
+    height: 70px;
+    width: 100%;
+    border-radius: 15px;    
+    position: relative;       
+}
+.diceRand span a{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 24px;
+    color: #fff !important;
+}
+
+@media (max-width: 600px){
+.diceRand span  {
+height: 55px;
+}
+}
+.dice {
+  background:var(--main-background2);
+  border-radius:12px;
+  display:flex;
+  margin-bottom:20px
+}
+
+@media screen and (max-width: 960px){
+.dice {
+display:grid!important;
+}
+
+.dice_sidebar{
+    width:100%!important;
+}
+
+.infoButton {
+    position: relative!important;
+    width: 100%!important;
+    margin-top: -10px!important;    
+}
+
+}
+
+.dice .bt {
+  align-items:center;
+  background:transparent;
+  border:0;
+  border-radius:4px;
+  color:inherit;
+  cursor:pointer;
+  display:flex;
+  font-family:inherit;
+  font-size:inherit;
+  gap:4px;
+  justify-content:center;
+  line-height:1.2;
+  outline:none;
+  padding:0;
+  transition:.3s
+}
+.dice .bt.disabled,.dice .bt:disabled {
+  pointer-events:none
+}
+.dice .bt-primary {
+  background:linear-gradient(90deg,#7449e6 .06%,#69a4ff 98.49%);
+  border-radius:4px;
+  color:#fff;
+  font-weight:600;
+  padding:12px
+}
+.dice .bt-primary:hover {
+  filter:brightness(1.1)
+}
+.dice .bt-orange {
+  background:linear-gradient(90deg,#f4a202,#fac257);
+  border-radius:4px;
+  color:#2c3034;
+  font-weight:600;
+  padding:12px
+}
+.dice .bt-orange:hover {
+  filter:brightness(1.1)
+}
+.dice .bt-transparent {
+  background:transparent;
+  border-radius:4px;
+  color:#b6b0d7;
+  font-weight:600;
+  padding:0 12px
+}
+.dice .bt-light,.dice .bt-transparent:hover {
+  background:#f4f2ff
+}
+.dice .bt-light {
+    border-radius: 4px;
+    color: #505e71;
+    font-weight: 600;
+    padding: 0 12px;
+    background: #20242d;
+    text-decoration: none;
+}
+.dice .bt-light:hover {
+  background:#242933;
+}
+.dice .bt-light-gradient {
+  background:#e7e2f9;
+  border-radius:4px;
+  color:#b6b0d7;
+  font-weight:600;
+  padding:0 12px;
+  position:relative
+}
+.dice .bt-light-gradient span {
+  position:relative
+}
+.dice .bt-light-gradient:before {
+  background:linear-gradient(90deg,#7449e6 .06%,#69a4ff 98.49%);
+  border-radius:inherit;
+  bottom:0;
+  content:"";
+  display:block;
+  left:0;
+  opacity:0;
+  position:absolute;
+  right:0;
+  top:0;
+  transition:.3s
+}
+.dice .bt-light-gradient:hover {
+  color:#fff!important
+}
+.dice .bt-light-gradient:hover:before {
+  opacity:1
+}
+.dice .bt-light-gradient.active {
+  color:#fff
+}
+.dice .bt-light-gradient.active:before {
+  opacity:1
+}
+.dice .input_gradient {
+  flex-grow:1;
+  position:relative
+}
+.dice .input_gradient input,.dice .input_gradient textarea {
+  border:none;
+  border-radius:4px;
+  position:relative;
+  width:100%;
+  z-index:1
+}
+.dice .input_gradient input~span,.dice .input_gradient textarea~span {
+background: var(--main-gradient);
+  border-radius:5px;
+  bottom:-1px;
+  left:-1px;
+  opacity:0;
+  position:absolute;
+  right:-1px;
+  top:-1px;
+  transition:.3s
+}
+.dice .input_gradient input:focus,.dice .input_gradient textarea:focus {
+  box-shadow:0 0 0 1px transparent
+}
+.dice .input_gradient input:focus~span,.dice .input_gradient textarea:focus~span {
+  opacity:1
+}
+.dice_sidebar {
+    background: var(--main-background3);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding);
+    min-width: 350px;
+    padding: var(--padding);
+    width: 350px;
+}
+.dice_sidebar_field {
+  font-size:14px
+}
+.dice_sidebar_field__header {
+color: #748198!important;
+    margin-bottom: 10px;
+}
+.dice_sidebar_field__body {
+    background: var(--main-background2);
+  border-radius:4px;
+  display:flex;
+  gap:6px;
+  justify-content:space-between;
+  padding:8px
+}
+.dice_sidebar_field__body button,.dice_sidebar_field__body input {
+  height:40px
+}
+.dice_sidebar_field__body input {
+background: var(--main-background4);
+    color: #fff !important;
+    outline: none;
+    border: none !important;
+    font-weight: 600;
+    max-width: 130px;
+    padding: 12px;
+    width: 100%;
+}
+.dice_sidebar-toolbar_btn {
+background: var(--main-gradient);
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    min-width: 44px;
+    width: 44px;
+}
+.dice_sidebar-toolbar_btn:hover {
+ opacity:0.8;   
+}
+.dice_sidebar-toolbar input {
+  border-radius:4px;
+  font-size:16px;
+  max-width:none;
+  text-align:center;
+  width:100%
+}
+.dice_sidebar-btns {
+  display:grid;
+  gap:var(--padding)
+}
+.dice_sidebar-btns a,.dice_sidebar-btns button {
+  font-size:16px;
+  height:42px;
+  width:100%
+}
+.dice_sidebar-btns .onmob {
+  display:none
+}
+.dice_sidebar-header {
+align-items: center;
+    display: flex;
+    font-weight: 600;
+    gap: 8px;
+    background: linear-gradient(84deg, #9c732b21, #191c23);
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+}
+.dice_sidebar-header .icon-gradient {
+align-items: center;
+background: var(--main-gradient);
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+    padding: 5px;
+}
+.dice_sidebar-footer {
+  margin-top:auto
+}
+.dice_sidebar-footer .onmob {
+  display:none
+}
+.dice_sidebar-footer .bt {
+  height:42px
+}
+.dice_sidebar-hash {
+display: flex;
+    font-size: 12px;
+    font-weight: 500;
+    gap: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    margin-bottom: 0px;
+    color: #aab0bd63;
+}
+.dice_sidebar-hash span {
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+.dice_sidebar_field__header {
+  align-items:center;
+  color:#b6b0d7;
+  display:flex;
+  font-weight:500;
+  justify-content:space-between
+}
+.dice_main {
+  flex-grow:1;
+  overflow:hidden
+}
+.dice-game {
+  display:grid;
+  gap:var(--padding);
+  margin:auto;
+  max-width:500px;
+  padding:40px 12px;
+  position:relative
+}
+.dice-game_score {
+background: var(--main-background3);
+    border-radius: 12px;
+    color: var(--main-color-low);
+    font-weight: 600;
+    padding: var(--padding);
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+.dice-game_score_num {
+  align-items:center;
+  color:#748198;
+  display:flex;
+  font-size:50px;
+  justify-content:center;
+  line-height:1;
+  margin-bottom:14px;
+  z-index:1
+}
+.dice-game_score_num p {
+  font-size:.9em;
+  margin-top:5px
+}
+.dice-game_bet {
+  display:grid;
+  gap:10px;
+  grid-template-columns:repeat(2,1fr)
+}
+.dice-game_bet__item {
+  display:grid;
+  font-size:16px;
+  font-weight:500;
+  gap:12px;
+  text-align:center;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+.dice-game_bet__item-info {
+background: var(--main-background3);
+    color: var(--main-color-low);
+    height: 42px;
+}
+.dice-game_bet__item-btn,.dice-game_bet__item-info {
+  align-items:center;
+  border-radius:4px;
+  display:flex;
+  justify-content:center
+}
+.dice-game_bet__item-btn {
+  background:linear-gradient(90deg,#f4a202,#fac257);
+  color:#2c3034;
+  font-size:inherit;
+  font-weight:600;
+  height:54px;
+  letter-spacing:.03em;
+  position:relative;
+  transition:.3s;
+  width:100%
+}
+.dice-game_bet__item-btn span {
+  position:relative
+}
+.dice-game_bet__item-btn:before {
+  background:linear-gradient(90deg,#7449e6 .06%,#69a4ff 98.49%);
+  border-radius:4px;
+  bottom:0;
+  content:"";
+  display:block;
+  left:0;
+  opacity:0;
+  position:absolute;
+  right:0;
+  top:0;
+  transition:.3s
+}
+.dice-game_bet__item-btn:hover {
+  box-shadow:0 8px 15px #6f70f040;
+  color:#fff
+}
+.dice-game_bet__item-btn:hover:before {
+  opacity:1
+}
+.dice-game_pending.bt {
+  background:#f4f2ff;
+  height:42px
+}
+.dice-game_pending.bt .i-loading {
+  animation:rotate 1.2s linear infinite;
+  background-image:url("data:image/svg+xml;
+  charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12ZM3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z' fill='url(%23a)' fill-opacity='.2'/%3E%3Cpath d='M22.5 12c.828 0 1.51.674 1.406 1.496A11.999 11.999 0 1 1 10.504.094C11.326-.01 12 .672 12 1.5s-.676 1.487-1.493 1.625a9 9 0 1 0 10.368 10.368c.138-.817.797-1.493 1.625-1.493Z' fill='url(%23b)'/%3E%3Cdefs%3E%3ClinearGradient id='a' x1='.014' y1='12' x2='24.014' y2='12' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%237449E6'/%3E%3Cstop offset='.771' stop-color='%2369A4FF'/%3E%3Cstop offset='1' stop-color='%2369A4FF' stop-opacity='.9'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='.014' y1='12' x2='24.014' y2='12' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%237449E6'/%3E%3Cstop offset='.771' stop-color='%2369A4FF'/%3E%3Cstop offset='1' stop-color='%2369A4FF' stop-opacity='.9'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+  border-radius:24px;
+  color:inherit;
+  display:inline-block;
+  height:24px;
+  min-width:24px;
+  position:relative;
+  width:24px
+}
+.dice-game_result {
+  height:92px
+}
+.dice-game_result .onmob {
+  display:none
+}
+.dice-game_result_wrap {
+  display:grid;
+  gap:8px
+}
+.dice-game_result .bt {
+  font-weight:600;
+  gap:8px;
+  height:42px
+}
+.dice-game_result__win {
+  background:linear-gradient(0deg,#72d370,#72d370),linear-gradient(90deg,#7449e6 .06%,#69a4ff 98.49%)!important;
+  color:#fff!important
+}
+.dice-game_result__lose {
+  background:linear-gradient(0deg,#ff3030,#ff3030),linear-gradient(90deg,#7449e6 .06%,#69a4ff 98.49%)!important;
+  color:#fff!important
+}
+@keyframes rotate {
+  0% {
+  transform:rotate(0)
+}
+to {
+  transform:rotate(1turn)
+}
+}@media screen and (max-width:979px) {
+  .dice_sidebar {
+  min-width:300px;
+  width:300px
+}
+}@media screen and (max-width:760px) and (orientation:portrait) {
+  .dice {
+  flex-wrap:wrap;
+  position:relative
+}
+.dice_sidebar {
+  display:flex;
+  flex-wrap:wrap;
+  min-width:100%;
+  order:1;
+  width:100%
+}
+.dice_sidebar-header {
+  left:0;
+  padding:var(--padding);
+  position:absolute;
+  top:0
+}
+.dice_sidebar-header .icon-gradient {
+  height:24px;
+  width:24px
+}
+.dice_sidebar-header .icon-gradient svg {
+  height:16px!important;
+  width:16px!important
+}
+.dice_sidebar_field {
+  width:100%
+}
+.dice_sidebar-toolbar input {
+  max-width:none
+}
+.dice_sidebar-btns {
+  display:none;
+  flex-wrap:wrap;
+  order:-1;
+  width:100%
+}
+.dice_sidebar-btns button {
+  padding:4px 8px;
+  width:auto
+}
+.dice_sidebar-btns a {
+  display:none
+}
+.dice_sidebar-btns .onmob {
+  display:block
+}
+.dice_sidebar-btns .ondesk {
+  display:none
+}
+.dice_sidebar-btns .bt-primary {
+  flex-grow:1;
+  order:-1
+}
+.dice_sidebar-btns .bt-orange {
+  min-width:100px;
+  width:100px
+}
+.dice_sidebar-hash {
+  color:#9e96ba;
+  display:block;
+  font-size:14px
+}
+.dice_sidebar-hash span {
+  background:#f4f2ff;
+  border-radius:4px;
+  display:block;
+  margin:8px 0;
+  padding:12px;
+  text-overflow:clip;
+  white-space:normal;
+  word-break:break-word
+}
+.dice_sidebar-footer {
+  width:100%
+}
+.dice-game,.dice_sidebar-footer .onmob {
+  display:flex
+}
+.dice-game {
+  flex-wrap:wrap;
+  gap:0;
+  padding:56px 12px 12px
+}
+.dice-game_score {
+  margin-bottom:12px;
+  width:100%
+}
+.dice-game_score_num {
+  font-size:30px;
+  margin-bottom:4px
+}
+.dice-game_score_num p {
+  margin-bottom:1px
+}
+.dice-game_pending {
+  margin-top:12px
+}
+.dice-game_result {
+  height:auto;
+  width:100%
+}
+.dice-game_result_wrap {
+  display:flex;
+  padding-top:12px
+}
+.dice-game_result .fg {
+  flex-grow:1
+}
+.dice-game_result .bt-transparent {
+  background:#f4f2ff;
+  border-radius:4px
+}
+.dice-game_result .ondesk {
+  display:none
+}
+.dice-game_result .onmob {
+  display:block
+}
+.dice-game_bet {
+  width:100%
+}
+}@media only screen and (min-width:480px) and (max-width:979px) and (orientation:landscape) {
+  .dice_sidebar {
+  gap:6px
+}
+.dice_sidebar_field__header {
+  display:none
+}
+.dice_sidebar-btns {
+  gap:inherit
+}
+.dice-game {
+  display:flex;
+  flex-wrap:wrap;
+  gap:0;
+  padding:12px
+}
+.dice-game_score {
+  margin-bottom:4px;
+  width:100%
+}
+.dice-game_score_num {
+  font-size:30px;
+  margin-bottom:4px
+}
+.dice-game_score_num p {
+  margin-bottom:1px
+}
+.dice-game_pending {
+  margin-top:4px
+}
+.dice-game_result {
+  height:auto;
+  width:100%
+}
+.dice-game_result_wrap {
+  display:flex;
+  gap:4px;
+  padding-top:4px
+}
+.dice-game_result .fg {
+  flex-grow:1
+}
+.dice-game_result .bt-transparent {
+  background:#f4f2ff;
+  border-radius:4px
+}
+.dice-game_result .ondesk {
+  display:none
+}
+.dice-game_result .onmob {
+  display:block
+}
+.dice-game_bet {
+  gap:4px;
+  width:100%
+}
+.dice-game_bet__item {
+  gap:4px
+}
+

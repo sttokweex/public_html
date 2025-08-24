@@ -1,0 +1,233 @@
+.table{
+    --bs-table-striped-color: var(--main-color-medium);
+    color: var(--main-color-medium);
+}
+.ticket_card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background: var(--main-background3);
+    border-radius: 8px;
+    color: var(--main-color-hight);    
+}
+.card-innr{
+padding: 20px;    
+}
+.card-title{
+margin:0;    
+}
+.card_output_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.create_ticket_i{
+    cursor: pointer;
+    color: #e6ad39!important;    
+    text-decoration:none;
+}
+.create_ticket_i:hover{
+    opacity:0.8;    
+}
+.ticket_heading{
+text-decoration: none;
+    border-bottom: 1px dashed #f5a60b;
+    color: #e6ad3d!important; 
+}
+.ticket_heading:hover{
+    opacity:0.8;    
+}
+.t_badge{
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.t_badge.wait{
+    background: #e2c25942;
+    color: #f5a60b;    
+}
+.t_badge.closed{
+    background: #4242683d;
+    color: var(--main-color-hight);
+}
+.t_badge.yes{
+    background: #48c34a42;
+    color: #1d8e1e;
+}
+.t_eye_bobby{
+    background: #292b35;
+    padding: 8px;
+    color: var(--main-color-hight);
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;  
+    cursor:pointer;
+}
+.t_eye_bobby:hover{
+    color: var(--main-color-hight);
+    opacity:0.8;
+}    
+.t_create_wrap{
+display: grid;
+    margin-top: 20px;
+    gap: 5px;    
+}
+.t_input{
+outline: none;
+    border-radius: 8px;
+    background: var(--main-background);
+    color: var(--main-color-hight);
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid #2b303b47;
+    height: 100%;
+    width: 100%;    
+}
+.t_area{
+    height: 136px;
+    display: block;
+    resize: none;
+    outline: none;
+    border-radius: 8px;
+    background: var(--main-background);
+    color: var(--main-color-hight);
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid #2b303b47;
+    width: 100%;
+}
+.chat-messages-content {
+    margin: 0;
+    flex-grow: 1;
+}
+.chat-messages-bubble {
+    text-align: right;
+    float: right;
+background: var(--main-background4);
+    color: var(--main-color-hight);
+border-radius: 8px;
+    max-width: 65%;
+position: relative;
+    padding: 16px 20px;
+    margin: 4px 0;
+    display: inline-block;
+        word-break: break-all;
+}
+.chat-messages-info {
+display: flex;
+    padding-top: 2px;
+    clear: both;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    list-style: none;
+    margin-bottom: 0px;
+}
+.chat-time{
+    font-size: 14px;
+    color: var(--main-color-low);    
+}
+.chat-messages-item.self {
+    flex-direction: row-reverse;
+}
+
+.chat-messages-item {
+    display: flex;
+    align-items: flex-end;
+    padding: 5px 0;
+}
+p{
+margin-bottom:0px;
+}
+
+.system_mess{
+    float: left;    
+    background: var(--main-background);
+    color: var(--main-color-hight);
+        text-align: left;
+}
+.system_date{
+flex-direction: column;
+    padding-left: 0px;    
+}
+
+@media (max-width: 992px) {
+    #wjdna {
+    padding: 0px!important;
+    }
+
+}
+.chat-messages-sap {
+    position: relative;
+    width: 70%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px 0;
+}
+.chat-messages-sap:before {
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    left: 0;
+    right: 0;
+    background: #333643;
+    content: '';
+    transform: translateY(-50%);
+}
+.chat-messages-sap span {
+display: inline-block;
+    padding: 0 20px;
+    background: var(--main-background3);
+    position: relative;
+    z-index: 5;
+    color: var(--main-color-hight);
+    font-size: 13px;
+}
+
+#newtnoty{
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+#newtnoty div{
+    width: 100px;
+    height: 100px;
+    font-size: 32px;
+    border-radius: 100px;
+    border: 2px solid currentColor;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    color: var(--main-color-medium);    
+}
+#newtnoty span{
+    font-size: 17px;
+    color: var(--main-color-medium);    
+}
+
+
+@media (max-width: 680px) {
+    #myTicketsList {
+    font-size: 11px;
+    }
+    .t_badge{
+        width: 85px;
+    padding: 5px;    
+    }
+    .card-title{
+    font-size: 18px;    
+    }
+}

@@ -1,0 +1,29 @@
+.privacy-page{
+    display: grid;
+    background-image: linear-gradient(to bottom, var(--main-background2), var(--main-background2)), linear-gradient(to bottom, var(--main-background4) 1%, var(--main-background2) 20%);
+    background-clip: padding-box, border-box;
+    background-origin: border-box;
+    border: 3px solid #f000;
+    border-radius: 8px;
+    color: var(--main-color-medium);
+    padding: 14px;
+    gap: 10px;
+    text-decoration:none;
+}   
+.privacy-page h3{
+    color: var(--main-color-hight);
+    font-weight: bold;
+    margin-bottom: 0px;    
+}
+.privacy-page h4{
+    color: var(--main-color-hight);
+    font-weight: bold!important;
+    margin-bottom: 0px;    
+}
+.privacy-page a{
+    color: var(--main-color-hight);
+transition:.2s;
+}
+.privacy-page a:hover{
+    color: #fff;
+}
