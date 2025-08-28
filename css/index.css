@@ -1,578 +1,584 @@
-.newGamesI{height: fit-content;background: linear-gradient(to bottom, #252632 55%, #363746);padding: 13px;border-radius: 8px;display: grid;gap: 15px;text-decoration:none;user-select:none;transition:.2s;cursor:pointer;}  
-.newGamesI:hover{
-    background: var(--main-background3);    
+/* Базовые стили для body */
+body {
+  background: #1a2c38;
+  color: rgb(177, 186, 211);
+  cursor: default;
+  font-size: 0.875rem;
+  font-family: 'proxima-nova', sans-serif;
 }
-.newGamesI .gamePhoto{
-    width: 100%;
-    border-radius: 8px;    
-    transition:.3s;
-pointer-events: none    
+html,
+body {
+  /* Убедимся, что прокрутка включена */
+  overflow-y: auto;
+  /* Для Firefox */
+  scrollbar-width: none;
 }
 
-.newGamesI .gamePhoto:hover{
-transform: scale(0.99);  
+/* Для WebKit-браузеров (Chrome, Safari, Edge) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
 }
-.newGamesI .footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;    
-}
-.newGamesI .footer .information{
-    display: grid;
-    width: 100%;    
-}
-.newGamesI .footer .information .title{font-size: 14px;color: #e1ad42;}
-.newGamesI .footer .information .desc{color: #ffffff;font-weight: bold;font-size: 20px;margin-bottom: -5px;margin-top: -4px;}
-.newGamesI .footer img{
-width: 28px;
-    height: 28px;    
-}
-.giftCounters{
-        display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}  
-.giftCounter{
-    background: var(--main-background);
-    border-radius: 8px;
-    padding: 10px;
-    display: grid;
-    color: var(--main-color-low);
-    font-weight: bold;
-    text-align: center;    
-}
-.giftCounter .count{
-color: var(--main-color-hight);    
-} 
-   .projectGames{
-    display: grid;
-    gap: 12px;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-   }
-   .projectGameAdditional{
-    align-items: center;
-    aspect-ratio: 234 / 164;
-    background: var(--main-gradient);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    position: relative;
-    transition: all .2s;  
-    justify-content:center;
-    text-decoration: none;
-    gap:10px;
-   }
-   .projectGameAdditional img{
-    width: 100%;
-    height: 100%; 
-   }
-   .projectGameAdditional span{
-bottom: 18px;
-    color: #fff;
-    font-size: 26px;
-    font-weight: 600;
-    left: 50%;
-    line-height: 25px;
-    position: absolute;
-    text-align: center;
-    transform: translate(-50%);
-    white-space: nowrap;
-    color:#000;
-   }
-   
-   
-   
-   .himg { width: 100%; }
-.hwrap { max-width: 500px; } /* optional */
- 
 
-.hwrap { position: relative; }
-.hcap {
-align-items: center;
-    display: flex;
-    cursor:pointer;
-
-  position: absolute; bottom: 0; left: 0;
-height:100%;
+/* Для IE и Edge (старые версии) */
+html,
+body {
+  -ms-overflow-style: none;
+}
+/* Стили для home-header-wrapper */
+.home-header-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   width: 100%;
-  color: #fff; background: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-image: url('/assets/media/header-bg.DLFzM8kq.png');
 }
 
-.hcap {
-  visibility: none; opacity: 0;
-  transition: opacity 0.3s;
-  border-radius:7px;
+/* Стили для контейнера */
+
+.home-container-upper {
+  width: 100%;
+  display: flex;
+
+  max-width: 1200px;
+  align-self: center;
+  margin: 0;
 }
-.hwrap:hover .hcap{
-  visibility: visible; opacity: 1;
-} 
-
-
-.projectGameAdditional:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: inline-block;
-    border-radius: 12px;
-    border: 2px solid transparent;
-background: linear-gradient(231.26deg, #f9eace85 9.72%, rgb(227 214 112 / 0%) 67.39%) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+.home-container {
+  width: 100%;
+  display: flex;
+  max-width: 1200px;
+  align-self: center;
+  margin: 0;
+  flex-direction: column;
+  padding-bottom: 2rem;
 }
-
-
-.alert_index {align-items: center;background-color: #222630;background: #2b2c3a;background-position: 50%;background-repeat: no-repeat;background-size: cover;border-radius: 12px;display: flex;margin-bottom: 15px;padding: 15px;}
-.alert_index .badge {
-    align-items: center;
-    border-radius: 20%;
-    background-image: url(../images/index/vkbonus.png);
-    background-position: center;
-    background-size: contain;
-    display: flex;
-    height: 80px;
-    justify-content: center;
-    margin-right: 25px;
-    width: 80px;
+.home-has-padding {
+  max-width: calc(1200px + 6vw);
+  padding: 0 3vw;
 }
-.alert_index .badge img{
-width: 60%;
-user-select:none;
+.home-has-margin {
+  margin-top: calc(0.25rem * 6);
 }
 
-.alert_index .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: calc(100% - 380px);
-    color: #fff;
-}
-.alert_index .info .name {
-    font-size: 24px;
-    font-weight: bold;
-}
-.alert_index .info .description {
-opacity: 0.6;
+/* Стили для внутреннего заголовка */
+.home-header-inner {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
-
-.gtbtnBonus{
-    height: 60px;
-    width: 275px;
-    font-size: 18px;
-    background: #48495a;
-    box-shadow: none!important;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-    font-weight: bold;
-    color: #ffffff;
-}
-.gtbtnBonus:hover{
-    opacity:0.9;
-}
-
-@media (max-width: 1097px){
-.projectGames {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-}
-
-@media (max-width: 960px){
-.projectGames {
-grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-}
-
-@media (max-width: 768px){
-.projectGames {
-grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-}
-
-
-
-
-@media (max-width: 768px){
-.alert_index{
-    display:grid;
-}
-.alert_index .badge {
-    margin: 0 auto;
-    display: none;
-}
-.alert_index .info {
-    width: 100%;
-    text-align: center;    
-}
-.gtbtnBonus{
-    width: 100%;
-    margin-top: 10px;    
-}
-
-}
-
-.newGamesI {
-overflow:hidden;   
-}    
-
-.newGamesI:hover .footer .information .title {
-color:#fff!important;
-z-index:2;
-}
-.newGamesI:hover .footer .information .desc {
-color:#fff!important;
-z-index:2;
-}
-.newGamesI:hover .footer img {
-z-index:2;    
-}
-
-.hwrap {
-max-width: 100%; 
-}
-.hwrap { 
-position: relative; 
-}
-.hcap {
-align-items: center;
-display: flex;
-cursor:pointer;
-position: absolute; 
-bottom: 0; 
-left: 0;
-height:100%;
-width: 100%;
-color: #fff;
-background: rgb(0 0 0 / 42%);
-backdrop-filter: blur(7px); 
-}
-.hcap {
-visibility: none; opacity: 0;
-transition: opacity 0.3s;
-}
-.hwrap:hover .hcap{
-visibility: visible; 
-opacity: 1;
-}
-
-
-
-    .playButton{
-    height: 70px;
-    width: 70px;
-    padding: 10px;
-    border: none;
-    font-size: 24px;
-    outline: none;
-    background: var(--main-gradient);
-    color: #000;
-    border-radius: 100px;
-    transition: .2s;
-    position: relative;
-    margin: 0 auto;
-    }
-.playButton:hover{
-box-shadow: 0px 0px 15px #ffa80078;
-}
-
-
-.playButton:after {
-content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: inline-block;
-    border-radius: 100px;
-    border: 2px solid transparent;
-    background: linear-gradient(231.26deg, #f9eace 9.72%, rgb(227 214 112 / 0%) 67.39%) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-}
-
-.newGamesIsoon{
-height: fit-content;
-    background: var(--main-background4);
-    padding: 13px;
-    border-radius: 8px;
-    display: grid;
-    gap: 15px;    
-    text-decoration:none;
-    user-select:none;
-    transition:.2s;
-    cursor:pointer;
-}  
-.newGamesIsoon:hover{
-    background: var(--main-background3);    
-}
-.newGamesIsoon .gamePhoto{
-    width: 100%;
-    border-radius: 8px;    
-    transition:.2s;
-pointer-events: none    
-}
-
-.newGamesIsoon .gamePhoto:hover{
-transform: scale(0.99);  
-}
-.newGamesIsoon .footer{
-    display: flex;
+@media (min-width: 1024px) {
+  .home-header-inner {
+    grid-template-columns: 40% 55%;
     justify-content: space-between;
-    align-items: center;    
-}
-.newGamesIsoon .footer .information{
-    display: grid;
-    width: 100%;    
-}
-.newGamesIsoon .footer .information .title{
-font-size: 14px;
-    color: var(--main-color-low);    
-}
-.newGamesIsoon .footer .information .desc{
-color: var(--main-color-low);
-    font-weight: bold;
-font-size: 20px;
-    margin-bottom: -5px;
-    margin-top: -4px;    
-}
-.newGamesIsoon .footer img{
-width: 28px;
-    height: 28px;    
-}    
-
-#filter-container {
-    margin-bottom: 32px!important;
+  }
 }
 
-#filter-container #search {
-    border: 0;
-    background: #2b2c3a;
-    height: 49px;!;!i;!im;!imp;!impo;!impor;!import;!importa;!importan;!importan;!importa;!import;!impor;!impo;!imp;!im;!i;!;
-    font-size: 16px;
-    padding: 0px 16px;
-    color: #fff;
-    flex-shrink: 0;
+@media (max-width: 767px) {
+  .home-header-inner {
+    margin: 0 auto;
+  }
 }
 
-@media (max-width: 600px) {
-    #filter-container #search {
-        flex: none!important;
-    }
+/* Стили для содержимого внутреннего заголовка */
+.home-header-inner-content {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  row-gap: 0.75rem;
+  width: 100%;
+  align-items: center;
 }
 
-#filter-container #search::-webkit-input-placeholder {
-    color: #9d9fb4;
+@media (min-width: 768px) {
+  .home-header-inner-content {
+    row-gap: 2rem;
+    max-width: 478px;
+  }
 }
 
-#filter-container #providerFilter {
-    border: 0;
-    background: #2b2c3a;
-    color: #cccde1;
-    width: 20%!important;
-    flex: none;
+/* Стили для отступов внутреннего заголовка */
+.home-header-inner-padding {
+  padding: 0 6rem;
 }
 
-.game {
-    margin: 0!important;
+@media (min-width: 768px) {
+  .home-header-inner-padding {
+    padding: 0;
+  }
 }
 
-#filter-container {
-    margin-top: 16px;
+@media (min-width: 1024px) {
+  .home-header-inner-padding {
+    padding-right: 5rem;
+  }
 }
 
-.banners {
+/* Стили для типографики */
+.home-header-title {
+  font-family: 'proxima-nova', sans-serif;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+  font-size: 2rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home-oauth-label-text {
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  font-size: 0.75rem;
+  color: #a0aec0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.home-feature-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.home-feature-status {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.home-feature-status-text {
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+  font-size: 0.75rem;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Стили для кнопки регистрации */
+.home-register-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  background-color: #1475e1;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.9375rem;
+  padding-bottom: 0.9375rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-height: 44px;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+@media (min-width: 768px) {
+  .home-register-button {
+    margin-top: 1rem;
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (min-width: 640px) {
+  .home-register-button {
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-register-button {
+    margin-left: 0;
     display: flex;
-    align-items: stretch;
-    gap: 16px;
-    margin-bottom: 16px;
+  }
 }
 
-.banners__left {
-    max-width: 50%;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 12px;
-    flex-shrink: 0;
-    position: relative;
+.home-register-button:hover {
+  background-color: #2563eb;
+  color: #ffffff;
 }
 
-.banners__left .swiper-slide {
-    display: grid;
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
+.home-register-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
 }
 
-.banners__left .swiper-slide:before, .banners__item:before {
-    content: '';
-    padding-top: 56%;
+.home-register-button:active {
+  transform: scale(0.98);
 }
 
-.banners__left .swiper-slide img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
+.home-register-button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-.banners__overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: linear-gradient(to bottom, transparent 65%, #00000052);
-    padding: 20px;
+/* Стили для секции OAuth */
+.home-oauth {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .home-oauth {
+    align-items: flex-start;
+  }
+}
+
+.home-oauth-label {
+  margin-bottom: 0.5rem;
+}
+
+.home-provider-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+/* Стили для кнопок провайдеров */
+.home-provider-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: #2f4553;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.home-provider-button:hover {
+  background-color: rgb(85, 112, 134);
+  color: #ffffff;
+}
+
+.home-provider-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.home-provider-button:active {
+  transform: scale(0.98);
+}
+
+.home-provider-button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Стили для SVG-иконок */
+.home-svg-icon {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.home-svg-icon-mini {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 0.5rem;
+
+  stroke: #b1bad3;
+  fill: #b1bad3;
+}
+
+/* Стили для обёртки функций */
+.home-feature-wrapper {
+  display: flex;
+  gap: 0.375rem;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .home-feature-wrapper {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-feature-wrapper {
+    gap: 0.625rem;
+  }
+}
+
+/* Стили для градиентной границы */
+@property --degrees {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --percentage {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 30%;
+}
+
+.home-gradient-border {
+  --degrees: 0deg;
+  --percentage: 30%;
+  background: linear-gradient(
+    var(--degrees),
+    transparent var(--percentage),
+    var(--border-color) 100%
+  );
+  padding: 0.125rem;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .home-gradient-border {
+    --percentage: 15%;
+  }
+}
+
+.home-gradient-border:hover {
+  transform: translateY(-0.5rem);
+}
+
+/* Стили для ссылок функций */
+.home-feature-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: rgb(33, 55, 67);
+  color: #ffffff;
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.home-featureས
+
+System: feature-link:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.home-feature-link:focus-visible {
+  outline: none;
+}
+
+.home-feature-link:active {
+  transform: scale(0.98);
+}
+
+.home-feature-link svg {
+  color: #d1d5db;
+}
+
+.home-feature-link:hover svg {
+  color: #ffffff;
+}
+
+/* Стили для содержимого функций */
+.home-feature-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Стили для изображений функций */
+.home-feature-image {
+  background-color: #6b7280;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Стили для текста функций */
+.home-feature-text {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.home-feature-text-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 1.125rem;
+}
+
+/* Стили для контейнера иконок */
+.home-icon-container {
+  display: none;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .home-icon-container {
     display: flex;
-    align-items: flex-end;
+  }
 }
 
-.banners__overlay .button {
-    border: 0;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 16px;
-    border-radius: 50px;
-    font-weight: bold;
-    background: #ffffff36;
-    backdrop-filter: blur(10px);
-    color: #fff;
-    transition: 0.2s ease;
-    cursor: pointer;
+/* Стили для индикатора статуса */
+.home-status-indicator {
+  background-color: #34d399;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
 }
 
-.banners__overlay .button:hover {
-    background: #fff;
-    color: #000;
+/* Стили для блока поиска */
+
+
+/* Стили для выпадающего меню */
+.home-dropdown {
+  position: relative;
 }
 
-.banners__right {
-    display: flex;
-    align-items: stretch;
-    flex: 1 0 auto;
-    gap: 16px;
+.home-dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: transparent;
+  color: #ffffff;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+  font-size: 0.875rem;
+  line-height: 1;
 }
 
-.banners__item {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    display: grid;
-    width: 100%;
+.home-dropdown button:hover {
+  background-color: transparent;
+  color: #ffffff;
 }
 
-.banners__item img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.home-dropdown button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
 }
 
-.banners__left-arrow {
-    position: absolute;
-    z-index: 2;
-    right: 20px;
-    bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.home-dropdown button:active {
+  transform: scale(0.98);
 }
 
-.banners__left-arrow button {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    background: #ffffff26;
-    backdrop-filter: blur(10px);
-    color: #fff;
-    transition: 0.2s ease;
+.home-dropdown button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-.banners__left-arrow button svg {
-    width: 16px;
-    position: relative
+.home-dropdown button svg {
+  color: #a0aec0;
 }
 
-.banners__left-arrow button.prev svg {
-    transform: rotate(180deg);
-    left: -2px
+.home-dropdown button:hover svg {
+  color: #ffffff;
 }
 
-.banners__left-arrow button.next svg {
-    left: 1px
+/* Стили для переключателя поиска */
+.home-search-toggle {
+  font-size: 0.875rem;
 }
 
-.banners__left-arrow button:hover {
-    background: white;
-    color: black;
+/* Стили для содержимого страницы */
+.home-page-content {
+  margin-top: 40px;
+  margin-left: 240px;
+}
+.sidebar .home-page-content {
+  margin-left: 60px;
+}
+.home-page-content-inner {
+  display: flex;
+
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-.banners__left-arrow button.prev i {
-    width: 10px;
-    height: 10px;
-    border-left: solid 2px;
-    border-bottom: solid 2px;
-    transform: rotate(45deg);
-    position: relative;
-    left: 2px;
+/* Define font-face for different weights */
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../assets/fonts/Proxima Nova/proximanova_regular.ttf')
+    format('truetype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
 }
 
-.banners__left-arrow button.next i {
-    width: 10px;
-    height: 10px;
-    border-right: solid 2px;
-    border-bottom: solid 2px;
-    transform: rotate(-45deg);
-    position: relative;
-    left: -2px;
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../assets/fonts/Proxima Nova/proximanova_bold.otf')
+    format('opentype');
+  font-weight: 600; /* Bold */
+  font-style: normal;
+}
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../assets/fonts/Proxima Nova/proximanova_extrabold.otf')
+    format('opentype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
 }
 
-@media (max-width: 990px) {
-    .banners {
-        flex-direction: column;
-    }
-    .banners__left {
-        max-width: 100%
-    }
-    .banners__item:before {
-        padding-top: 120%;
-    }
-    .banners__overlay .button {
-        height: 32px;
-        font-size: 14px;
-    }
-    .banners__overlay {
-        padding: 12px;
-    }
-    .banners__left-arrow {
-        right: 12px;
-        bottom: 12px;
-    }
-    .banners__left-arrow button {
-        width: 36px;
-        height: 36px;
-    }
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../assets/fonts/Proxima Nova/proximanova_light.otf')
+    format('opentype');
+  font-weight: 300; /* Light */
+  font-style: normal;
 }

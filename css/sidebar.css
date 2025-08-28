@@ -1,169 +1,430 @@
-
-.sidebar_project{
-    position: fixed;
-    background: var(--main-background3);
-    height: auto;
-    display: grid;
-    padding: 10px;
-    border-radius: 5px;
-    align-items: center;
-    gap: 10px;
-    width: 280px;
-    top: 80px;
-    z-index: 3;
-    bottom: 0;
-    align-content: baseline;
-        overflow: auto;
-} 
-.sidebar_item{
-    background: #272c37;
-    border-radius: 5px;
-    padding: 10px;    
-}
-.sidebar_item svg{
-    width:20px;
-    height:20px;
-    fill:#748198;
+/* Основной контейнер сайдбара */
+.sidebar_project {
+  position: fixed;
+  background: rgb(15, 33, 46);
+  width: 240px;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 5px rgba(25, 25, 25, 0.25));
+  will-change: margin-left;
+  word-wrap: break-word;
+  font-size: 0.875rem;
 }
 
-.sidebar_project ul{
-color: #fff;
-    list-style: none;
-    padding: 0px;
-    margin: 0;
-    gap: 10px;
-    display: grid; 
-} 
-.sidebar_project li{background: transparent;padding: 5px 10px;border-radius: 5px;cursor: pointer;display: flex;gap: 10px;position: relative;align-items: center;min-height: 50px;} 
-.sidebar_project li:hover{
-    background: #2b2d39!important;
-    
-} 
-.activeSidebar{
-    background: #24252f!important;
-} 
-.activeSidebar2{
-    background: #292a35!important;
-} 
-.sidebar_project li svg{
-width: 24px;
-fill: #748198;
-} 
+/* Адаптация контента */
 
-.sidebarBanner{
-background: #24252f;
-    padding: 15px 10px 15px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    gap: 10px;  
-    background: url(../images/banners/bonus_small.png), #24252f;
-    background-size: 100%;
-    background-position: center;  
-    cursor:pointer;
-    text-decoration: none;
-}
-.sidebarBanner:hover{
-    opacity:0.8;
-}
-.sidebarBannerInfo{
-    display: grid;
-    color: #fff;  
-        font-weight: 700;
-}
-.sidebarBannerInfo .mainDesc{
-    font-size: 14px;
-    color: var(--main-color-hight);    
-}
-.downArrowSvg{filter: invert(1);width: 13px!important;!importan;!importa;!import;!impor;!impo;!imp;!im;!i;!;position: absolute;right: 20;top: 50%;transform: translateY(-50%);}
-
-
-@media screen and (max-width:1800px) {
-    
-.sidebar_project1{
-      width: 185px;  
+/* Текст с обрезкой */
+.is-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inherit;
 }
 
+/* Аккордеон */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  border-radius: 0.25rem;
+}
+.scrollable .accordion .svg_isopen,
+.scrollable .accordion .is_small {
+  display: none;
+}
+.accordion .header {
+  z-index: 4;
+  display: flex;
 }
 
-@media screen and (max-width:1280px) {
-    
-.sidebar_project{
-     display:none;
+.accordion .content {
+  max-height: 0;
+  overflow: hidden;
+  flex-direction: column;
+  align-content: flex-start;
+  padding: 0;
+  touch-action: pan-x;
+  flex: 1;
+  display: flex;
+  transition: max-height 0.3s ease;
+  scrollbar-width: none;
+  scrollbar-color: var(--color-grey-400) transparent;
+  min-height: 0;
 }
 
+.accordion .content.isopen {
+  max-height: 1000px;
 }
 
+/* Внутренний контейнер */
+.inner_content {
+  background-color: rgb(26, 44, 56);
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
 
+/* Базовый стиль для ссылок */
+.sidebar_anchor_base {
+  max-width: 100%;
+}
+
+.sidebar_anchor_base[disabled] {
+  pointer-events: none;
+}
+
+/* Кнопки в сайдбаре */
+.promo_anchor_button,
+.anchor_button {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition-property: background-color, color, transform;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+  color: white;
+  line-height: 1;
+  padding: 0.8125rem 1rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.promo_anchor_button {
+  font-weight: 600;
+  font-size: 0.875rem;
+  justify-content: space-between;
+}
+
+.anchor_button {
+  justify-content: flex-start;
+  max-width: 100%;
+  outline-offset: var(--ring-offset-background, initial);
+}
+
+.promo_anchor_button:disabled,
+.anchor_button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.promo_anchor_button:focus-visible,
+.anchor_button:focus-visible {
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 2px;
+  outline-color: white;
+}
+
+.promo_anchor_button:hover,
+.anchor_button:hover {
+  background-color: rgb(47, 69, 83);
+  color: white;
+}
+
+.promo_anchor_button svg,
+.anchor_button svg {
+  color: #b1bad3;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar__btn-close:hover .svg-icon {
+  fill: white;
+}
+
+/* Заголовок аккордеона */
+.sidebar_accordion_title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Текстовый контейнер */
+.wrapper-text {
+  display: flex;
+  flex-direction: column;
+  padding-block: calc(0.25rem * 1.75);
+  padding-inline: 1rem;
+}
+
+.wrapper-text span {
+  line-height: 1.5;
+  text-align: left;
+  color: #b1bad3;
+  display: inline-flex;
+  gap: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Контейнер для SVG */
+.svg_container {
+  border-radius: 0.25rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  margin-block: -0.25rem;
+}
+
+/* Контент сайдбара */
+.sidebar_content {
+  margin-left: 1.5rem;
+  border-left: 2px solid rgb(47, 69, 83);
+}
+
+/* Разделитель */
+.spacing_div {
+  padding-block: calc(0.25rem * 2.5);
+  padding-inline: 0.5rem;
+  height: auto;
+}
+
+.spacing {
+  background: rgb(47, 69, 83);
+  height: 2px !important;
+  width: 100%;
+  margin: 0;
+  opacity: 1;
+}
+
+/* Прокручиваемый контейнер */
+.scrollable {
+  padding: 1rem;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scrollbar-color: #2f4553, transparent;
+  min-height: 0;
+  max-height: calc(100vh - 60px);
+  overflow: hidden auto;
+}
+
+/* Изображения продуктов */
+.productImg {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 0.25rem;
+}
+
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Кнопки в заголовке */
+.header-button {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  border-radius: 0.25rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.header-button:hover {
+  color: white;
+}
+
+/* SVG-иконки */
+.svg-icon {
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+
+  display: inline-block;
+}
+.sidebar_project .scrollable .svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+/* Заголовок сайдбара */
+.sidebar_header {
+  display: flex;
+  padding: 0 1rem 0 0;
+  touch-action: none;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.2),
+    0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+.link_wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Элементы списка */
+
+/* Кнопка закрытия */
 .sidebar__btn-close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    border: 0;
-    background: #272832;
-    height: 34px;
-    padding: 0px 12px;
-    border-radius: 6px;
-    color: #888993;
-    font-weight: 500;
-    flex-direction: row-reverse;
-    gap: 6px;
-    transition: 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 0.25rem;
+  background: rgb(15, 33, 46);
 }
 
-.sidebar__btn-close i {
-    width: 8px;
-    height: 8px;
-    border-left: solid 2px;
-    border-bottom: solid 2px;
-    transform: rotate(45deg);
+/* Общие стили для кнопок */
+button,
+input,
+select,
+textarea {
+  cursor: pointer;
+  color: inherit;
+  border: none;
+  padding: 0;
+  line-height: 1.5;
 }
 
-.sidebar__btn-close:hover {
-    background: #2c2d3a;
-    color: #fff;
-}
-
+/* Свёрнутое состояние сайдбара */
 .sidebar_project.closed {
-    width: 80px;
+  width: 60px;
 }
-
-.sidebar_project.closed .sidebarBanner  {
-    display: none;
+.sidebar_project.closed .content {
+  display: flex;
+  overflow: hidden;
 }
-
-.sidebar_project.closed li span {
-    display: none;
+.sidebar_project.closed .inner_content {
+  background-color: unset;
 }
-
-.sidebar_project.closed li {
-    padding: 0;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.sidebar_project.closed span {
+  display: none;
 }
 
 .sidebar_project.closed .toggle-menu-list {
-    display: none;
-}
-
-.sidebar_project.closed .sidebar__btn-close span {
-    display: none;
-}
-
-.sidebar_project.closed .sidebar__btn-close i {
-    transform: rotate(-135deg)
+  display: none;
 }
 
 .sidebar_project.closed #projectGamesList {
-    display: block!important;
+  display: block !important;
 }
 
-.sidebar_project li img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+.sidebar_project.closed .anchor_button:hover,
+.sidebar_project.closed .promo_anchor_button:hover {
+  background-color: rgb(47, 69, 83);
+  color: white;
 }
+
+.sidebar_project.closed .anchor_button:hover .svg-icon,
+.sidebar_project.closed .promo_anchor_button:hover .svg-icon,
+.sidebar__btn-close:hover .svg-icon {
+  fill: white;
+}
+.sidebar_project.closed .anchor_button,
+.sidebar_project.closed .promo_anchor_button {
+  display: inline-flex; /* inline-flex */
+  position: relative; /* relative */
+  gap: 0.5rem; /* gap-2 */
+  font-weight: 600; /* font-semibold */
+  white-space: nowrap; /* whitespace-nowrap */
+
+  transition-property: background-color, color, transform; /* transition */
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent; /* bg-transparent */
+  color: white; /* text-white */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1; /* leading-none */
+  border-radius: var(
+    --ds-radius-md,
+    0.25rem
+  ); /* rounded-(--ds-radius-md,0.25rem) */
+  max-width: 100%; /* max-w-full */
+  width: 2.75rem; /* w-11 = 44px, 44px/16=2.75rem */
+  height: 2.75rem; /* h-11 */
+  padding: 0.25rem; /* p-1 */
+  align-items: center; /* items-center */
+  justify-content: center;
+}
+
+.sidebar_project.closed .anchor_button .is-truncate,
+.sidebar_project.closed .promo_anchor_button .is-truncate,
+.sidebar_project.closed .wrapper-text,
+.sidebar_project.closed .sidebar_header .link_wrap,
+.sidebar_project.closed .svg_container {
+  display: none;
+}
+.sidebar_project.closed .spacing_div {
+  padding-block: calc(0.25rem * 2.5);
+  padding-inline: calc(0.25rem * 2);
+}
+.sidebar_project.closed .accordion .svg_isopen,
+.sidebar_project.closed .accordion .is_small {
+  display: flex;
+}
+.sidebar_project.closed .scrollable {
+  overflow: auto;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+  scrollbar-gutter: stable;
+  padding: 0 calc(0.25rem * 2) 0 0.5rem;
+}
+.sidebar_project.closed .anchor_button .svg-icon,
+.sidebar_project.closed .sidebar_header {
+  justify-content: center;
+  padding: 0;
+}
+.sidebar_project.closed .svg_isopen {
+  height: 0.625rem;
+  position: absolute;
+  right: 0px;
+}
+
+.sidebar_project.closed .sidebar__btn-close {
+  margin: 0 auto;
+}
+
+.sidebar_project.closed .sidebar__btn-close span,
+.sidebar_project.closed .accordion .header span span,
+.sidebar_project.closed .accordion .header-title {
+  display: none;
+}
+.sidebar_project.closed .accordion .header span {
+  display: flex;
+}
+.sidebar_project.closed .sidebar__btn-close i {
+  transform: rotate(-135deg);
+}
+
+/* Медиа-запросы */

@@ -1,182 +1,80 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
-
-if (isset($_SESSION['lang'])) {
-    $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-    $lang = $_COOKIE['lang'];
-} else {
-    $lang = 'en';
-}
-$allowed = ['en', 'es', 'ru'];
-if (!in_array($lang, $allowed, true)) {
-    $lang = 'en';
-}
-
-// подключаем файл перевода
-$path = dirname(__DIR__) . "/lang/{$lang}.php";
-if (is_file($path)) {
-    $translations = require $path;
-} else {
-    $translations = require dirname(__DIR__) . "/lang/en.php";
+function renderBetsTable($bets)
+{
+    // SVG placeholders
+    $gameIconSvg = '<svg fill="currentColor" viewBox="0 0 96 96" class="svg-icon " style=""> <title></title> <path d="M30.48 42.441a79.7 79.7 0 0 0-5.8 15.84 30.1 30.1 0 0 0 0 14.36l.718 3-16.277 4A37.9 37.9 0 0 1 12 53.719l-12 2.84v-11.68l29.36-7.04zM96 46.88l-.922 4.64A85.5 85.5 0 0 0 83.2 63.32a30.56 30.56 0 0 0-6 13.04l-.597 3L60 76.32a38.12 38.12 0 0 1 13.36-22.28l-12-2.36 5.038-10.64zM72 24.12a134 134 0 0 0-15.2 22.957 49.8 49.8 0 0 0-5.6 22.8v5H32.32a55.6 55.6 0 0 1 5-22.757A87 87 0 0 1 50.8 31h-28V16.36H72z"></path><!----></svg>';
+    $userIconSvg = '<svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style=""> <title></title> <path d="M8.887 43.074c7.87-1.22 15.212-1.515 21.547 0h3.05c6.498-1.484 13.79-1.24 21.508 0v2.5l-3.05.582c-.001.116-.06 9.23-9.235 9.23-6.222 0-8.245-5.58-8.906-9.23h-3.723c-.66 3.65-2.685 9.23-8.906 9.23-9.174 0-9.234-9.114-9.234-9.23l-3.051-.582zM61.539 30.77a2.458 2.458 0 0 1 .523 4.86l.633-.071A221 221 0 0 1 32 37.688c-10.419 0-20.666-.726-29.54-1.997a2.462 2.462 0 0 1 0-4.922zM42.051 8.613c2.814 0 5.19 1.881 5.953 4.496l3.64 12.79h-39.39l3.64-12.79.008-.046a6.2 6.2 0 0 1 5.946-4.45z"></path><!----></svg>';
+    $currencyIconSvg = '';
+?>
+    <div class="livefeed">
+        <div class="tabs">
+            <div class="inner-tabs">
+                <div class="tabs-wrapper">
+                    <div class="tabs-slider">
+                        <div class="tabs-content">
+                            <button type='button' class="tabs-button"><span>Ставки казино</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="live-table-wrapper">
+            <table class="live-table-content is-fixed stripey slide-down-even">
+                <thead class="bg-grey-600">
+                    <tr>
+                        <th class="left"><span class="flex items-center h-[1.7em]">Игра</span></th>
+                        <th class="left">Пользователь</th>
+                        <th class="right">Время</th>
+                        <th class="right">Сумма ставки</th>
+                        <th class="right">Коэффициент</th>
+                        <th class="right">Выплата</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($bets as $index => $bet): ?>
+                        <tr data-bet-index="<?php echo $index; ?>" data-test-id="<?php echo $bet['id']; ?>">
+                            <td class="left">
+                                <button type="button" class="live-button" aria-label="Open Bet Preview">
+                                    <?php echo $gameIconSvg; ?>
+                                    <span class="truncate"><?php echo htmlspecialchars($bet['game']); ?></span>
+                                </button>
+                            </td>
+                            <td class="left">
+                                <div class="live-hoverable">
+                                    <div class="flex items-center gap-1 w-full">
+                                        <?php echo $userIconSvg; ?>
+                                        <span class="truncate">
+                                            <span class="weight-semibold"><?php echo htmlspecialchars($bet['user']); ?></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="right"><?php echo htmlspecialchars($bet['time']); ?></td>
+                            <td class="right">
+                                <div class="live-currency">
+                                    <span><?php echo htmlspecialchars($bet['bet_amount']); ?></span>
+                                    <?php echo $currencyIconSvg; ?>
+                                </div>
+                            </td>
+                            <td class="right">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span><?php echo htmlspecialchars($bet['multiplier']); ?>×</span>
+                                </div>
+                            </td>
+                            <td class="right">
+                                <div class="live-currency">
+                                    <span class="<?php echo $bet['payout'][0] == '-' ? 'live-text-subtle' : 'live-text-success'; ?>">
+                                        <?php echo htmlspecialchars($bet['payout']); ?>
+                                    </span>
+                                    <?php echo $currencyIconSvg; ?>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php
 }
 ?>
-
-<style>
-.hotcoef{
-    width: 20px;
-    margin-top: -4px;
-}
-.livefeedUser{
-    width: 100%;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-.livefeedUser img{
-    width: 32px;
-    height: 32px;
-    border-radius: 50px;
-    padding: 3px;
-    background: var(--main-gradient);
-    box-shadow: 0px 0px 7px #e2c8603b;
-}
-.livefeedUser span{
-  color: #fff;
-}
-.coinsOrange{
-color:#ffbb29;font-size: 14px;margin-right:5px;
-}
-.coinsGreen{
-font-size: 14px;margin-right:5px;
-}
-.livedata{
-color: #748198;font-weight: 300; font-size:12px;
-}
-.mousePoint{
-cursor:pointer!important;
-}
-.feedHide{
-    background: #2a2c38;
-    color: var(--main-color-hight);
-    height: 32px;
-    width: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    position: absolute;
-    cursor: pointer;
-    right: 15;
-}
-</style>
-
-<header class="livefeed position-relative">
-    <div class="heading__icon heading__icon_pulsing"></div>
-    <h2>Live</h2>
-    <i id="hLF" class="fa fa-arrow-down feedHide" onClick="$('#livegames').fadeToggle();$('#hLF').hide();$('#sLF').show();"></i>
-    <i style="display:none;" id="sLF" class="fa fa-arrow-up feedHide" onClick="$('#livegames').fadeToggle();$('#hLF').show();$('#sLF').hide();"></i>
-</header>
-
-<table id="livegames" style="user-select:none;" class="table table-dark table-striped">
-    <thead>
-        <tr>
-            <th scope="col"><?php echo $translations['game']; ?></th>
-            <th scope="col"><?php echo $translations['player']; ?></th>
-            <th scope="col"><?php echo $translations['bet']; ?></th>
-            <th scope="col" class="hideonmob">X</th>
-            <th scope="col"><?php echo $translations['win']; ?></th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-    $sql_select22231 = "SELECT COUNT(*) FROM dice ORDER BY id DESC";
-    $result5521 = mysqli_query($connection,$sql_select22231);
-    $row = mysqli_fetch_array($result5521);
-
-    if ($row['COUNT(*)'] == 0) {
-        echo "<tr>
-            <td>" . $translations['no_games'] . "</td>
-            <td>&nbsp</td>
-            <td>&nbsp</td>
-            <td>&nbsp</td>
-            <td>&nbsp</td>
-        </tr>";
-    } else {
-        $sql_select5 = "SELECT * FROM dice ORDER BY id + 0 DESC LIMIT 8";
-        $result5 = mysqli_query($connection,$sql_select5);
-        while ($row = mysqli_fetch_array($result5)) {
-            $id = $row['id'];
-            $game = $row['game'];
-            $user_id = $row['user_id'];
-            $bet = $row['bet'];
-            $win = $row['win'];
-            $data = $row['create_at'];
-            $coefficient = $row['coef'];
-
-            $sql_selectuser = "SELECT * FROM users WHERE id = '$user_id'";
-            $result_user = mysqli_query($connection,$sql_selectuser);
-            while ($row = mysqli_fetch_array($result_user)) {
-                $login = $row['login'];
-                $img = $row['img'];
-            }
-
-            $s3 = strtok($login, ' ');
-
-            // Демо-данные
-            $id = $coef = round(rand(28346, 2384238423), 2);
-            $loginArr = [
-                "James", "Olivia", "Liam", "Emma", "Noah",
-                "Ava", "William", "Sophia", "Oliver", "Isabella",
-                "Benjamin", "Charlotte", "Elijah", "Amelia", "Lucas",
-                "Mia", "Mason", "Harper", "Logan", "Evelyn"
-            ];
-            $loginn = array_rand($loginArr);
-            $login = $loginArr[$loginn];
-            $s3 = strtok($login, 1);
-            $bet = round(rand(10, 30), 2);
-            $coef = round(rand(10, 109), 2);
-            $win = round($bet * $coef, 2);
-
-            if ($win == '0') {
-                $color = 'color:#4b5261;';
-                $colorcoin = 'color:#4b5261;';
-            } else {
-                $color = 'color:white;';
-                $colorcoin = 'color:#31a840;';
-            }
-
-            if ($coef > 100) {
-                $coefNew = "<img class='hotcoef' src='/images/hot.png'> x$coef";
-            } else {
-                $coefNew = "x$coef";
-            }
-
-            // games icon list
-            if ($game == 'Dice') {
-                $gameicon = $diceicon;
-            }
-            if ($game == 'Mines') {
-                $gameicon = $minesicon;
-            }
-            if ($game == 'Bubbles') {
-                $gameicon = $bubblesicon;
-            }
-            if ($game == 'BonusBuy') {
-                $gameicon = $bonusbuyicon;
-            }
-
-            echo "<tr class='mousePoint' href='#checkFair' data-toggle='modal' onClick='checkFairness($id,$coef,$bet,$win);showLoadedr();loadingFair();'>
-                <td><span class='livefeedmore livefeedinfo'>Slot <span class='livedata'>" . date('d.m.Y') . "</span></span></td>
-                <td><div class='livefeedUser'> $s3 </div></td>
-                <td><i class='fa fa-coins coinsOrange'></i>$bet</td>
-                <td class='hideonmob' style='$color'>$coefNew</td>
-                <td style='$color'><i style='$colorcoin' class='fa fa-coins coinsGreen'></i> $win</td>
-            </tr>";
-        }
-    }
-    ?>
-    </tbody>
-</table>

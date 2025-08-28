@@ -1,0 +1,268 @@
+.game-slider {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Стили для заголовка слайдера */
+.game-slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Стили для ссылки в заголовке */
+.game-slider-header-link {
+  display: inline-flex;
+  line-height: 1.5;
+  font-size: 1.125rem;
+  position: relative;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.game-slider-header-title {
+  display: inline-flex;
+  align-items: center;
+
+  text-align: left;
+  justify-content: flex-start;
+  color: #fff;
+}
+
+/* Стили для контейнера стрелок */
+.game-slider-arrows {
+  display: flex;
+}
+
+/* Общие стили для кнопок стрелок */
+.game-slider-arrow-button {
+  box-sizing: content-box;
+  border: 1px solid rgb(47, 69, 83);
+  border-radius: calc(0.25rem * 8);
+  color: rgb(177, 186, 211);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+}
+
+.game-slider-arrow-button:disabled {
+  opacity: 0.5;
+  transition: none;
+  transform: none;
+  pointer-events: none;
+}
+
+/* Внутренний контейнер для иконок стрелок */
+.game-slider-arrow-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5em;
+  width: 3.5em;
+}
+
+/* Стили для кнопки "вперед" */
+.game-slider-arrow-button.game-slider-forward {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-left: none;
+}
+
+.game-slider-arrow-button.game-slider-forward:hover:not(:disabled) {
+  background: none;
+}
+
+/* Стили для кнопки "назад" */
+.game-slider-arrow-button.game-slider-backward {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Стили для галереи карточек */
+.game-slider-gallery {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 12.5%;
+  margin-left: -5.5px;
+  margin-right: -5.5px;
+  padding-top: 0.75rem; /* Ваше изменение */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Стили для слайдов */
+.game-slider-slide {
+  scroll-snap-align: start;
+  will-change: opacity;
+  transition: opacity 0.3s;
+  padding: 0 5.5px;
+}
+
+/* Псевдоэлемент для последнего слайда */
+.game-slider-slide:last-child::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  top: 0;
+}
+
+/* Убираем outline при фокусе */
+.game-slider-slide:focus {
+  outline: 0;
+}
+
+/* Позиционирование последнего слайда */
+.game-slider-slide:last-child {
+  position: relative;
+}
+
+/* Стили для карточек игр */
+.game-slider-game-card-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.game-slider-game-link {
+  transform: translate(0);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: block;
+}
+
+.game-slider-img-wrap {
+  position: relative;
+  will-change: transform;
+  transition: 0.3s;
+  width: 100%;
+}
+.game-slider-wrap {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+}
+.game-slider-game-image {
+  width: auto !important;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto !important;
+  object-fit: cover;
+}
+.slider img {
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.game-slider-info-wrap {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.game-slider-gameName,
+.game-slider-game-group strong {
+  color: #fff;
+  font-size: 14px;
+}
+
+.game-slider-ribbon {
+  position: absolute;
+  left: -1px;
+  top: 16px;
+}
+
+.game-slider-index-ribbon {
+  justify-content: center;
+  padding: 0.5rem;
+  background: rgb(47, 69, 83);
+  width: 26px;
+  display: flex;
+  color: #fff;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.game-slider-hover-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.game-slider-external-button {
+  border-radius: 4px;
+  background: #666;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.game-slider-external-button:hover {
+  background: #777;
+}
+
+.game-slider-game-card-wrap:hover .game-slider-hover-button {
+  display: block;
+}
+
+.game-slider-stack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.game-slider-player-count {
+  justify-content: center;
+  color: rgb(177, 186, 211);
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.game-slider-player-indicator {
+  display: inline-block;
+  width: 6.5px;
+  height: 6.5px;
+
+  border-radius: 9999px;
+  z-index: 1;
+  background: rgb(31, 255, 32);
+}
+
+.game-slider-player-number {
+  color: #fff;
+  font-weight: 600;
+}
+
+.game-slider-hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.game-slider-hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

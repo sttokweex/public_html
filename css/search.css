@@ -1,0 +1,348 @@
+.home-search-wrap {
+  width: 100%;
+  align-self: center;
+  padding: 0 3vw;
+  max-width: calc(1200px + 6vw);
+  margin-top: 1.5rem;
+}
+
+.home-search-wrap-inner {
+  z-index: 1500;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  touch-action: pan-x;
+}
+
+/* Стили для контейнера ввода */
+.home-input-wrap {
+  width: 100%;
+  color: white;
+  background: rgb(15, 33, 46);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.2),
+    0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  border: 2px solid rgb(47, 69, 83);
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: all 0.25s;
+  outline: 0;
+  margin: 0;
+  cursor: text;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.home-input-wrap::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
+.home-input-wrap:focus,
+.home-input-wrap:hover {
+  color: white;
+  border-color: rgb(85, 112, 134);
+}
+
+.home-input-wrap:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.home-input-wrap::-webkit-input-placeholder {
+  color: #566671;
+}
+
+.home-input-wrap::-moz-placeholder {
+  color: #566671;
+}
+
+.home-input-wrap:-ms-input-placeholder {
+  color: #566671;
+}
+
+.home-input-wrap:-moz-placeholder {
+  color: #566671;
+}
+
+.home-input-wrap::-webkit-file-upload-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  font-weight: 600;
+  touch-action: manipulation;
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  flex-shrink: 0;
+  color: #ffffff;
+  background: rgb(15, 33, 46);
+  box-shadow: none;
+  margin-right: 0.25rem;
+}
+
+.home-input-wrap::-webkit-file-upload-button:focus-visible {
+  outline-offset: 0.125rem;
+  outline: 0.125rem solid;
+}
+
+@media (hover: hover) {
+  .home-input-wrap::-webkit-file-upload-button:hover:not(.disabled) {
+    color: #ffffff;
+    background: rgb(7, 24, 36);
+  }
+}
+
+.home-input-wrap::-webkit-file-upload-button:active {
+  box-shadow: none;
+  color: #ffffff;
+  background: rgb(7, 24, 36);
+}
+
+.home-input-wrap::-webkit-file-upload-button:not(.icon-only) .home-svg-icon {
+  transition: color 0.2s;
+  color: rgb(177, 186, 211);
+}
+
+.home-input-wrap::-webkit-file-upload-button:not(.icon-only):hover:not(
+    .disabled
+  ):not(.active)
+  .home-svg-icon {
+  color: #ffffff;
+}
+
+.home-input-wrap::-webkit-file-upload-button:focus-visible {
+  outline-color: #ffffff;
+}
+
+.home-input-wrap:focus-within,
+.home-input-wrap:hover {
+  color: white;
+  border-color: rgb(85, 112, 134);
+}
+
+.home-input-wrap.home-mobile {
+  width: auto;
+  touch-action: pan-x;
+}
+
+/* Стили для инпута */
+.home-input-wrap input {
+  width: 100%;
+  outline: 0;
+  background: transparent;
+  color: rgb(177, 186, 211);
+  padding: 0.5rem;
+  font-weight: 600;
+  cursor: text;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  opacity: 0.5;
+  font-size: 0.875rem;
+  border: none;
+}
+
+.home-input-wrap input::-webkit-input-placeholder {
+  color: #a0aec0;
+}
+
+.home-input-wrap input::-moz-placeholder {
+  color: #a0aec0;
+}
+
+.home-input-wrap input:-ms-input-placeholder {
+  color: #a0aec0;
+}
+
+.home-input-wrap input:-moz-placeholder {
+  color: #a0aec0;
+}
+
+.home-input-wrap input:focus,
+.home-input-wrap input:hover {
+  color: white;
+  opacity: 1;
+}
+.search-results {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для элементов результатов */
+.search-result-item {
+  padding: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  font-family: 'proxima-nova', sans-serif;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item.no-results {
+  color: #888;
+  text-align: center;
+  cursor: default;
+}
+
+/* Стили для иконки поиска */
+.home-search-icon {
+  z-index: 2;
+  color: rgb(85, 112, 134);
+  font-size: 1.25rem;
+  margin-bottom: -0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Стили для крестика */
+.home-cross-icon {
+  background: none;
+  z-index: 2;
+  font-size: 1rem;
+  margin-right: -0.9375rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Стили для обёртки селектора поиска */
+.home-search-selector-wrap {
+  color: var(--grey-200);
+  border-right: 2px solid rgb(47, 69, 83);
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  gap: 0.5rem;
+  max-width: 100%;
+  overflow: unset;
+  width: fit-content;
+  -webkit-user-select: none;
+  user-select: none;
+  padding-right: 0.5rem;
+}
+
+.home-search-selector-wrap:hover {
+  color: rgb(213, 220, 235);
+}
+
+/* Стили для содержимого поиска */
+.home-search-content {
+  width: 100%;
+  background: rgb(15, 33, 46);
+  border-radius: 0.25rem;
+  color: #ffffff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.home-search-content.home-mobile {
+  padding: 0;
+}
+
+/* Стили для обёртки исключений */
+.home-exception-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+/* Стили для шаблона результатов гонок */
+.home-racing-result-template {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid rgb(47, 69, 83);
+}
+
+/* Стили для деталей результатов */
+.home-result-details {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Стили для точки */
+.home-dot {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: rgb(177, 186, 211);
+}
+
+/* Стили для разделителя */
+.home-divider {
+  border-bottom: 2px solid rgb(47, 69, 83);
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
+  touch-action: none; /* Запрещает прокрутку на сенсорных устройствах */
+}
+/* Стили для оверлея поиска */
+.home-search-overlay {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  cursor: default;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+.home-search-overlay-top {
+  height: 60px;
+  background: transparent;
+}
+
+.home-search-overlay-main {
+  height: calc(100% - 60px);
+  background: #1a2e38b3;
+}
+
+.home-search-overlay-main.home-mobile {
+  background: rgb(15, 33, 46);
+}
+
+/* Стили для верхнего поиска */
+.home-open-top-search {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: transparent;
+  z-index: 2;
+}
