@@ -32,6 +32,7 @@ require_once './panels/livefeed.php';
 require_once './panels/gameinfo.php';
 require_once './panels/search.php';
 require_once './panels/homeHeader.php';
+require_once './panels/chat.php';
 
 if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
     require 'slot/api/getBalance.php';
@@ -152,7 +153,30 @@ if (!is_array($games)) {
 
             <div class="home-container home-has-padding home-has-margin">
                 <?php
+                $sampleMessages = [
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+                ];
 
+                echo renderChatComponent('Иван', $sampleMessages);
                 render_slider($games, false);
                 render_slider($games, true);
                 renderBetsTable($bets);

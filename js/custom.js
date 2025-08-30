@@ -819,6 +819,7 @@ function getrankimgProfile() {
 document.addEventListener('DOMContentLoaded', getrankimgProfile);
 
 $(document).ready(function () {
+  $('body').addClass('chat');
   checkSidebar();
   hover();
   sidebarPromo();

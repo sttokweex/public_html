@@ -479,7 +479,6 @@ System: feature-link:hover {
 
 /* Стили для блока поиска */
 
-
 /* Стили для выпадающего меню */
 .home-dropdown {
   position: relative;
@@ -542,6 +541,14 @@ System: feature-link:hover {
 }
 .sidebar .home-page-content {
   margin-left: 60px;
+}
+.chat .home-page-content {
+  margin-left: 240px;
+  margin-right: 370px;
+}
+.sidebar.chat .home-page-content {
+  margin-left: 60px;
+  margin-right: 370px;
 }
 .home-page-content-inner {
   display: flex;

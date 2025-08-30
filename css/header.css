@@ -22,6 +22,17 @@
   width: calc(100% - 60px);
   margin-left: 60px;
 }
+
+.chat .headerproject {
+  width: calc(100% - 240px - 370px);
+  margin-left: 240px;
+  margin-right: 370px;
+}
+.chat.sidebar .headerproject {
+  width: calc(100% - 60px - 370px);
+  margin-left: 60px;
+  margin-right: 370px;
+}
 .header-content {
   white-space: nowrap;
   max-width: 1200px;

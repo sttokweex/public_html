@@ -147,6 +147,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <link href="/css/livefeed.css" rel="stylesheet">
   <link href='/css/header.css' rel='stylesheet'>
   <link href="/css/index.css" rel="stylesheet">
+  <link href="/css/chat.css" rel="stylesheet">
   <link href="/css/game_materials.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/slider.css">
   <link href='/css/footer.css' rel='stylesheet'>

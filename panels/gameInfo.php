@@ -9,9 +9,9 @@ function renderCasinoComponent()
   // Очищенный HTML без Svelte-классов и атрибутов
 ?>
   <div class="see-more " data-content="" style="--max-height: 250px;">
-    <div class="content ">
-      <div class="column-container" style="column-count: 2;">
-        <div class="content-block">
+    <div class="see-more-content ">
+      <div class="see-more-column-container" style="column-count: 2;">
+        <div class="see-more-content-block">
           <h1><span id="Игры_казино_в_казино_Stake_—_лучшие_азартные_онлайн-игры">Игры казино в казино Stake — лучшие азартные онлайн-игры</span></h1>
           <p><span>С 2017 года </span><a href="/ru">Stake.com</a><span> предлагает пользователям лучшее онлайн-казино с поддержкой локальных валют, Bitcoin и других криптовалют.</span></p>
           <p><span>Начиная с эксклюзивной линейки Stake Originals — собственных игр, разработанных непосредственно на платформе Stake, — наша </span><a href="/ru/casino/home">игровая платформа онлайн-казино</a><span> постепенно выросло и теперь предлагает более 3000 лучших игр от ведущих провайдеров индустрии азартных онлайн-игр. Игроки снова и снова возвращаются на Stake.com благодаря высокому качеству, динамике </span><a href="/ru/blog/online-vs-offline-slot-machines">онлайн-слотов</a><span> и захватывающим играм с живыми дилерами.</span></p>
@@ -516,7 +516,7 @@ function renderCasinoComponent()
           <p><span>Не откладывайте! Независимо от того, предпочитаете ли вы классические настольные игры или ультрасовременные технологичные слоты, в казино Stake найдется все для максимального </span><a href="/ru/blog/online-casino-guide">удовольствия от онлайн-игры</a><span>!</span></p>
         </div>
       </div>
-      <span class="space" style="width: var(--space-0); height: var(--space-6); display: flex; flex-grow: 0;"></span>
+      <span class="see-more-space" style="width: var(--space-0); height: var(--space-6); display: flex; flex-grow: 0;"></span>
       <div class="button-wrapper is-open">
         <button type="button" tabindex="0" aria-label="Show Content">Показать меньше</button>
       </div>

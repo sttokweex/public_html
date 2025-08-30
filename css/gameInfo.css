@@ -14,16 +14,16 @@
 }
 
 /* Content wrapper */
-.content {
+.see-more-content {
   padding: 1rem;
   max-height: 250px;
   position: relative;
 }
 
-.content.is-open {
+.see-more-content.is-open {
   max-height: 100%;
 }
-.see-more .content:before {
+.see-more .see-more-content:before {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -37,40 +37,40 @@
     rgba(15, 33, 46, 0) 100%
   );
 }
-.content.is-open:before {
+.see-more-content.is-open:before {
   visibility: hidden;
 }
 
 /* Column layout for content */
-.column-container {
+.see-more-column-container {
   column-count: 2;
   column-gap: 1.5rem;
   break-before: avoid;
 }
 
 /* Content block styling */
-.content-block {
+.see-more-content-block {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.content-block p {
+.see-more-content-block p {
   display: inline-block;
   margin-bottom: 1.25em; /* Assuming --ds-spacing-5 is 1.25em */
 }
 
-.content-block p + p {
+.see-more-content-block p + p {
   margin-top: 0; /* Assuming --spacing-0 is 0 */
 }
 
-.content-block p:last-child {
+.see-more-content-block p:last-child {
   margin-bottom: 0; /* Assuming --spacing-0 is 0 */
 }
 
 /* Heading styles */
 
-.content-block h1 {
+.see-more-content-block h1 {
   display: inline-block;
   font-size: 1.75rem;
   width: 100%;
@@ -82,7 +82,7 @@
   align-items: center;
 }
 
-.content-block h2 {
+.see-more-content-block h2 {
   display: inline-block;
   font-size: 1.5rem;
   width: 100%;
@@ -94,7 +94,7 @@
   align-items: center;
 }
 
-.content-block h3 {
+.see-more-content-block h3 {
   display: inline-block;
   font-size: 1.125rem;
   width: 100%;
@@ -109,7 +109,7 @@
   list-style-type: circle;
   margin-left: 1rem;
 }
-.content-block h4 {
+.see-more-content-block h4 {
   display: inline-block;
   font-size: 0.875rem;
   width: 100%;
@@ -120,44 +120,44 @@
   font-weight: 400;
   align-items: center;
 }
-.content-block h1,
-.content-block h2,
-.content-block h3,
-.content-block h4,
-.content-block h5,
-.content-block h6 {
+.see-more-content-block h1,
+.see-more-content-block h2,
+.see-more-content-block h3,
+.see-more-content-block h4,
+.see-more-content-block h5,
+.see-more-content-block h6 {
   display: inline-block;
   margin-top: 0; /* Assuming --spacing-0 is 0 */
 }
 /* Paragraph styling */
-.content-block p {
+.see-more-content-block p {
   font-size: 16px;
   line-height: 1.5;
 }
 
 /* Link styling */
-.content-block a {
+.see-more-content-block a {
   color: rgb(177, 186, 211);
   text-decoration: none;
 }
 
-.content-block a:hover {
+.see-more-content-block a:hover {
   text-decoration: underline;
 }
 
 /* List styling */
-.content-block ul {
+.see-more-content-block ul {
   list-style-type: disc;
 
   margin-bottom: 12px;
 }
 
-.content-block ul li {
+.see-more-content-block ul li {
   margin-bottom: 8px;
 }
 
 /* Button wrapper */
-.button-wrapper {
+.see-more-button-wrapper {
   position: sticky;
   bottom: 24px; /* Assuming --spacing-6 is 24px */
   z-index: 2;
@@ -167,12 +167,12 @@
   margin-top: 20px;
 }
 
-.button-wrapper.is-open {
+.see-more-button-wrapper.is-open {
   display: flex;
 }
 
 /* Button styling */
-.button-wrapper button {
+.see-more-button-wrapper button {
   padding-block: 0.8125rem;
   padding-inline: 1rem;
   font-size: 0.875rem;
@@ -190,12 +190,12 @@
   transition: background-color 0.3s ease;
 }
 
-.button-wrapper button:hover {
+.see-more-button-wrapper button:hover {
   background-color: rgb(85, 112, 134);
 }
 
 /* Space utility */
-.space {
+.see-more-space {
   width: 0;
   height: 24px;
   display: flex;
