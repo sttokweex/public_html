@@ -125,7 +125,7 @@ if (!is_array($games)) {
 }
 ?>
 
-?>
+
 
 
 
@@ -143,7 +143,7 @@ if (!is_array($games)) {
 
 
 
-    <div class="home-page-content" id="main-content">
+    <div class="main-container" id="main-content">
         <div class="home-page-content-inner">
 
             <?php
@@ -152,35 +152,14 @@ if (!is_array($games)) {
             ?>
 
             <div class="home-container home-has-padding home-has-margin">
-                <?php
-                $sampleMessages = [
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                    ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
-                    ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-                ];
 
-                echo renderChatComponent('Иван', $sampleMessages);
+                <?
+                renderChatComponent('Иван', $sampleMessages);
                 render_slider($games, false);
                 render_slider($games, true);
                 renderBetsTable($bets);
                 render_faq($translations, 'Stake');
+                renderCasinoComponent();
 
                 ?>
 

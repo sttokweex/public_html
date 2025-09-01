@@ -819,7 +819,16 @@ function getrankimgProfile() {
 document.addEventListener('DOMContentLoaded', getrankimgProfile);
 
 $(document).ready(function () {
-  $('body').addClass('chat');
+  if ($('.chat-container').length > 0) {
+    $('body').addClass('chat');
+  } else {
+    $('body').removeClass('chat');
+  }
+  $('.chat-close-icon').click(function () {
+    var $chat = $('.chat-container');
+    $chat.addClass('closed');
+    $('body').removeClass('chat');
+  });
   checkSidebar();
   hover();
   sidebarPromo();

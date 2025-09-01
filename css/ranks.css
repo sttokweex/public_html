@@ -1,135 +1,193 @@
-.rank-page{
-    display: grid;
-        gap: 18px;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        background: var(--main-background3);
-        padding: 20px;
-        border-radius: 8px;  
-        user-select:none;
-    } 
-    .rank-page .rank{
-        color: var(--main-color-hight);
-        background: var(--main-background);
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        cursor:pointer;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        border: solid 1px transparent;
-    }  
-    .rank-page .rank:hover{
-        transform: translateY(-8px);
-        background: #2e303a;
-    }
-    .rank-page .rank:not(.active):hover .progressWag {
-        background: #3a3b4b;
-    }
-    .rank-page .rank.active{background: #2e303a;color: #000!important;border-color: #4e515e;}
-    .rank-page .rank hr{margin: 0.4rem;background: rgb(255 255 255);display: none;}
-    .rank-page .rank img{
-        width: 100%;
-        max-width: 100px;
-    }  
-    .rank-page .rank .description{
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        font-size: 14px;
-        color: #fff;
-        margin-bottom: 10px;
-        padding: 0px 10px;
-    } 
-    .rank-page .rank .description .badges{
-    color: currentColor;
-        font-size: 12px;
-        background: #ffffff1f;
-        font-weight: bold;
-        padding-left: 8px;
-        padding-right: 8px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-        border-radius: 8px;
-        margin-left: 10px;
-    } 
-    
-    .rank-page .rank .needDeposit{
-        font-size: 10px;
-        text-align: center;
-        color: #ffffffa3;
-        padding-top: 10px;
-    }
-    .rank-page .rank .name{
-        font-weight: bold;
-        color: #fff;
-        font-size: 24px;
-    }    
-    
-    
-    .rank .wagerProgress{
-        width: 100%;
-        height: 20px;
-        background-color: #2b2c38;
-        border-radius: 11px;
-    }
-    .rank .wagerProgress::-webkit-progress-bar {
-    background:transparent;
-    border-radius:8px;
-    }
-    .rank .wagerProgress::-webkit-progress-value {
-    background: #f09f2b;
-    border-radius:15px;
-    opacity:1;
-    }
-    .rank .progressWag{
-        position: relative;
-        width: 100%;
-        margin-top: 7px;
-        padding: 5px;
-        background: #17181f;
-        border-radius: 50px;
-    }
-    
-    .rank .progressWag .progres{position: absolute;font-size: 12px;left: 0;right: 0;height: 100%;margin-left: auto;margin-right: auto;color: #fff;top: 66%;transform: translateY(-50%);text-align: center;line-height: 20px;font-weight: bold;}   
-    .rank .progressWag .symbolOk{
-    position: absolute;
-        font-size: 12px;
-        left: 0;
-        right: 0;
-        height: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        color: #fff;
-        top: 50%;
-        transform: translateY(-50%);
-        text-align: center;
-        line-height: 20px;
-        font-weight: bold;
-        display:none;
-    }   
-    
-    @media screen and (max-width:960px) {
-    .rank-page {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-    }   
-    @media screen and (max-width:768px) {
-    .rank-page {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    }   
-    @media screen and (max-width:640px) {
-    .rank-page {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    }  
-    @media screen and (max-width:480px) {
-    .rank-page {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-    }  
+:root {
+  --background-dark: rgb(15, 33, 46);
+  --accent-gray: rgb(47, 69, 83);
+  --text-light: #ffffff;
+  --text-muted: #a0a8b0;
+  --card-bg: rgb(33, 55, 67);
+  --border-color: #3a464a;
+  --button-bg: rgb(31, 255, 32);
+  --button-text: #05080a;
+}
+.rank-container {
+  width: 100%;
+}
+.rank-inner {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+.separator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.separator span {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-light);
+
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+.rank-content {
+  max-width: calc(1200px);
+  margin-top: 80px;
+  width: 100%;
+}
+.rank-page {
+  display: grid;
+  margin-bottom: 2rem;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.rank {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    transform asthmatic 0.3s,
+    background-color 0.3s;
+  border: 1px solid transparent;
+}
+
+.rank:hover {
+  transform: scale(1.01);
+  background-color: #3b3c4a;
+  border-color: var(--border-color);
+}
+
+.rank img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.rank .name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.rank hr {
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 10px 0;
+}
+
+.rank .description {
+  font-size: 14px;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.rank .description .badges {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-light);
+
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.rank .needDeposit {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.progressWag {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.wagerProgress {
+  width: 100%;
+  height: 8px;
+  background-color: var(--accent-gray);
+  border-radius: 4px;
+  appearance: none;
+}
+
+.wagerProgress::-webkit-progress-bar {
+  background-color: var(--accent-gray);
+  border-radius: 4px;
+}
+
+.wagerProgress::-webkit-progress-value {
+  background-color: var(--button-bg);
+  border-radius: 4px;
+}
+
+.wagerProgress::-moz-progress-bar {
+  background-color: var(--button-bg);
+  border-radius: 4px;
+}
+
+.progres {
+  font-size: 14px;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.symbolOk {
+  font-size: 24px;
+  color: var(--button-bg);
+  display: none;
+}
+
+.rank.active .name {
+  color: var(--text-light);
+}
+
+.rank.active .symbolOk {
+  display: inline;
+}
+
+/* Адаптивность */
+@media (max-width: 990px) {
+  .rank-page {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 630px) {
+  .rank-page {
+    grid-template-columns: 1fr;
+  }
+
+  .rank img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .rank .name {
+    font-size: 18px;
+  }
+
+  .rank .description {
+    font-size: 12px;
+  }
+
+  .rank .description .badges {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}

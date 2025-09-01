@@ -1,555 +1,790 @@
+:root {
+  --background-dark: rgb(15, 33, 46);
+  --accent-gray: rgb(47, 69, 83);
+  --text-light: #ffffff;
+  --text-muted: #a0a8b0;
+  --card-bg: rgb(33, 55, 67);
+  --border-color: #3a464a;
+  --button-bg: #00e701;
+  --button-text: #05080a;
+  --hover-bg: rgb(31, 255, 32);
+  --main-background: rgb(15, 33, 46);
+  --main-background2: rgb(33, 55, 67);
+  --main-background3: rgb(33, 55, 67);
+  --main-background4: rgb(47, 69, 83);
+  --main-color-hight: #ffffff;
+  --main-color-medium: #a0a8b0;
+  --main-color-low: #a0a8b0;
+  --main-gradient: linear-gradient(90deg, #316f2a, #40c73f);
+}
+
+.bonus-container {
+  width: 100%;
+}
+.bonus-content {
+  margin-top: calc(60px + 2.5rem);
+  max-width: calc(1200px);
+  width: 100%;
+  margin-bottom: 2rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.bonus-inner {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
 .alert-dark {
-    color: var(--main-color-medium);
-    background: var(--main-background2);
-    border-color: #222331;
-    margin-bottom:0px;
-}   
-.alert-content a{
-    color:var(--main-color-hight);
-    transition:.2s;
-}
-.alert-content a:hover{
-    color:#fff;
+  color: var(--main-color-medium);
+  background: var(--main-background2);
+  border: 1px solid #222331;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 0;
 }
 
-
-.bonus-page{
-    grid-gap: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    position: relative;    
+.alert-content a {
+  color: var(--main-color-hight);
+  transition: color 0.2s;
 }
 
-.bonus-page .content{
-display: grid;
-    background-image: linear-gradient(to bottom, var(--main-background2), var(--main-background2)), linear-gradient(to bottom, var(--main-background4) 1%, var(--main-background2) 20%);
-    background-clip: padding-box, border-box;
-    background-origin: border-box;
-    border: 3px solid #f000;
-    border-radius: 8px;
-    color: var(--main-color-medium);
-    padding: 20px;
-    gap: 0px;
-    justify-content: center;
-    text-align: -webkit-left;
-    align-items: flex-start;
-    user-select:none;
-}
-.bonus-page .content img{
-width:128px;
-height:128px;
-    margin: 0 auto;
-}
-.bonus-page .content .name-bonus{
-    font-size: 24px;
-    color: var(--main-color-hight);
-}
-.bonus-page .content .info-bonus{
-    color: var(--main-color-low);
-    word-break: break-word;
-}
-.bonus-page .content .price-bonus{
-    display: flex;
-    gap: 4px;
-    color: var(--main-color-low);
-    font-weight: bold;
-    font-size:28px;
-}
-.bonus-page .content .price-bonus .price{
-    color: #fff;
-    font-weight: bold;
+.alert-content a:hover {
+  color: #fff;
 }
 
-.promo-page{
-    display: grid;
-    background-image: linear-gradient(to bottom, var(--main-background2), var(--main-background2)), linear-gradient(to bottom, var(--main-background4) 1%, var(--main-background2) 20%);
-    background-clip: padding-box, border-box;
-    background-origin: border-box;
-    border: 3px solid #f000;
-    border-radius: 8px;
-    color: var(--main-color-medium);
-    padding: 14px;
-    gap: 10px;
-}
-.promo-page .nameAlert{
-color: var(--main-color-hight);    
-}
-.promo-page .promo{
-    justify-content: space-between;
-    display: flex;
-    width: 100%;    
-}
-.promo-page .promo .inputs{
-align-items: center;
-    display: flex;
-    gap: 10px;    
-}
-.promo-page .promo .inputs input{
-    outline: none;
-    border-radius: 8px;
-    background: var(--main-background);
-    color: var(--main-color-hight);
-    padding: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border: 2px solid #2b303b47;
-    height: 100%;
-    width: 100%;    
+.bonus-container {
+  width: 100%;
 }
 
-
-.promo-page .promo .inputs input:focus{
-    border:2px solid #a78f3c;
+.bonus-content {
+  max-width: 1200px;
+  margin-top: 80px;
+  width: 100%;
 }
 
-.promo-page .promo .inputs button{
-    height: 90%;
-    line-height: 0px;
-    padding-left: 15px;
-    padding-right: 15px;    
+.bonus-inner {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
 }
 
-.promo-page .promo a{
-    color:var(--main-color-hight);
-    transition:.2s;
-}
-.promo-page .promo a:hover{
-    color:#fff;
+.heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--main-color-hight);
+  background-color: var(--main-background2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: auto;
+  margin-bottom: 16px;
+
+  text-transform: uppercase;
 }
 
-.buttonProjectSuccess{
-        width: 100%;
-    background: linear-gradient(90deg, #316f2a, #40c73f) !important;
-    color: #fff !important;
-    box-shadow: none!important;
-    border-radius: 8px;
-    transition: .2s;
-    position: relative;
-    height: 100%;
-    padding: 10px;
-    border: none;
-    outline: none;
-}
-.rakeback{
-    outline: none;
-    border-radius: 8px;
-    background: var(--main-background);
-    color: var(--main-color-hight);
-    padding: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border: 2px solid #2b303b47;
-    height: 100%;
-    width: 100%;       
+.bonuspromo {
+  max-width: 1542px;
+  height: 72px;
+
+  border-radius: 8px;
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 20px;
 }
 
-.bonuspromo{
-    width: 100%;
-    max-width: 1542px;
-    height: 72px;
-    background: var(--main-background3);
-    border-radius: 8px;
-    box-sizing: border-box;
-    padding-left: 16px;
-    padding-right: 16px;
-    place-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    display: flex;
-    flex-flow: row;
-    -webkit-box-pack: center;
-    margin-top: 1rem;
-} 
-.bonuspromo .wrapper{
-    place-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    display: flex;
-    flex-flow: row;
-    -webkit-box-pack: center;
-    gap: 14px;
-width: 763px;   
-}
-.bonuspromo .wrapper input{
-    outline: none;
-    border-radius: 8px;
-    background: var(--main-background);
-    color: var(--main-color-hight);
-    padding: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border: 2px solid #2b303b47;
-    height: 100%;
-    width: 100%;    
-}
-.bonuspromo .wrapper button{
-    height: 40px;
-    max-width: 153px;    
-        align-items: center;
-    display: flex;
-}
-.bonusNaming{
-    color: var(--main-color-hight);
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 44px;    
-}
-.bonusall{
-    place-content: center;
-    align-items: flex-start;
-    display: flex;
-    flex-flow: column;
-    -webkit-box-pack: center;
-    margin-top:1rem;
-}
-.heading{
-    margin: 0;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1.235;
-    font-style: normal;
-    color: var(--main-color-hight);
-    margin-bottom: 16px;   
-}
-.bonusall .menu{
-width: 100%;
-    place-content: flex-start;
-    align-items: flex-start;
-    -webkit-box-pack: start;
-    display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-}
-.bonusall .menu .bonus{
-    border-radius: 8px;
-    box-shadow: none;
-    background: linear-gradient(180deg, var(--main-background4), var(--main-background2));
-    place-content: center flex-start;
-    -webkit-box-align: center;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    -webkit-box-pack: start;
-    gap: 8px;
-    width: 100%;
-    height: auto;
-    border: 1px solid;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 16px;
-    transition: all 0.2s ease 0s;
-    cursor: pointer;
-}
-.bonusall .menu .bonus .mui{
-    width: 100%;
-    place-content: center space-between;
-    align-items: flex-start;
-    display: flex;
-    flex-flow: column;
-    -webkit-box-pack: justify;    
-}
-.bonusall .menu .bonus .mui .image{
-    background: var(--main-background);
-    width: 100%;
-    height: fit-content;
-z-index: 1;
-    border-radius: 8px;  
-    position:relative;
-}
-.bonusall .menu .bonus .mui .image .currency{
-    position: absolute;
-    z-index: 3;
-    right: 10;
-    width: fit-content;
-    background: #ffffff30;
-    border-radius: 8px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 18px;
-    user-select: none;
-}
-.bonusall .menu .bonus .mui .image .main{
-    display: block;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-    height: 209px;
-    max-height: 209px;
-    max-width: 100%;
-    position: relative;
-    border-radius: 8px;
-    object-fit: contain;
-    mix-blend-mode: normal;  
-}
-.bonusall .menu .bonus span{
-    color: #fff;
-    font-weight: bold;
-    text-align: left;
-    font-size:20px;
-    width: 100%;
-    word-break: break-word; 
-    margin-top:10px;
+.bonuspromo .wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  width: 763px;
 }
 
-
-.bonusall .menu .bonus button{
-    align-items: center;
-    display: flex;
-    height: 40px;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    margin-top: 10px;    
-}
-.bonusall .menu .bonus .mui .image .main #promocodeName{
-        text-transform: uppercase;
-color: #fff;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
-    text-decoration: none;
-    font-size: 32px;
-    font-weight: bold;    
-}
-.bonusPhoto1{
-    background-image: url(/images/bonus/bonusbg.png);    
-}
-.bonusPhotoVk{
-     background-image: url(/images/banners/bonus/1000_new.png);     
-}
-.bonusPhotoVk2{
-     background-image: url(/images/banners/bonus/5000_new.png);     
-}
-.bonusPhotoTg{
-     background-image: url(/images/banners/bonus/100_new.png);
-     filter: none!important;
-}
-.bonusPhoto24{
-     background-image: url(/images/bonus/bonusbg24.png);     
-}
-.bonusPhotoBirth{
-     background-image: url(/images/bonus/bonusbgbirth.png);         
+.bonuspromo input#promoCode {
+  outline: none;
+  border-radius: 8px;
+  background: var(--main-background);
+  color: var(--main-color-hight);
+  padding: 10px 15px;
+  border: 2px solid #2b303b47;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
 }
 
-
-.activebonuspromo{
-    border-radius: 8px;
-    box-shadow: none;
-    background: linear-gradient(180deg, var(--main-background3), var(--main-background2));
-    align-items: center;
-    display: flex;
-    gap: 16px;
-    width: 100%;
-    height: fit-content;
-    border: 1px solid;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 16px;
-    transition: all 0.2s ease 0s;
-    cursor: pointer;
-    margin-top: 1rem;   
-}
-.activebonuspromo .info{
-    width: 100%;
-    height: 100%;
-    display: grid;
-    color: var(--main-color-hight);
-    gap: 5px;    
+.bonuspromo input#promoCode::placeholder {
+  color: var(--main-color-medium);
 }
 
-.activebonuspromo .info .nameBonus{
-     font-size: 24px;
-    font-weight: bold;   
-    text-transform: uppercase;
+.bonuspromo input#promoCode:focus {
+  border: 2px solid #a78f3c;
 }
-.activebonuspromo .info .infobg{
-    background: var(--main-background);
-    padding: 5px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 14px;    
+
+.bonuspromo .buttonProject {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 40px;
+  max-width: 153px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.activebonuspromo .info .infobg .textinfo{
-color: var(--main-color-medium);    
+
+.bonuspromo .buttonProject:hover {
+  background: var(--hover-bg);
 }
-.activebonuspromo .info .infobg .suminfo{
-    font-weight: bold;    
+
+.activebonuspromo {
+  background: linear-gradient(
+    180deg,
+    var(--main-background3),
+    var(--main-background2)
+  );
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
 }
-.activebonuspromo .photo{
-    background: var(--main-background);
-    border-radius: 8px; 
-    position:relative;
+
+.activebonuspromo:hover {
+  transform: scale(1.01);
 }
-.activebonuspromo .photo .name{
-    text-transform: uppercase;
-color: #fff;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
-    text-decoration: none;
-    font-size: 32px;
-    font-weight: bold;
+
+.activebonuspromo .info {
+  width: 100%;
+  display: grid;
+  color: var(--main-color-hight);
+  gap: 5px;
 }
-.activebonuspromo .photo img{
-height: 100%;
-    width: 100%;
-    border-radius: 8px;    
+
+.activebonuspromo .nameBonus {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--main-color-hight);
+  text-transform: uppercase;
 }
-.activebonuspromo .wagerProgress{
-    width: 100%;
-    height: 30px;
-    background-color: transparent;
+
+.activebonuspromo .progressWag {
+  position: relative;
+  margin-bottom: 10px;
 }
+
+.activebonuspromo .wagerProgress {
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 8px;
+  appearance: none;
+}
+
 .activebonuspromo .wagerProgress::-webkit-progress-bar {
-background:var(--main-background);
-border-radius:8px;
-}
-.activebonuspromo .wagerProgress::-webkit-progress-value {
-background:var(--main-gradient);
-border-radius:8px;
-opacity:0.8;
-}
-.activebonuspromo .info .progressWag{
-position: relative;
-    margin-bottom: 10px;
+  background: var(--main-background);
+  border-radius: 8px;
 }
 
-.activebonuspromo .info .progressWag span{
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    color: #fff;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    line-height: 30px;    
-    font-weight:bold;
+.activebonuspromo .wagerProgress::-webkit-progress-value {
+  background: var(--main-gradient);
+  border-radius: 8px;
+  opacity: 0.8;
 }
-@media screen and (max-width:768px) {
-.activebonuspromo{
+
+.activebonuspromo .wagerProgress::-moz-progress-bar {
+  background: var(--main-gradient);
+  border-radius: 8px;
+  opacity: 0.8;
+}
+
+.activebonuspromo .progressWag span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.activebonuspromo .infobg {
+  background: var(--main-background);
+  padding: 5px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.activebonuspromo .textinfo {
+  color: var(--main-color-medium);
+}
+
+.activebonuspromo .suminfo {
+  font-weight: bold;
+  color: var(--main-color-hight);
+}
+
+.activebonuspromo .cancelBonus {
+  background:
+    linear-gradient(var(--main-background2), var(--main-background2))
+      padding-box,
+    linear-gradient(45deg, #cd95347d, #e2cb648a) border-box;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #fff;
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.activebonuspromo .cancelBonus:hover {
+  background:
+    linear-gradient(var(--main-background), var(--main-background)) padding-box,
+    linear-gradient(45deg, #cd9534, #e2cb64) border-box;
+}
+
+.bonusall {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  margin-top: 1rem;
+  margin-bottom: 20px;
+}
+
+.bonusall .menu {
+  width: 100%;
+
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.bonus {
+  background: var(--background-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.bonus:hover {
+  transform: scale(1.01);
+}
+
+.bonus .mui {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.bonus .image {
+  background: var(--main-background);
+  width: 100%;
+  height: fit-content;
+  border-radius: 8px;
+  position: relative;
+}
+
+.bonus .main {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 209px;
+  max-height: 209px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.bonus .currency,
+.bonus #promocodeName {
+  position: absolute;
+  z-index: 3;
+  right: 10px;
+  background: #ffffff30;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  user-select: none;
+}
+
+.bonus #promocodeName {
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 32px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.bonus .bonus111 {
+  font-weight: bold;
+  font-size: 20px;
+  width: 100%;
+  text-align: left;
+  word-break: break-word;
+  margin-top: 10px;
+}
+
+.bonus .buttonProject,
+.bonus .buttonProjectSuccess {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.bonus .buttonProject:hover,
+.bonus .buttonProjectSuccess:hover {
+  background: var(--hover-bg);
+}
+
+.bonus .buttonProjectSuccess {
+  background: var(--main-gradient);
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.bonusPhoto1 {
+  background-image: url(/images/bonus/bonusbg.png);
+}
+
+.bonusPhotoVk {
+  background-image: url(/images/banners/bonus/1000_new.png);
+}
+
+.bonusPhotoVk2 {
+  background-image: url(/images/banners/bonus/5000_new.png);
+}
+
+.bonusPhotoTg {
+  background-image: url(/images/banners/bonus/100_new.png);
+  filter: none !important;
+}
+
+.bonusPhoto24 {
+  background-image: url(/images/bonus/bonusbg24.png);
+}
+
+.bonusPhotoBirth {
+  background-image: url(/images/bonus/bonusbgbirth.png);
+}
+
+.actions-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.actions-cards .action {
+  background: var(--background-dark);
+  margin: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: calc(50% - 10px);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.actions-cards .action:hover {
+  transform: scale(1.01);
+}
+
+.actions-cards .action .header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.actions-cards .action .header .name {
+  background-image: url(/images/bonus/bhead2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 50px;
+  color: var(--main-color-medium);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.actions-cards .action .score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.actions-cards .action .bonusBalance {
+  color: var(--main-color-hight);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.actions-cards .action .description {
+  color: var(--main-color-medium);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.actions-cards .action .buttonProject {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.actions-cards .action .buttonProject:hover {
+  background: var(--hover-bg);
+}
+
+.actions-cards .action .infoBonus {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #ffffff2b;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.actions-cards .action .infoBonus:hover {
+  opacity: 0.8;
+}
+
+.actions-cards .action .infoBonus i {
+  font-size: 20px;
+  color: var(--main-color-hight);
+  transition: color 0.2s;
+}
+
+.actions-cards .action .infoBonus i:hover {
+  color: var(--button-bg);
+}
+
+.bonus-page {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  position: relative;
+}
+
+.bonus-page .content {
+  background:
+    linear-gradient(
+      to bottom,
+      var(--main-background2),
+      var(--main-background2)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--main-background4) 1%,
+      var(--main-background2) 20%
+    );
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  color: var(--main-color-medium);
+  padding: 20px;
+  display: grid;
+  gap: 0;
+  justify-content: center;
+  align-items: flex-start;
+  user-select: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.bonus-page .content:hover {
+  transform: scale(1.01);
+}
+
+.bonus-page .content img {
+  width: 128px;
+  height: 128px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.bonus-page .content .name-bonus {
+  font-size: 24px;
+  color: var(--main-color-hight);
+  font-weight: bold;
+}
+
+.bonus-page .content .info-bonus {
+  color: var(--main-color-low);
+  word-break: break-word;
+}
+
+.bonus-page .content .price-bonus {
+  display: flex;
+  gap: 4px;
+  color: var(--main-color-low);
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.bonus-page .content .price-bonus .price {
+  color: #fff;
+  font-weight: bold;
+}
+
+.promo-page {
+  display: grid;
+  background:
+    linear-gradient(
+      to bottom,
+      var(--main-background2),
+      var(--main-background2)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--main-background4) 1%,
+      var(--main-background2) 20%
+    );
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  color: var(--main-color-medium);
+  padding: 14px;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.promo-page .nameAlert {
+  color: var(--main-color-hight);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.promo-page .promo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.promo-page .promo .inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.promo-page .promo .inputs input {
+  outline: none;
+  border-radius: 8px;
+  background: var(--main-background);
+  color: var(--main-color-hight);
+  padding: 10px 15px;
+  border: 2px solid #2b303b47;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+}
+
+.promo-page .promo .inputs input:focus {
+  border: 2px solid #a78f3c;
+}
+
+.promo-page .promo .inputs button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 90%;
+  line-height: normal;
+}
+
+.promo-page .promo .inputs button:hover {
+  background: var(--hover-bg);
+}
+
+.promo-page .promo a {
+  color: var(--main-color-hight);
+  transition: color 0.2s;
+}
+
+.promo-page .promo a:hover {
+  color: #fff;
+}
+
+.rakeback {
+  outline: none;
+  border-radius: 8px;
+  background: var(--main-background);
+  color: var(--main-color-hight);
+  padding: 10px 15px;
+  border: 2px solid #2b303b47;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Адаптивность */
+@media (max-width: 990px) {
+  .bonuspromo .wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .bonuspromo .buttonProject {
+    width: 100%;
+    max-width: none;
+  }
+
+  .bonusall .menu {
+    grid-template-columns: 1fr;
+  }
+
+  .actions-cards {
+    display: grid;
+    gap: 10px;
+    justify-content: inherit;
+  }
+
+  .actions-cards .action {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .activebonuspromo {
     display: grid;
     width: 100%;
-}
-.activebonuspromo .photo{
+  }
+
+  .activebonuspromo .photo {
     width: 100%;
-}
-}
-.activebonuspromo .info .cancelBonus{
-background: linear-gradient(var(--main-background2), var(--main-background2)) padding-box, linear-gradient(45deg, #cd95347d, #e2cb648a) border-box;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    color: #fff;
-    padding: 5px;
-    margin-top: 10px;
-    transition:.2s;
-    -webkit-transition:.2s;
-}
-.activebonuspromo .info .cancelBonus:hover{
-background: linear-gradient(var(--main-background), var(--main-background)) padding-box, linear-gradient(45deg, #cd9534, #e2cb64) border-box;
-}
-.infoBonus{
-    position: absolute;
-    right: 10;
-    top: 10;
-    background: #ffffff2b;
-    padding: 10px;
-    border-radius: 12px;
-    cursor:pointer;
-}
-.infoBonus:hover{
-opacity:0.8;
+  }
+
+  .bonus-page {
+    grid-template-columns: 1fr;
+  }
 }
 
-.actions-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 0;
-    position: relative;
-    margin-top:1rem;
-    
-}    
-.actions-cards .action {
-    background: var(--main-background3);
-    border-radius: 8px;
-    padding: 30px;
-    text-align: center;
-    border: 1px solid;
-    width: calc(50% - 10px);
-    position:relative;
-}
-.actions-cards .action .score {
-    align-items: center;
-    display: flex;
-    font-size: 30px;
-    font-weight: 700;
-    justify-content: center;
-}
-.actions-cards .action .score .bonusBalance{
-    color: var(--main-color-hight);
-    font-weight: bold;
-    font-size: 32px;
-}
-.actions-cards .action .description {
-    color: var(--main-color-medium);
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 15px;
-}
+@media (max-width: 630px) {
+  .heading {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 
-.actions-cards .action .header{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;    
-}
-.actions-cards .action .header .name{
-position: absolute;
-    background-image: url(/images/bonus/bhead2.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 150px;
-    height: 50px;
-    text-align: left;
-    color: var(--main-color-medium);
+  .bonus .main {
+    width: 100%;
+    height: 150px;
+    max-height: 150px;
+  }
+
+  .bonus .currency,
+  .bonus #promocodeName {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  .bonus .bonus111 {
     font-size: 16px;
-    font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    align-items: center;
-    display: flex;
-z-index: 1;
-}
-@media screen and (max-width:768px) {
-.actions-cards .action {
-    width: 100%!important;
-}
-.actions-cards {
-display:grid;
-gap:10px;
-    justify-content: inherit;
-}    
+  }
+
+  .action .name {
+    font-size: 14px;
+    width: 120px;
+    height: 40px;
+    padding: 8px 12px;
+  }
+
+  .action .bonusBalance {
+    font-size: 24px;
+  }
+
+  .action .description {
+    font-size: 12px;
+  }
+
+  .bonus-page .content img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .bonus-page .content .name-bonus {
+    font-size: 20px;
+  }
+
+  .bonus-page .content .price-bonus {
+    font-size: 24px;
+  }
 }

@@ -5,9 +5,7 @@ function renderSearch($games)
   <div class="home-search-wrap">
     <div role="button" class="home-search-overlay" tabindex="0" style="z-index: 1449; display: none;">
       <div class="home-search-overlay-top"></div>
-      <div class="home-search-overlay-main">
-        <div class="search-results"></div> <!-- Контейнер для результатов поиска -->
-      </div>
+      <div class="home-search-overlay-main"></div>
     </div>
     <div class="home-search-wrap-inner">
       <div class="home-input-wrap">
@@ -18,107 +16,118 @@ function renderSearch($games)
           </svg>
         </div>
         <input data-testid="search" placeholder="Найдите свою игру">
-        <div class="cross-icon svelte-prg7fh"><!----><!----><button type="button" tabindex="0" class="inline-flex relative items-center gap-2 justify-center rounded-(--ds-radius-md,0.25rem) font-semibold whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden text-sm leading-none" data-button-root=""><!----><!----><svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
+        <div class="cross-icon svelte-prg7fh">
+          <button type="button" tabindex="0" class="inline-flex relative items-center gap-2 justify-center rounded-(--ds-radius-md,0.25rem) font-semibold whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden text-sm leading-none">
+            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon">
               <title></title>
-              <path d="M56 15.374 48.626 8 32 24.626 15.374 8 8 15.374 24.626 32 8 48.626 15.374 56 32 39.374 48.626 56 56 48.626 39.374 32z"></path><!---->
-            </svg></button><!----></div>
+              <path d="M56 15.374 48.626 8 32 24.626 15.374 8 8 15.374 24.626 32 8 48.626 15.374 56 32 39.374 48.626 56 56 48.626 39.374 32z"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="search-results"></div>
       </div>
-
     </div>
   </div>
 
   <script>
     $(document).ready(function() {
-      // Проверяем, загружен ли jQuery
       if (typeof jQuery === 'undefined') {
         console.error('jQuery не загружен. Подключите jQuery перед этим скриптом.');
         return;
       }
 
-      // Находим элементы
       const $searchInput = $('input[data-testid="search"]');
       const $searchOverlay = $('.home-search-overlay');
       const $searchResults = $('.search-results');
 
-      // Проверяем наличие элементов
       if (!$searchInput.length || !$searchOverlay.length || !$searchResults.length) {
-
+        console.error('Не найдены элементы поиска');
         return;
       }
 
-      // Передаём массив игр из PHP в JavaScript
       const games = <?php echo json_encode($games); ?>;
-      console.log(games)
-      // Сохраняем позицию прокрутки
-      let scrollPosition = 0;
 
-      // Показываем оверлей и блокируем скролл при фокусе
+
       $searchInput.on('focus', function() {
 
-        scrollPosition = $(window).scrollTop();
         $searchOverlay.fadeIn(300);
         $('html, body').addClass('no-scroll');
       });
 
-      // Скрываем оверлей и разрешаем скролл при потере фокуса
       $searchInput.on('blur', function() {
-
         $searchOverlay.fadeOut(300);
         $('html, body').removeClass('no-scroll');
         $(window).scrollTop(scrollPosition);
-        $searchResults.empty(); // Очищаем результаты при закрытии
+        $searchResults.empty();
       });
 
-      // Закрытие оверлея при клике на него
       $searchOverlay.on('click', function(e) {
-        if (e.target === this) { // Только если клик по самому оверлею
-
+        $searchResults.removeClass('active');
+        if (e.target === this) {
           $searchInput.blur();
         }
       });
 
-      // Запрещаем прокрутку на сенсорных устройствах
-      $searchOverlay.on('touchmove', function(e) {
-        e.preventDefault();
-
+      // Предотвращаем всплытие кликов на результаты поиска
+      $searchResults.on('click', function(e) {
+        e.stopPropagation();
       });
 
-      // Закрытие по клавише Esc
+      // Явно обрабатываем клик по ссылке для отладки
+      $searchResults.on('click', 'a.search-result-item', function(e) {
+        e.stopPropagation(); // Останавливаем всплытие
+        const href = $(this).attr('href');
+        console.log('Клик по ссылке:', href); // Отладка
+        // Стандартное поведение ссылки должно сработать, но можем принудительно перенаправить
+        window.location.href = href; // Принудительное перенаправление
+      });
+
+      $searchOverlay.on('touchmove', function(e) {
+        $searchResults.removeClass('active');
+        e.preventDefault();
+      });
+
       $(document).on('keydown', function(e) {
         if (e.key === 'Escape' && $searchInput.is(':focus')) {
-
+          $searchResults.removeClass('active');
           $searchInput.blur();
         }
       });
 
-      // Поиск игр при вводе текста
       $searchInput.on('input', function() {
         const query = $(this).val().trim().toLowerCase();
-
-
-        // Очищаем результаты
         $searchResults.empty();
 
         if (query.length === 0) {
-          return; // Ничего не показываем, если запрос пустой
+          $searchResults.removeClass('active');
+          return;
         }
 
-        // Фильтруем игры по g_title
+        $searchResults.addClass('active');
         const filteredGames = games.filter(function(game) {
           return game.g_title && game.g_title.replace("_", ' ').toLowerCase().includes(query);
         });
 
-
-
-        // Выводим результаты
         if (filteredGames.length > 0) {
           filteredGames.forEach(function(game) {
-            const $resultItem = $('<div>').addClass('search-result-item').text(game.g_title.replaceAll("_", ' '));
+            const $resultItem = $('<a>')
+              .attr('href', `/slot/${encodeURIComponent(game.g_title)}`)
+              .addClass('search-result-item')
+              .append(
+                $('<img>').attr('src', `../images/SlotsPreviews/${game.g_title.replaceAll("_","")}.png`).attr('alt', game.g_title),
+                $('<span>').text(game.g_title.replaceAll('_', ' '))
+              );
+            console.log('Добавлена ссылка:', $resultItem.attr('href'));
             $searchResults.append($resultItem);
           });
         } else {
           $searchResults.append('<div class="search-result-item no-results">Игры не найдены</div>');
         }
+      });
+
+      $('.cross-icon button').on('click', function(e) {
+        e.stopPropagation();
+        $searchInput.val('').trigger('input').blur();
       });
     });
   </script>

@@ -3,12 +3,12 @@
 function renderCasinoComponent()
 {
   // Вынесенные SVG в переменные (оставлены пустыми по запросу)
-  $svg_external_link = ''; // Здесь был SVG для внешних ссылок, оставлен пустым
-  $svg_icon = ''; // Здесь был другой SVG, оставлен пустым
+  $svg_external_link = '<svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style=""> <title></title> <path d="M24.059 3.766v7.058H10.824v42.352h42.352V39.94h7.058v20.293H3.766V3.766zm36.18 0V24.94h-7.06v-9.12l-25.3 25.296-4.992-4.996 25.297-25.297h-9.125V3.766z"></path><!----></svg>'; // Здесь был SVG для внешних ссылок, оставлен пустым
+
 
   // Очищенный HTML без Svelte-классов и атрибутов
 ?>
-  <div class="see-more " data-content="" style="--max-height: 250px;">
+  <div class="see-more " data-content="">
     <div class="see-more-content ">
       <div class="see-more-column-container" style="column-count: 2;">
         <div class="see-more-content-block">
@@ -502,10 +502,10 @@ function renderCasinoComponent()
           <p><span>Мы регулярно публикуем новые статьи и полезные материалы — заходите на страницу блога казино Stake почаще, чтобы быть в курсе свежих стратегий и полезных советов по игре!</span></p>
           <h2><span id="Как_внести_депозит_для_игры_в_онлайн-игры_и_делать_ставки_ответственно">Как внести депозит для игры в онлайн-игры и делать ставки ответственно</span></h2>
           <p><span>Вы можете играть в любые онлайн-игры Stake.com, пополнив счет в местной валюте или с помощью криптовалюты. На сегодняшний день Stake.com поддерживает депозиты в таких валютах, как </span><a href="/ru/blog/how-to-deposit-argentine-pesos-ars">ARS</a><span>, </span><a href="/ru/blog/how-to-deposit-chilean-pesos-clp">CLP</a><span>, </span><a href="/ru/blog/how-to-deposit-canadian-dollars-cad">CAD</a><span>, </span><a href="/ru/blog/how-to-deposit-vietnamese-dong-vnd">VND</a><span>, </span><a href="/ru/blog/how-to-deposit-indian-rupees-inr">INR</a><span> и </span><a href="/ru/blog/how-to-deposit-turkish-lira-try">TRY</a><span>. Кроме того, вы можете выбрать отображение баланса и в других валютах — все зависит от ваших предпочтений.</span></p>
-          <p><span>Больше информации о </span><a href="https://help.stake.com/en/collections/5701792-local-currency" target="_blank" rel="external noreferrer noopener">доступных валютах' . $svg_external_link . '</a><span> и способах оплаты вы найдете на нашем форуме сообщества и в специальном </span><a href="/ru/blog/local-currency-deposit-withdraw-guide">руководстве по платежам</a><span>.</span></p>
+          <p><span>Больше информации о </span><a href="https://help.stake.com/en/collections/5701792-local-currency" target="_blank" rel="external noreferrer noopener">доступных валютах<?php echo $svg_external_link ?></a><span> и способах оплаты вы найдете на нашем форуме сообщества и в специальном </span><a href="/ru/blog/local-currency-deposit-withdraw-guide">руководстве по платежам</a><span>.</span></p>
           <p><span>Если вы хотите играть в Wheel с криптовалютой, просто пополните счет с помощью </span><a href="/ru/blog/what-is-bitcoin">BTC</a><span>, </span><a href="/ru/blog/what-is-ethereum-eth-crypto-betting">ETH</a><span>, </span><a href="/ru/blog/what-is-tether-usdt-crypto">USDT</a><span>, </span><a href="/ru/blog/eos-on-stake">EOS</a><span>, </span><a href="/ru/blog/what-is-dogecoin-crypto-guide">Doge</a><span>, </span><a href="/ru/blog/what-is-litecoin-ltc-crypto-betting">LTC</a><span>, </span><a href="/ru/blog/what-is-solana-sol-crypto-coin">SOL</a><span>, </span><a href="/ru/blog/what-is-tron-trx-crypto-guide">TRX</a><span> и других цифровых монет. Полный </span><a href="/ru/blog/what-crypto-does-stake-offer">список доступных криптовалют</a><span>, а также наши рекомендации и </span><a href="/ru/blog/choosing-crypto-coin-guide">руководство по выбору монеты</a><span> можно найти в нашем блоге.</span></p>
           <p><span>На Stake доступна круглосуточная </span><a href="/ru/blog/stake-customer-support-guide">поддержка игроков</a><span>. Сотрудники службы поддержки помогут вам решить вопросы, связанные с </span><a href="/ru/blog/deposit-withdrawal-methods-online-betting">пополнением счета, выводом средств</a><em> </em><span>и другими моментами.</span></p>
-          <p><span>Сервис </span><a href="https://www.moonpay.com/" target="_blank" rel="external noreferrer noopener">Moonpay' . $svg_external_link . '</a><span> поддерживает различные способы оплаты, включая Visa, Mastercard, Apple Pay, Google Pay и другие. Полный список доступных методов оплаты смотрите в </span><a href="https://support.moonpay.com/hc/en-gb/articles/360017624078-What-are-your-supported-payment-methods-" target="_blank" rel="external noreferrer noopener">документации Moonpay' . $svg_external_link . '</a><span>. Также рекомендуем ознакомиться с такими сервисами, как </span><a href="https://swapped.com" target="_blank" rel="external noreferrer noopener">Swapped.com' . $svg_external_link . '</a><span> и </span><a href="/ru/blog/what-is-mesh-crypto-deposit-integration">Mesh</a><span>, для удобной покупки и использования криптовалюты на Stake.</span></p>
+          <p><span>Сервис </span><a href="https://www.moonpay.com/" target="_blank" rel="external noreferrer noopener">Moonpay <?php echo $svg_external_link ?> </a><span> поддерживает различные способы оплаты, включая Visa, Mastercard, Apple Pay, Google Pay и другие. Полный список доступных методов оплаты смотрите в </span><a href="https://support.moonpay.com/hc/en-gb/articles/360017624078-What-are-your-supported-payment-methods-" target="_blank" rel="external noreferrer noopener">документации Moonpay<?php echo $svg_external_link ?></a><span>. Также рекомендуем ознакомиться с такими сервисами, как </span><a href="https://swapped.com" target="_blank" rel="external noreferrer noopener">Swapped.com<?php echo $svg_external_link ?></a><span> и </span><a href="/ru/blog/what-is-mesh-crypto-deposit-integration">Mesh</a><span>, для удобной покупки и использования криптовалюты на Stake.</span></p>
           <p><span>Узнайте, как использовать </span><a href="/ru/blog/how-to-use-our-vault">хранилище Stake</a><span> — защищенное хранилище для ваших кошельков, которое позволяет безопасно сохранять средства для будущей игры в казино Stake. Также рекомендуем прочитать наше </span><a href="/ru/blog/is-crypto-gambling-safe">руководство по криптобезопасности</a><span>, чтобы узнать больше о сохранности и безопасности ваших средств на Stake.com.</span></p>
           <p><span>Помните: играйте только на те средства, которые готовы потратить, и уделяйте внимание принципам </span><a href="/ru/blog/responsible-gambling-online-guide-stake-smart">ответственной игры</a><span>. О том, как сохранить контроль над игрой, вы можете узнать из нашего </span><a href="/ru/responsible-gambling/stake-smart">руководства по разумным ставкам</a><span>. Также вы можете использовать </span><a href="/ru/responsible-gambling/calculator">ежемесячный калькулятор бюджета</a><span> и </span><a href="/ru/blog/how-much-to-gamble-budget-calculator">руководство по лимитам ставок</a><span>, чтобы определить комфортную для вас сумму, которую можно выделить на азартные игры.</span></p>
           <h2><span id="Лучшие_провайдеры_игр_для_казино">Лучшие провайдеры игр для казино</span></h2>
@@ -516,19 +516,19 @@ function renderCasinoComponent()
           <p><span>Не откладывайте! Независимо от того, предпочитаете ли вы классические настольные игры или ультрасовременные технологичные слоты, в казино Stake найдется все для максимального </span><a href="/ru/blog/online-casino-guide">удовольствия от онлайн-игры</a><span>!</span></p>
         </div>
       </div>
-      <span class="see-more-space" style="width: var(--space-0); height: var(--space-6); display: flex; flex-grow: 0;"></span>
-      <div class="button-wrapper is-open">
-        <button type="button" tabindex="0" aria-label="Show Content">Показать меньше</button>
+      <span class="see-more-space"></span>
+      <div class="see-more-button-wrapper">
+        <button type="button" tabindex="0" aria-label="Show Content">Показать больше</button>
       </div>
     </div>
   </div>
   <script>
     $(document).ready(function() {
       // Handle click event on the button inside .button-wrapper
-      $('.button-wrapper button').on('click', function() {
+      $('.see-more-button-wrapper button').on('click', function() {
         // Find the closest .see-more container
         var $seeMore = $(this).closest('.see-more');
-        var $content = $seeMore.find('.content');
+        var $content = $seeMore.find('.see-more-content');
         var $button = $(this);
 
         // Toggle the is-open class on .see-more and .content

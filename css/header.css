@@ -1,3 +1,18 @@
+.main-container {
+  margin-top: 40px;
+  margin-left: 240px;
+}
+.sidebar .main-container {
+  margin-left: 60px;
+}
+.chat .main-container {
+  margin-left: 240px;
+  margin-right: 370px;
+}
+.sidebar.chat .main-container {
+  margin-left: 60px;
+  margin-right: 370px;
+}
 .headerproject {
   font-family: 'proxima-nova', sans-serif;
   --tw-font-weight: 600;
@@ -12,7 +27,9 @@
   margin-left: 240px;
   height: 60px;
   z-index: 7;
-  border-bottom: 1px solid #242533a3;
+  box-shadow:
+    #0003 0 4px 6px -1px,
+    #0000001f 0 2px 4px -1px;
   background-color: #1a2c38;
   color: #fff;
   padding: 0 3vw;
@@ -53,7 +70,10 @@
 .wrap.normal {
   max-width: 66.95px;
 }
-
+.wrap.normal a {
+  width: 100%;
+  color: white;
+}
 .wrap {
   display: inline-flex;
   align-items: center;
@@ -185,12 +205,10 @@
   text-decoration: none;
 }
 .header_NavButton:hover {
-  background: #282d39;
   color: #fff;
 }
 
 .activeBox {
-  background: #282d39;
   color: #fff;
 }
 

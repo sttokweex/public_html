@@ -18,6 +18,9 @@
   flex-shrink: 0;
   width: 370px;
 }
+.chat-container.closed {
+  display: none;
+}
 
 .chat-header {
   background: rgb(15, 33, 46);

@@ -3,36 +3,110 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if (!isset($_SESSION['hash'])) {
-    header('Location: /');
-    exit();
+if (isset($_SESSION['lang'])) {
+    $lang = $_SESSION['lang'];
+} elseif (isset($_COOKIE['lang'])) {
+    $lang = $_COOKIE['lang'];
+} else {
+    $lang = 'en';
 }
 
-require(dirname(__DIR__, 1) . "/system/config.php");
-require(dirname(__DIR__, 1) ."/panels/header.php");
-require(dirname(__DIR__, 1) ."/panels/sidebar.php");
-require(dirname(__DIR__, 1) ."/panels/chat.php");
-require(dirname(__DIR__, 1) ."/panels/mobile.php");
+$allowed = ['en', 'es', 'ru'];
+if (!in_array($lang, $allowed, true)) {
+    $lang = 'en';
+}
 
-$hash = mysqlI_real_escape_string($connection,$_SESSION['hash']);
-$select = "SELECT * FROM users WHERE hash = '$hash'";
-$result = mysqli_query($connection,$select);
-$user = mysqli_fetch_assoc($result);
+// Подключаем файл перевода
+$path = __DIR__ . "/lang/{$lang}.php";
+if (is_file($path)) {
+    $translations = require $path;
+} else {
+    $translations = require dirname(__DIR__, 1) . "/lang/en.php";
+}
 
-$user_tg_id = $user['tg_id'];
-$operatorId = ($user['is_yt'] == 1) ? '40262' : '40074';
-?>
-<body>
-<link href="/css/index.css?v=2" rel="stylesheet">
-<link href="/css/game_materials.css" rel="stylesheet">
+$requestUri = $_SERVER['REQUEST_URI'];
+require_once './panels/slider.php';
+require_once './panels/footer.php';
+require_once './faq/faq.php';
+require_once './panels/livefeed.php';
+require_once './panels/gameinfo.php';
+require_once './panels/search.php';
+require_once './panels/homeHeader.php';
+require_once './panels/chat.php';
 
-<div class="container">
-<?php
-// --- Загружаем оба списка игр: PP и PG ---
+if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
+    require 'slot/api/getBalance.php';
+    exit;
+}
+
+if (strpos($requestUri, '/slot/api/BetWin') !== false) {
+    require 'slot/api/betWin.php';
+    exit;
+}
+
+if (strpos($requestUri, '/slot/api/Withdraw') !== false) {
+    require 'slot/api/withdraw.php';
+    exit;
+}
+
+if (strpos($requestUri, '/slot/api/Deposit') !== false) {
+    require 'slot/api/deposit.php';
+    exit;
+}
+
+if (strpos($requestUri, '/slot/api/RollbackTransaction') !== false) {
+    require 'slot/api/rollbackTransaction.php';
+    exit;
+}
+
+require("system/config.php");
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+require("panels/header.php");
+require("panels/sidebar.php");
+require("panels/mobile.php");
+
+// Определяем SVG-переменные для баннеров и поиска (пустые)
+$dropdown_arrow_svg = '';
+$search_icon_svg = '';
+
+
+
 $ppResponse = @file_get_contents('http://localhost:8940/game_list.do');
 $ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
 $ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
+$games =  $ppGames;
 
+if (empty($bets)) {
+    $bets = [];
+    for ($i = 0; $i < 15; $i++) {
+        $game = $games[array_rand($games)];
+        $betAmount = mt_rand(100, 5000000) / 100; // Random between $1 and $5,000
+        $multiplier = mt_rand(0, 5000) / 100; // Random between 1.00 and 5.00
+        $payout = $betAmount * $multiplier; // Random win or loss
+        $bets[] = [
+            'id' => uniqid(),
+            'game' => $game['g_title'],
+            'user' => 'Скрытый',
+            'time' => date('H:i', strtotime('+' . mt_rand(0, 59) . ' minutes')),
+            'bet_amount' => '$' . number_format($betAmount, 2),
+            'multiplier' => number_format($multiplier, 2),
+            'payout' => ($payout < 0 ? '-' : '') . '$' . number_format(abs($payout), 2)
+        ];
+    }
+} else {
+    // For existing bets, randomize game and recalculate payout
+    foreach ($bets as &$bet) {
+        $bet['game'] = $games[array_rand($games)];
+        // Extract numeric value from bet_amount
+        $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
+        $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
+        $payout = mt_rand(0, 1) ? $betAmount * $multiplier : -$betAmount * $multiplier;
+        $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
+    }
+    unset($bet); // Break reference
+}
 
 // помечаем источник, чтобы на клике знать какой auth дергать
 foreach ($ppGames as &$game) {
@@ -46,135 +120,55 @@ foreach ($ppGames as &$game) {
 unset($game);
 
 $games = $ppGames;
-
-// Уникальные провайдеры
-$providers = ['Pragmatic play'];
-foreach ($games as $game) {
-    if (!empty($game['vendorid']) && !in_array($game['vendorid'], $providers)) {
-        $providers[] = $game['vendorid'];
-    }
+if (!is_array($games)) {
+    $games = []; // Если API не вернул данные, используем пустой массив
 }
-sort($providers);
+?>
+
 ?>
 
 
-<style>
-    .gamesList { width: 100%; }
-    .game { display: block; float: left; margin: 10px; text-align: center; width: 160px; }
-    .game img { width: 150px; height: 150px; border-radius: 10px; }
-    .game .game-title { margin-top: 5px; font-size: 14px; font-weight: bold; color: #fff; }
-    #filter-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    #search {
-        flex: 2;
-        padding: 10px;
-        width: 60%;
-        min-width: 200px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    #providerFilter {
-        flex: 1;
-        padding: 10px;
-        width: 40%;
-        min-width: 150px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    @media (max-width: 600px) {
-        #filter-container {
-            flex-direction: column;
-        }
-        #search, #providerFilter {
-            width: 100%;
-        }
-    }
-    .source-badge {
-        display:inline-block;
-        margin-top:4px;
-        font-size:11px;
-        padding:2px 6px;
-        border-radius:6px;
-        background:#1b2338;
-        color:#9fb3ff;
-        border:1px solid rgba(111,125,157,.18);
-    }
-</style>
 
-<div id="filter-container">
-    <input type="text" id="search" onkeyup="filterGames()" placeholder="Search game...">
-    <select id="providerFilter" onchange="filterGames()">
-        <option value="">All providers</option>
-        <?php foreach ($providers as $provider): ?>
-            <option value="<?php echo htmlspecialchars($provider); ?>"><?php echo htmlspecialchars($provider); ?></option>
-        <?php endforeach; ?>
-    </select>
-</div>
 
-<div id="gamesList" class="projectGames">
-    <?php foreach ($games as $game): ?>
-        <?php
-            // Иконка: подстраиваемся под разные ключи
-            $icon = '';
-            if (!empty($game['iconurl2'])) {
-                $icon = $game['iconurl2'];
-            } elseif (!empty($game['iconurl'])) {
-                $icon = $game['iconurl'];
-            } elseif (!empty($game['icon'])) {
-                $icon = $game['icon'];
+
+<body>
+    <script type="text/javascript">
+        function historys() {
+            if (navigator.onLine == true) {
+                $("#livegames").load("index.php #livegames");
             }
-           $vendorid = $game['vendorid'] ?? '';
-            $gamename = $game['g_title'] ?? '';
-            $gameid = $game['g_id'] ?? '';
-            $source = $game['__source'] ?? '';
-        ?>
-        <div class="game"
-             data-provider="<?php echo htmlspecialchars($vendorid); ?>"
-             data-title="<?php echo htmlspecialchars($gamename); ?>"
-             data-source="<?php echo htmlspecialchars($source); ?>">
+        }
+        setInterval('historys()', 5000);
+    </script>
 
-           <a class="hwrap newGamesI" href="slot/<?php echo htmlspecialchars(str_replace(' ', '_', $gamename)); ?>" style="padding: 0px !important">
-                <img class="gamePhoto" src="<?php echo htmlspecialchars($icon); ?>" alt="<?php echo htmlspecialchars($gamename); ?>">
-                <div class="game-title"><?php echo htmlspecialchars($gamename); ?></div>
-                <div class="source-badge"><?php echo ('PP'); ?></div>
-                <div class="hcap">
-                    <button class="playButton"
-                        data-gameid="<?php echo htmlspecialchars($gameid); ?>"
-                        data-source="<?php echo htmlspecialchars($source); ?>"
-                        data-us-id="<?php echo htmlspecialchars($user['id']); ?>">
-                        <i class="fa fa-play" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </a>
+
+
+    <div class="main-container" id="main-content">
+        <div class="home-page-content-inner">
+
+            <?php
+            renderHomeHeader();
+            renderSearch($games);
+            ?>
+
+            <div class="home-container home-has-padding home-has-margin">
+
+                <?
+                renderChatComponent('Иван', $sampleMessages);
+                render_slider($games, false);
+                render_slider($games, true);
+                renderBetsTable($bets);
+                renderCasinoComponent();
+
+                ?>
+
+            </div>
+
+            <?php render_footer($translations, 'Stake') ?>
         </div>
-    <?php endforeach; ?>
-</div>
-
-<script>
+    </div>
 
 
-function filterGames() {
-    var search = (document.getElementById('search').value || '').toLowerCase();
-    var provider = (document.getElementById('providerFilter').value || '').toLowerCase();
-
-    document.querySelectorAll('#gamesList .game').forEach(function(game) {
-        var title = (game.getAttribute('data-title') || '').toLowerCase();
-        var gameProvider = (game.getAttribute('data-provider') || '').toLowerCase();
-
-        var matchesSearch = !search || title.indexOf(search) !== -1;
-        var matchesProvider = !provider || gameProvider === provider;
-
-        game.style.display = (matchesSearch && matchesProvider) ? '' : 'none';
-    });
-}
-</script>
-
-</div>
-<?php require(dirname(__DIR__, 1) ."/panels/footer.php"); ?>
 </body>
-</html>
 
+</html>

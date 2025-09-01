@@ -37,15 +37,14 @@ function render_slider($games = [], $hasMargin)
       ?>
       <?php foreach ($games as $game): ?>
         <div class="game-slider-slide">
-          <div class="game-slider-wrap" data-analytics="slider-ru-trending-games-<?php echo htmlspecialchars($game['id']); ?>">
+          <div class="game-slider-wrap" data-analytics="slider-ru-trending-games-<?php echo htmlspecialchars($game['g_id']); ?>">
             <div class="game-slider-image-focus">
               <div class="game-slider-game-card-wrap">
-                <a class="game-slider-game-link" href="/ru/casino/games/<?php echo htmlspecialchars($game['id']); ?>">
+                <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars(str_replace(' ', '_', $game['g_title'])); ?>">
                   <div class="game-slider-img-wrap">
-                    <img id="pragmatic-play-sweet-bonanza-1000" class="game-slider-game-image" src="https://mediumrare.imgix.net/73754d4bf421b78fbd3895bbc7890d379797588cb699d6cbe47f3656aa93613b?w=180&amp;h=236&amp;fit=min&amp;auto=format" alt="Sweet Bonanza 1000" background="radial-gradient(at 0 0,#94e7f7,#00000000 50%),radial-gradient(at 33% 0,#9fe3fd,#00000000 50%),radial-gradient(at 67% 0,#c1d5e7,#00000000 50%),radial-gradient(at 100% 0,#93daf2,#00000000 50%),radial-gradient(at 0 50%,#ed54c9,#00000000 50%),radial-gradient(at 33% 50%,#f55fa8,#00000000 50%),radial-gradient(at 67% 50%,#f18b92,#00000000 50%),radial-gradient(at 100% 50%,#f04c78,#00000000 50%),radial-gradient(at 0 100%,#e4b2d0,#00000000 50%),radial-gradient(at 33% 100%,#e8c5da,#00000000 50%),radial-gradient(at 67% 100%,#e8d6d5,#00000000 50%),radial-gradient(at 100% 100%,#e5b7cc,#00000000 50%)" loading="lazy" width="180" height="236" layout="fixed" aspectratio="0" class="max-w-full max-h-full !w-auto !h-full" style="object-fit: cover;
+                    <img id="" class="game-slider-game-image" src="../images/SlotsPreviews/<?php echo htmlspecialchars(str_replace('_', '', $game['g_title'])); ?>.png" background="radial-gradient(at 0 0,#94e7f7,#00000000 50%),radial-gradient(at 33% 0,#9fe3fd,#00000000 50%),radial-gradient(at 67% 0,#c1d5e7,#00000000 50%),radial-gradient(at 100% 0,#93daf2,#00000000 50%),radial-gradient(at 0 50%,#ed54c9,#00000000 50%),radial-gradient(at 33% 50%,#f55fa8,#00000000 50%),radial-gradient(at 67% 50%,#f18b92,#00000000 50%),radial-gradient(at 100% 50%,#f04c78,#00000000 50%),radial-gradient(at 0 100%,#e4b2d0,#00000000 50%),radial-gradient(at 33% 100%,#e8c5da,#00000000 50%),radial-gradient(at 67% 100%,#e8d6d5,#00000000 50%),radial-gradient(at 100% 100%,#e5b7cc,#00000000 50%)" loading="lazy" width="180" height="236" layout="fixed" aspectratio="0" class="max-w-full max-h-full !w-auto !h-full" style="object-fit: cover;
 background: radial-gradient(at 0 0,#94e7f7,#00000000 50%),radial-gradient(at 33% 0,#9fe3fd,#00000000 50%),radial-gradient(at 67% 0,#c1d5e7,#00000000 50%),radial-gradient(at 100% 0,#93daf2,#00000000 50%),radial-gradient(at 0 50%,#ed54c9,#00000000 50%),radial-gradient(at 33% 50%,#f55fa8,#00000000 50%),radial-gradient(at 67% 50%,#f18b92,#00000000 50%),radial-gradient(at 100% 50%,#f04c78,#00000000 50%),radial-gradient(at 0 100%,#e4b2d0,#00000000 50%),radial-gradient(at 33% 100%,#e8c5da,#00000000 50%),radial-gradient(at 67% 100%,#e8d6d5,#00000000 50%),radial-gradient(at 100% 100%,#e5b7cc,#00000000 50%);
-" decoding="async" srcset="https://mediumrare.imgix.net/73754d4bf421b78fbd3895bbc7890d379797588cb699d6cbe47f3656aa93613b?w=180&amp;h=236&amp;fit=min&amp;auto=format 180w,
-https://mediumrare.imgix.net/73754d4bf421b78fbd3895bbc7890d379797588cb699d6cbe47f3656aa93613b?w=360&amp;h=472&amp;fit=min&amp;auto=format 360w" sizes="180px">
+" sizes="180px">
                   </div>
 
                 </a>
@@ -82,29 +81,35 @@ https://mediumrare.imgix.net/73754d4bf421b78fbd3895bbc7890d379797588cb699d6cbe47
         const $gallery = $container.find('.game-slider-gallery');
         const $forwardBtn = $container.find('.game-slider-arrow-button.game-slider-forward');
         const $backwardBtn = $container.find('.game-slider-arrow-button.game-slider-backward');
+        let isAnimating = false; // Флаг для блокировки анимации
 
         // Проверяем наличие всех элементов
         if (!$gallery.length || !$forwardBtn.length || !$backwardBtn.length) {
-
           return; // Пропускаем этот слайдер
         }
 
         // Обработчик для кнопки "Вперед"
         $forwardBtn.on('click', function() {
+          if (isAnimating) return; // Игнорируем клик, если анимация выполняется
+          isAnimating = true; // Устанавливаем флаг
 
-          $gallery.animate({
+          $gallery.stop(true).animate({
             scrollLeft: $gallery.scrollLeft() + 180
           }, 300, function() {
+            isAnimating = false; // Снимаем флаг после завершения анимации
             updateButtonState();
           });
         });
 
         // Обработчик для кнопки "Назад"
         $backwardBtn.on('click', function() {
+          if (isAnimating) return; // Игнорируем клик, если анимация выполняется
+          isAnimating = true; // Устанавливаем флаг
 
-          $gallery.animate({
+          $gallery.stop(true).animate({
             scrollLeft: $gallery.scrollLeft() - 180
           }, 300, function() {
+            isAnimating = false; // Снимаем флаг после завершения анимации
             updateButtonState();
           });
         });
@@ -121,14 +126,8 @@ https://mediumrare.imgix.net/73754d4bf421b78fbd3895bbc7890d379797588cb699d6cbe47
         // Инициализация состояния кнопок
         updateButtonState();
         // Обновление состояния при прокрутке
-        $gallery.on('scroll', function() {
-
-          updateButtonState();
-        });
+        $gallery.on('scroll', updateButtonState);
       });
-
-      // Если контейнеры не найдены
-
     });
   </script>
 <?php

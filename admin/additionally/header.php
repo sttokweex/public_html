@@ -69,7 +69,7 @@ require('modals.php');
   <link href='../../css/livefeed.css' rel='stylesheet'>
   <link href='../../css/footer.css' rel='stylesheet'>
   <link href='../../css/sidebar.css' rel='stylesheet'>
-  <link href='../../css/more.css' rel='stylesheet'>
+  <link href='../../css/gameInfo.css' rel='stylesheet'>
   <link href='../../css/modal.css' rel='stylesheet'>
 
   <link href="../../css/toastr.css" rel="stylesheet">
