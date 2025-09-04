@@ -22,7 +22,7 @@ if (is_file($path)) {
     $translations = require $path;
 } else {
     // страховка: если файла нет — грузим en
-    $translations = require dirname(__DIR__) . "/lang/en.php";
+    $translations = require dirname(__DIR__) . "/lang/ru.php";
 }
 
 $bot_token = '7008339760:AAGuowmc0o60BjNWAMY4pYWZ3loZGL653-U';

@@ -12,9 +12,10 @@
 
 .referal-container {
   width: 100%;
-  margin-top: calc(60px + 2.5rem);
+ 
 }
 .referal-inner {
+  padding: 2rem 3vw 2rem 3vw;
   display: flex;
   justify-content: center;
   align-self: center;

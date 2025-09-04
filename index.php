@@ -21,7 +21,7 @@ $path = __DIR__ . "/lang/{$lang}.php";
 if (is_file($path)) {
     $translations = require $path;
 } else {
-    $translations = require __DIR__ . "/lang/en.php";
+    $translations = require __DIR__ . "/lang/ru.php";
 }
 
 $requestUri = $_SERVER['REQUEST_URI'];
@@ -98,11 +98,11 @@ if (empty($bets)) {
 } else {
     // For existing bets, randomize game and recalculate payout
     foreach ($bets as &$bet) {
-        $bet['game'] = $games[array_rand($games)];
+        $bet['game'] = $games[array_rand($games)]['g_title'];
         // Extract numeric value from bet_amount
         $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
         $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
-        $payout = mt_rand(0, 1) ? $betAmount * $multiplier : -$betAmount * $multiplier;
+        $payout = $betAmount * $multiplier;
         $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
     }
     unset($bet); // Break reference
@@ -148,12 +148,13 @@ if (!is_array($games)) {
 
             <?php
             renderHomeHeader();
-            renderSearch($games);
+
             ?>
 
             <div class="home-container home-has-padding home-has-margin">
 
                 <?
+                renderSearch($games);
                 renderChatComponent('Иван', $sampleMessages);
                 render_slider($games, false);
                 render_slider($games, true);

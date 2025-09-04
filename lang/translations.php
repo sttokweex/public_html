@@ -22,7 +22,7 @@ $path = __DIR__ . "/" . $lang . ".php";
 if (is_file($path)) {
     $translations = require $path;
 } else {
-    $translations = require __DIR__ . "/en.php";
+    $translations = require __DIR__ . "/ru.php";
 }
 
 // Отдаём JSON

@@ -21,7 +21,7 @@ if (is_file($path)) {
   $translations = require $path;
 } else {
   // страховка: если файла нет — грузим en
-  $translations = require dirname(__DIR__) . "/lang/en.php";
+  $translations = require dirname(__DIR__) . "/lang/ru.php";
 }
 
 $diceicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" class="icon"><path d="M7.962 2.848L0 15.17l6.76 13.192 7.962-12.322-6.76-13.191zM3.97 15.982a1.15 1.15 0 010-2.3 1.15 1.15 0 010 2.3zm2.785 5.489a1.15 1.15 0 010-2.3 1.15 1.15 0 010 2.3zm.378-10.329a1.15 1.15 0 010-2.3 1.15 1.15 0 010 2.3zm3.061 5.727a1.148 1.148 0 110-2.299 1.15 1.15 0 010 2.3zm6.183.239L8.26 29.67l15.374.771 8.117-12.563-15.374-.77zm-.835 10.538a1.15 1.15 0 010-2.298 1.15 1.15 0 010 2.298zm9.21-5.026a1.15 1.15 0 010-2.298 1.15 1.15 0 010 2.298zm.29-20.283L9.517 1.559l6.958 13.581L32 15.917l-6.958-13.58zM21.36 9.971a1.15 1.15 0 010-2.3 1.15 1.15 0 010 2.3z"></path></svg>';
@@ -38,16 +38,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
         <path d="M64 64H0V51h64zm0-25.5H0v-13h64zM64 13H0V0h64z"></path>
       </svg>
     </button>
-    <div class="link_wrap">
-      <a class="header-button" id="casino">
-        <img class="productImg " alt="Product Img " draggable="false" src="/assets/media/default-casino.CqlOLRkM.svg">
-        <span><?= $translations['casino'] ?> Казино</span>
-      </a>
-      <a class="header-button" id="sport">
-        <img class="productImg " alt="Product Img" draggable="false" src="/assets/media/default-casino.CqlOLRkM.svg">
-        <span><?= $translations['sport'] ?> Спорт</span>
-      </a>
-    </div>
+
   </div>
   <div class="content">
     <div class="scrollable">

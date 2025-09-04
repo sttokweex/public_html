@@ -21,7 +21,7 @@ if (is_file($path)) {
     $translations = require $path;
 } else {
     // страховка: если файла нет — грузим en
-    $translations = require dirname(dirname(__DIR__)) . "/lang/en.php";
+    $translations = require dirname(dirname(__DIR__)) . "/lang/ru.php";
 }
 
 function createInvoice($amount, $description, $apiToken) {

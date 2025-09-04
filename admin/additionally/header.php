@@ -20,7 +20,7 @@ $path = dirname(dirname(__DIR__)) . "/lang/{$lang}.php";
 if (is_file($path)) {
   $translations = require $path;
 } else {
-  $translations = require dirname(dirname(__DIR__)) . "/lang/en.php";
+  $translations = require dirname(dirname(__DIR__)) . "/lang/ru.php";
 }
 
 $sid = $_SESSION['hash'];
@@ -107,7 +107,7 @@ require('modals.php');
 <div class="headerproject">
 
   <a class="site_logo_wrapper" href="/">
-    <img alt="<?= $sitename ?>" width="40" height="40" src="/images/logo-mob_2.png">
+    <!-- <img alt="<?= $sitename ?>" width="40" height="40" src="/images/logo-mob_2.png"> -->
     <span class="hideonmob"><?= $sitename ?></span>
   </a>
 

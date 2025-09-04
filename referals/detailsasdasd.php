@@ -47,7 +47,6 @@ $refuser = "#$refuser";
 }
 ?>
 
-<body>
 <link href="/css/referal.css" rel="stylesheet">
 
 <div class="container">
@@ -181,5 +180,3 @@ $('#referals_table_info').hide();
 <?
 require (dirname(__DIR__, 1)."/panels/footer.php");
 ?>
-</body>
-</html>

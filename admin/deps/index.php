@@ -20,7 +20,6 @@ require (dirname(__DIR__, 1)."/additionally/header.php");
 if($last_check == 1) {
 ?>
 
-<body>
 <div class="container">
 
 <div class="admin-card">
@@ -103,6 +102,4 @@ if ($status == 1){
 </div>
 
 
-</body>
-</html>
 <?php } else { header('Location: ../error404'); } ?>

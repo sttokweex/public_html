@@ -22,13 +22,14 @@
   width: 100%;
 }
 .bonus-content {
-  margin-top: calc(60px + 2.5rem);
+
   max-width: calc(1200px);
   width: 100%;
   margin-bottom: 2rem;
+    margin-top:2rem ;
   background-color: var(--card-bg);
   border-radius: 12px;
-  padding: 20px;
+  padding: 0 3vw 2rem 3vw;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .bonus-inner {
@@ -62,7 +63,7 @@
 
 .bonus-content {
   max-width: 1200px;
-  margin-top: 80px;
+
   width: 100%;
 }
 
@@ -88,11 +89,11 @@
 }
 
 .bonuspromo {
-  max-width: 1542px;
-  height: 72px;
 
+  height: 72px;
+width: 100%;
   border-radius: 8px;
-  padding: 16px;
+  padding: 16px 0;
 
   display: flex;
   align-items: center;
@@ -106,7 +107,7 @@
   flex-direction: row;
   align-items: center;
   gap: 14px;
-  width: 763px;
+  width: 100%;
 }
 
 .bonuspromo input#promoCode {

@@ -1,5 +1,35 @@
+body {
+  background: #1a2c38;
+  color: rgb(177, 186, 211);
+  cursor: default;
+  font-size: 0.875rem;
+  font-family: 'proxima-nova', sans-serif;
+}
+html,
+body {
+  /* Убедимся, что прокрутка включена */
+  overflow-y: auto;
+  /* Для Firefox */
+  scrollbar-width: none;
+}
+
+/* Для WebKit-браузеров (Chrome, Safari, Edge) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+/* Для IE и Edge (старые версии) */
+html,
+body {
+  -ms-overflow-style: none;
+}
 .main-container {
-  margin-top: 40px;
+  box-sizing: content-box;
+  overflow-x: hidden;
+  height: 100vh;
+  margin-top: 60px;
   margin-left: 240px;
 }
 .sidebar .main-container {
@@ -58,6 +88,7 @@
   display: flex;
   justify-content: space-between;
   height: 44px;
+  position: relative;
 }
 .balance_Container {
   display: flex;
@@ -213,9 +244,12 @@
 }
 
 .header_RightBlock {
-  display: flex;
+  padding: 0;
+  gap: 0;
   align-items: center;
-  height: 40px;
+  justify-content: flex-end;
+  grid-auto-flow: column;
+  display: grid;
 }
 
 .a_dropdown {
@@ -375,3 +409,266 @@
     margin-right: 10px;
   }
 }
+.header-search {
+  max-width: 1200px;
+  position: absolute;
+  width: calc(100% - 6px);
+  top: calc(60px + 0.75rem);
+  height: 100%;
+  display: none;
+}
+.header-search.is-open {
+  display: block;
+}
+.header-anchor {
+  padding-block: 0.8125rem;
+  padding-inline: 1rem;
+  border-radius: 0.25rem;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+  background-color: transparent;
+  line-height: 1;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.header-dropdown {
+}
+
+/* SVG button styling */
+.header-dropdown .dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: #1b2338;
+  /* Match header_NavButton background */
+  border: 1px solid rgba(111, 125, 157, 0.18);
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.header-dropdown .dropdown-toggle:hover {
+  background-color: #2a3a5a;
+  /* Match header_NavButton hover */
+}
+
+/* Dropdown menu styling */
+.header-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1b2338;
+  border: 1px solid rgba(111, 125, 157, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+/* Show dropdown when active */
+.header-dropdown .dropdown-menu.active {
+  display: block;
+}
+
+/* Style for dropdown items (matching header_NavButton) */
+.header-dropdown .dropdown-item {
+  display: block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.header-dropdown .dropdown-item:hover {
+  background-color: #2a3a5a;
+}
+.balance-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.balance-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* Currency dropdown */
+.balance-coin-toggle {
+  position: relative;
+}
+
+.balance-currency-view {
+  display: flex;
+  align-items: center;
+}
+
+.balance-dropdown {
+  position: relative;
+}
+
+.balance-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.8125rem 1rem;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0f212e;
+  border: 1px solid rgba(111, 125, 157, 0.18);
+  border-radius: 0.25rem 0 0 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.balance-dropdown-button:hover {
+  background-color: rgb(7, 24, 36);
+}
+
+.balance-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1b2338;
+  border: 1px solid rgba(111, 125, 157, 0.18);
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.balance-dropdown-menu.active {
+  display: block;
+}
+
+.balance-dropdown-item {
+  display: block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.balance-dropdown-item:hover {
+  background-color: #2a3a5a;
+}
+
+.balance-currency-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+}
+
+.balance-dropdown-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Wallet button */
+.balance-wallet-button {
+  padding: 0.8125rem 1rem;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #1475e1;
+  border: 1px solid rgba(111, 125, 157, 0.18);
+  border-radius: 0 0.25rem 0.25rem 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.balance-wallet-button:hover {
+  background-color: rgb(16, 94, 180);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .balance-dropdown-menu {
+    min-width: 120px;
+    left: auto;
+    right: 0;
+  }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-dropdown .dropdown-menu {
+    min-width: 120px;
+    left: auto;
+    right: 0;
+    /* Align to right on smaller screens */
+  }
+}
+.game {
+  padding: 0 3vw;
+  width: 100%;
+  min-height: 100vh;
+  /* Full viewport height to allow vertical centering */
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  flex-direction: column;
+  /* Stack iframe and button vertically */
+  gap: 10px;
+  /* Space between iframe and button */
+}
+
+.game-iframe {
+  width: 100%;
+  /* 80% of viewport width */
+  height: 80vh;
+  /* 80% of viewport height */
+  max-width: 1200px;
+  /* Maximum width to prevent overly large iframes */
+  max-height: 800px;
+  /* Maximum height for consistency */
+  border: none;
+  border-radius: 8px;
+  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+}
+
+.fullscreen-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #1b2338;
+  border: 1px solid rgba(111, 125, 157, 0.18);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.fullscreen-button:hover {
+  background-color: #2a3a5a;
+}
+
+.other-content {
+  padding: 0 3vw;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.other-content-inner {
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Responsive adjustments */

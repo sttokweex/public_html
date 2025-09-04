@@ -1,7 +1,71 @@
-<?
+<?php
 if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
+$ppResponse = @file_get_contents('http://localhost:8940/game_list.do');
+$ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
+$ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
+$games =  $ppGames;
+
+if (empty($bets)) {
+  $bets = [];
+  for ($i = 0; $i < 15; $i++) {
+    $game = $games[array_rand($games)];
+    $betAmount = mt_rand(100, 5000000) / 100; // Random between $1 and $5,000
+    $multiplier = mt_rand(0, 5000) / 100; // Random between 1.00 and 5.00
+    $payout = $betAmount * $multiplier; // Random win or loss
+    $bets[] = [
+      'id' => uniqid(),
+      'game' => $game['g_title'],
+      'user' => 'Скрытый',
+      'time' => date('H:i', strtotime('+' . mt_rand(0, 59) . ' minutes')),
+      'bet_amount' => '$' . number_format($betAmount, 2),
+      'multiplier' => number_format($multiplier, 2),
+      'payout' => ($payout < 0 ? '-' : '') . '$' . number_format(abs($payout), 2)
+    ];
+  }
+} else {
+  // For existing bets, randomize game and recalculate payout
+  foreach ($bets as &$bet) {
+    $bet['game'] = $games[array_rand($games)];
+    // Extract numeric value from bet_amount
+    $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
+    $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
+    $payout = mt_rand(0, 1) ? $betAmount * $multiplier : -$betAmount * $multiplier;
+    $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
+  }
+  unset($bet); // Break reference
+}
+
+// помечаем источник, чтобы на клике знать какой auth дергать
+foreach ($ppGames as &$game) {
+  $game['__source'] = 'PP';
+  // Устанавливаем vendorid, если его нет, например 'pragmatic'
+  if (!isset($game['vendorid'])) {
+    $game['vendorid'] = 'Pragmatic play';
+  }
+}
+
+unset($game);
+
+$games = $ppGames;
+if (!is_array($games)) {
+  $games = []; // Если API не вернул данные, используем пустой массив
+}
+
+// Для отладки: проверить содержимое сессии
+// Раскомментируйте для проверки
+// var_dump($_SESSION); die();
+require_once __DIR__ . '/search.php';
+$currency_svg = '<svg fill="none" viewBox="0 0 96 96" class="svg-icon">
+    <path fill="#FFC800" d="M48 96c26.51 0 48-21.49 48-48S74.51 0 48 0 0 21.49 0 48s21.49 48 48 48"></path>
+    <path fill="#473800" d="M48.158 21.922c10.16 0 16.56 4.92 20.32 10.72l-8.68 4.72c-2.28-3.44-6.48-6.16-11.64-6.16-8.88 0-15.36 6.84-15.36 16.12s6.48 16.12 15.36 16.12c4.48 0 8.44-1.84 10.6-3.76v-5.96h-13.08v-8.96h23.4v18.76c-5 5.6-12 9.28-20.88 9.28-14.32 0-26.12-10-26.12-25.44s11.76-25.36 26.12-25.36z"></path>
+</svg>';
+
+$dropdown_svg = '<svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon">
+    <path d="M32.274 49.762 9.204 26.69l6.928-6.93 16.145 16.145L48.42 19.762l6.93 6.929-23.072 23.07z"></path>
+</svg>';
+
 $sampleMessages = [
   ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
   ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
@@ -23,169 +87,207 @@ $sampleMessages = [
   ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
   ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
   ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+  ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+  ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+  ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
+  ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
+  // ... остальные сообщения ...
 ];
-if (isset($_SESSION['lang'])) {
-  $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-  $lang = $_COOKIE['lang'];
-} else {
-  $lang = 'en';
-}
+
+// Определение языка
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : (isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'en');
 $allowed = ['en', 'es', 'ru'];
 if (!in_array($lang, $allowed, true)) {
   $lang = 'en';
 }
 
-// подключаем файл перевода
-$path = dirname(__DIR__) . "/lang/{$lang}.php";
-if (is_file($path)) {
-  $translations = require $path;
-} else {
-  // страховка: если файла нет — грузим en
-  $translations = require dirname(__DIR__) . "/lang/en.php";
-}
 
-$refer = $_GET['i'] || '';
-if ($refer != '') {
+// Подключение файла перевода
+$path = dirname(__DIR__, 1) . "/lang/{$lang}.php";
+$translations = is_file($path) ? require $path : require dirname(__DIR__, 1) . "/lang/en.php";
+
+// Проверка реферального параметра
+$refer = isset($_GET['i']) ? $_GET['i'] : '';
+if ($refer !== '') {
   $_SESSION['ref'] = $refer;
+  session_write_close(); // Сохранить данные сессии перед редиректом
   header('Location: /');
+  exit;
 }
-$sid = $_SESSION['hash'];
-$select = "SELECT * FROM users WHERE hash = '$sid'";
-$result = mysqli_query($connection, $select);
-$get = mysqli_fetch_array($result);
-if ($get) {
-  $login = $get['login'];
-  $wager = $get['wager'];
-  $star_limit = $get['star_limit'];
-  $balance = round($get['balance'], 2);
-  $id = $get['id'];
-  $social_link = $get['social'];
-  $is_admin = $get['admin'];
-  $is_ban = $get['ban'];
-  $img = $get['img'];
-  $usersRef = $get['refs'];
-  $refearn = $get['refearn'];
-  $refuser = $get['ref_id'];
-  $data_reg = $get['data_reg'];
-  $rakeback = $get['rakeback'];
-  $cashback = $get['cashback'];
-  $total_send = $get['total_send'];
-  $total_rakeback = $get['total_rakeback'];
-  $total_cashback = $get['total_cashback'];
-  $total_promo = $get['total_promo'];
-  $birthday = $get['birthday'];
-  $birth_bon = $get['birth_bon'];
-  $real_name = $get['name'];
-  $real_surname = $get['surname'];
-  $real_country = $get['country'];
-  $real_town = $get['town'];
-  $real_email = $get['email'];
-  $real_telephone = $get['telephone'];
-  $lock_save = $get['lock_save'];
 
-  $tgid = $get['tg_id'];
+// Проверка соединения с базой данных
+if (!isset($connection) || !$connection) {
+  die("Ошибка соединения с базой данных: " . mysqli_connect_error());
+}
 
-  $ref_deps = $get['ref_deps'];
-  $ref_deps_sum = $get['ref_deps_sum'];
-}
-$getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE hash_user='$sid' AND status='1'";
-$getDepsForLevel2 = mysqli_query($connection, $getDepsForLevel);
-$leveldeposits = mysqli_fetch_array($getDepsForLevel2);
-$depositesSID = $leveldeposits['SUM(amount)'];
+// Проверка сессии
+$sid = isset($_SESSION['hash']) ? $_SESSION['hash'] : '';
+$login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
 
-if ($depositesSID < 2000) { /* starter rank */
-  $cashback_rankt = '0'; /* 0% cashback*/
-  $rakeback_rank = "0.1"; /* 0.1% rakeback*/
-  $bonusdr = 0; /* 0 монет */
+if ($sid) {
+  // Используем подготовленные выражения для защиты от SQL-инъекций
+  $select = "SELECT * FROM users WHERE hash = ?";
+  $stmt = $connection->prepare($select);
+  $stmt->bind_param("s", $sid);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $get = $result->fetch_assoc();
+
+  if ($get) {
+    $login = $get['login'] ?? '';
+    $wager = $get['wager'] ?? 0;
+    $star_limit = $get['star_limit'] ?? 0;
+    $balance = isset($get['balance']) ? round($get['balance'], 2) : 0;
+    $id = $get['id'] ?? 0;
+    $social_link = $get['social'] ?? '';
+    $is_admin = $get['admin'] ?? 0;
+    $is_ban = $get['ban'] ?? 0;
+    $img = $get['img'] ?? '';
+    $usersRef = $get['refs'] ?? 0;
+    $refearn = $get['refearn'] ?? 0;
+    $refuser = $get['ref_id'] ?? 0;
+    $data_reg = $get['data_reg'] ?? '';
+    $rakeback = $get['rakeback'] ?? 0;
+    $cashback = $get['cashback'] ?? 0;
+    $total_send = $get['total_send'] ?? 0;
+    $total_rakeback = $get['total_rakeback'] ?? 0;
+    $total_cashback = $get['total_cashback'] ?? 0;
+    $total_promo = $get['total_promo'] ?? 0;
+    $birthday = $get['birthday'] ?? '';
+    $birth_bon = $get['birth_bon'] ?? 0;
+    $real_name = $get['name'] ?? '';
+    $real_surname = $get['surname'] ?? '';
+    $real_country = $get['country'] ?? '';
+    $real_town = $get['town'] ?? '';
+    $real_email = $get['email'] ?? '';
+    $real_telephone = $get['telephone'] ?? '';
+    $lock_save = $get['lock_save'] ?? 0;
+    $tgid = $get['tg_id'] ?? '';
+    $ref_deps = $get['ref_deps'] ?? 0;
+    $ref_deps_sum = $get['ref_deps_sum'] ?? 0;
+  } else {
+    // Значения по умолчанию, если пользователь не найден
+    $login = '';
+    $wager = 0;
+    $star_limit = 0;
+    $balance = 0;
+    $id = 0;
+    $social_link = '';
+    $is_admin = 0;
+    $is_ban = 0;
+    $img = '';
+    $usersRef = 0;
+    $refearn = 0;
+    $refuser = 0;
+    $data_reg = '';
+    $rakeback = 0;
+    $cashback = 0;
+    $total_send = 0;
+    $total_rakeback = 0;
+    $total_cashback = 0;
+    $total_promo = 0;
+    $birthday = '';
+    $birth_bon = 0;
+    $real_name = '';
+    $real_surname = '';
+    $real_country = '';
+    $real_town = '';
+    $real_email = '';
+    $real_telephone = '';
+    $lock_save = 0;
+    $tgid = '';
+    $ref_deps = 0;
+    $ref_deps_sum = 0;
+  }
 }
-if ($depositesSID >= 10000) { /* silver rank */
-  $cashback_rankt = '3'; /* 3% cashback*/
-  $rakeback_rank = "0.2"; /* 0.2% rakeback*/
-  $bonusdr = 0; /* 0 монет */
+
+// Проверка депозитов
+$depositesSID = 0;
+if ($sid) {
+  $getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE hash_user = ?";
+  $stmt = $connection->prepare($getDepsForLevel);
+  $stmt->bind_param("s", $sid);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $leveldeposits = $result->fetch_assoc();
+  $depositesSID = $leveldeposits['SUM(amount)'] ?? 0;
 }
-if ($depositesSID >= 50000) { /* gold rank */
-  $cashback_rankt = '5'; /* 5% cashback*/
-  $rakeback_rank = "0.3"; /* 0.3% rakeback*/
-  $bonusdr = 500; /* 250 монет */
+
+// Установка рангов
+if ($depositesSID < 2000) {
+  $cashback_rankt = '0';
+  $rakeback_rank = "0.1";
+  $bonusdr = 0;
+} elseif ($depositesSID >= 10000) {
+  $cashback_rankt = '3';
+  $rakeback_rank = "0.2";
+  $bonusdr = 0;
+} elseif ($depositesSID >= 50000) {
+  $cashback_rankt = '5';
+  $rakeback_rank = "0.3";
+  $bonusdr = 500;
+} elseif ($depositesSID >= 100000) {
+  $cashback_rankt = '7';
+  $rakeback_rank = "0.4";
+  $bonusdr = 1000;
+} elseif ($depositesSID >= 500000) {
+  $cashback_rankt = '10';
+  $rakeback_rank = "0.5";
+  $bonusdr = 5000;
 }
-if ($depositesSID >= 100000) { /* ruby rank */
-  $cashback_rankt = '7'; /* 7% cashback*/
-  $rakeback_rank = "0.4"; /* 0.4% rakeback*/
-  $bonusdr = 1000; /* 500 монет */
-}
-if ($depositesSID >= 500000) { /* legend rank */
-  $cashback_rankt = '10'; /* 10% cashback*/
-  $rakeback_rank = "0.5"; /* 0.5% rakeback*/
-  $bonusdr = 5000; /* 1000 монет */
-}
-$wager = round($wager, 2);
-if ($is_ban == 1) {
+
+$wager = isset($wager) ? round($wager, 2) : 0;
+
+if (isset($is_ban) && $is_ban == 1) {
   header('Location: /ban');
+  exit;
 }
-//if($is_teh == 1){header('Location: /teh');}
 
-if ($is_teh == 1 and $is_admin == 0) {
+$is_teh = isset($is_teh) ? $is_teh : 0;
+if ($is_teh == 1 && $is_admin == 0) {
   header('Location: /teh');
   exit;
 }
 
 $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
 ?>
 
+<!-- HTML-код -->
 <html lang="<?= htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') ?>">
 
 <head>
-  <!-- TikTok Pixel Code Start -->
-
-  <!-- TikTok Pixel Code End -->
   <meta charset="utf-8">
   <meta name="author" content="termus">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../images/logo-mob.svg" type="image/png">
-  <meta name="description" content="<?= $sitename ?> - Split!">
+  <meta name="description" content="<?= htmlspecialchars($sitename) ?> - Split!">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- CSS -->
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-
-  <!-- End CSS -->
-  <!-- Scripts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/toastr.css" crossorigin="anonymous" />
+  <link href="/css/livefeed.css" rel="stylesheet">
+  <link href="/css/header.css" rel="stylesheet">
+  <link href="/css/index.css" rel="stylesheet">
+  <link href="/css/chat.css" rel="stylesheet">
+  <link href="/css/game_materials.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/slider.css">
+  <link href="/css/footer.css" rel="stylesheet">
+  <link href="/css/sidebar.css" rel="stylesheet">
+  <link href="/css/gameInfo.css" rel="stylesheet">
+  <link href="/css/search.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/jquery.dataTables.min.css" />
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="/js/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" crossorigin="anonymous"></script>
-  <!-- End Scripts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="/js/toastr.min.js" crossorigin="anonymous"></script>
   <script src="/js/custom.js?v=43" crossorigin="anonymous"></script>
-
   <script src="/js/swiper-bundle.min.js" crossorigin="anonymous"></script>
-  <link href="/css/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/toastr.css" crossorigin="anonymous" />
-  <link href="/css/livefeed.css" rel="stylesheet">
-  <link href='/css/header.css' rel='stylesheet'>
-  <link href="/css/index.css" rel="stylesheet">
-  <link href="/css/chat.css" rel="stylesheet">
-  <link href="/css/game_materials.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/slider.css">
-  <link href='/css/footer.css' rel='stylesheet'>
-  <link href='/css/sidebar.css' rel='stylesheet'>
-  <link href='/css/gameInfo.css' rel='stylesheet'>
-  <link href='/css/search.css' rel='stylesheet'>
-
-
-
-  <link rel="stylesheet" href="/css/jquery.dataTables.min.css" />
-  <script type="text/javascript" src="/js/jquery.dataTables.min.js"> </script>
-
-
-
-  <title><?= strtoupper($sitename); ?> - Split !</title>
-
-
+  <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
+  <title><?= strtoupper($sitename); ?> - Split!</title>
 </head>
 <style>
   .loader {
@@ -209,18 +311,19 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       transform: rotate(3turn);
     }
   }
-
-  /* добавлено: стили селектора языка */
 </style>
-<input id="hashdeps" class="d-none" value="<?= $depositesSID ?>">
-<input id="hash_lock" class="d-none" value="<?= $lock_save ?>">
+
+
+<input id="hashdeps" class="d-none" value="<?= htmlspecialchars($depositesSID) ?>">
+<input id="hash_lock" class="d-none" value="<?= htmlspecialchars($lock_save) ?>">
 
 <!-- HEADER -->
-
 <div id="header" class="headerproject" style="user-select:none;">
+
   <div class="header-content">
+    <div class="header-search"><? renderSearch($games); ?></div>
     <div class="wrap normal" data-content="">
-      <a href="/" style>
+      <a href="/">
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="svelte-md2ju7">
           <g id="Layer_5">
             <path fill="currentColor" d="M31.47,58.5c-.1-25.81,16.42-40.13,46.75-40.23,21.82-.08,25.72,14.2,25.72,19.39,0,9.94-14.06,20.48-14.06,20.48,0,0,.78,6.19,12.85,6.14,12.07-.05,23.83-8.02,23.76-27.96-.06-22.91-24.06-33.38-47.78-33.29C58.87,3.09,6.24,5.88,6.42,58.13c.18,46.41,87.76,50.5,87.83,80.21.12,32.27-36.08,40.96-48.33,40.96s-17.23-8.67-17.25-13.43c-.09-26.13,25.92-33.41,25.92-33.41,0-1.95-1.52-10.64-11.59-10.6-25.95.05-36.28,22.36-36.21,44.14.07,18.53,13.16,30.09,32.94,30.01,37.82-.14,80.46-18.59,80.3-59.56-.14-38.32-88.46-48.33-88.57-77.96Z"></path>
@@ -230,114 +333,157 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         </svg>
       </a>
     </div>
-    <!-- <a class="site_logo_wrapper" href="/">
-<img alt="<?= $sitename ?>" width="40" height="40" src="/images/logo-mob.svg">
-<span class="hideonmob"><?= $sitename ?></span> -->
-    </a>
+    <div class="balance-container">
+      <div class="balance-toggle">
+        <div class="balance-coin-toggle">
+          <div class="balance-currency-view">
+            <div class="balance-dropdown">
+              <button type="button" class="balance-dropdown-button" aria-label="Open Dropdown">
+                <span class=" balance-currency">
+                  <span class="balance-balance"><?php echo htmlspecialchars($balance); ?></span>
+                  <span class="balance-currency-name">
 
-
-
+                    <?php echo $currency_svg; ?>
+                  </span>
+                </span>
+                <?php echo $dropdown_svg; ?>
+              </button>
+              <div class="balance-dropdown-menu">
+                <!-- Populate with currencies from users table or config -->
+                <a href="?currency=gold" class="balance-dropdown-item">Gold</a>
+                <a href="?currency=USD" class="balance-dropdown-item">USD</a>
+                <a href="?currency=RUB" class="balance-dropdown-item">RUB</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="balance-wallet-button"><?php echo isset($translations['wallet']) ? htmlspecialchars($translations['wallet']) : 'Кошелек'; ?></button>
+      </div>
+    </div>
     <div class="header_Navigation">
       <?php $currentLang = in_array($lang, ['en', 'es', 'ru'], true) ? $lang : 'en'; ?>
-      <!-- <div class="lang-switch">
-  <select id="langSelect" aria-label="Language">
-    <option value="en" <?= $currentLang === 'en' ? 'selected' : '' ?>>EN</option>
-    <option value="es" <?= $currentLang === 'es' ? 'selected' : '' ?>>ES</option>
-    <option value="ru" <?= $currentLang === 'ru' ? 'selected' : '' ?>>RU</option>
-  </select>
-</div> -->
-
-      <?php if (!$_SESSION['login']) { ?>
-
-      <? } else { ?>
-        <a id="gamesBox" href="/slot" type="button" class="header_NavButton"><?= $translations['games'] ?></a>
-        <a id="bonusBox" href="/bonus" type="button" class="header_NavButton"><?= $translations['bonus'] ?></a>
-        <a id="refsBox" href="/referals" type="button" class="header_NavButton"><?= $translations['referals'] ?></a>
-
-        <a id="supportBox" href="https://t.me/splitsupports" type="button" class="header_NavButton"><?= $translations['support'] ?></a>
-        <a id="ranksBox" href="/ranks" type="button" class="header_NavButton"><?= $translations['ranks'] ?> <span class="d-none newhbadge"><?= $translations['new'] ?>!</span> </a>
-        <? if ($is_admin == 1) { ?>
-          <a href="/admin" type="button" class="header_NavButton"><?= $translations['admin_panel'] ?></a>
-        <? } ?>
-      <? } ?>
-    </div>
-
-    <?php if (!$_SESSION['login']) { ?>
-
-
-
-      <div class="balance_Container">
-        <div class="auth-buttons">
-          <button id="auth-button" type="button" onClick="$('#authorization').modal('show');" class="login_Button font-semibold"><?= $translations['login'] ?></button>
-          <button id="auth-button" type="button" onClick="$('#authorization').modal('show');" class="register_Button font-semibold"><?= $translations['register'] ?></button>
+      <?php if (!isset($_SESSION['login']) || !$_SESSION['login']) { ?>
+        <div class="balance_Container">
+          <div class="auth-buttons">
+            <button id="auth-button" type="button" onClick="$('#authorization').modal('show');" class="login_Button font-semibold"><?= $translations['login'] ?></button>
+            <button id="auth-button" type="button" onClick="$('#registration').modal('show');" class="register_Button font-semibold"><?= $translations['register'] ?></button>
+          </div>
         </div>
-        <!--
-    <button id="auth-button" style="display: none;padding: 12px" class="buttonProject" onclick="Telegram.WebApp.openTelegramLink('https://t.me/splitcazbot?start=webapp')">
-      Авторизация
-    </button>
--->
-      </div>
-  </div>
-</div>
-<? } else { ?>
-  <div class="header_RightBlock">
+      <?php } else { ?>
 
-    <div class="balwrapper">
-      <div class="balblock">
-        <!--
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="sign">
-			<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0004 21.6C17.3023 21.6 21.6004 17.3019 21.6004 12C21.6004 6.69806 17.3023 2.39999 12.0004 2.39999C6.69846 2.39999 2.40039 6.69806 2.40039 12C2.40039 17.3019 6.69846 21.6 12.0004 21.6ZM10.6295 6.73792C10.2318 6.73792 9.90949 7.06027 9.90949 7.45792V11.7082H8.76562C8.36798 11.7082 8.04562 12.0306 8.04562 12.4282C8.04562 12.8259 8.36798 13.1482 8.76562 13.1482H9.90949В14.1934H8.76562C8.36798 14.1934 8.04562 14.5157 8.04562 14.9134C8.04562 15.311 8.36798 15.6334 8.76562 15.6334H9.90949В17.3842C9.90949 17.7819 10.2318 18.1042 10.6295 18.1042C11.0271 18.1042 11.3495 17.7819 11.3495 17.3842В15.6334H13.7359C14.1336 15.6334 14.4559 15.311 14.4559 14.9134C14.4559 14.5157 14.1336 14.1934 13.7359 14.1934H11.3495В13.1482H13.7359C14.586 13.1482 15.4012 12.8105 16.0023 12.2095C16.6034 11.6084 16.9411 10.7931 16.9411 9.94307C16.9411 9.09301 16.6034 8.27777 16.0023 7.67668C15.4012 7.0756 14.586 6.73792 13.7359 6.73792H10.6295ZM13.7359 11.7082H11.3495В8.17792H13.7359C14.2041 8.17792 14.6531 8.36389 14.9841 8.69492C15.3151 9.02595 15.5011 9.47492 15.5011 9.94307C15.5011 10.4112 15.3151 10.8602 14.9841 11.1912C14.6531 11.5223 14.2041 11.7082 13.7359 11.7082Z" fill="#F5A60B"></path>
-		</svg>
--->
-        <div class="" style="border-radius:50%;background: #f5aa1c;color: #000;padding: 5px 8px 5px 8px;font-weight: bold;">$</div>
 
-        <span class="odometer" id="userBalance" myBalance="<?= $balance; ?>"><?= $balance; ?></span>
-        <img src="/images/arrow-down.svg">
-      </div>
+        <div class="header_RightBlock">
+          <button class=" header-anchor open-search">
+            <!-- SVG icon for toggle (hamburger menu style) -->
+            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style=""><!---->
+              <title></title>
+              <path d="M63.999 56.219 56.217 64 38.55 46.328a28 28 0 0 0 7.777-7.777zM23.1 0a23.1 23.1 0 1 1-.003 46.2A23.1 23.1 0 0 1 23.1 0m5.317 10.258a13.9 13.9 0 0 0-8.032-.79 13.9 13.9 0 0 0-7.117 3.802 13.9 13.9 0 0 0-3.8 7.117 13.9 13.9 0 0 0 .789 8.031 13.903 13.903 0 0 0 22.672 4.512 13.9 13.9 0 0 0-4.512-22.672"></path><!---->
+            </svg>
+            <span>Найти</span>
+          </button>
+          <button class="header-dropdown header-anchor">
+            <!-- SVG icon for toggle (hamburger menu style) -->
+            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
+              <title></title>
+              <path d="M50.84 38.191A19.84 19.84 0 0 1 64 56.86V64H0v-7.14a19.84 19.84 0 0 1 13.16-18.67 26.6 26.6 0 0 0 8.645 5.778A26.6 26.6 0 0 0 32 46a26.6 26.6 0 0 0 10.195-2.031 26.6 26.6 0 0 0 8.645-5.778M32 0a19.62 19.62 0 0 1 18.137 12.117 19.632 19.632 0 0 1-21.965 26.766A19.635 19.635 0 0 1 12.746 23.46 19.63 19.63 0 0 1 32 0"></path><!---->
+            </svg>
+            <!-- Dropdown menu -->
+            <div class="dropdown-menu">
+              <a id="gamesBox" href="/slot" class="dropdown-item">Игры</a>
+              <a id="bonusBox" href="/bonus" class="dropdown-item">Бонус</a>
+              <a id="refsBox" href="/referals" class="dropdown-item">Рефералы</a>
+              <a id="supportBox" href="https://t.me/splitsupports" class="dropdown-item">Поддержка</a>
+              <a id="ranksBox" href="/ranks" class="dropdown-item">Ранги</a>
+              <a id="ranksBox" href="/profile" class="dropdown-item">Профиль</a>
 
-      <button class="buttonProject" onClick="location.href='/wallet'"><i class="fa fa-wallet" aria-hidden="true"></i></button>
 
+              <?php if ($is_admin == 1) { ?>
+                <a href="/admin" type="button" class="dropdown-item"><?= $translations['admin_panel'] ?></a>
+              <?php } ?>
+            </div>
+          </button>
+          <button class=" header-anchor header-chat-close">
+            <!-- SVG icon for toggle (hamburger menu style) -->
+            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
+              <title></title>
+              <path d="M32 1.914c-.288-.01-.628-.016-.97-.016C14.254 1.898.586 15.204.002 31.838L0 31.892a28.66 28.66 0 0 0 7.476 19.256l-.02-.024c-.688 4.028-1.89 7.636-3.552 10.974l.102-.228c4.634-.396 8.878-1.73 12.654-3.81l-.164.082c4.474 2.35 9.774 3.728 15.398 3.728h.112H32c.3.01.654.016 1.008.016 16.768 0 30.428-13.31 30.99-29.942l.002-.052C63.414 15.204 49.746 1.9 32.97 1.9q-.512 0-1.018.016l.05-.002zM16.138 37.602a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896m15.862 0a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896m15.862 0a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896"></path><!---->
+            </svg>
+          </button>
+
+        </div>
+      <?php } ?>
     </div>
-
-    <div class="userPicture">
-      <img onClick="location.href='/profile'" class="user" src="<?= $img ?>">
-      <img onClick="location.href='/ranks'" id="userRankImg" class="ranked" src="/images/ranks/starter.png">
-    </div>
-
   </div>
-<? } ?>
+
 </div>
 
-<?php if (!$_SESSION['login']) { ?>
-
-<? } ?>
 
 <script>
   if (location.pathname == "/slot") {
-    document.getElementById('gamesBox').className += ' activeBox'
+    document.getElementById('gamesBox').className += ' activeBox';
   }
   if (location.pathname == "/bonus") {
-    document.getElementById('bonusBox').className += ' activeBox'
+    document.getElementById('bonusBox').className += ' activeBox';
   }
   if (location.pathname == "/referals") {
-    document.getElementById('refsBox').className += ' activeBox'
+    document.getElementById('refsBox').className += ' activeBox';
   }
-
-
   if (location.pathname == "/ranks") {
-    document.getElementById('ranksBox').className += ' activeBox'
+    document.getElementById('ranksBox').className += ' activeBox';
   }
 </script>
+<script>
+  $('.balance-dropdown-button').on('click', function(e) {
+    e.stopPropagation();
+    $('.balance-dropdown-menu').toggleClass('active');
+  });
 
-<!-- добавлено: обработчик селектора языка -->
+  // Close dropdown when clicking outside
+  $(document).on('click', function(e) {
+    if (!$(e.target).closest('.balance-dropdown').length) {
+      $('.balance-dropdown-menu').removeClass('active');
+    }
+  });
+
+  // Redirect to /wallet on wallet button click
+  $('.balance-wallet-button').on('click', function() {
+    window.location.href = '/wallet';
+  });
+  $('.header-chat-close').on('click', function() {
+    var $chat = $('.chat-container');
+    $chat.toggleClass('closed');
+    $('body').toggleClass('chat');
+  });
+  $('.open-search').on('click', function(e) {
+    e.stopPropagation();
+    var $search = $('.header-search');
+    $search.toggleClass('is-open');
+
+    $search.find('.home-input-wrap input').focus();
+
+
+  });
+  $('.header-dropdown').on('click', function(e) {
+    e.stopPropagation();
+    $('.dropdown-menu').toggleClass('active');
+  });
+
+  // Close dropdown when clicking outside
+  $(document).on('click', function(e) {
+    if (!$(e.target).closest('.header-dropdown').length) {
+      $('.dropdown-menu').removeClass('active');
+    }
+  });
+</script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var sel = document.getElementById('langSelect');
-    if (!sel) return;
-    sel.addEventListener('change', function() {
-      var lang = this.value;
-      window.location.href = '/language.php?lang=' + encodeURIComponent(lang);
-    });
+    if (sel) {
+      sel.addEventListener('change', function() {
+        var lang = this.value;
+        window.location.href = '/language.php?lang=' + encodeURIComponent(lang);
+      });
+    }
   });
 </script>
 
@@ -346,7 +492,6 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('register') === '1') {
       $('#authorization').modal('show');
-
       if (history.replaceState) {
         const newUrl = window.location.origin + window.location.pathname;
         history.replaceState(null, '', newUrl);
@@ -355,10 +500,4 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   });
 </script>
 
-
-</div>
-
-
-<?
-require("modal.php");
-?>
+<?php require("modal.php"); ?>

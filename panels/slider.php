@@ -56,7 +56,7 @@ background: radial-gradient(at 0 0,#94e7f7,#00000000 50%),radial-gradient(at 33%
               <div class="game-slider-stack">
                 <span class="game-slider-player-count">
                   <span class="game-slider-player-indicator"></span>
-                  <span>&nbsp;<span class="game-slider-player-number"><?php echo $game['players']; ?>123213</span> играющих</span>
+                  <span>&nbsp;<span class="game-slider-player-number">123213</span> играющих</span>
                 </span>
               </div>
             </div>

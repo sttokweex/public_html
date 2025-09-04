@@ -6,15 +6,43 @@ $uri = urldecode(
 
 // Проверяем, существует ли запрошенный файл или директория
 if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
-  return false; // Встроенный сервер обработает существующий файл (например, /referals/index.php)
+  return false; // Встроенный сервер обработает существующий файл (например, /css/style.css)
 }
 
 // Обработка корневого пути /
 if ($uri === '/' || $uri === '') {
   require_once __DIR__ . '/index.php'; // Перенаправляем на главную страницу
-} elseif (preg_match('#^/slot/.+#', $uri)) {
-  // Перенаправляем запросы /slot/* на slot_handler.php
-  require_once __DIR__ . '/slot/gameSlot.php'; // Укажите ваш PHP-файл для слотов
+} elseif (preg_match('#^/([^/]+)#', $uri, $matches)) {
+  // Проверяем, существует ли PHP-файл для первого сегмента URL
+  $segment = strtolower($matches[1]);
+  $fileName = $segment . '.php';
+  $filePath = __DIR__ . '/' . $fileName;
+  $subDirFilePath = __DIR__ . '/' . $segment . '/' . $fileName;
+
+  // Проверяем вложенные маршруты (например, /admin/userInfo)
+  if (preg_match('#^/([^/]+)/([^/]+)#', $uri, $nestedMatches)) {
+    $parentSegment = strtolower($nestedMatches[1]);
+    $childSegment = strtolower($nestedMatches[2]);
+    $nestedFilePath = __DIR__ . '/' . $parentSegment . '/' . $childSegment . '.php';
+    if (file_exists($nestedFilePath)) {
+      require_once $nestedFilePath;
+      exit;
+    }
+  }
+
+  // Проверяем корневой или поддиректорийный PHP-файл
+  if (file_exists($filePath)) {
+    require_once $filePath;
+  } elseif (file_exists($subDirFilePath)) {
+    require_once $subDirFilePath;
+  } elseif (preg_match('#^/slot/.+#', $uri)) {
+    // Специальная обработка для /slot/*
+    require_once __DIR__ . '/slot/gameSlot.php';
+  } else {
+    http_response_code(404);
+    echo "404 Not Found: $fileName does not exist";
+    exit;
+  }
 } else {
   // Для всех остальных случаев возвращаем 404
   http_response_code(404);

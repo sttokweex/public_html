@@ -19,12 +19,12 @@ $path = dirname(__DIR__) . "/lang/{$lang}.php";
 if (is_file($path)) {
     $translations = require $path;
 } else {
-    $translations = require dirname(__DIR__) . "/lang/en.php";
+    $translations = require dirname(__DIR__) . "/lang/ru.php";
 }
 
 header('Content-Type: application/json');
 
-require (dirname(__DIR__, 1) . "/system/config.php");
+require(dirname(__DIR__, 1) . "/system/config.php");
 
 $refid = $_SESSION['ref'] ?? ''; // Безопасное получение refid
 
@@ -100,9 +100,9 @@ if ($_POST['type'] == 'login') {
     $user_id = str_pad(mt_rand(1000, 9999999999), 10, '0', STR_PAD_LEFT);
 
     $new_user_query = "INSERT INTO users
-        (login, password, hash, ip, data_reg, balance, ref_id, user_id)
+        (login, password, hash, ip, data_reg, balance, ref_id, user_id,game_token)
         VALUES
-        ('$login', '$hashedPassword', '$new_user_hash', '$ip', '$date_reg', '$balance', '$refid_iduser', '$user_id')";
+        ('$login', '$hashedPassword', '$new_user_hash', '$ip', '$date_reg', '$balance', '$refid_iduser', '$user_id','qwe')";
     if (mysqli_query($connection, $new_user_query)) {
         // Получение ID нового пользователя
         $new_user_id = mysqli_insert_id($connection);
@@ -153,4 +153,3 @@ if ($_POST['type'] == 'login') {
 
 echo json_encode(['response' => 'error', 'message' => 'Invalid request type']);
 die();
-?>

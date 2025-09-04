@@ -23,7 +23,7 @@ if (is_file($path)) {
     $translations = require $path;
 } else {
     // страховка: если файла нет — грузим en
-    $translations = require __DIR__ . "/lang/en.php";
+    $translations = require __DIR__ . "/lang/ru.php";
 }
 
 $sid = $_SESSION['hash'];

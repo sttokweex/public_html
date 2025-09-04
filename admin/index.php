@@ -24,7 +24,7 @@ $is_tehSelect = 'selected';
 if($last_check == 1) {
 ?>
 
-<body>
+
 <link href="../admin/additionally/css.css" rel="stylesheet">
 <div class="container">
 
@@ -339,6 +339,5 @@ if($last_check == 1) {
 </div>
 
 
-</body>
-</html>
+
 <?php } else { header('Location: ../error404'); } ?>

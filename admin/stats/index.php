@@ -64,7 +64,7 @@ $status = '1';
 if($last_check == 1) {
 ?>
 
-<body>
+
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -129,6 +129,4 @@ if($last_check == 1) {
 </div>
 
 
-</body>
-</html>
 <?php } else { header('Location: ../error404'); } ?>

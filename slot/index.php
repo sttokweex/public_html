@@ -21,18 +21,18 @@ $path = __DIR__ . "/lang/{$lang}.php";
 if (is_file($path)) {
     $translations = require $path;
 } else {
-    $translations = require dirname(__DIR__, 1) . "/lang/en.php";
+    $translations = require dirname(__DIR__, 1) . "/lang/ru.php";
 }
 
 $requestUri = $_SERVER['REQUEST_URI'];
-require_once './panels/slider.php';
-require_once './panels/footer.php';
-require_once './faq/faq.php';
-require_once './panels/livefeed.php';
-require_once './panels/gameinfo.php';
-require_once './panels/search.php';
-require_once './panels/homeHeader.php';
-require_once './panels/chat.php';
+require_once '../panels/slider.php';
+require_once '../panels/footer.php';
+require_once '../faq/faq.php';
+require_once '../panels/livefeed.php';
+require_once '../panels/gameinfo.php';
+require_once '../panels/search.php';
+require_once '../panels/homeHeader.php';
+require_once '../panels/chat.php';
 
 if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
     require 'slot/api/getBalance.php';
@@ -59,13 +59,13 @@ if (strpos($requestUri, '/slot/api/RollbackTransaction') !== false) {
     exit;
 }
 
-require("system/config.php");
+require("../system/config.php");
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-require("panels/header.php");
-require("panels/sidebar.php");
-require("panels/mobile.php");
+require("../panels/header.php");
+require("../panels/sidebar.php");
+require("../panels/mobile.php");
 
 // Определяем SVG-переменные для баннеров и поиска (пустые)
 $dropdown_arrow_svg = '';
@@ -98,11 +98,11 @@ if (empty($bets)) {
 } else {
     // For existing bets, randomize game and recalculate payout
     foreach ($bets as &$bet) {
-        $bet['game'] = $games[array_rand($games)];
+        $bet['game'] = $games[array_rand($games)]['g_title'];
         // Extract numeric value from bet_amount
         $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
         $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
-        $payout = mt_rand(0, 1) ? $betAmount * $multiplier : -$betAmount * $multiplier;
+        $payout = $betAmount * $multiplier;
         $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
     }
     unset($bet); // Break reference
@@ -125,50 +125,36 @@ if (!is_array($games)) {
 }
 ?>
 
-?>
 
 
 
 
 
-<body>
-    <script type="text/javascript">
-        function historys() {
-            if (navigator.onLine == true) {
-                $("#livegames").load("index.php #livegames");
-            }
-        }
-        setInterval('historys()', 5000);
-    </script>
 
 
 
-    <div class="main-container" id="main-content">
-        <div class="home-page-content-inner">
 
-            <?php
-            renderHomeHeader();
-            renderSearch($games);
+<div class="main-container" id="main-content">
+    <div class="home-page-content-inner">
+
+        <?php
+        renderHomeHeader();
+        renderSearch($games);
+        ?>
+
+        <div class="home-container home-has-padding home-has-margin">
+
+            <?
+            renderChatComponent('Иван', $sampleMessages);
+            render_slider($games, false);
+            render_slider($games, true);
+            renderBetsTable($bets);
+            renderCasinoComponent();
+
             ?>
 
-            <div class="home-container home-has-padding home-has-margin">
-
-                <?
-                renderChatComponent('Иван', $sampleMessages);
-                render_slider($games, false);
-                render_slider($games, true);
-                renderBetsTable($bets);
-                renderCasinoComponent();
-
-                ?>
-
-            </div>
-
-            <?php render_footer($translations, 'Stake') ?>
         </div>
+
+        <?php render_footer($translations, 'Stake') ?>
     </div>
-
-
-</body>
-
-</html>
+</div>
