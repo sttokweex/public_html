@@ -1,28 +1,5 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
 
-if (isset($_SESSION['lang'])) {
-    $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-    $lang = $_COOKIE['lang'];
-} else {
-    $lang = 'en';
-}
-$allowed = ['en', 'es', 'ru'];
-if (!in_array($lang, $allowed, true)) {
-    $lang = 'en';
-}
-
-// подключаем файл перевода
-$path = (dirname(__DIR__) . "/lang/{$lang}.php");
-if (is_file($path)) {
-    $translations = require $path;
-} else {
-    // страховка: если файла нет — грузим en
-    $translations = require(dirname(__DIR__) . "/lang/ru.php");
-}
 ?>
 
 <link rel="stylesheet" href="/css/game_materials.css" crossorigin="anonymous" />
@@ -34,8 +11,8 @@ if (is_file($path)) {
     .tginputs {
         outline: none;
         border-radius: 8px;
-        background: var(--main-background);
-        color: var(--main-color-hight);
+        background: rgb(15, 33, 46);
+        color: white;
         padding: 10px;
         padding-left: 15px;
         padding-right: 15px;
@@ -223,12 +200,9 @@ function copyClick() {
 <div class="modal fade" id="authorization" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <button class="closemodalBtn" type="button" data-dismiss="modal" aria-label="Close"><img src="../images/modal/close.svg"></button>
+
             <div class="css-auth-main">
-                <div class="css-1pkuyyw site_logo_wrapper ">
-                    <img alt="<?= $sitename ?>" width="40" height="40" src="/images/logo-mob.svg">
-                    <span class="hideonmob"><?= $sitename ?></span>
-                </div>
+                <button class="closemodalBtn" type="button" data-dismiss="modal" aria-label="Close"><img src="../images/modal/close.svg"></button>
 
                 <p class="chakra-text css-1qb90e6"><?= $translations['sign_in'] ?></p>
                 <p class="chakra-text css-1qb90e6"></p>
@@ -297,11 +271,7 @@ function copyClick() {
         <div class="modal-content">
             <button class="closemodalBtn" type="button" data-dismiss="modal" aria-label="Close"><img src="../images/modal/close.svg"></button>
             <div class="css-auth-main">
-                <div class="css-1pkuyyw site_logo_wrapper ">
-                    <img alt="<?= $sitename ?>" width="40" height="40" src="/images/logo-mob.svg">
-                    <span class="hideonmob"><?= $sitename ?></span>
-                </div>
-
+                <button class="closemodalBtn" type="button" data-dismiss="modal" aria-label="Close"><img src="../images/modal/close.svg"></button>
                 <p class="chakra-text css-1qb90e6"><?= $translations['signup'] ?></p>
                 <p class="chakra-text css-1qb90e6"></p>
 

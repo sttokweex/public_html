@@ -4,26 +4,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if (isset($_SESSION['lang'])) {
-    $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-    $lang = $_COOKIE['lang'];
-} else {
-    $lang = 'en';
-}
-$allowed = ['en', 'es', 'ru'];
-if (!in_array($lang, $allowed, true)) {
-    $lang = 'en';
-}
-
-// подключаем файл перевода
-$path = dirname(__DIR__, 1) . "/lang/{$lang}.php";
-if (is_file($path)) {
-    $translations = require $path;
-} else {
-    // страховка: если файла нет — грузим en
-    $translations = require dirname(__DIR__, 1) . "/lang/ru.php";
-}
 
 if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
     header('Location: /');
@@ -33,7 +13,7 @@ if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
 require dirname(__DIR__, 1) . ("/panels/header.php");
 require dirname(__DIR__, 1) . ("/panels/sidebar.php");
 require dirname(__DIR__, 1) . ("/panels/chat.php");
-renderChatComponent('Иван', $sampleMessages);
+    renderChatComponent('Иван', $sampleMessages,$translations);
 require dirname(__DIR__, 1) . ("/panels/mobile.php");
 ?>
 <link href="/css/bonus.css" rel="stylesheet">

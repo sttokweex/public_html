@@ -3,26 +3,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if (isset($_SESSION['lang'])) {
-    $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-    $lang = $_COOKIE['lang'];
-} else {
-    $lang = 'en';
-}
-
-$allowed = ['en', 'es', 'ru'];
-if (!in_array($lang, $allowed, true)) {
-    $lang = 'en';
-}
-
-// Подключаем файл перевода
-$path = __DIR__ . "/lang/{$lang}.php";
-if (is_file($path)) {
-    $translations = require $path;
-} else {
-    $translations = require __DIR__ . "/lang/ru.php";
-}
 
 $requestUri = $_SERVER['REQUEST_URI'];
 require_once './panels/slider.php';
@@ -147,20 +127,22 @@ if (!is_array($games)) {
         <div class="home-page-content-inner">
 
             <?php
-            renderHomeHeader();
+
+            renderHomeHeader($translations, $login, $depositesSID);
+
 
             ?>
 
             <div class="home-container home-has-padding home-has-margin">
 
                 <?
-                renderSearch($games);
-                renderChatComponent('Иван', $sampleMessages);
-                render_slider($games, false);
-                render_slider($games, true);
-                renderBetsTable($bets);
+                renderSearch($games, $translations);
+                renderChatComponent('Иван', $sampleMessages, $translations);
+                render_slider($games, false, $translations);
+                render_slider($games, true, $translations);
+                renderBetsTable($bets, $translations);
                 render_faq($translations, 'Stake');
-                renderCasinoComponent();
+                renderCasinoComponent($translations);
 
                 ?>
 

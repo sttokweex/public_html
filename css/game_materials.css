@@ -327,7 +327,7 @@ align-items: center;
     display: flex;
     font-weight: 600;
     gap: 8px;
-    background: linear-gradient(84deg, #9c732b21, #191c23);
+  
     padding: 10px;
     border-radius: 10px;
     width: fit-content;

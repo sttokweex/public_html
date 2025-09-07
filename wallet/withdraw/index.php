@@ -4,26 +4,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
 
-if (isset($_SESSION['lang'])) {
-  $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-  $lang = $_COOKIE['lang'];
-} else {
-  $lang = 'en';
-}
-$allowed = ['en', 'es', 'ru'];
-if (!in_array($lang, $allowed, true)) {
-  $lang = 'en';
-}
-
-// подключаем файл перевода
-$path = dirname(__DIR__, 2) . "/lang/{$lang}.php";
-if (is_file($path)) {
-  $translations = require $path;
-} else {
-  // страховка: если файла нет — грузим en
-  $translations = require dirname(__DIR__, 2) . "/lang/ru.php";
-}
 
 if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
   header('Location: /');

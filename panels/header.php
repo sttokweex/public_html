@@ -2,6 +2,8 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
+// Определяем язык
+
 $ppResponse = @file_get_contents('http://localhost:8940/game_list.do');
 $ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
 $ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
@@ -56,6 +58,7 @@ if (!is_array($games)) {
 // Для отладки: проверить содержимое сессии
 // Раскомментируйте для проверки
 // var_dump($_SESSION); die();
+
 require_once __DIR__ . '/search.php';
 $currency_svg = '<svg fill="none" viewBox="0 0 96 96" class="svg-icon">
     <path fill="#FFC800" d="M48 96c26.51 0 48-21.49 48-48S74.51 0 48 0 0 21.49 0 48s21.49 48 48 48"></path>
@@ -94,17 +97,6 @@ $sampleMessages = [
   // ... остальные сообщения ...
 ];
 
-// Определение языка
-$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : (isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'en');
-$allowed = ['en', 'es', 'ru'];
-if (!in_array($lang, $allowed, true)) {
-  $lang = 'en';
-}
-
-
-// Подключение файла перевода
-$path = dirname(__DIR__, 1) . "/lang/{$lang}.php";
-$translations = is_file($path) ? require $path : require dirname(__DIR__, 1) . "/lang/en.php";
 
 // Проверка реферального параметра
 $refer = isset($_GET['i']) ? $_GET['i'] : '';
@@ -270,6 +262,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <link href="/css/livefeed.css" rel="stylesheet">
   <link href="/css/header.css" rel="stylesheet">
   <link href="/css/index.css" rel="stylesheet">
+  <link href="/css/modal.css" rel="stylesheet">
   <link href="/css/chat.css" rel="stylesheet">
   <link href="/css/game_materials.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/slider.css">
@@ -321,7 +314,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 <div id="header" class="headerproject" style="user-select:none;">
 
   <div class="header-content">
-    <div class="header-search"><? renderSearch($games); ?></div>
+    <div class="header-search"><? renderSearch($games, $translations); ?></div>
     <div class="wrap normal" data-content="">
       <a href="/">
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="svelte-md2ju7">
@@ -333,33 +326,35 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         </svg>
       </a>
     </div>
-    <div class="balance-container">
-      <div class="balance-toggle">
-        <div class="balance-coin-toggle">
-          <div class="balance-currency-view">
-            <div class="balance-dropdown">
-              <button type="button" class="balance-dropdown-button" aria-label="Open Dropdown">
-                <span class=" balance-currency">
-                  <span class="balance-balance"><?php echo htmlspecialchars($balance); ?></span>
-                  <span class="balance-currency-name">
+    <?php if (!(!isset($_SESSION['login']) || !$_SESSION['login'])) { ?>
+      <div class="balance-container">
+        <div class="balance-toggle">
+          <div class="balance-coin-toggle">
+            <div class="balance-currency-view">
+              <div class="balance-dropdown">
+                <button type="button" class="balance-dropdown-button" aria-label="Open Dropdown">
+                  <span class=" balance-currency">
+                    <span class="balance-balance"><?php echo htmlspecialchars($balance); ?></span>
+                    <span class="balance-currency-name">
 
-                    <?php echo $currency_svg; ?>
+                      <?php echo $currency_svg; ?>
+                    </span>
                   </span>
-                </span>
-                <?php echo $dropdown_svg; ?>
-              </button>
-              <div class="balance-dropdown-menu">
-                <!-- Populate with currencies from users table or config -->
-                <a href="?currency=gold" class="balance-dropdown-item">Gold</a>
-                <a href="?currency=USD" class="balance-dropdown-item">USD</a>
-                <a href="?currency=RUB" class="balance-dropdown-item">RUB</a>
+                  <?php echo $dropdown_svg; ?>
+                </button>
+                <div class="balance-dropdown-menu">
+                  <!-- Populate with currencies from users table or config -->
+                  <a href="?currency=gold" class="balance-dropdown-item">Gold</a>
+                  <a href="?currency=USD" class="balance-dropdown-item">USD</a>
+                  <a href="?currency=RUB" class="balance-dropdown-item">RUB</a>
+                </div>
               </div>
             </div>
           </div>
+          <button type="button" class="balance-wallet-button"><?php echo htmlspecialchars($translations['wallet']) ?></button>
         </div>
-        <button type="button" class="balance-wallet-button"><?php echo isset($translations['wallet']) ? htmlspecialchars($translations['wallet']) : 'Кошелек'; ?></button>
       </div>
-    </div>
+    <?php } ?>
     <div class="header_Navigation">
       <?php $currentLang = in_array($lang, ['en', 'es', 'ru'], true) ? $lang : 'en'; ?>
       <?php if (!isset($_SESSION['login']) || !$_SESSION['login']) { ?>
@@ -379,7 +374,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
               <title></title>
               <path d="M63.999 56.219 56.217 64 38.55 46.328a28 28 0 0 0 7.777-7.777zM23.1 0a23.1 23.1 0 1 1-.003 46.2A23.1 23.1 0 0 1 23.1 0m5.317 10.258a13.9 13.9 0 0 0-8.032-.79 13.9 13.9 0 0 0-7.117 3.802 13.9 13.9 0 0 0-3.8 7.117 13.9 13.9 0 0 0 .789 8.031 13.903 13.903 0 0 0 22.672 4.512 13.9 13.9 0 0 0-4.512-22.672"></path><!---->
             </svg>
-            <span>Найти</span>
+            <span><? echo $translations['find'] ?></span>
           </button>
           <button class="header-dropdown header-anchor">
             <!-- SVG icon for toggle (hamburger menu style) -->
@@ -389,12 +384,12 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             </svg>
             <!-- Dropdown menu -->
             <div class="dropdown-menu">
-              <a id="gamesBox" href="/slot" class="dropdown-item">Игры</a>
-              <a id="bonusBox" href="/bonus" class="dropdown-item">Бонус</a>
-              <a id="refsBox" href="/referals" class="dropdown-item">Рефералы</a>
-              <a id="supportBox" href="https://t.me/splitsupports" class="dropdown-item">Поддержка</a>
-              <a id="ranksBox" href="/ranks" class="dropdown-item">Ранги</a>
-              <a id="ranksBox" href="/profile" class="dropdown-item">Профиль</a>
+              <a id="gamesBox" href="/slot" class="dropdown-item"><? echo $translations['games'] ?></a>
+              <a id="bonusBox" href="/bonus" class="dropdown-item"><? echo $translations['bonus'] ?></a>
+              <a id="refsBox" href="/referals" class="dropdown-item"><? echo $translations['referals'] ?></a>
+              <a id="supportBox" href="https://t.me/splitsupports" class="dropdown-item"><? echo $translations['support'] ?></a>
+              <a id="ranksBox" href="/ranks" class="dropdown-item"><? echo $translations['ranks'] ?></a>
+              <a id="ranksBox" href="/profile" class="dropdown-item"><? echo $translations['profile'] ?></a>
 
 
               <?php if ($is_admin == 1) { ?>

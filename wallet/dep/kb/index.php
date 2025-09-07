@@ -3,26 +3,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if (isset($_SESSION['lang'])) {
-    $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-    $lang = $_COOKIE['lang'];
-} else {
-    $lang = 'en';
-}
-$allowed = ['en','es','ru'];
-if (!in_array($lang, $allowed, true)) {
-    $lang = 'en';
-}
-
-// подключаем файл перевода
-$path = dirname(dirname(__DIR__)) . "/lang/{$lang}.php";
-if (is_file($path)) {
-    $translations = require $path;
-} else {
-    // страховка: если файла нет — грузим en
-    $translations = require dirname(dirname(__DIR__)) . "/lang/ru.php";
-}
 
 function createInvoice($amount, $description, $apiToken) {
     $url = 'https://pay.crypt.bot/api/createInvoice';

@@ -122,13 +122,13 @@ if (!is_array($games)) {
     <div class="other-content">
         <div class="other-content-inner">
             <?php
-            render_slider($games, false);
-            renderBetsTable($bets);
+            render_slider($games, false, $translations);
+            renderBetsTable($bets, $translations);
             ?>
         </div>
     </div>
     <?php
-    renderChatComponent('Иван', $sampleMessages);
+       renderChatComponent('Иван', $sampleMessages,$translations);
     render_footer($translations, 'Stake');
     ?>
 </div>

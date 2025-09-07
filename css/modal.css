@@ -1,208 +1,266 @@
+/* Main container for authentication page */
 .css-auth-main {
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  background: transparent;
+  background: #1a2c38;
   position: relative;
   width: 100%;
-  padding: 32px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
+
+/* Secondary container for authentication */
 .css-9uezfc {
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  background: rgb(25, 32, 51);
-  box-shadow:
-    rgba(0, 0, 0, 0.01) 0px 32px 19px,
-    rgba(0, 0, 0, 0.02) 0px 14px 14px,
-    rgba(0, 0, 0, 0.02) 0px 4px 8px,
-    rgba(0, 0, 0, 0.02) 0px 0px 0px;
+  background: #202125; /* Slightly lighter dark shade */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   position: relative;
-  width: 382px;
-  padding: 32px;
+  width: 400px; /* Slightly wider for a premium feel */
+  padding: 24px;
 }
+
+/* Icon styling */
 .css-1uuuq0i {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   display: inline-block;
   line-height: 1em;
   flex-shrink: 0;
-  color: currentcolor;
+  color: #00ff88; /* Neon green accent like Stake.com */
   vertical-align: middle;
-  border-radius: 100%;
+  border-radius: 50%;
 }
+
+/* Small icon styling */
 .css-9mglm9 {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   display: inline-block;
   line-height: 1em;
   flex-shrink: 0;
-  color: currentcolor;
+  color: #00ff88;
   vertical-align: middle;
   fill: none;
   transform: rotate(270deg);
 }
+
+/* Circular button/icon container */
 .css-almxzv {
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
-  background: rgb(37, 46, 71);
-  width: 44px;
-  height: 44px;
-  border-radius: 100px;
+  background: #2a2d33; /* Darker button background */
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
 }
+
+.css-almxzv:hover {
+  background: #00ff88; /* Neon green on hover */
+  color: #1a1a1a;
+}
+
+/* Heading text */
 .css-1qb90e6 {
   text-align: center;
   font-weight: 700;
-  font-size: 22px;
-  line-height: 28px;
-  margin-bottom: 8px;
-  color: var(--main-color-hight);
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 12px;
+  color: #ffffff; /* White for high contrast */
+  font-family: 'Inter', sans-serif; /* Modern font like Stake.com */
 }
+
+/* Subtext styling */
 .css-1p66bll {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   text-align: center;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 20px;
-  color: var(--main-color-medium);
+  color: #8b949e; /* Muted gray for secondary text */
 }
+
+/* Flex container for centered content */
 .css-dvxtzn {
   display: flex;
   flex-direction: column;
-  -webkit-box-align: center;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
+
+/* Small text for labels */
 .css-1u3drzn {
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 12px;
   line-height: 16px;
-  color: rgb(160, 174, 192);
-  margin-bottom: 0px;
+  color: #8b949e;
+  margin-bottom: 0;
 }
+
+/* Link styling */
 .css-1vx4nlb {
   cursor: pointer;
   text-decoration: none;
-  outline: transparent solid 2px;
-  outline-offset: 2px;
-  color: #e2c159ad !important;
+  color: #00ff88 !important; /* Neon green for links */
+  transition: color 0.2s ease;
 }
+
+.css-1vx4nlb:hover {
+  color: #ffffff !important; /* White on hover */
+}
+
+/* Flex container for buttons/icons */
 .css-1pkuyyw {
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
-  gap: 4px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 20px;
 }
+
+/* Full-width button/input container */
 .css-1wl1iil {
   width: 100%;
-  padding: 9px;
+  padding: 12px;
 }
+
+/* Padded container */
 .css-padded {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
-/*
-.auth-page{
-display: flex;
-    height: 100%;    
-}   
+
+/* Authentication page layout */
+.auth-page {
+  display: flex;
+  height: 100vh;
+  background: #1a1a1a; /* Consistent dark background */
+}
+
 .auth-page .sidebar {
-    width: 40%;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background-image: url(/images/auth_bg.png);
-    background-position: center;
-    border-radius: 10px 0px 0px 10px;
-    padding: 30px;
-    text-align: end;
-    color: var(--main-color-medium);
-    font-size: 12px;
+  width: 40%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #2a2d33,
+    #1a1a1a
+  ); /* Subtle gradient like Stake.com */
+  border-radius: 12px 0 0 12px;
+  padding: 32px;
+  text-align: end;
+  color: #8b949e;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
 }
 
-.auth-page .sidebar img{
-width: 100%;    
+.auth-page .sidebar img {
+  width: 100%;
+  opacity: 0.8;
 }
+
 .auth-page .data {
-    width: 60%;
-    padding: 25px;
-    position: relative;
-    align-items: center;
-    display: grid;
-}
-.warning-label{
-color: var(--main-color-medium);
-    text-align: center;
-    font-size: 16px;    
-}
-.warning-label a{
-color: var(--main-color-hight);    
-transition:.2s;
-}
-.warning-label a:hover{
-color: #fff;    
+  width: 60%;
+  padding: 32px;
+  position: relative;
+  align-items: center;
+  display: grid;
+  background: #202125;
+  border-radius: 0 12px 12px 0;
 }
 
-@media (min-width: 1200px){
-.modal-600 {
-    max-width: 600px;
+/* Warning label styling */
+.warning-label {
+  color: #8b949e;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
 }
+
+.warning-label a {
+  color: #00ff88;
+  transition: color 0.2s ease;
 }
-.auth-page .data .login{
-display: grid;
-    width: 100%;
-    color: var(--main-color-hight);
-    text-align: center;
-    font-weight: bold;
-    font-size: 18px;
-    gap: 10px;
+
+.warning-label a:hover {
+  color: #ffffff;
 }
-.auth-page .data .login .vk{
-    background: linear-gradient(90deg, #1860b9, #0080e1);
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 16px;    
-    transition:.2s;
+
+/* Media query for larger screens */
+@media (min-width: 1200px) {
+  .modal-600 {
+    max-width: 640px; /* Slightly larger modal for premium feel */
+  }
 }
-.auth-page .data .login .vk:hover{
-opacity:0.9;
+
+/* Login button container */
+.auth-page .data .login {
+  display: grid;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
 }
-*/
+
+.auth-page .data .login .vk {
+  background: linear-gradient(
+    90deg,
+    #00ff88,
+    #00cc66
+  ); /* Neon green gradient */
+  border: none;
+  outline: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.auth-page .data .login .vk:hover {
+  opacity: 0.85;
+}
+
+/* Fair page styling */
 .fair-page {
   height: 100%;
   width: 100%;
+  background: #1a1a1a;
 }
+
 .fair-page .mainInfo {
-  grid-gap: 10px;
   display: grid;
   grid-template-columns: 1fr;
+  gap: 12px;
   position: relative;
 }
 
 .fair-page .mainInfo .content {
   display: flex;
   border-radius: 8px;
-  background: var(--main-background);
-  color: var(--main-color-hight);
-  font-weight: bold;
+  background: #202125;
+  color: #ffffff;
+  font-weight: 600;
   justify-content: center;
   user-select: none;
-  padding: 13px;
+  padding: 16px;
 }
+
 .fair-page .mainInfo .content .fairness {
   display: flex;
   align-items: center;
@@ -211,77 +269,84 @@ opacity:0.9;
 }
 
 .fair-page .mainInfo .content .fairness h3 {
-  color: var(--main-color-medium);
-  margin-bottom: 0px;
-  font-size: 16px;
+  color: #8b949e;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
 }
 
 .fair-page .mainInfo .content .fairness .status {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 12px;
-  border-radius: 10px;
-  transition:
-    color 0.15s ease-out,
-    background-color 0.15s ease-out;
-  overflow: hidden;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
   max-width: 100%;
-  background-color: rgba(3, 209, 105, 0.15);
-  color: #00d169;
+  background-color: rgba(0, 255, 136, 0.2); /* Neon green status background */
+  color: #00ff88;
   font-size: 12px;
-  gap: 5px;
-  font-weight: normal;
+  gap: 6px;
+  font-weight: 500;
 }
+
+/* Modal styling */
 .modal-content {
-  background-color: var(--main-background2) !important;
   border: none !important;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
 }
+
 .modal-footer {
-  border-top: 1px solid #dee2e605 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
+
 .modal-header {
-  border-bottom: 1px solid #dee2e605 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
+
+/* Close modal button */
 .closemodalBtn {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border: none;
   outline: none;
-  background: var(--main-background);
+  background: transparent;
   position: absolute;
-  right: -10;
-  top: -10;
-  border-radius: 100px;
-  padding: 7px;
-  box-shadow: 0px 0px 10px #191c23;
+  right: 12px;
+  top: 12px;
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: background 0.2s ease;
 }
+
 .closemodalBtn img {
   width: 100%;
   height: 100%;
   filter: invert(1);
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 .closemodalBtn:hover img {
-  filter: invert(1);
-  opacity: 0.5;
+  opacity: 0.6;
 }
+
 .closemodalBtn:hover {
-  background: #282e3b;
+  color: white;
 }
 
 .modal {
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
   z-index: 1501;
- }
+}
 
+/* Responsive adjustments */
 @media screen and (max-width: 1100px) {
   .auth-page .sidebar {
     display: none;
   }
   .auth-page .data {
     width: 100%;
+    border-radius: 12px;
   }
 }

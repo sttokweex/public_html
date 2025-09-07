@@ -1,68 +1,128 @@
 <?php
-function renderHomeHeader()
+function renderHomeHeader($translations, $login, $depositesSID)
 {
+  $currentRank = "None";
+  $nextRank = "Bronze";
+  $progressMax = 500; // Минимальный порог для Bronze
+  $progressValue = 0;
 
+  if ($depositesSID >= 0) $currentRank = "None";
+  if ($depositesSID >= 500) {
+    $currentRank = "Bronze";
+    $nextRank = "Silver";
+    $progressMax = 2500;
+  }
+  if ($depositesSID >= 2500) {
+    $currentRank = "Silver";
+    $nextRank = "Gold";
+    $progressMax = 5000;
+  }
+  if ($depositesSID >= 5000) {
+    $currentRank = "Gold";
+    $nextRank = "Ruby";
+    $progressMax = 10000;
+  }
+  if ($depositesSID >= 10000) {
+    $currentRank = "Ruby";
+    $nextRank = "Legend";
+    $progressMax = 500000;
+  }
+
+  // Расчет прогресса
+  $progressValue = min(($depositesSID / $progressMax) * 100, 100);
+  if ($depositesSID >= $progressMax) $progressValue = 100;
 ?>
+  <link rel="stylesheet" href="/css/ranks.css">
   <div class="home-header-wrapper">
     <div class="home-container-upper home-has-padding ">
       <div class="home-header-inner">
-        <div class="home-header-inner-content">
-          <div>
-            <div class="home-header-inner-padding">
-              <h1 style="display: block;" class="home-header-title">
-                Крупнейшее в мире онлайн-казино с букмекерской конторой
-              </h1>
+        <?php if (!(!isset($_SESSION['login']) || !$_SESSION['login'])) { ?>
+
+          <div class="rank-card" id="rankCard">
+            <div class="username">
+              <?php echo htmlspecialchars($login); ?>
+              <span class="star">★</span>
             </div>
-            <button type="button" tabindex="0" class="home-register-button" data-analytics="unauth-homepage-signup" data-button-root="">
-              Зарегистрироваться
-            </button>
+            <div>
+              <div class="progress-value">
+                <div class="progress-text"><?php echo $translations['your_vip_progress']; ?></div>
+                <div class="progress-text" id="progressValue"><?php echo number_format($progressValue, 2); ?>%</div>
+              </div>
+              <div class="progressWag">
+                <progress class="wagerProgress" value="<?= round($depositesSID, 2); ?>" max="<?php echo $progressMax ?>"></progress>
+
+              </div>
+
+              <div class="levels">
+                <div>
+                  <span class="star">★</span> <span>None</span>
+                </div>
+                <div>
+                  <span class="star <?php echo ($currentRank !== "None" ? 'active' : ''); ?>" id="nextLevelStar">★</span>
+                  <span id="nextLevel"><?php echo htmlspecialchars($nextRank); ?></span>
+                </div>
+              </div>
+            </div>
+          </div><? } else {
+                ?>
+          <div class="home-header-inner-content">
+            <div>
+              <div class="home-header-inner-padding">
+                <h1 style="display: block;" class="home-header-title">
+                  Крупнейшее в мире онлайн-казино с букмекерской конторой
+                </h1>
+              </div>
+              <button type="button" tabindex="0" class="home-register-button" data-analytics="unauth-homepage-signup" data-button-root="">
+                Зарегистрироваться
+              </button>
+            </div>
+            <div class="home-oauth">
+              <div class="home-oauth-label">
+                <p style="" class="home-oauth-label-text">
+                  или зарегистрируйтесь через
+                </p>
+              </div>
+              <div class="home-oauth home-provider-wrapper">
+                <div data-content="" class="home-provider-wrapper">
+                  <button type="button" tabindex="0" class="home-provider-button" data-analytics="provider-login-facebook" data-button-root="">
+                    <svg fill="none" viewBox="0 0 96 96" class="home-svg-icon" style="">
+                      <title></title>
+                      <path fill="#0866FF" d="M95.94 47.97C95.94 21.467 74.473 0 47.97 0S0 21.467 0 47.97c0 22.486 15.47 41.374 36.397 46.59v-31.9h-9.894V47.97h9.894v-6.296c0-16.31 7.376-23.925 23.446-23.925 3.058 0 8.274.6 10.433 1.2v13.31c-1.14-.12-3.118-.18-5.516-.18-7.856 0-10.914 3-10.914 10.734v5.157h15.65l-2.698 14.69H53.846v32.98C77.592 92.762 96 72.555 96 48.03z"></path>
+                      <path fill="#fff" d="m66.738 62.66 2.699-14.69h-15.65v-5.157c0-7.735 3.057-10.733 10.913-10.733 2.458 0 4.437 0 5.516.18V18.948c-2.158-.6-7.375-1.2-10.433-1.2-16.01 0-23.446 7.556-23.446 23.926v6.296h-9.894v14.69h9.894v31.9c3.718.9 7.615 1.44 11.573 1.44a47 47 0 0 0 5.816-.36V62.66z"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div data-content="" class="home-provider-wrapper">
+                  <button type="button" tabindex="0" class="home-provider-button" data-analytics="provider-login-google" data-button-root="">
+                    <svg fill="none" viewBox="0 0 96 96" class="home-svg-icon" style="">
+                      <title></title>
+                      <path fill="#0866FF" d="M95.94 47.97C95.94 21.467 74.473 0 47.97 0S0 21.467 0 47.97c0 22.486 15.47 41.374 36.397 46.59v-31.9h-9.894V47.97h9.894v-6.296c0-16.31 7.376-23.925 23.446-23.925 3.058 0 8.274.6 10.433 1.2v13.31c-1.14-.12-3.118-.18-5.516-.18-7.856 0-10.914 3-10.914 10.734v5.157h15.65l-2.698 14.69H53.846v32.98C77.592 92.762 96 72.555 96 48.03z"></path>
+                      <path fill="#fff" d="m66.738 62.66 2.699-14.69h-15.65v-5.157c0-7.735 3.057-10.733 10.913-10.733 2.458 0 4.437 0 5.516.18V18.948c-2.158-.6-7.375-1.2-10.433-1.2-16.01 0-23.446 7.556-23.446 23.926v6.296h-9.894v14.69h9.894v31.9c3.718.9 7.615 1.44 11.573 1.44a47 47 0 0 0 5.816-.36V62.66z"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div data-content="" class="home-provider-wrapper">
+                  <button type="button" tabindex="0" class="home-provider-button" data-analytics="provider-login-line" data-button-root="">
+                    <svg fill="none" viewBox="0 0 96 96" class="home-svg-icon" style="">
+                      <title></title>
+                      <path fill="#0866FF" d="M95.94 47.97C95.94 21.467 74.473 0 47.97 0S0 21.467 0 47.97c0 22.486 15.47 41.374 36.397 46.59v-31.9h-9.894V47.97h9.894v-6.296c0-16.31 7.376-23.925 23.446-23.925 3.058 0 8.274.6 10.433 1.2v13.31c-1.14-.12-3.118-.18-5.516-.18-7.856 0-10.914 3-10.914 10.734v5.157h15.65l-2.698 14.69H53.846v32.98C77.592 92.762 96 72.555 96 48.03z"></path>
+                      <path fill="#fff" d="m66.738 62.66 2.699-14.69h-15.65v-5.157c0-7.735 3.057-10.733 10.913-10.733 2.458 0 4.437 0 5.516.18V18.948c-2.158-.6-7.375-1.2-10.433-1.2-16.01 0-23.446 7.556-23.446 23.926v6.296h-9.894v14.69h9.894v31.9c3.718.9 7.615 1.44 11.573 1.44a47 47 0 0 0 5.816-.36V62.66z"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div data-content="" class="home-provider-wrapper">
+                  <button type="button" tabindex="0" class="home-provider-button" data-analytics="provider-login-twitch" data-button-root="">
+                    <svg fill="none" viewBox="0 0 96 96" class="home-svg-icon" style="">
+                      <title></title>
+                      <path fill="#0866FF" d="M95.94 47.97C95.94 21.467 74.473 0 47.97 0S0 21.467 0 47.97c0 22.486 15.47 41.374 36.397 46.59v-31.9h-9.894V47.97h9.894v-6.296c0-16.31 7.376-23.925 23.446-23.925 3.058 0 8.274.6 10.433 1.2v13.31c-1.14-.12-3.118-.18-5.516-.18-7.856 0-10.914 3-10.914 10.734v5.157h15.65l-2.698 14.69H53.846v32.98C77.592 92.762 96 72.555 96 48.03z"></path>
+                      <path fill="#fff" d="m66.738 62.66 2.699-14.69h-15.65v-5.157c0-7.735 3.057-10.733 10.913-10.733 2.458 0 4.437 0 5.516.18V18.948c-2.158-.6-7.375-1.2-10.433-1.2-16.01 0-23.446 7.556-23.446 23.926v6.296h-9.894v14.69h9.894v31.9c3.718.9 7.615 1.44 11.573 1.44a47 47 0 0 0 5.816-.36V62.66z"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="home-oauth">
-            <div class="home-oauth-label">
-              <p style="" class="home-oauth-label-text">
-                или зарегистрируйтесь через
-              </p>
-            </div>
-            <div class="home-oauth home-provider-wrapper">
-              <div data-content="" class="home-provider-wrapper">
-                <button type="button" tabindex="0" class="home-provider-button" data-analytics="provider-login-facebook" data-button-root="">
-                  <svg fill="none" viewBox="0 0 96 96" class="home-svg-icon" style="">
-                    <title></title>
-                    <path fill="#0866FF" d="M95.94 47.97C95.94 21.467 74.473 0 47.97 0S0 21.467 0 47.97c0 22.486 15.47 41.374 36.397 46.59v-31.9h-9.894V47.97h9.894v-6.296c0-16.31 7.376-23.925 23.446-23.925 3.058 0 8.274.6 10.433 1.2v13.31c-1.14-.12-3.118-.18-5.516-.18-7.856 0-10.914 3-10.914 10.734v5.157h15.65l-2.698 14.69H53.846v32.98C77.592 92.762 96 72.555 96 48.03z"></path>
-                    <path fill="#fff" d="m66.738 62.66 2.699-14.69h-15.65v-5.157c0-7.735 3.057-10.733 10.913-10.733 2.458 0 4.437 0 5.516.18V18.948c-2.158-.6-7.375-1.2-10.433-1.2-16.01 0-23.446 7.556-23.446 23.926v6.296h-9.894v14.69h9.894v31.9c3.718.9 7.615 1.44 11.573 1.44a47 47 0 0 0 5.816-.36V62.66z"></path>
-                  </svg>
-                </button>
-              </div>
-              <div data-content="" class="home-provider-wrapper">
-                <button type="button" tabindex="0" class="home-provider-button" data-analytics="provider-login-google" data-button-root="">
-                  <svg fill="none" viewBox="0 0 96 96" class="home-svg-icon" style="">
-                    <title></title>
-                    <path fill="#0866FF" d="M95.94 47.97C95.94 21.467 74.473 0 47.97 0S0 21.467 0 47.97c0 22.486 15.47 41.374 36.397 46.59v-31.9h-9.894V47.97h9.894v-6.296c0-16.31 7.376-23.925 23.446-23.925 3.058 0 8.274.6 10.433 1.2v13.31c-1.14-.12-3.118-.18-5.516-.18-7.856 0-10.914 3-10.914 10.734v5.157h15.65l-2.698 14.69H53.846v32.98C77.592 92.762 96 72.555 96 48.03z"></path>
-                    <path fill="#fff" d="m66.738 62.66 2.699-14.69h-15.65v-5.157c0-7.735 3.057-10.733 10.913-10.733 2.458 0 4.437 0 5.516.18V18.948c-2.158-.6-7.375-1.2-10.433-1.2-16.01 0-23.446 7.556-23.446 23.926v6.296h-9.894v14.69h9.894v31.9c3.718.9 7.615 1.44 11.573 1.44a47 47 0 0 0 5.816-.36V62.66z"></path>
-                  </svg>
-                </button>
-              </div>
-              <div data-content="" class="home-provider-wrapper">
-                <button type="button" tabindex="0" class="home-provider-button" data-analytics="provider-login-line" data-button-root="">
-                  <svg fill="none" viewBox="0 0 96 96" class="home-svg-icon" style="">
-                    <title></title>
-                    <path fill="#0866FF" d="M95.94 47.97C95.94 21.467 74.473 0 47.97 0S0 21.467 0 47.97c0 22.486 15.47 41.374 36.397 46.59v-31.9h-9.894V47.97h9.894v-6.296c0-16.31 7.376-23.925 23.446-23.925 3.058 0 8.274.6 10.433 1.2v13.31c-1.14-.12-3.118-.18-5.516-.18-7.856 0-10.914 3-10.914 10.734v5.157h15.65l-2.698 14.69H53.846v32.98C77.592 92.762 96 72.555 96 48.03z"></path>
-                    <path fill="#fff" d="m66.738 62.66 2.699-14.69h-15.65v-5.157c0-7.735 3.057-10.733 10.913-10.733 2.458 0 4.437 0 5.516.18V18.948c-2.158-.6-7.375-1.2-10.433-1.2-16.01 0-23.446 7.556-23.446 23.926v6.296h-9.894v14.69h9.894v31.9c3.718.9 7.615 1.44 11.573 1.44a47 47 0 0 0 5.816-.36V62.66z"></path>
-                  </svg>
-                </button>
-              </div>
-              <div data-content="" class="home-provider-wrapper">
-                <button type="button" tabindex="0" class="home-provider-button" data-analytics="provider-login-twitch" data-button-root="">
-                  <svg fill="none" viewBox="0 0 96 96" class="home-svg-icon" style="">
-                    <title></title>
-                    <path fill="#0866FF" d="M95.94 47.97C95.94 21.467 74.473 0 47.97 0S0 21.467 0 47.97c0 22.486 15.47 41.374 36.397 46.59v-31.9h-9.894V47.97h9.894v-6.296c0-16.31 7.376-23.925 23.446-23.925 3.058 0 8.274.6 10.433 1.2v13.31c-1.14-.12-3.118-.18-5.516-.18-7.856 0-10.914 3-10.914 10.734v5.157h15.65l-2.698 14.69H53.846v32.98C77.592 92.762 96 72.555 96 48.03z"></path>
-                    <path fill="#fff" d="m66.738 62.66 2.699-14.69h-15.65v-5.157c0-7.735 3.057-10.733 10.913-10.733 2.458 0 4.437 0 5.516.18V18.948c-2.158-.6-7.375-1.2-10.433-1.2-16.01 0-23.446 7.556-23.446 23.926v6.296h-9.894v14.69h9.894v31.9c3.718.9 7.615 1.44 11.573 1.44a47 47 0 0 0 5.816-.36V62.66z"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <? } ?>
         <div class="home-feature-wrapper">
           <div style="--border-color: #017aff;" class="home-gradient-border">
             <a data-testid="home-feature-casino-link" class="home-feature-link" href="/ru/casino/home" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" data-analytics="homepage-casino-home">

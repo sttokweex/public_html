@@ -4,26 +4,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
 
-if (isset($_SESSION['lang'])) {
-  $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-  $lang = $_COOKIE['lang'];
-} else {
-  $lang = 'en';
-}
-$allowed = ['en', 'es', 'ru'];
-if (!in_array($lang, $allowed, true)) {
-  $lang = 'en';
-}
 
-// подключаем файл перевода
-$path = dirname(__DIR__, 1) . "/lang/{$lang}.php";
-if (is_file($path)) {
-  $translations = require $path;
-} else {
-  // страховка: если файла нет — грузим en
-  $translations = require dirname(__DIR__, 1) . "/lang/ru.php";
-}
 
 
 if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
@@ -230,7 +211,7 @@ $allWithdrawsUser = $totalwithsRow['SUM(sum)'];
     </div>
   </div>
   <?
-  renderChatComponent('Иван', $sampleMessages);
+  renderChatComponent('Иван', $sampleMessages, $translations);
   require(dirname(__DIR__, 1) . "/panels/footer.php");
   render_footer($translations, 'Stake')
   ?>

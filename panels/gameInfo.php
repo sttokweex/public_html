@@ -1,551 +1,539 @@
 <?php
-
-function renderCasinoComponent()
+function renderCasinoComponent($translations)
 {
-  // Вынесенные SVG в переменные (оставлены пустыми по запросу)
+
   $svg_external_link = '<svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style=""> <title></title> <path d="M24.059 3.766v7.058H10.824v42.352h42.352V39.94h7.058v20.293H3.766V3.766zm36.18 0V24.94h-7.06v-9.12l-25.3 25.296-4.992-4.996 25.297-25.297h-9.125V3.766z"></path><!----></svg>'; // Здесь был SVG для внешних ссылок, оставлен пустым
-
-
-  // Очищенный HTML без Svelte-классов и атрибутов
 ?>
   <div class="see-more " data-content="">
     <div class="see-more-content ">
       <div class="see-more-column-container" style="column-count: 2;">
         <div class="see-more-content-block">
-          <h1><span id="Игры_казино_в_казино_Stake_—_лучшие_азартные_онлайн-игры">Игры казино в казино Stake — лучшие азартные онлайн-игры</span></h1>
-          <p><span>С 2017 года </span><a href="/ru">Stake.com</a><span> предлагает пользователям лучшее онлайн-казино с поддержкой локальных валют, Bitcoin и других криптовалют.</span></p>
-          <p><span>Начиная с эксклюзивной линейки Stake Originals — собственных игр, разработанных непосредственно на платформе Stake, — наша </span><a href="/ru/casino/home">игровая платформа онлайн-казино</a><span> постепенно выросло и теперь предлагает более 3000 лучших игр от ведущих провайдеров индустрии азартных онлайн-игр. Игроки снова и снова возвращаются на Stake.com благодаря высокому качеству, динамике </span><a href="/ru/blog/online-vs-offline-slot-machines">онлайн-слотов</a><span> и захватывающим играм с живыми дилерами.</span></p>
-          <p><span>В этом году Stake.com исполнилось 8 лет! Присоединяйтесь к празднованию </span><a href="/ru/blog/birthday-wins-best-games-bet-bonuses">дня рождения Stake</a><span> и ознакомьтесь с итогами наших достижений за эти восемь лет — это еще больше крупных выигрышей и лучших игр. Также рекомендуем ознакомиться с нашим </span><a href="/ru/blog/2024-online-gambling-betting-statistics-trends">итоговым обзором 2024 года</a><span>.</span></p>
-          <p><span>Узнайте о самых крупных выигрышах и лучших играх года! Команда экспертов Stake постоянно работает над улучшением сервиса, чтобы обеспечить непревзойденный игровой опыт для всех пользователей по всему миру. Мы познакомим вас с нашими фаворитами среди игр, расскажем, как внести и вывести средства, а также представим ведущих поставщиков программного обеспечения.</span></p>
-          <p><span>Благодаря еженедельному добавлению новых релизов играть и делать ставки на лучшие онлайн-игры в нашем всемирно известном казино стало проще, чем когда-либо!</span></p>
-          <h2><span id="Виды_игр_казино,_доступных_онлайн">Виды игр казино, доступных онлайн</span></h2>
-          <p><span>Изучайте широкий ассортимент популярных игр казино на Stake и наслаждайтесь честным и захватывающим игровым процессом. Онлайн-казино Stake предлагает множество категорий </span><a href="/ru/provably-fair/overview">честных игр</a><span>: слоты, лайв-казино с реальными дилерами, настольные игры, казуальные развлечения и множество классических вариантов казино, основанных на </span><a href="/ru/blog/understanding-random-number-generators-rngs">генераторе случайных чисел</a><span> (RNG), доступных прямо в вашем браузере.</span></p>
-          <p><span>Мы также подготовили серию обучающих </span><a href="/ru/blog/category/how-to-guides">руководств</a><span>, чтобы вы могли освоить основные правила и стратегии любимых игр — они идеально подходят как для </span><a href="/ru/blog/best-online-casino-games-for-beginners">новичков онлайн-казино</a><span>, так и для опытных игроков!</span></p>
-          <h3><span id="Игры_Stake_Original">Игры Stake Original</span></h3>
-          <p><span>У нас есть и эксклюзивная коллекция </span><a href="/ru/casino/group/stake-originals">Stake Originals</a><span>. В их число входят такие хиты, как </span><a href="/ru/casino/games/dice">Dice</a><span>, </span><a href="/ru/casino/games/plinko">Plinko</a><span>, </span><a href="/ru/casino/games/mines">Mines</a><span>, </span><a href="/ru/casino/games/crash">Crash</a><span>, </span><a href="/ru/casino/games/limbo">Limbo</a><span>, </span><a href="/ru/casino/games/hilo">Hilo</a><span>, </span><a href="/ru/casino/games/keno">Keno</a><span>, </span><a href="/ru/casino/games/wheel">Wheel</a><span>, </span><a href="/ru/casino/games/diamonds">Diamonds</a><span>, </span><a href="/ru/casino/games/dragon-tower">Dragon Tower</a><span> и </span><a href="/ru/casino/games/slide">Slide</a><span>. Также рекомендуем попробовать </span><a href="/ru/casino/games/slots-samurai">Blue Samurai</a><span>, </span><a href="/ru/casino/games/slots">Scarab Spin</a><span>, </span><a href="/ru/casino/games/pump">Pump</a><span>, </span><a href="/ru/casino/games/cases">Cases</a><span>, </span><a href="/ru/casino/games/flip">Flip</a><span>, </span><a href="/ru/casino/games/rock-paper-scissors">Rock Paper Scissors</a><span>, </span><a href="/ru/casino/games/snakes">Snakes</a><span>, </span><a href="/ru/casino/games/darts">Darts</a><span>, </span><a href="/ru/casino/games/bars">Bars</a><span>, </span><a href="/ru/casino/games/packs">Packs</a><span>, </span><a href="/ru/casino/games/primedice">Prime Dice</a><span> и </span><a href="/ru/casino/games/tome-of-life">Tome of Life</a><span>. Научитесь играть в игры Stake Originals с помощью наших подробных руководств:</span></p>
+          <h1><span id="main_title"><?php echo htmlspecialchars($translations['main_title']); ?></span></h1>
+          <p><span><?php echo htmlspecialchars($translations['intro_since_2017']); ?></span><a href="/ru">Stake.com</a><span><?php echo htmlspecialchars($translations['intro_cryptocurrencies']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['stake_originals_intro']); ?></span><a href="/ru/casino/home"><?php echo htmlspecialchars($translations['online_casino_platform']); ?></a><span><?php echo htmlspecialchars($translations['stake_originals_growth']); ?></span><a href="/ru/blog/online-vs-offline-slot-machines"><?php echo htmlspecialchars($translations['online_slots']); ?></a><span><?php echo htmlspecialchars($translations['live_dealer_games']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['anniversary_intro']); ?></span><a href="/ru/blog/birthday-wins-best-games-bet-bonuses"><?php echo htmlspecialchars($translations['stake_birthday']); ?></a><span><?php echo htmlspecialchars($translations['anniversary_achievements']); ?></span><a href="/ru/blog/2024-online-gambling-betting-statistics-trends"><?php echo htmlspecialchars($translations['year_2024_review']); ?></a><span>.</span></p>
+          <p><span><?php echo htmlspecialchars($translations['big_wins_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['new_releases_info']); ?></span></p>
+          <h2><span id="available_casino_games"><?php echo htmlspecialchars($translations['available_casino_games']); ?></span></h2>
+          <p><span><?php echo htmlspecialchars($translations['game_variety_intro']); ?></span><a href="/ru/provably-fair/overview"><?php echo htmlspecialchars($translations['provably_fair_games']); ?></a><span><?php echo htmlspecialchars($translations['game_categories']); ?></span><a href="/ru/blog/understanding-random-number-generators-rngs"><?php echo htmlspecialchars($translations['rng']); ?></a><span><?php echo htmlspecialchars($translations['browser_based_games']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['guides_intro']); ?></span><a href="/ru/blog/category/how-to-guides"><?php echo htmlspecialchars($translations['guides']); ?></a><span><?php echo htmlspecialchars($translations['guides_for_beginners']); ?></span><a href="/ru/blog/best-online-casino-games-for-beginners"><?php echo htmlspecialchars($translations['beginner_games']); ?></a><span><?php echo htmlspecialchars($translations['guides_for_experienced']); ?></span></p>
+          <h3><span id="stake_originals"><?php echo htmlspecialchars($translations['stake_originals']); ?></span></h3>
+          <p><span><?php echo htmlspecialchars($translations['stake_originals_collection']); ?></span><a href="/ru/casino/group/stake-originals"><?php echo htmlspecialchars($translations['stake_originals_link']); ?></a><span><?php echo htmlspecialchars($translations['stake_originals_games']); ?></span><a href="/ru/casino/games/dice"><?php echo htmlspecialchars($translations['dice']); ?></a><span>, </span><a href="/ru/casino/games/plinko"><?php echo htmlspecialchars($translations['plinko']); ?></a><span>, </span><a href="/ru/casino/games/mines"><?php echo htmlspecialchars($translations['mines']); ?></a><span>, </span><a href="/ru/casino/games/crash"><?php echo htmlspecialchars($translations['crash']); ?></a><span>, </span><a href="/ru/casino/games/limbo"><?php echo htmlspecialchars($translations['limbo']); ?></a><span>, </span><a href="/ru/casino/games/hilo"><?php echo htmlspecialchars($translations['hilo']); ?></a><span>, </span><a href="/ru/casino/games/keno"><?php echo htmlspecialchars($translations['keno']); ?></a><span>, </span><a href="/ru/casino/games/wheel"><?php echo htmlspecialchars($translations['wheel']); ?></a><span>, </span><a href="/ru/casino/games/diamonds"><?php echo htmlspecialchars($translations['diamonds']); ?></a><span>, </span><a href="/ru/casino/games/dragon-tower"><?php echo htmlspecialchars($translations['dragon_tower']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/casino/games/slide"><?php echo htmlspecialchars($translations['slide']); ?></a><span>. <?php echo htmlspecialchars($translations['also_try']); ?></span><a href="/ru/casino/games/slots-samurai"><?php echo htmlspecialchars($translations['blue_samurai']); ?></a><span>, </span><a href="/ru/casino/games/slots"><?php echo htmlspecialchars($translations['scarab_spin']); ?></a><span>, </span><a href="/ru/casino/games/pump"><?php echo htmlspecialchars($translations['pump']); ?></a><span>, </span><a href="/ru/casino/games/cases"><?php echo htmlspecialchars($translations['cases']); ?></a><span>, </span><a href="/ru/casino/games/flip"><?php echo htmlspecialchars($translations['flip']); ?></a><span>, </span><a href="/ru/casino/games/rock-paper-scissors"><?php echo htmlspecialchars($translations['rock_paper_scissors']); ?></a><span>, </span><a href="/ru/casino/games/snakes"><?php echo htmlspecialchars($translations['snakes']); ?></a><span>, </span><a href="/ru/casino/games/darts"><?php echo htmlspecialchars($translations['darts']); ?></a><span>, </span><a href="/ru/casino/games/bars"><?php echo htmlspecialchars($translations['bars']); ?></a><span>, </span><a href="/ru/casino/games/packs"><?php echo htmlspecialchars($translations['packs']); ?></a><span>, </span><a href="/ru/casino/games/primedice"><?php echo htmlspecialchars($translations['prime_dice']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/casino/games/tome-of-life"><?php echo htmlspecialchars($translations['tome_of_life']); ?></a><span>. <?php echo htmlspecialchars($translations['learn_stake_originals']); ?></span></p>
           <ul>
             <li>
-              <p><a href="/ru/blog/how-to-play-plinko-on-stake">Как играть в Plinko</a></p>
+              <p><a href="/ru/blog/how-to-play-plinko-on-stake"><?php echo htmlspecialchars($translations['how_to_play_plinko']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-samurai-slots-on-stake">Как играть в Blue Samurai</a></p>
+              <p><a href="/ru/blog/how-to-play-samurai-slots-on-stake"><?php echo htmlspecialchars($translations['how_to_play_blue_samurai']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-hilo-on-stake">Как играть в Hilo</a></p>
+              <p><a href="/ru/blog/how-to-play-hilo-on-stake"><?php echo htmlspecialchars($translations['how_to_play_hilo']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-limbo-on-stake">Как играть в Limbo</a></p>
+              <p><a href="/ru/blog/how-to-play-limbo-on-stake"><?php echo htmlspecialchars($translations['how_to_play_limbo']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-slide-on-stake">Как играть в Slide</a></p>
+              <p><a href="/ru/blog/how-to-play-slide-on-stake"><?php echo htmlspecialchars($translations['how_to_play_slide']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-diamonds-on-stake">Как играть в Diamonds</a></p>
+              <p><a href="/ru/blog/how-to-play-diamonds-on-stake"><?php echo htmlspecialchars($translations['how_to_play_diamonds']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-scarab-spin-on-stake">Как играть в Scarab Spin</a></p>
+              <p><a href="/ru/blog/how-to-play-scarab-spin-on-stake"><?php echo htmlspecialchars($translations['how_to_play_scarab_spin']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-crash-on-stake">Как играть в Crash</a></p>
+              <p><a href="/ru/blog/how-to-play-crash-on-stake"><?php echo htmlspecialchars($translations['how_to_play_crash']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-dragon-tower-on-stake">Как играть в Dragon Tower</a></p>
+              <p><a href="/ru/blog/how-to-play-dragon-tower-on-stake"><?php echo htmlspecialchars($translations['how_to_play_dragon_tower']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-tome-of-life-on-stake">Как играть в Tome of Life</a></p>
+              <p><a href="/ru/blog/how-to-play-tome-of-life-on-stake"><?php echo htmlspecialchars($translations['how_to_play_tome_of_life']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-mines-on-stake">Как играть в Mines</a></p>
+              <p><a href="/ru/blog/how-to-play-mines-on-stake"><?php echo htmlspecialchars($translations['how_to_play_mines']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-pump-on-stake">Как играть в Pump</a></p>
+              <p><a href="/ru/blog/how-to-play-pump-on-stake"><?php echo htmlspecialchars($translations['how_to_play_pump']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-cases-on-stake">Как играть в Cases</a></p>
+              <p><a href="/ru/blog/how-to-play-cases-on-stake"><?php echo htmlspecialchars($translations['how_to_play_cases']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-flip-on-stake">Как играть в Flip</a></p>
+              <p><a href="/ru/blog/how-to-play-flip-on-stake"><?php echo htmlspecialchars($translations['how_to_play_flip']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-rock-paper-scissors-on-stake">Как играть в Rock Paper Scissors</a></p>
+              <p><a href="/ru/blog/how-to-play-rock-paper-scissors-on-stake"><?php echo htmlspecialchars($translations['how_to_play_rock_paper_scissors']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-snakes-on-stake">Как играть в Snakes</a></p>
+              <p><a href="/ru/blog/how-to-play-snakes-on-stake"><?php echo htmlspecialchars($translations['how_to_play_snakes']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-darts-on-stake">Как играть в Darts</a></p>
+              <p><a href="/ru/blog/how-to-play-darts-on-stake"><?php echo htmlspecialchars($translations['how_to_play_darts']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-bars-on-stake">Как играть в Bars</a></p>
+              <p><a href="/ru/blog/how-to-play-bars-on-stake"><?php echo htmlspecialchars($translations['how_to_play_bars']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-packs-on-stake">Как играть в Packs</a></p>
+              <p><a href="/ru/blog/how-to-play-packs-on-stake"><?php echo htmlspecialchars($translations['how_to_play_packs']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/fi/blog/how-to-play-dice-on-stake">Как играть в Dice</a></p>
+              <p><a href="/ru/fi/blog/how-to-play-dice-on-stake"><?php echo htmlspecialchars($translations['how_to_play_dice']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-blackjack-on-stake">Как играть в Blackjack</a></p>
+              <p><a href="/ru/blog/how-to-play-blackjack-on-stake"><?php echo htmlspecialchars($translations['how_to_play_blackjack']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-wheel-on-stake">Как играть в Wheel</a></p>
+              <p><a href="/ru/blog/how-to-play-wheel-on-stake"><?php echo htmlspecialchars($translations['how_to_play_wheel']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-keno-on-stake">Как играть в Keno</a></p>
+              <p><a href="/ru/blog/how-to-play-keno-on-stake"><?php echo htmlspecialchars($translations['how_to_play_keno']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-roulette">Как играть в рулетку</a></p>
+              <p><a href="/ru/blog/how-to-play-roulette"><?php echo htmlspecialchars($translations['how_to_play_roulette']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-baccarat">Как играть в баккара</a></p>
+              <p><a href="/ru/blog/how-to-play-baccarat"><?php echo htmlspecialchars($translations['how_to_play_baccarat']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-video-poker-on-stake">Как играть в видеопокер</a></p>
+              <p><a href="/ru/blog/how-to-play-video-poker-on-stake"><?php echo htmlspecialchars($translations['how_to_play_video_poker']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/how-to-play-prime-dice-on-stake">Как играть в Prime Dice</a></p>
+              <p><a href="/ru/blog/how-to-play-prime-dice-on-stake"><?php echo htmlspecialchars($translations['how_to_play_prime_dice']); ?></a></p>
             </li>
           </ul>
-          <p><span>Stake Originals были созданы с акцентом на простоту, увлекательный игровой процесс и честный опыт ставок в онлайн-казино. В коллекцию Stake Originals также входят классические настольные игры, такие как наш оригинальный </span><a href="/ru/casino/games/blackjack">блэкджек</a><span>, </span><a href="/ru/casino/games/roulette">рулетка</a><span>, </span><a href="/ru/casino/games/baccarat">баккара</a><span> и популярный </span><a href="/ru/casino/games/video-poker">видеопокер</a><span>. Кроме того, доступны Stake Exclusives — эксклюзивные игры, которые можно найти только на Stake.com. Эти игры порадуют вас бесплатными вращениями, уникальными тематиками и бонусными раундами! Подробнее о </span><a href="/ru/blog/stake-exclusive-slot-games-features">функциях эксклюзивных игр</a><span> и их механиках читайте в нашем блоге.</span></p>
-          <h3><span id="Слот-игры">Слот-игры</span></h3>
-          <p><span>Онлайн-слоты — самая крупная категория на Stake: на нашей платформе представлено более 3000 игровых автоматов. Видеослоты — это захватывающие азартные онлайн-игры, часто наполненные </span><a href="/ru/blog/free-spins-bonus-rounds-guide">бонусными функциями</a><span>, такими как бесплатные вращения, прогрессивные джекпоты и </span><a href="/ru/blog/multiplier-symbols-slot-game-guide">множители выигрыша</a><span>. Игроки выбирают ставку, запускают барабаны и выигрывают при выпадении призовых комбинаций символов на линиях выплат. Подробно о </span><a href="/ru/blog/slot-machine-symbols-guide">символах слотов</a><span> и их специальных бонусных возможностях читайте в наших материалах.</span></p>
-          <p><span>Мы предлагаем классические слоты на любой вкус с самыми </span><a href="/ru/blog/popular-slot-game-themes">разными тематиками</a><span> — от Древней Греции, вечеринок и хоррора до морских, рыболовных, золотых и пасхальных мотивов. Вы обязательно найдете любимые игры среди наших рекомендуемых слотов!</span></p>
-          <p><span>В нашем онлайн-казино вы найдете множество хитов, включая </span><a href="/ru/casino/games/netent-gonzos-quest">Gonzo’s Quest</a><span>,</span><a href="/ru/casino/games/titan-gaming-battle-of-gods"> Battle of Gods</a><span> и десятки других слотов. На Stake есть слоты Megaways, автоматы с покупкой бонусов и многое другое! Попробуйте прогрессивные слоты с джекпотом — и, возможно, именно вы сорвете крупный выигрыш.</span></p>
-          <h3><span id="Как_играть_в_слоты">Как играть в слоты</span></h3>
-          <p><span>Если вы только начинаете знакомство с онлайн-казино, рекомендуем ознакомиться с нашим блогом о том, как </span><a href="/ru/blog/how-to-play-slots">играть в слоты онлайн</a><span>. Также вы можете воспользоваться </span><a href="/ru/blog/free-play-slot-games">демо-режимом</a><span> и попробовать игровые автоматы бесплатно — это отличный способ познакомиться с механиками до того, как начать играть на реальные деньги. В онлайн-казино Stake мы постоянно обновляем библиотеку слотов, каждую неделю добавляя новые релизы, чтобы вы всегда получали только лучший игровой опыт.</span></p>
-          <p><span>Некоторые онлайн-слоты оснащены функцией каскадных вращений, когда выигрышные символы исчезают, а на их место падают новые, позволяя формировать последовательные выигрыши. Популярна и механика cluster pays, где выплаты начисляются за </span><a href="/ru/blog/what-are-cluster-pays-slots">кластеры совпадающих символов</a><span> на поле, а не за линии выплат.</span></p>
-          <p><span>Традиционные автоматы имеют фиксированное количество линий выплат, но современные онлайн-слоты предлагают большое разнообразие вариантов: например, в игре </span><a href="/ru/casino/games/pragmatic-play-sweet-bonanza">Sweet Bonanza</a><span>&nbsp;реализована система Win All Ways — выигрыш выплачивается при появлении восьми и более одинаковых символов в любом месте на поле. Подробнее о принципах </span><a href="/ru/blog/what-are-slot-paylines-explained">работы линий выплат</a><span> и </span><a href="/ru/blog/what-does-slot-volatility-mean">волатильности слотов</a><span> читайте в нашем блоге. Ключевые игровые механики современных слотов включают множители выигрыша, сбор </span><a href="/ru/blog/scatter-symbols-slot-game-guide">символов Scatter</a><span> для запуска бонусных раундов, </span><a href="/ru/blog/what-are-bonus-buy-feature-slots">опции покупки бонусов</a><span>, расширяющиеся барабаны, механики повышения уровней, бесплатные вращения, </span><a href="/ru/blog/wild-symbols-slot-game-guide">Wild-символы</a><span>, </span><a href="/ru/blog/hold-and-win-slot-bonus-feature-explained">Удержание и выигрыш</a><span> и многое другое.&nbsp;</span></p>
-          <h4><span id="Поиск_по_категориям">Поиск по категориям</span></h4>
-          <p><span>Ознакомьтесь с разнообразием игровых категорий в казино Stake и выберите свою любимую — вас ждет широкий ассортимент игр с уникальными функциями и механиками!</span></p>
-          <p><span>Основные игровые механики</span></p>
+          <p><span><?php echo htmlspecialchars($translations['stake_originals_classics']); ?></span><a href="/ru/casino/games/blackjack"><?php echo htmlspecialchars($translations['blackjack']); ?></a><span>, </span><a href="/ru/casino/games/roulette"><?php echo htmlspecialchars($translations['roulette']); ?></a><span>, </span><a href="/ru/casino/games/baccarat"><?php echo htmlspecialchars($translations['baccarat']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/casino/games/video-poker"><?php echo htmlspecialchars($translations['video_poker']); ?></a><span>. <?php echo htmlspecialchars($translations['stake_exclusives_intro']); ?></span><a href="/ru/blog/stake-exclusive-slot-games-features"><?php echo htmlspecialchars($translations['exclusive_games_features']); ?></a><span><?php echo htmlspecialchars($translations['exclusive_games_info']); ?></span></p>
+          <h3><span id="slot_games"><?php echo htmlspecialchars($translations['slot_games']); ?></span></h3>
+          <p><span><?php echo htmlspecialchars($translations['slots_intro']); ?></span><a href="/ru/blog/free-spins-bonus-rounds-guide"><?php echo htmlspecialchars($translations['bonus_features']); ?></a><span><?php echo htmlspecialchars($translations['slots_features']); ?></span><a href="/ru/blog/slot-machine-symbols-guide"><?php echo htmlspecialchars($translations['slot_symbols']); ?></a><span><?php echo htmlspecialchars($translations['slot_symbols_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['classic_slots_themes']); ?></span><a href="/ru/blog/popular-slot-game-themes"><?php echo htmlspecialchars($translations['slot_themes']); ?></a><span><?php echo htmlspecialchars($translations['classic_slots_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['popular_slots']); ?></span><a href="/ru/casino/games/netent-gonzos-quest"><?php echo htmlspecialchars($translations['gonzos_quest']); ?></a><span>,</span><a href="/ru/casino/games/titan-gaming-battle-of-gods"><?php echo htmlspecialchars($translations['battle_of_gods']); ?></a><span><?php echo htmlspecialchars($translations['slots_variety']); ?></span></p>
+          <h3><span id="how_to_play_slots"><?php echo htmlspecialchars($translations['how_to_play_slots']); ?></span></h3>
+          <p><span><?php echo htmlspecialchars($translations['slots_beginner_guide']); ?></span><a href="/ru/blog/how-to-play-slots"><?php echo htmlspecialchars($translations['play_slots_guide']); ?></a><span>. <?php echo htmlspecialchars($translations['demo_mode']); ?></span><a href="/ru/blog/free-play-slot-games"><?php echo htmlspecialchars($translations['demo_mode_link']); ?></a><span><?php echo htmlspecialchars($translations['demo_mode_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['cascade_slots']); ?></span><a href="/ru/blog/what-are-cluster-pays-slots"><?php echo htmlspecialchars($translations['cluster_pays']); ?></a><span><?php echo htmlspecialchars($translations['cluster_pays_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['traditional_slots']); ?></span><a href="/ru/casino/games/pragmatic-play-sweet-bonanza"><?php echo htmlspecialchars($translations['sweet_bonanza']); ?></a><span><?php echo htmlspecialchars($translations['win_all_ways']); ?></span><a href="/ru/blog/what-are-slot-paylines-explained"><?php echo htmlspecialchars($translations['paylines']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/blog/what-does-slot-volatility-mean"><?php echo htmlspecialchars($translations['slot_volatility']); ?></a><span><?php echo htmlspecialchars($translations['slot_mechanics']); ?></span><a href="/ru/blog/scatter-symbols-slot-game-guide"><?php echo htmlspecialchars($translations['scatter_symbols']); ?></a><span><?php echo htmlspecialchars($translations['bonus_buy']); ?></a><span>, <?php echo htmlspecialchars($translations['expanding_reels']); ?>, <?php echo htmlspecialchars($translations['free_spins']); ?>, </span><a href="/ru/blog/wild-symbols-slot-game-guide"><?php echo htmlspecialchars($translations['wild_symbols']); ?></a><span>, </span><a href="/ru/blog/hold-and-win-slot-bonus-feature-explained"><?php echo htmlspecialchars($translations['hold_and_win']); ?></a><span><?php echo htmlspecialchars($translations['and_more']); ?>.</span></p>
+          <h4><span id="search_by_categories"><?php echo htmlspecialchars($translations['search_by_categories']); ?></span></h4>
+          <p><span><?php echo htmlspecialchars($translations['categories_intro']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['main_game_mechanics']); ?></span></p>
           <ul>
             <li>
-              <p><a href="/ru/casino/group/bonus-buy">Покупка бонуса</a></p>
+              <p><a href="/ru/casino/group/bonus-buy"><?php echo htmlspecialchars($translations['bonus_buy']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/slots">Слоты</a></p>
+              <p><a href="/ru/casino/group/slots"><?php echo htmlspecialchars($translations['slots']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/cascading">Каскад</a></p>
+              <p><a href="/ru/casino/group/cascading"><?php echo htmlspecialchars($translations['cascading']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/megaways">Megaways</a></p>
+              <p><a href="/ru/casino/group/megaways"><?php echo htmlspecialchars($translations['megaways']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/respin">Повторное вращение</a></p>
+              <p><a href="/ru/casino/group/respin"><?php echo htmlspecialchars($translations['respin']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/3-reels">3 барабана</a></p>
+              <p><a href="/ru/casino/group/3-reels"><?php echo htmlspecialchars($translations['three_reels']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/multi-ways">Multi Ways</a></p>
+              <p><a href="/ru/casino/group/multi-ways"><?php echo htmlspecialchars($translations['multi_ways']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/volatility-switch">Переключение волатильности</a></p>
+              <p><a href="/ru/casino/group/volatility-switch"><?php echo htmlspecialchars($translations['volatility_switch']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/enhanced-rtp">Повышенный RTP</a></p>
+              <p><a href="/ru/casino/group/enhanced-rtp"><?php echo htmlspecialchars($translations['enhanced_rtp']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/stake-engine">Разработка Stake</a></p>
+              <p><a href="/ru/casino/group/stake-engine"><?php echo htmlspecialchars($translations['stake_engine']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/mines">Мины</a></p>
+              <p><a href="/ru/casino/group/mines"><?php echo htmlspecialchars($translations['mines']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/puzzle-games">Пазл</a></p>
+              <p><a href="/ru/casino/group/puzzle-games"><?php echo htmlspecialchars($translations['puzzle_games']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/multiplayer">Многопользовательские</a></p>
+              <p><a href="/ru/casino/group/multiplayer"><?php echo htmlspecialchars($translations['multiplayer']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/jackpot-slots">Слоты с джекпотом</a></p>
-            </li class="level1">
+              <p><a href="/ru/casino/group/jackpot-slots"><?php echo htmlspecialchars($translations['jackpot_slots']); ?></a></p>
+            </li>
           </ul>
-          <p><span>Лучшие коллекции и функции</span></p>
+          <p><span><?php echo htmlspecialchars($translations['best_collections']); ?></span></p>
           <ul>
             <li>
-              <p><a href="/ru/casino/group/recommended-slots">Рекомендуемые игры</a></p>
+              <p><a href="/ru/casino/group/recommended-slots"><?php echo htmlspecialchars($translations['recommended_slots']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/featured-slots">Избранные слоты</a></p>
+              <p><a href="/ru/casino/group/featured-slots"><?php echo htmlspecialchars($translations['featured_slots']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/stake-exclusives">Эксклюзивы Stake</a></p>
+              <p><a href="/ru/casino/group/stake-exclusives"><?php echo htmlspecialchars($translations['stake_exclusives']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/new-releases">Новые релизы</a></p>
+              <p><a href="/ru/casino/group/new-releases"><?php echo htmlspecialchars($translations['new_releases']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/early-access">Ранний доступ</a></p>
+              <p><a href="/ru/casino/group/early-access"><?php echo htmlspecialchars($translations['early_access']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/eddies-favourites">Любимые игры Эдди</a></p>
+              <p><a href="/ru/casino/group/eddies-favourites"><?php echo htmlspecialchars($translations['eddies_favourites']); ?></a></p>
             </li>
           </ul>
-          <p><span>Игры акции</span></p>
+          <p><span><?php echo htmlspecialchars($translations['promotional_games']); ?></span></p>
           <ul>
             <li>
-              <p><a href="/ru/casino/group/drops-wins">Drops & Wins</a></p>
+              <p><a href="/ru/casino/group/drops-wins"><?php echo htmlspecialchars($translations['drops_wins']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/stake-vs-eddie">Stake против Эдди</a></p>
+              <p><a href="/ru/casino/group/stake-vs-eddie"><?php echo htmlspecialchars($translations['stake_vs_eddie']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/the-level-up">Повышение уровня</a></p>
+              <p><a href="/ru/casino/group/the-level-up"><?php echo htmlspecialchars($translations['the_level_up']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/reel-rumble">Битва барабанов</a></p>
+              <p><a href="/ru/casino/group/reel-rumble"><?php echo htmlspecialchars($translations['reel_rumble']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/conquer-the-casino">Покори казино</a></p>
+              <p><a href="/ru/casino/group/conquer-the-casino"><?php echo htmlspecialchars($translations['conquer_the_casino']); ?></a></p>
             </li>
           </ul>
-          <p><span>Визуальные темы</span></p>
+          <p><span><?php echo htmlspecialchars($translations['visual_themes']); ?></span></p>
           <ul>
             <li>
-              <p><span>Мифология и история</span></p>
+              <p><span><?php echo htmlspecialchars($translations['mythology_history']); ?></span></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/egyptian">Египет</a></p>
+              <p><a href="/ru/casino/group/egyptian"><?php echo htmlspecialchars($translations['egyptian']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/greek-empire">Древняя Греция</a></p>
+              <p><a href="/ru/casino/group/greek-empire"><?php echo htmlspecialchars($translations['greek_empire']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/ancient">Древние цивилизации</a></p>
+              <p><a href="/ru/casino/group/ancient"><?php echo htmlspecialchars($translations['ancient']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/romans">Римляне</a></p>
+              <p><a href="/ru/casino/group/romans"><?php echo htmlspecialchars($translations['romans']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/vikings">Викинги</a></p>
+              <p><a href="/ru/casino/group/vikings"><?php echo htmlspecialchars($translations['vikings']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/aztec">Ацтеки</a></p>
+              <p><a href="/ru/casino/group/aztec"><?php echo htmlspecialchars($translations['aztec']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/history">История</a></p>
+              <p><a href="/ru/casino/group/history"><?php echo htmlspecialchars($translations['history']); ?></a></p>
             </li>
             <li>
-              <p><span>Региональные темы</span></p>
+              <p><span><?php echo htmlspecialchars($translations['regional_themes']); ?></span></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/oriental">Восточные</a></p>
+              <p><a href="/ru/casino/group/oriental"><?php echo htmlspecialchars($translations['oriental']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/japanese">Японские</a></p>
+              <p><a href="/ru/casino/group/japanese"><?php echo htmlspecialchars($translations['japanese']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/arabian">Арабские</a></p>
+              <p><a href="/ru/casino/group/arabian"><?php echo htmlspecialchars($translations['arabian']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/latino">Латинские</a></p>
+              <p><a href="/ru/casino/group/latino"><?php echo htmlspecialchars($translations['latino']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/african">Африканские</a></p>
+              <p><a href="/ru/casino/group/african"><?php echo htmlspecialchars($translations['african']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/indian">Индийские</a></p>
+              <p><a href="/ru/casino/group/indian"><?php echo htmlspecialchars($translations['indian']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/international">Интернациональные</a></p>
+              <p><a href="/ru/casino/group/international"><?php echo htmlspecialchars($translations['international']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/travel">Путешествия</a></p>
+              <p><a href="/ru/casino/group/travel"><?php echo htmlspecialchars($translations['travel']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/irish">Ирландские</a></p>
+              <p><a href="/ru/casino/group/irish"><?php echo htmlspecialchars($translations['irish']); ?></a></p>
             </li>
             <li>
-              <p><span>Природные и сезонные</span></p>
+              <p><span><?php echo htmlspecialchars($translations['natural_seasonal']); ?></span></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/animals">Животные</a></p>
+              <p><a href="/ru/casino/group/animals"><?php echo htmlspecialchars($translations['animals']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/nature">Природа</a></p>
+              <p><a href="/ru/casino/group/nature"><?php echo htmlspecialchars($translations['nature']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/sea">Море</a></p>
+              <p><a href="/ru/casino/group/sea"><?php echo htmlspecialchars($translations['sea']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/jungle">Джунгли</a></p>
+              <p><a href="/ru/casino/group/jungle"><?php echo htmlspecialchars($translations['jungle']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/farm">Ферма</a></p>
+              <p><a href="/ru/casino/group/farm"><?php echo htmlspecialchars($translations['farm']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/fishing">Рыбалка</a></p>
+              <p><a href="/ru/casino/group/fishing"><?php echo htmlspecialchars($translations['fishing']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/winter">Зима</a></p>
+              <p><a href="/ru/casino/group/winter"><?php echo htmlspecialchars($translations['winter']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/summer">Лето</a></p>
+              <p><a href="/ru/casino/group/summer"><?php echo htmlspecialchars($translations['summer']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/halloween">Хэллоуин</a></p>
+              <p><a href="/ru/casino/group/halloween"><?php echo htmlspecialchars($translations['halloween']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/christmas">Рождество</a></p>
+              <p><a href="/ru/casino/group/christmas"><?php echo htmlspecialchars($translations['christmas']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/easter">Пасха</a></p>
+              <p><a href="/ru/casino/group/easter"><?php echo htmlspecialchars($translations['easter']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/lunar-new-year">Китайский Новый год</a></p>
+              <p><a href="/ru/casino/group/lunar-new-year"><?php echo htmlspecialchars($translations['lunar_new_year']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/oktoberfest">Октоберфест</a></p>
+              <p><a href="/ru/casino/group/oktoberfest"><?php echo htmlspecialchars($translations['oktoberfest']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/seasonal">Сезонные</a></p>
+              <p><a href="/ru/casino/group/seasonal"><?php echo htmlspecialchars($translations['seasonal']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/brazilian-carnival">Бразильский карнавал</a></p>
+              <p><a href="/ru/casino/group/brazilian-carnival"><?php echo htmlspecialchars($translations['brazilian_carnival']); ?></a></p>
             </li>
             <li>
-              <p><span>Фэнтези и приключения</span></p>
+              <p><span><?php echo htmlspecialchars($translations['fantasy_adventure']); ?></span></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/fantasy">Фэнтези</a></p>
+              <p><a href="/ru/casino/group/fantasy"><?php echo htmlspecialchars($translations['fantasy']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/dragons">Драконы</a></p>
+              <p><a href="/ru/casino/group/dragons"><?php echo htmlspecialchars($translations['dragons']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/magic">Магия</a></p>
+              <p><a href="/ru/casino/group/magic"><?php echo htmlspecialchars($translations['magic']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/adventure">Приключения</a></p>
+              <p><a href="/ru/casino/group/adventure"><?php echo htmlspecialchars($translations['adventure']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/fairy">Феи</a></p>
+              <p><a href="/ru/casino/group/fairy"><?php echo htmlspecialchars($translations['fairy']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/horror">Ужасы</a></p>
+              <p><a href="/ru/casino/group/horror"><?php echo htmlspecialchars($translations['horror']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/space">Космос</a></p>
+              <p><a href="/ru/casino/group/space"><?php echo htmlspecialchars($translations['space']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/wild-west">Дикий Запад</a></p>
+              <p><a href="/ru/casino/group/wild-west"><?php echo htmlspecialchars($translations['wild_west']); ?></a></p>
             </li>
             <li>
-              <p><span>Поп-культура и развлекательные темы</span></p>
+              <p><span><?php echo htmlspecialchars($translations['pop_culture']); ?></span></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/party">Вечеринка</a></p>
+              <p><a href="/ru/casino/group/party"><?php echo htmlspecialchars($translations['party']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/music">Музыка</a></p>
+              <p><a href="/ru/casino/group/music"><?php echo htmlspecialchars($translations['music']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/joker">Джокер</a></p>
+              <p><a href="/ru/casino/group/joker"><?php echo htmlspecialchars($translations['joker']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/candy">Конфеты</a></p>
+              <p><a href="/ru/casino/group/candy"><?php echo htmlspecialchars($translations['candy']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/comic">Комиксы</a></p>
+              <p><a href="/ru/casino/group/comic"><?php echo htmlspecialchars($translations['comic']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/anime">Аниме</a></p>
+              <p><a href="/ru/casino/group/anime"><?php echo htmlspecialchars($translations['anime']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/retro">Ретро</a></p>
+              <p><a href="/ru/casino/group/retro"><?php echo htmlspecialchars($translations['retro']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/romance">Романтика</a></p>
+              <p><a href="/ru/casino/group/romance"><?php echo htmlspecialchars($translations['romance']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/naughty">Озорные</a></p>
+              <p><a href="/ru/casino/group/naughty"><?php echo htmlspecialchars($translations['naughty']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/war">Война</a></p>
+              <p><a href="/ru/casino/group/war"><?php echo htmlspecialchars($translations['war']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/branded">Брендовые</a></p>
+              <p><a href="/ru/casino/group/branded"><?php echo htmlspecialchars($translations['branded']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/food">Еда</a></p>
+              <p><a href="/ru/casino/group/food"><?php echo htmlspecialchars($translations['food']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/miscellaneous">Разное</a></p>
+              <p><a href="/ru/casino/group/miscellaneous"><?php echo htmlspecialchars($translations['miscellaneous']); ?></a></p>
             </li>
             <li>
-              <p><span>Богатство и награды</span></p>
+              <p><span><?php echo htmlspecialchars($translations['wealth_rewards']); ?></span></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/money">Деньги</a></p>
+              <p><a href="/ru/casino/group/money"><?php echo htmlspecialchars($translations['money']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/gold">Золото</a></p>
+              <p><a href="/ru/casino/group/gold"><?php echo htmlspecialchars($translations['gold']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/gems">Драгоценные камни</a></p>
+              <p><a href="/ru/casino/group/gems"><?php echo htmlspecialchars($translations['gems']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/777">777</a></p>
+              <p><a href="/ru/casino/group/777"><?php echo htmlspecialchars($translations['777']); ?></a></p>
             </li>
             <li class="level2">
-              <p><a href="/ru/casino/group/vegas">Вегас</a></p>
+              <p><a href="/ru/casino/group/vegas"><?php echo htmlspecialchars($translations['vegas']); ?></a></p>
             </li>
           </ul>
-          <h3><span id="Настольные_игры">Настольные игры</span></h3>
-          <p><span>Ощутите азарт классических настольных игр казино онлайн на Stake. Вас ждет все — от европейской рулетки до захватывающего блэкджека и</span><a href="/ru/blog/how-to-play-online-poker"> покера</a><span>.</span></p>
-          <p><span>Среди наиболее популярных настольных игр — </span><a href="/ru/blog/how-to-play-blackjack-on-stake">блэкджек</a><span>, </span><a href="/ru/blog/how-to-play-baccarat">баккара</a><span>, </span><a href="/ru/blog/how-to-play-roulette">рулетка</a><span>, карточные игры, </span><a href="/ru/casino/games/poker">Stake Poker</a><span> и многое другое. Эти классические игры давно завоевали популярность благодаря выгодному </span><a href="/ru/blog/casino-house-edge-guide">преимуществу казино</a><span> и возможностям для крупных выигрышей. Ознакомьтесь с опциями дилеров и узнайте все нюансы правил с нашим подробным </span><a href="/ru/blog/how-to-play-casino-table-games">руководством по настольным играм</a><span>.</span></p>
-          <p><span>Электронные версии настольных игр — это не только удобство игры на вашем устройстве с реальными выплатами, но и дополнительные функции, гибкие ставки и зачастую более высокий </span><a href="/ru/blog/return-to-player-rtp-guide">процент возврата игроку</a><span> (RTP) по сравнению с играми в наземных казино.</span></p>
-          <p><span>Настольные игры казино</span></p>
+          <h3><span id="table_games"><?php echo htmlspecialchars($translations['table_games']); ?></span></h3>
+          <p><span><?php echo htmlspecialchars($translations['table_games_intro']); ?></span><a href="/ru/blog/how-to-play-online-poker"><?php echo htmlspecialchars($translations['poker']); ?></a><span>.</span></p>
+          <p><span><?php echo htmlspecialchars($translations['popular_table_games']); ?></span><a href="/ru/blog/how-to-play-blackjack-on-stake"><?php echo htmlspecialchars($translations['blackjack']); ?></a><span>, </span><a href="/ru/blog/how-to-play-baccarat"><?php echo htmlspecialchars($translations['baccarat']); ?></a><span>, </span><a href="/ru/blog/how-to-play-roulette"><?php echo htmlspecialchars($translations['roulette']); ?></a><span>, <?php echo htmlspecialchars($translations['card_games']); ?>, </span><a href="/ru/casino/games/poker"><?php echo htmlspecialchars($translations['stake_poker']); ?></a><span><?php echo htmlspecialchars($translations['table_games_advantages']); ?></span><a href="/ru/blog/casino-house-edge-guide"><?php echo htmlspecialchars($translations['house_edge']); ?></a><span><?php echo htmlspecialchars($translations['table_games_rules']); ?></span><a href="/ru/blog/how-to-play-casino-table-games"><?php echo htmlspecialchars($translations['table_games_guide']); ?></a><span>.</span></p>
+          <p><span><?php echo htmlspecialchars($translations['electronic_table_games']); ?></span><a href="/ru/blog/return-to-player-rtp-guide"><?php echo htmlspecialchars($translations['rtp']); ?></a><span><?php echo htmlspecialchars($translations['electronic_table_games_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['table_games_category']); ?></span></p>
           <ul>
             <li>
-              <p><a href="/ru/casino/group/live-casino">Лайв-казино</a></p>
+              <p><a href="/ru/casino/group/live-casino"><?php echo htmlspecialchars($translations['live_casino']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/game-shows">Шоу-игры</a></p>
+              <p><a href="/ru/casino/group/game-shows"><?php echo htmlspecialchars($translations['game_shows']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/baccarat">Баккара</a></p>
+              <p><a href="/ru/casino/group/baccarat"><?php echo htmlspecialchars($translations['baccarat']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/blackjack">Блэкджек</a></p>
+              <p><a href="/ru/casino/group/blackjack"><?php echo htmlspecialchars($translations['blackjack']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/poker">Покер</a></p>
+              <p><a href="/ru/casino/group/poker"><?php echo htmlspecialchars($translations['poker']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/roulette">Roulette</a></p>
+              <p><a href="/ru/casino/group/roulette"><?php echo htmlspecialchars($translations['roulette']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/cards">Карты</a></p>
+              <p><a href="/ru/casino/group/cards"><?php echo htmlspecialchars($translations['cards']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/table-games">Настольные игры</a></p>
+              <p><a href="/ru/casino/group/table-games"><?php echo htmlspecialchars($translations['table_games']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/video-poker">Видеопокер</a></p>
+              <p><a href="/ru/casino/group/video-poker"><?php echo htmlspecialchars($translations['video_poker']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/stake-table-games">Настольные игры Stake</a></p>
+              <p><a href="/ru/casino/group/stake-table-games"><?php echo htmlspecialchars($translations['stake_table_games']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/group/first-person">От первого лица</a></p>
+              <p><a href="/ru/casino/group/first-person"><?php echo htmlspecialchars($translations['first_person']); ?></a></p>
             </li>
           </ul>
-          <h3><span id="Настольные_игры_с_живыми_дилерами">Настольные игры с живыми дилерами</span></h3>
-          <p><span>Погрузитесь в атмосферу любимых настольных игр прямо на платформе Stake — лайв-игры с настоящими дилерами позволяют прочувствовать все волнение и азарт реального казино.</span></p>
-          <p><span>В вашем распоряжении — настоящие карты, профессиональные ведущие, реальные рулетки и столы для блэкджека. Наслаждайтесь широким выбором: </span><a href="/ru/casino/group/live-casino#Live_Baccarat_on_Stake">Live баккара</a><span>, </span><a href="/ru/casino/group/live-casino#Live_Blackjack_on_Stake">Live блэкджек</a><span>, </span><a href="/ru/casino/games/evolution-craps">Live крэпс</a><span>, </span><a href="/ru/casino/games/pragmatic-play-stake-roulette">Live рулетка</a><span> и даже </span><a href="/ru/blog/stake-poker-tournaments-guide">турниры по Stake Poker</a><span> — все это доступно в режиме реального времени!</span></p>
-          <h4><span id="Игровые_шоу_в_живом_казино">Игровые шоу в живом казино</span></h4>
-          <p><span>Оцените игровые шоу с живыми ведущими, атмосферными студиями и захватывающим игровым процессом — ничто не сравнится с азартом игр, созданных по мотивам популярных телешоу и транслируемых в режиме реального времени.</span></p>
-          <p><span>Игровые Live-шоу в нашем казино сочетают увлекательную атмосферу телеигры с инновационным интерфейсом для ставок, спецэффектами и анимацией.</span></p>
-          <p><span>В числе самых популярных гейм-шоу с живыми дилерами: </span><a href="/ru/casino/games/evolution-crazy-time">Crazy Time</a><span>, </span><a href="/ru/casino/games/evolution-monopoly-live">Monopoly Live</a><span>, </span><a href="/ru/casino/games/pragmatic-play-live-sweet-bonanza-candyland">Sweet Bonanza Candyland</a><span>, </span><a href="/ru/casino/games/evolution-deal-or-no-deal">Deal or No Deal</a><span>, </span><a href="/ru/casino/games/evolution-mega-ball">Mega Ball</a><span>, </span><a href="/ru/casino/games/evolution-stock-market">Stock Market,</a><span> </span><a href="/ru/casino/games/evolution-balloon-race">Balloon Race</a><span> и многие другие.</span></p>
-          <h2><span id="Серии_игр">Серии игр</span></h2>
-          <p><span>Благодаря широкому выбору </span><a href="/ru/blog/best-online-casino-game-providers">ведущих провайдеров</a><span> и множеству уникальных тайтлов на Stake вы найдете игровые серии — </span><a href="/ru/casino/group/sagas">серии слотов</a><span>, объединенные общим сюжетом и тематикой. Что такое серия слотов? Это серия автоматов, которые связаны между собой, продолжают одну и ту же историю или развивают схожие темы и механику.</span></p>
-          <p><span>Одна из самых известных игровых саг в мире — Big Bass от Pragmatic Play! Все началось с оригинального слота </span><a href="/ru/casino/games/pragmatic-play-big-bass-bonanza">Big Bass Bonanza</a><span>, выпущенного в 2020 году. С тех пор вышло более 20 разных версий в этой рыболовной серии, каждый из которых предлагает уникальные функции и новые возможности для выигрыша. Среди самых популярных игр этой саги:</span></p>
+          <h3><span id="live_dealer_table_games"><?php echo htmlspecialchars($translations['live_dealer_table_games']); ?></span></h3>
+          <p><span><?php echo htmlspecialchars($translations['live_dealer_intro']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['live_dealer_games']); ?></span><a href="/ru/casino/group/live-casino#Live_Baccarat_on_Stake"><?php echo htmlspecialchars($translations['live_baccarat']); ?></a><span>, </span><a href="/ru/casino/group/live-casino#Live_Blackjack_on_Stake"><?php echo htmlspecialchars($translations['live_blackjack']); ?></a><span>, </span><a href="/ru/casino/games/evolution-craps"><?php echo htmlspecialchars($translations['live_craps']); ?></a><span>, </span><a href="/ru/casino/games/pragmatic-play-stake-roulette"><?php echo htmlspecialchars($translations['live_roulette']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/blog/stake-poker-tournaments-guide"><?php echo htmlspecialchars($translations['poker_tournaments']); ?></a><span><?php echo htmlspecialchars($translations['live_dealer_experience']); ?></span></p>
+          <h4><span id="live_casino_game_shows"><?php echo htmlspecialchars($translations['live_casino_game_shows']); ?></span></h4>
+          <p><span><?php echo htmlspecialchars($translations['game_shows_intro']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['game_shows_features']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['popular_game_shows']); ?></span><a href="/ru/casino/games/evolution-crazy-time"><?php echo htmlspecialchars($translations['crazy_time']); ?></a><span>, </span><a href="/ru/casino/games/evolution-monopoly-live"><?php echo htmlspecialchars($translations['monopoly_live']); ?></a><span>, </span><a href="/ru/casino/games/pragmatic-play-live-sweet-bonanza-candyland"><?php echo htmlspecialchars($translations['sweet_bonanza_candyland']); ?></a><span>, </span><a href="/ru/casino/games/evolution-deal-or-no-deal"><?php echo htmlspecialchars($translations['deal_or_no_deal']); ?></a><span>, </span><a href="/ru/casino/games/evolution-mega-ball"><?php echo htmlspecialchars($translations['mega_ball']); ?></a><span>, </span><a href="/ru/casino/games/evolution-stock-market"><?php echo htmlspecialchars($translations['stock_market']); ?></a><span>, </span><a href="/ru/casino/games/evolution-balloon-race"><?php echo htmlspecialchars($translations['balloon_race']); ?></a><span><?php echo htmlspecialchars($translations['and_many_others']); ?></span></p>
+          <h2><span id="game_series"><?php echo htmlspecialchars($translations['game_series']); ?></span></h2>
+          <p><span><?php echo htmlspecialchars($translations['game_series_intro']); ?></span><a href="/ru/blog/best-online-casino-game-providers"><?php echo htmlspecialchars($translations['top_providers']); ?></a><span><?php echo htmlspecialchars($translations['slot_series']); ?></span><a href="/ru/casino/group/sagas"><?php echo htmlspecialchars($translations['slot_sagas']); ?></a><span><?php echo htmlspecialchars($translations['slot_series_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['big_bass_intro']); ?></span><a href="/ru/casino/games/pragmatic-play-big-bass-bonanza"><?php echo htmlspecialchars($translations['big_bass_bonanza']); ?></a><span><?php echo htmlspecialchars($translations['big_bass_series']); ?></span></p>
           <ul>
             <li>
-              <p><a href="/ru/casino/games/pragmatic-play-big-bass-bonanza-megaways">Big Bass Bonanza Megaways</a></p>
+              <p><a href="/ru/casino/games/pragmatic-play-big-bass-bonanza-megaways"><?php echo htmlspecialchars($translations['big_bass_bonanza_megaways']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/games/pragmatic-play-big-bass-splash">Big Bass Splash</a></p>
+              <p><a href="/ru/casino/games/pragmatic-play-big-bass-splash"><?php echo htmlspecialchars($translations['big_bass_splash']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/games/pragmatic-play-big-bass-hold-and-spinner">Big Bass Hold and Spinner</a></p>
+              <p><a href="/ru/casino/games/pragmatic-play-big-bass-hold-and-spinner"><?php echo htmlspecialchars($translations['big_bass_hold_and_spinner']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/games/pragmatic-play-big-bass-bonanza-keeping-it-reel">Big Bass Bonanza Keeping it Reel</a></p>
+              <p><a href="/ru/casino/games/pragmatic-play-big-bass-bonanza-keeping-it-reel"><?php echo htmlspecialchars($translations['big_bass_bonanza_keeping_it_reel']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/games/pragmatic-play-big-bass-amazon-xtreme">Big Bass Amazon Xtreme</a></p>
+              <p><a href="/ru/casino/games/pragmatic-play-big-bass-amazon-xtreme"><?php echo htmlspecialchars($translations['big_bass_amazon_xtreme']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/games/pragmatic-play-christmas-big-bass-bonanza">Christmas Big Bass Bonanza</a></p>
+              <p><a href="/ru/casino/games/pragmatic-play-christmas-big-bass-bonanza"><?php echo htmlspecialchars($translations['christmas_big_bass_bonanza']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/casino/games/pragmatic-play-bigger-bass-blizzard-christmas-catch">Bigger Bass Blizzard - Christmas Catch</a></p>
+              <p><a href="/ru/casino/games/pragmatic-play-bigger-bass-blizzard-christmas-catch"><?php echo htmlspecialchars($translations['bigger_bass_blizzard']); ?></a></p>
             </li>
           </ul>
-          <p><span>Среди других популярных игровых серий — </span><a href="/ru/casino/games/pragmatic-play-the-dog-house">The Dog House</a><span> (Pragmatic Play), слоты о Риче Уайлде (в том числе </span><a href="/ru/casino/games/playngo-book-of-dead">Book of Dead</a><span>) от </span><a href="/ru/casino/group/playn-go">Play’n GO</a><span> и серия </span><a href="/ru/casino/games/relax-money-train">Money Train</a><span> от Relax Gaming.</span></p>
-          <h2><span id="Ресурсы_для_ставок">Ресурсы для ставок</span></h2>
-          <p><span>Наш блог — это настоящая кладезь полезных руководств и материалов, которые помогут вам получать максимум от каждой ставки. Здесь вы узнаете все: от правил конкретных игр и стратегий для блэкджека до принципов работы линий выплат, чтения таблиц выплат слотов и множества других нюансов.</span></p>
-          <p><span>Ставя на любые онлайн-игры в казино, важно подобрать ту стратегию ставок, которая подойдет именно вам! На нашем сайте вы найдете подробные руководства по разным подходам — выберите метод, соответствующий вашему стилю игры. Ознакомьтесь с ними:</span></p>
+          <p><span><?php echo htmlspecialchars($translations['other_game_series']); ?></span><a href="/ru/casino/games/pragmatic-play-the-dog-house"><?php echo htmlspecialchars($translations['the_dog_house']); ?></a><span><?php echo htmlspecialchars($translations['rich_wilde_series']); ?></span><a href="/ru/casino/games/playngo-book-of-dead"><?php echo htmlspecialchars($translations['book_of_dead']); ?></a><span><?php echo htmlspecialchars($translations['from']); ?></span><a href="/ru/casino/group/playn-go"><?php echo htmlspecialchars($translations['playn_go']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/casino/games/relax-money-train"><?php echo htmlspecialchars($translations['money_train']); ?></a><span><?php echo htmlspecialchars($translations['from_relax_gaming']); ?></span></p>
+          <h2><span id="betting_resources"><?php echo htmlspecialchars($translations['betting_resources']); ?></span></h2>
+          <p><span><?php echo htmlspecialchars($translations['blog_resources']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['betting_strategies_intro']); ?></span></p>
           <ul>
             <li>
-              <p><a href="/ru/blog/progressive-betting-strategy-positive-vs-negative">Прогрессивные и негативные стратегии ставок</a></p>
+              <p><a href="/ru/blog/progressive-betting-strategy-positive-vs-negative"><?php echo htmlspecialchars($translations['progressive_betting']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/fibonacci-betting-system-explained">Фибоначчи</a></p>
+              <p><a href="/ru/blog/fibonacci-betting-system-explained"><?php echo htmlspecialchars($translations['fibonacci']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/what-is-the-1-3-2-6-betting-system-guide">Последовательность 1-3-2-6</a></p>
+              <p><a href="/ru/blog/what-is-the-1-3-2-6-betting-system-guide"><?php echo htmlspecialchars($translations['sequence_1326']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/paroli-betting-system-strategy-explained">Стратегия Пароли</a></p>
+              <p><a href="/ru/blog/paroli-betting-system-strategy-explained"><?php echo htmlspecialchars($translations['paroli']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/dalembert-betting-system-explained">Д’Аламбер</a></p>
+              <p><a href="/ru/blog/dalembert-betting-system-explained"><?php echo htmlspecialchars($translations['dalembert']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/martingale-betting-system-explained">Мартингейл</a></p>
+              <p><a href="/ru/blog/martingale-betting-system-explained"><?php echo htmlspecialchars($translations['martingale']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/labouchere-betting-system-method-explained">Лабушер</a></p>
+              <p><a href="/ru/blog/labouchere-betting-system-method-explained"><?php echo htmlspecialchars($translations['labouchere']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/keefer-roulette-system-betting-strategy-explained">Кифер</a></p>
+              <p><a href="/ru/blog/keefer-roulette-system-betting-strategy-explained"><?php echo htmlspecialchars($translations['keefer']); ?></a></p>
             </li>
             <li>
-              <p><a href="/ru/blog/oscars-grind-betting-system-explained">Стратегия Оскара</a></p>
+              <p><a href="/ru/blog/oscars-grind-betting-system-explained"><?php echo htmlspecialchars($translations['oscars_grind']); ?></a></p>
             </li>
           </ul>
-          <p><span>Мы регулярно публикуем новые статьи и полезные материалы — заходите на страницу блога казино Stake почаще, чтобы быть в курсе свежих стратегий и полезных советов по игре!</span></p>
-          <h2><span id="Как_внести_депозит_для_игры_в_онлайн-игры_и_делать_ставки_ответственно">Как внести депозит для игры в онлайн-игры и делать ставки ответственно</span></h2>
-          <p><span>Вы можете играть в любые онлайн-игры Stake.com, пополнив счет в местной валюте или с помощью криптовалюты. На сегодняшний день Stake.com поддерживает депозиты в таких валютах, как </span><a href="/ru/blog/how-to-deposit-argentine-pesos-ars">ARS</a><span>, </span><a href="/ru/blog/how-to-deposit-chilean-pesos-clp">CLP</a><span>, </span><a href="/ru/blog/how-to-deposit-canadian-dollars-cad">CAD</a><span>, </span><a href="/ru/blog/how-to-deposit-vietnamese-dong-vnd">VND</a><span>, </span><a href="/ru/blog/how-to-deposit-indian-rupees-inr">INR</a><span> и </span><a href="/ru/blog/how-to-deposit-turkish-lira-try">TRY</a><span>. Кроме того, вы можете выбрать отображение баланса и в других валютах — все зависит от ваших предпочтений.</span></p>
-          <p><span>Больше информации о </span><a href="https://help.stake.com/en/collections/5701792-local-currency" target="_blank" rel="external noreferrer noopener">доступных валютах<?php echo $svg_external_link ?></a><span> и способах оплаты вы найдете на нашем форуме сообщества и в специальном </span><a href="/ru/blog/local-currency-deposit-withdraw-guide">руководстве по платежам</a><span>.</span></p>
-          <p><span>Если вы хотите играть в Wheel с криптовалютой, просто пополните счет с помощью </span><a href="/ru/blog/what-is-bitcoin">BTC</a><span>, </span><a href="/ru/blog/what-is-ethereum-eth-crypto-betting">ETH</a><span>, </span><a href="/ru/blog/what-is-tether-usdt-crypto">USDT</a><span>, </span><a href="/ru/blog/eos-on-stake">EOS</a><span>, </span><a href="/ru/blog/what-is-dogecoin-crypto-guide">Doge</a><span>, </span><a href="/ru/blog/what-is-litecoin-ltc-crypto-betting">LTC</a><span>, </span><a href="/ru/blog/what-is-solana-sol-crypto-coin">SOL</a><span>, </span><a href="/ru/blog/what-is-tron-trx-crypto-guide">TRX</a><span> и других цифровых монет. Полный </span><a href="/ru/blog/what-crypto-does-stake-offer">список доступных криптовалют</a><span>, а также наши рекомендации и </span><a href="/ru/blog/choosing-crypto-coin-guide">руководство по выбору монеты</a><span> можно найти в нашем блоге.</span></p>
-          <p><span>На Stake доступна круглосуточная </span><a href="/ru/blog/stake-customer-support-guide">поддержка игроков</a><span>. Сотрудники службы поддержки помогут вам решить вопросы, связанные с </span><a href="/ru/blog/deposit-withdrawal-methods-online-betting">пополнением счета, выводом средств</a><em> </em><span>и другими моментами.</span></p>
-          <p><span>Сервис </span><a href="https://www.moonpay.com/" target="_blank" rel="external noreferrer noopener">Moonpay <?php echo $svg_external_link ?> </a><span> поддерживает различные способы оплаты, включая Visa, Mastercard, Apple Pay, Google Pay и другие. Полный список доступных методов оплаты смотрите в </span><a href="https://support.moonpay.com/hc/en-gb/articles/360017624078-What-are-your-supported-payment-methods-" target="_blank" rel="external noreferrer noopener">документации Moonpay<?php echo $svg_external_link ?></a><span>. Также рекомендуем ознакомиться с такими сервисами, как </span><a href="https://swapped.com" target="_blank" rel="external noreferrer noopener">Swapped.com<?php echo $svg_external_link ?></a><span> и </span><a href="/ru/blog/what-is-mesh-crypto-deposit-integration">Mesh</a><span>, для удобной покупки и использования криптовалюты на Stake.</span></p>
-          <p><span>Узнайте, как использовать </span><a href="/ru/blog/how-to-use-our-vault">хранилище Stake</a><span> — защищенное хранилище для ваших кошельков, которое позволяет безопасно сохранять средства для будущей игры в казино Stake. Также рекомендуем прочитать наше </span><a href="/ru/blog/is-crypto-gambling-safe">руководство по криптобезопасности</a><span>, чтобы узнать больше о сохранности и безопасности ваших средств на Stake.com.</span></p>
-          <p><span>Помните: играйте только на те средства, которые готовы потратить, и уделяйте внимание принципам </span><a href="/ru/blog/responsible-gambling-online-guide-stake-smart">ответственной игры</a><span>. О том, как сохранить контроль над игрой, вы можете узнать из нашего </span><a href="/ru/responsible-gambling/stake-smart">руководства по разумным ставкам</a><span>. Также вы можете использовать </span><a href="/ru/responsible-gambling/calculator">ежемесячный калькулятор бюджета</a><span> и </span><a href="/ru/blog/how-much-to-gamble-budget-calculator">руководство по лимитам ставок</a><span>, чтобы определить комфортную для вас сумму, которую можно выделить на азартные игры.</span></p>
-          <h2><span id="Лучшие_провайдеры_игр_для_казино">Лучшие провайдеры игр для казино</span></h2>
-          <p><span>Помимо легендарных игр Stake Originals, Stake предлагает широкий выбор игр от самых </span><a href="/ru/casino/collection/provider">авторитетных и известных провайдеров</a><span> индустрии азартных онлайн-игр.</span></p>
-          <p><span>В числе ведущих поставщиков Stake — </span><a href="/ru/casino/group/twist-gaming">Twist Gaming,</a><span> </span><a href="/ru/casino/group/massive-studios">Massive Studios,</a><span> </span><a href="/ru/casino/group/titan-gaming">Titan Gaming</a><span>, </span><a href="/ru/casino/group/pragmatic-play">Pragmatic Play</a><span>, </span><a href="/ru/casino/group/evolution-gaming">Evolution Gaming</a><span>, </span><a href="/ru/casino/group/quickspin">Quickspin</a><span>, </span><a href="/ru/casino/group/relax-gaming">Relax Gaming</a><span>, </span><a href="/ru/casino/group/big-time-gaming">Big Time Gaming</a><span>, </span><a href="/ru/casino/group/playn-go">Play\'n GO</a><span>, </span><a href="/ru/casino/group/gamomat">Gamomat</a><span>, </span><a href="/ru/casino/group/hacksaw-gaming">Hacksaw Gaming</a><span>, </span><a href="/ru/casino/group/push-gaming">Push Gaming</a><span>, </span><a href="/ru/casino/group/netent">Netent</a><span>, </span><a href="/ru/casino/group/no-limit-city">Nolimit City</a><span> и многие другие мировые лидеры, славящиеся качеством своих казино-игр и захватывающими слотами.</span></p>
-          <p><span>На платформе Stake вас ждут самые популярные игровые автоматы и настольные игры — фавориты игроков по всему миру. Среди них: </span><a href="/ru/casino/games/twist-gaming-pixel-farm">Pixel Farm,</a><span> </span><a href="/ru/casino/games/twist-gaming-carp-diem">Carp Diem,</a><span> </span><a href="/ru/casino/games/hacksaw-wanted-dead-or-a-wild">Wanted Dead or a Wild</a><span>, </span><a href="/ru/casino/games/pragmatic-play-gates-of-olympus">Gates of Olympus</a><span>, </span><a href="/ru/casino/games/hacksaw-rip-city">RIP City</a><span>, </span><a href="/ru/casino/games/pragmatic-play-big-bass-splash">Big Bass Splash</a><span>, </span><a href="/ru/casino/games/pragmatic-play-sweet-fiesta">Sweet Fiesta</a><span>, </span><a href="/ru/casino/games/hacksaw-dork-unit">Dork Unit</a><span>, </span><a href="/ru/casino/games/pragmatic-play-fruit-party">Fruit Party</a><span>, </span><a href="/ru/casino/games/hacksaw-bloodthirst">Bloodthirst</a><span>, </span><a href="/ru/casino/games/pragmatic-play-buffalo-king">Buffalo King</a><span>, </span><a href="/ru/casino/games/pragmatic-play-floating-dragon">Floating Dragon</a><span>, </span><a href="/ru/casino/games/evolution-lightning-dice">Lightning Dice</a><span>, </span><a href="/ru/casino/games/evolution-super-sic-bo">Super Sic Bo</a><span>, </span><a href="/ru/casino/games/evolution-side-bet-city">Side Bet City</a><span> и множество других хитов.</span></p>
-          <p><span>Будь то уникальные игровые механики, бонусные функции, высокие множители, различные тематики или просто динамичный геймплей — ассортимент Stake действительно мирового класса. Здесь каждый найдет для себя что-то особенное, а яркие впечатления и разнообразие игровых решений гарантированы каждому пользователю. Читайте о нашей эксклюзивной </span><a href="/ru/vip-club">программе ВИП и лояльности</a><span>, различных </span><a href="/ru/blog/best-casino-competitions-giveaways">розыгрышах и конкурсах</a><span>, а также о </span><a href="/ru/blog/best-casino-bonuses-on-stake">бонусах казино</a><span> в качестве </span><a href="/ru/blog/vip-program-levels-benefits-rewards">эксклюзивных VIP-наград</a><span> – от </span><a href="/ru/blog/what-is-stake-rakeback">рейкбека</a><span> до </span><a href="/ru/blog/what-is-stake-reload-bonus">релоад-бонусов</a><span> и </span><a href="/ru/blog/perks-benefits-of-stake-vip-hosts">персонального ВИП-хоста</a><span>! Узнайте больше в нашем </span><a href="/ru/blog/stake-vip-program-faqs-help">блоге FAQ для VIP-пользователей.</a></p>
-          <p><span>Не откладывайте! Независимо от того, предпочитаете ли вы классические настольные игры или ультрасовременные технологичные слоты, в казино Stake найдется все для максимального </span><a href="/ru/blog/online-casino-guide">удовольствия от онлайн-игры</a><span>!</span></p>
+          <p><span><?php echo htmlspecialchars($translations['blog_updates']); ?></span></p>
+          <h2><span id="deposit_and_responsible_betting"><?php echo htmlspecialchars($translations['deposit_and_responsible_betting']); ?></span></h2>
+          <p><span><?php echo htmlspecialchars($translations['deposit_options']); ?></span><a href="/ru/blog/how-to-deposit-argentine-pesos-ars"><?php echo htmlspecialchars($translations['ars']); ?></a><span>, </span><a href="/ru/blog/how-to-deposit-chilean-pesos-clp"><?php echo htmlspecialchars($translations['clp']); ?></a><span>, </span><a href="/ru/blog/how-to-deposit-canadian-dollars-cad"><?php echo htmlspecialchars($translations['cad']); ?></a><span>, </span><a href="/ru/blog/how-to-deposit-vietnamese-dong-vnd"><?php echo htmlspecialchars($translations['vnd']); ?></a><span>, </span><a href="/ru/blog/how-to-deposit-indian-rupees-inr"><?php echo htmlspecialchars($translations['inr']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/blog/how-to-deposit-turkish-lira-try"><?php echo htmlspecialchars($translations['try']); ?></a><span>. <?php echo htmlspecialchars($translations['currency_display']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['payment_methods_info']); ?></span><a href="https://help.stake.com/en/collections/5701792-local-currency" target="_blank" rel="external noreferrer noopener"><?php echo htmlspecialchars($translations['available_currencies']); ?><?php echo $svg_external_link ?></a><span><?php echo htmlspecialchars($translations['payment_guide']); ?></span><a href="/ru/blog/local-currency-deposit-withdraw-guide"><?php echo htmlspecialchars($translations['payment_guide_link']); ?></a><span>.</span></p>
+          <p><span><?php echo htmlspecialchars($translations['crypto_deposits']); ?></span><a href="/ru/blog/what-is-bitcoin"><?php echo htmlspecialchars($translations['btc']); ?></a><span>, </span><a href="/ru/blog/what-is-ethereum-eth-crypto-betting"><?php echo htmlspecialchars($translations['eth']); ?></a><span>, </span><a href="/ru/blog/what-is-tether-usdt-crypto"><?php echo htmlspecialchars($translations['usdt']); ?></a><span>, </span><a href="/ru/blog/eos-on-stake"><?php echo htmlspecialchars($translations['eos']); ?></a><span>, </span><a href="/ru/blog/what-is-dogecoin-crypto-guide"><?php echo htmlspecialchars($translations['doge']); ?></a><span>, </span><a href="/ru/blog/what-is-litecoin-ltc-crypto-betting"><?php echo htmlspecialchars($translations['ltc']); ?></a><span>, </span><a href="/ru/blog/what-is-solana-sol-crypto-coin"><?php echo htmlspecialchars($translations['sol']); ?></a><span>, </span><a href="/ru/blog/what-is-tron-trx-crypto-guide"><?php echo htmlspecialchars($translations['trx']); ?></a><span><?php echo htmlspecialchars($translations['crypto_list']); ?></span><a href="/ru/blog/what-crypto-does-stake-offer"><?php echo htmlspecialchars($translations['crypto_list_link']); ?></a><span><?php echo htmlspecialchars($translations['crypto_choice']); ?></span><a href="/ru/blog/choosing-crypto-coin-guide"><?php echo htmlspecialchars($translations['crypto_choice_guide']); ?></a><span>.</span></p>
+          <p><span><?php echo htmlspecialchars($translations['customer_support']); ?></span><a href="/ru/blog/stake-customer-support-guide"><?php echo htmlspecialchars($translations['support_guide']); ?></a><span>. <?php echo htmlspecialchars($translations['support_services']); ?></span><a href="/ru/blog/deposit-withdrawal-methods-online-betting"><?php echo htmlspecialchars($translations['deposit_withdrawal']); ?></a><span>.</span></p>
+          <p><span><?php echo htmlspecialchars($translations['moonpay_service']); ?></span><a href="https://www.moonpay.com/" target="_blank" rel="external noreferrer noopener"><?php echo htmlspecialchars($translations['moonpay']); ?><?php echo $svg_external_link ?></a><span><?php echo htmlspecialchars($translations['moonpay_payment_methods']); ?></span><a href="https://support.moonpay.com/hc/en-gb/articles/360017624078-What-are-your-supported-payment-methods-" target="_blank" rel="external noreferrer noopener"><?php echo htmlspecialchars($translations['moonpay_documentation']); ?><?php echo $svg_external_link ?></a><span>. <?php echo htmlspecialchars($translations['other_services']); ?></span><a href="https://swapped.com" target="_blank" rel="external noreferrer noopener"><?php echo htmlspecialchars($translations['swapped']); ?><?php echo $svg_external_link ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/blog/what-is-mesh-crypto-deposit-integration"><?php echo htmlspecialchars($translations['mesh']); ?></a><span><?php echo htmlspecialchars($translations['crypto_purchase']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['stake_vault']); ?></span><a href="/ru/blog/how-to-use-our-vault"><?php echo htmlspecialchars($translations['vault_guide']); ?></a><span><?php echo htmlspecialchars($translations['vault_info']); ?></span><a href="/ru/blog/is-crypto-gambling-safe"><?php echo htmlspecialchars($translations['crypto_safety']); ?></a><span><?php echo htmlspecialchars($translations['crypto_safety_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['responsible_gaming']); ?></span><a href="/ru/blog/responsible-gambling-online-guide-stake-smart"><?php echo htmlspecialchars($translations['responsible_gaming_guide']); ?></a><span>. <?php echo htmlspecialchars($translations['control_gaming']); ?></span><a href="/ru/responsible-gambling/stake-smart"><?php echo htmlspecialchars($translations['smart_betting_guide']); ?></a><span>. <?php echo htmlspecialchars($translations['budget_tools']); ?></span><a href="/ru/responsible-gambling/calculator"><?php echo htmlspecialchars($translations['budget_calculator']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/blog/how-much-to-gamble-budget-calculator"><?php echo htmlspecialchars($translations['betting_limits_guide']); ?></a><span><?php echo htmlspecialchars($translations['budget_management']); ?></span></p>
+          <h2><span id="top_game_providers"><?php echo htmlspecialchars($translations['top_game_providers']); ?></span></h2>
+          <p><span><?php echo htmlspecialchars($translations['providers_intro']); ?></span><a href="/ru/casino/collection/provider"><?php echo htmlspecialchars($translations['reputable_providers']); ?></a><span><?php echo htmlspecialchars($translations['providers_info']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['top_providers_list']); ?></span><a href="/ru/casino/group/twist-gaming"><?php echo htmlspecialchars($translations['twist_gaming']); ?></a><span>, </span><a href="/ru/casino/group/massive-studios"><?php echo htmlspecialchars($translations['massive_studios']); ?></a><span>, </span><a href="/ru/casino/group/titan-gaming"><?php echo htmlspecialchars($translations['titan_gaming']); ?></a><span>, </span><a href="/ru/casino/group/pragmatic-play"><?php echo htmlspecialchars($translations['pragmatic_play']); ?></a><span>, </span><a href="/ru/casino/group/evolution-gaming"><?php echo htmlspecialchars($translations['evolution_gaming']); ?></a><span>, </span><a href="/ru/casino/group/quickspin"><?php echo htmlspecialchars($translations['quickspin']); ?></a><span>, </span><a href="/ru/casino/group/relax-gaming"><?php echo htmlspecialchars($translations['relax_gaming']); ?></a><span>, </span><a href="/ru/casino/group/big-time-gaming"><?php echo htmlspecialchars($translations['big_time_gaming']); ?></a><span>, </span><a href="/ru/casino/group/playn-go"><?php echo htmlspecialchars($translations['playn_go']); ?></a><span>, </span><a href="/ru/casino/group/gamomat"><?php echo htmlspecialchars($translations['gamomat']); ?></a><span>, </span><a href="/ru/casino/group/hacksaw-gaming"><?php echo htmlspecialchars($translations['hacksaw_gaming']); ?></a><span>, </span><a href="/ru/casino/group/push-gaming"><?php echo htmlspecialchars($translations['push_gaming']); ?></a><span>, </span><a href="/ru/casino/group/netent"><?php echo htmlspecialchars($translations['netent']); ?></a><span>, </span><a href="/ru/casino/group/no-limit-city"><?php echo htmlspecialchars($translations['nolimit_city']); ?></a><span><?php echo htmlspecialchars($translations['providers_reputation']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['popular_games']); ?></span><a href="/ru/casino/games/twist-gaming-pixel-farm"><?php echo htmlspecialchars($translations['pixel_farm']); ?></a><span>, </span><a href="/ru/casino/games/twist-gaming-carp-diem"><?php echo htmlspecialchars($translations['carp_diem']); ?></a><span>, </span><a href="/ru/casino/games/hacksaw-wanted-dead-or-a-wild"><?php echo htmlspecialchars($translations['wanted_dead_or_a_wild']); ?></a><span>, </span><a href="/ru/casino/games/pragmatic-play-gates-of-olympus"><?php echo htmlspecialchars($translations['gates_of_olympus']); ?></a><span>, </span><a href="/ru/casino/games/hacksaw-rip-city"><?php echo htmlspecialchars($translations['rip_city']); ?></a><span>, </span><a href="/ru/casino/games/pragmatic-play-big-bass-splash"><?php echo htmlspecialchars($translations['big_bass_splash']); ?></a><span>, </span><a href="/ru/casino/games/pragmatic-play-sweet-fiesta"><?php echo htmlspecialchars($translations['sweet_fiesta']); ?></a><span>, </span><a href="/ru/casino/games/hacksaw-dork-unit"><?php echo htmlspecialchars($translations['dork_unit']); ?></a><span>, </span><a href="/ru/casino/games/pragmatic-play-fruit-party"><?php echo htmlspecialchars($translations['fruit_party']); ?></a><span>, </span><a href="/ru/casino/games/hacksaw-bloodthirst"><?php echo htmlspecialchars($translations['bloodthirst']); ?></a><span>, </span><a href="/ru/casino/games/pragmatic-play-buffalo-king"><?php echo htmlspecialchars($translations['buffalo_king']); ?></a><span>, </span><a href="/ru/casino/games/pragmatic-play-floating-dragon"><?php echo htmlspecialchars($translations['floating_dragon']); ?></a><span>, </span><a href="/ru/casino/games/evolution-lightning-dice"><?php echo htmlspecialchars($translations['lightning_dice']); ?></a><span>, </span><a href="/ru/casino/games/evolution-super-sic-bo"><?php echo htmlspecialchars($translations['super_sic_bo']); ?></a><span>, </span><a href="/ru/casino/games/evolution-side-bet-city"><?php echo htmlspecialchars($translations['side_bet_city']); ?></a><span><?php echo htmlspecialchars($translations['and_many_others']); ?></span></p>
+          <p><span><?php echo htmlspecialchars($translations['game_variety_experience']); ?></span><a href="/ru/vip-club"><?php echo htmlspecialchars($translations['vip_program']); ?></a><span>, <?php echo htmlspecialchars($translations['competitions']); ?></span><a href="/ru/blog/best-casino-competitions-giveaways"><?php echo htmlspecialchars($translations['competitions_guide']); ?></a><span>, <?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/blog/best-casino-bonuses-on-stake"><?php echo htmlspecialchars($translations['casino_bonuses']); ?></a><span><?php echo htmlspecialchars($translations['vip_rewards']); ?></span><a href="/ru/blog/vip-program-levels-benefits-rewards"><?php echo htmlspecialchars($translations['vip_rewards_link']); ?></a><span><?php echo htmlspecialchars($translations['from']); ?></span><a href="/ru/blog/what-is-stake-rakeback"><?php echo htmlspecialchars($translations['rakeback']); ?></a><span><?php echo htmlspecialchars($translations['to']); ?></span><a href="/ru/blog/what-is-stake-reload-bonus"><?php echo htmlspecialchars($translations['reload_bonus']); ?></a><span><?php echo htmlspecialchars($translations['and']); ?></span><a href="/ru/blog/perks-benefits-of-stake-vip-hosts"><?php echo htmlspecialchars($translations['vip_host']); ?></a><span>! <?php echo htmlspecialchars($translations['vip_faq']); ?></span><a href="/ru/blog/stake-vip-program-faqs-help"><?php echo htmlspecialchars($translations['vip_faq_link']); ?></a></p>
+          <p><span><?php echo htmlspecialchars($translations['start_playing']); ?></span><a href="/ru/blog/online-casino-guide"><?php echo htmlspecialchars($translations['online_casino_guide']); ?></a><span>!</span></p>
         </div>
       </div>
       <span class="see-more-space"></span>
       <div class="see-more-button-wrapper">
-        <button type="button" tabindex="0" aria-label="Show Content">Показать больше</button>
+        <button type="button" tabindex="0" aria-label="<?php echo htmlspecialchars($translations['show_content']); ?>"><?php echo htmlspecialchars($translations['show_more']); ?></button>
       </div>
     </div>
   </div>
   <script>
     $(document).ready(function() {
-      // Handle click event on the button inside .button-wrapper
       $('.see-more-button-wrapper button').on('click', function() {
-        // Find the closest .see-more container
         var $seeMore = $(this).closest('.see-more');
         var $content = $seeMore.find('.see-more-content');
         var $button = $(this);
-
-        // Toggle the is-open class on .see-more and .content
         $seeMore.toggleClass('is-open');
         $content.toggleClass('is-open');
-
-        // Update button text based on the is-open state
         if ($seeMore.hasClass('is-open')) {
-          $button.text('Показать меньше');
+          $button.text('<?php echo htmlspecialchars($translations['show_less']); ?>');
         } else {
-          $button.text('Показать больше');
+          $button.text('<?php echo htmlspecialchars($translations['show_more']); ?>');
         }
       });
     });
   </script>
-
-
 <?php
 }
 ?>

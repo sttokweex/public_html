@@ -1,29 +1,49 @@
-.privacy-page{
-    display: grid;
-    background-image: linear-gradient(to bottom, var(--main-background2), var(--main-background2)), linear-gradient(to bottom, var(--main-background4) 1%, var(--main-background2) 20%);
-    background-clip: padding-box, border-box;
-    background-origin: border-box;
-    border: 3px solid #f000;
-    border-radius: 8px;
-    color: var(--main-color-medium);
-    padding: 14px;
-    gap: 10px;
-    text-decoration:none;
-}   
-.privacy-page h3{
-    color: var(--main-color-hight);
-    font-weight: bold;
-    margin-bottom: 0px;    
+.privacy-container {
+  width: 100%;
 }
-.privacy-page h4{
-    color: var(--main-color-hight);
-    font-weight: bold!important;
-    margin-bottom: 0px;    
+.privace-inner {
+  padding: 2rem 3vw 2rem 3vw;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
 }
-.privacy-page a{
-    color: var(--main-color-hight);
-transition:.2s;
+.privacy-page {
+  display: grid;
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--main-background2),
+      var(--main-background2)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--main-background4) 1%,
+      var(--main-background2) 20%
+    );
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  border: 3px solid #f000;
+  border-radius: 8px;
+  color: var(--main-color-medium);
+  padding: 14px;
+  gap: 10px;
+  text-decoration: none;
 }
-.privacy-page a:hover{
-    color: #fff;
+.privacy-page h3 {
+  color: var(--main-color-hight);
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.privacy-page h4 {
+  color: var(--main-color-hight);
+  font-weight: bold !important;
+  margin-bottom: 0px;
+}
+.privacy-page a {
+  color: var(--main-color-hight);
+  transition: 0.2s;
+}
+.privacy-page a:hover {
+  color: #fff;
 }

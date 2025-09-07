@@ -1,5 +1,5 @@
 <?php
-function renderSearch($games)
+function renderSearch($games, $translations)
 {
 ?>
   <div class="home-search-wrap">
@@ -15,7 +15,7 @@ function renderSearch($games)
             <path d="M63.999 56.219 56.217 64 38.55 46.328a28 28 0 0 0 7.777-7.777zM23.1 0a23.1 23.1 0 1 1-.003 46.2A23.1 23.1 0 0 1 23.1 0m5.317 10.258a13.9 13.9 0 0 0-8.032-.79 13.9 13.9 0 0 0-7.117 3.802 13.9 13.9 0 0 0-3.8 7.117 13.9 13.9 0 0 0 .789 8.031 13.903 13.903 0 0 0 22.672 4.512 13.9 13.9 0 0 0-4.512-22.672"></path>
           </svg>
         </div>
-        <input data-testid="search" placeholder="Найдите свою игру">
+        <input data-testid="search" placeholder="<?php echo $translations['find_game'] ?>">
         <div class="cross-icon ">
           <button type="button" tabindex="0" class="search-close-button">
             <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon">
@@ -129,7 +129,7 @@ function renderSearch($games)
               $searchResults.append($resultItem);
             });
           } else {
-            $searchResults.append('<div class="search-result-item no-results">Игры не найдены</div>');
+            $searchResults.append('<div class="search-result-item no-results"><? echo $translations['games_not_found']?></div>');
           }
         });
 

@@ -3,24 +3,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-if (isset($_SESSION['lang'])) {
-    $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-    $lang = $_COOKIE['lang'];
-} else {
-    $lang = 'en';
-}
-$allowed = ['en', 'es', 'ru'];
-if (!in_array($lang, $allowed, true)) {
-    $lang = 'en';
-}
 
-$path = dirname(__DIR__) . "/lang/{$lang}.php";
-if (is_file($path)) {
-    $translations = require $path;
-} else {
-    $translations = require dirname(__DIR__) . "/lang/ru.php";
-}
 
 header('Content-Type: application/json');
 
