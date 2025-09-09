@@ -1,16 +1,5 @@
 /* Базовые стили для body */
 
-/* Стили для home-header-wrapper */
-.home-header-wrapper {
-  display: flex;
-  justify-content: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  width: 100%;
-  background-size: cover;
-  background-image: url('/assets/media/header-bg.DLFzM8kq.png');
-}
-
 /* Стили для контейнера */
 
 .home-container-upper {
@@ -37,75 +26,6 @@
 }
 .home-has-margin {
   margin-top: calc(0.25rem * 6);
-}
-
-/* Стили для внутреннего заголовка */
-.home-header-inner {
-  display: grid;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-}
-
-@media (min-width: 1024px) {
-  .home-header-inner {
-    grid-template-columns: 40% 55%;
-    justify-content: space-between;
-  }
-}
-
-@media (max-width: 767px) {
-  .home-header-inner {
-    margin: 0 auto;
-  }
-}
-
-/* Стили для содержимого внутреннего заголовка */
-.home-header-inner-content {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  row-gap: 0.75rem;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-}
-
-@media (min-width: 768px) {
-  .home-header-inner-content {
-    row-gap: 2rem;
-    max-width: 478px;
-  }
-}
-
-/* Стили для отступов внутреннего заголовка */
-.home-header-inner-padding {
-  padding: 0 6rem;
-}
-
-@media (min-width: 768px) {
-  .home-header-inner-padding {
-    padding: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-header-inner-padding {
-    padding-right: 5rem;
-  }
-}
-
-/* Стили для типографики */
-.home-header-title {
-  font-family: 'proxima-nova', sans-serif;
-  margin: 0;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: left;
-  font-size: 2rem;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .home-oauth-label-text {
@@ -574,33 +494,3 @@ System: feature-link:hover {
 }
 
 /* Define font-face for different weights */
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima Nova/proximanova_regular.ttf')
-    format('truetype');
-  font-weight: 400; /* Regular */
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima Nova/proximanova_bold.otf')
-    format('opentype');
-  font-weight: 600; /* Bold */
-  font-style: normal;
-}
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima Nova/proximanova_extrabold.otf')
-    format('opentype');
-  font-weight: 700; /* Bold */
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima Nova/proximanova_light.otf')
-    format('opentype');
-  font-weight: 300; /* Light */
-  font-style: normal;
-}

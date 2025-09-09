@@ -13,7 +13,7 @@ if (isset($_SESSION['lang'])) {
 } elseif (isset($_COOKIE['lang'])) {
   $lang = $_COOKIE['lang'];
 } else {
-  $lang = 'en';
+  $lang = 'ru';
 }
 
 $allowed = array('en', 'es', 'ru');

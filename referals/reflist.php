@@ -148,7 +148,7 @@ if ($refuser == NULL) {
     </div>
     <?php
     require(dirname(__DIR__, 1) . "/panels/footer.php");
-    render_footer($translations, 'Stake');
+    render_footer($translations);
     ?>
   </div>
 

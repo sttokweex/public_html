@@ -818,89 +818,9 @@ function getrankimgProfile() {
 }
 document.addEventListener('DOMContentLoaded', getrankimgProfile);
 
-$(document).ready(function () {
-  if ($('.chat-container').length > 0) {
-    $('body').addClass('chat');
-  } else {
-    $('body').removeClass('chat');
-  }
-  $('.chat-close-icon').click(function () {
-    var $chat = $('.chat-container');
-    $chat.addClass('closed');
-    $('body').removeClass('chat');
-  });
-  checkSidebar();
-  hover();
-  sidebarPromo();
-});
-function sidebarPromo() {
-  $('.promo_anchor_button').click(function () {
-    var $svgMini = $(this).find('.svg_isopen');
 
-    var $accordion = $(this).closest('.accordion');
-    var $content = $accordion.find('.content');
-    if ($svgMini) {
-      $('.sidebar_project').removeClass('closed');
-      $('body').removeClass('sidebar');
-    }
-    if ($content.hasClass('isopen')) {
-      $content.removeClass('isopen');
-    } else {
-      $content.addClass('isopen');
-    }
-  });
-}
-function checkSidebar() {
-  var $accordion = $('.accordion');
-  var $content = $accordion.find('.content');
-  if (localStorage.getItem('sidebar') === 'closed') {
-    $('.sidebar_project').addClass('closed');
-    $('body').addClass('sidebar');
-  } else {
-    $('.sidebar_project').removeClass('closed');
-    $('body').removeClass('sidebar');
-  }
 
-  $('.sidebar__btn-close').click(function () {
-    if ($('.sidebar_project').hasClass('closed')) {
-      $('.sidebar_project').removeClass('closed');
-      $('body').removeClass('sidebar');
 
-      localStorage.removeItem('sidebar');
-    } else {
-      $('.sidebar_project').addClass('closed');
-      $('body').addClass('sidebar');
-      $content.removeClass('isopen');
-      localStorage.setItem('sidebar', 'closed');
-    }
-  });
-}
-function hover() {
-  $('#casino').hover(
-    function () {
-      $(this)
-        .find('.productImg')
-        .attr('src', '/assets/media/active-casino.D98ZVQ96.svg');
-    },
-    function () {
-      $(this)
-        .find('.productImg')
-        .attr('src', '/assets/media/default-casino.CqlOLRkM.svg');
-    }
-  );
-
-  $('#sport').hover(
-    function () {
-      $(this)
-        .find('.productImg')
-        .attr('src', '/assets/media/active-sports.CxIU50TW.svg');
-    },
-    function () {
-      $(this)
-        .find('.productImg')
-        .attr('src', '/assets/media/default-sports.KM8Zs5_U.svg');
-    }
-  );
 }
 /* ЗАГРУЗКА КАРТИНКИ РАНГА ВОЗЛЕ ФОТКИ ПРОФИЛЯ В HEADER END */
 

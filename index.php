@@ -11,7 +11,7 @@ require_once './faq/faq.php';
 require_once './panels/livefeed.php';
 require_once './panels/gameinfo.php';
 require_once './panels/search.php';
-require_once './panels/homeHeader.php';
+require_once './panels/banners.php';
 require_once './panels/chat.php';
 
 if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
@@ -111,48 +111,37 @@ if (!is_array($games)) {
 
 
 
-<body>
-    <script type="text/javascript">
-        function historys() {
-            if (navigator.onLine == true) {
-                $("#livegames").load("index.php #livegames");
-            }
-        }
-        setInterval('historys()', 5000);
-    </script>
 
 
 
-    <div class="main-container" id="main-content">
-        <div class="home-page-content-inner">
 
-            <?php
 
-            renderHomeHeader($translations, $login, $depositesSID);
+<div class="main-container" id="main-content">
+    <div class="home-page-content-inner">
+
+        <?php
+
+        renderBanners();
+
+
+        ?>
+
+        <div class="home-container">
+
+            <?
+
+            // renderChatComponent('Иван', $sampleMessages, $translations);
+            render_slider($games, false, $translations);
+            render_slider($games, true, $translations);
+
+            render_faq($translations, 'Stake');
 
 
             ?>
 
-            <div class="home-container home-has-padding home-has-margin">
-
-                <?
-                renderSearch($games, $translations);
-                renderChatComponent('Иван', $sampleMessages, $translations);
-                render_slider($games, false, $translations);
-                render_slider($games, true, $translations);
-                renderBetsTable($bets, $translations);
-                render_faq($translations, 'Stake');
-                renderCasinoComponent($translations);
-
-                ?>
-
-            </div>
-
-            <?php render_footer($translations, 'Stake') ?>
         </div>
+
+
     </div>
-
-
-</body>
-
-</html>
+</div>
+<?php render_footer($translations) ?>

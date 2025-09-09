@@ -30,7 +30,7 @@ $result1 = mysqli_query($connection, $sql_select1);
 $row = mysqli_fetch_array($result1);
 if ($row) {
   $linksite = "https://$_SERVER[HTTP_HOST]"; //url
-  $sitename = $row['sitename']; //название сайта
+  $sitename = 'Holland Casino Online'; //название сайта
   $sitegroup = $row['sitegroup']; //группа вк
   $sitedomen = $row['sitedomen']; //домен сайта
   $sitesupport = $row['sitesupport']; //телеграм для связи

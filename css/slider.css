@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 100%;
   overflow-x: hidden;
+  position: relative;
 }
 
 /* Стили для заголовка слайдера */
@@ -14,90 +15,71 @@
 
 /* Стили для ссылки в заголовке */
 .game-slider-header-link {
-  display: inline-flex;
-  line-height: 1.5;
-  font-size: 1.125rem;
-  position: relative;
-  outline: none;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: 0.25rem;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  white-space: nowrap;
-  line-height: 1;
+  align-self: center;
+  color: #ff616d;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  line-height: 2rem;
+  margin-left: auto;
+  margin-right: 5rem;
 }
 
 .game-slider-header-title {
-  display: inline-flex;
-  align-items: center;
-
-  text-align: left;
-  justify-content: flex-start;
-  color: #fff;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
 }
 
-/* Стили для контейнера стрелок */
-.game-slider-arrows {
-  display: flex;
-}
-
-/* Общие стили для кнопок стрелок */
-.game-slider-arrow-button {
-  box-sizing: content-box;
-  border: 1px solid rgb(47, 69, 83);
-  border-radius: calc(0.25rem * 8);
-  color: rgb(177, 186, 211);
-  display: flex;
-  align-items: center;
+.game-slider-right {
+  margin: 0;
+  right: 0;
+  top: 0.6rem;
+  display: inline-block;
+  background: url('../images/js__components__common__holland__Icon__assets__badge-play.svg')
+    center no-repeat;
+  background-color: initial;
+  background-position: 50%;
+  border-radius: 4px;
   cursor: pointer;
-  background: transparent;
-  padding: 0;
+  height: 1.7rem;
+  width: 1.7rem;
+  position: absolute;
 }
+.game-slider-left {
+  position: absolute;
+  margin: 0;
 
-.game-slider-arrow-button:disabled {
+  top: 0.6rem;
+  left: auto;
+  right: 2rem;
+  display: inline-block;
+  background: url('../images/js__components__common__holland__Icon__assets__badge-play.svg')
+    center no-repeat;
+  transform: rotate(180deg);
+  background-color: initial;
+  background-position: 50%;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 1.7rem;
+  width: 1.7rem;
+}
+.game-slider-left:disabled,
+.game-slider-right:disabled {
+  cursor: default;
   opacity: 0.5;
-  transition: none;
-  transform: none;
-  pointer-events: none;
 }
 
 /* Внутренний контейнер для иконок стрелок */
-.game-slider-arrow-inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 2.5em;
-  width: 3.5em;
-}
-
-/* Стили для кнопки "вперед" */
-.game-slider-arrow-button.game-slider-forward {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-left: none;
-}
-
-.game-slider-arrow-button.game-slider-forward:hover:not(:disabled) {
-  background: none;
-}
-
-/* Стили для кнопки "назад" */
-.game-slider-arrow-button.game-slider-backward {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-}
 
 /* Стили для галереи карточек */
 .game-slider-gallery {
+  margin-top: 1rem;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 12.5%;
-  margin-left: -5.5px;
-  margin-right: -5.5px;
-  padding-top: 0.75rem; /* Ваше изменение */
+  grid-auto-columns: calc(14.3% - 16px);
+
+  gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -108,7 +90,6 @@
   scroll-snap-align: start;
   will-change: opacity;
   transition: opacity 0.3s;
-  padding: 0 5.5px;
 }
 
 /* Псевдоэлемент для последнего слайда */
@@ -143,31 +124,15 @@
   display: block;
 }
 
-.game-slider-img-wrap {
-  position: relative;
-  will-change: transform;
-  transition: 0.3s;
-  width: 100%;
-}
 .game-slider-wrap {
   display: grid;
   position: relative;
   align-content: flex-start;
 }
 .game-slider-game-image {
-  width: auto !important;
-  max-width: 100%;
-  max-height: 100%;
-  height: auto !important;
   object-fit: cover;
 }
-.slider img {
-  -webkit-user-select: none;
-  user-select: none;
-  width: 100%;
-  height: auto;
-  display: block;
-}
+
 .game-slider-info-wrap {
   position: absolute;
   bottom: 0;

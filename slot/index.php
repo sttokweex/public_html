@@ -12,7 +12,7 @@ require_once '../faq/faq.php';
 require_once '../panels/livefeed.php';
 require_once '../panels/gameinfo.php';
 require_once '../panels/search.php';
-require_once '../panels/homeHeader.php';
+require_once '../panels/banners.php';
 require_once '../panels/chat.php';
 
 if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
@@ -119,7 +119,7 @@ if (!is_array($games)) {
     <div class="home-page-content-inner">
 
         <?php
-        renderHomeHeader($translations, $login, $depositesSID);
+        renderBanners();
         renderSearch($games, $translations);
         ?>
 
@@ -136,6 +136,6 @@ if (!is_array($games)) {
 
         </div>
 
-        <?php render_footer($translations, 'Stake') ?>
+        <?php render_footer($translations) ?>
     </div>
 </div>

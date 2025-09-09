@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>3BFF728E-18B4-4BB5-81C5-D70F907A4E1E</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-logged-in---Help" transform="translate(-335.000000, -419.000000)">
+            <g id="Mobile-/-Component-/-Navigation-/-Help-rectangle" transform="translate(327.000000, 275.000000)">
+                <g id="Element-/-Icon-/-Illustration-/-Unselected-/-Search" transform="translate(0.000000, 144.000000)" filter="url(#filter-1)">
+                    <g transform="translate(8.000000, 0.000000)" id="search" fill-rule="nonzero">
+                        <rect id="container" x="0" y="0" width="32" height="32"></rect>
+                        <path d="M19.9748737,17.8535534 L26.3388348,24.2175144 C26.5340969,24.4127766 26.5340969,24.7293591 26.3388348,24.9246212 L24.9246212,26.3388348 C24.7293591,26.5340969 24.4127766,26.5340969 24.2175144,26.3388348 L17.8535534,19.9748737 C17.6582912,19.7796116 17.6582912,19.4630291 17.8535534,19.267767 L19.267767,17.8535534 C19.4630291,17.6582912 19.7796116,17.6582912 19.9748737,17.8535534 Z M19.6210459,18.9142136 L18.9139391,19.6213203 L24.5707933,25.2781746 L25.2779001,24.5710678 L19.6210459,18.9142136 Z M17,16.2928932 L18.9138932,18.2068932 L18.2068932,18.9138932 L16.2928932,17 L17,16.2928932 Z" id="Shape" fill="#B6B6B6"></path>
+                        <path d="M12,5 C15.8659932,5 19,8.13400675 19,12 C19,15.8659932 15.8659932,19 12,19 C8.13400675,19 5,15.8659932 5,12 C5,8.13400675 8.13400675,5 12,5 Z M12,6 C8.6862915,6 6,8.6862915 6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,8.6862915 15.3137085,6 12,6 Z" id="Oval" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

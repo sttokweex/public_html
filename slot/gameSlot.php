@@ -98,15 +98,15 @@ if (!is_array($games)) {
 ?>
 
 <!DOCTYPE html>
-<html>
 
-<head>
-    <link href="/css/index.css?v=2" rel="stylesheet">
-    <link href="/css/game_materials.css" rel="stylesheet">
-    <style>
-        /* Existing styles unchanged */
-    </style>
-</head>
+
+
+<link href="/css/index.css?v=2" rel="stylesheet">
+<link href="/css/game_materials.css" rel="stylesheet">
+<style>
+    /* Existing styles unchanged */
+</style>
+
 
 
 <div class="main-container">
@@ -128,8 +128,8 @@ if (!is_array($games)) {
         </div>
     </div>
     <?php
-       renderChatComponent('Иван', $sampleMessages,$translations);
-    render_footer($translations, 'Stake');
+    renderChatComponent('Иван', $sampleMessages, $translations);
+    render_footer($translations,);
     ?>
 </div>
 <script>
@@ -189,6 +189,3 @@ if (!is_array($games)) {
         }
     }
 </script>
-</body>
-
-</html>
