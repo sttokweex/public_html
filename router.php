@@ -6,12 +6,16 @@ $uri = urldecode(
 
 // Проверяем, существует ли запрошенный файл или директория
 if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
-  return false; // Встроенный сервер обработает существующий файл (например, /css/style.css)
+  return false; // Встроенный сервер обработает существующий файл (например, /css/ranks.css)
 }
 
 // Обработка корневого пути /
 if ($uri === '/' || $uri === '') {
   require_once __DIR__ . '/index.php'; // Перенаправляем на главную страницу
+} elseif (preg_match('#^/slot/api/(GetBalance|BetWin|Withdraw|Deposit|RollbackTransaction)#', $uri)) {
+  // Handle API endpoints
+  require_once __DIR__ . '/index.php';
+  exit;
 } elseif (preg_match('#^/([^/]+)#', $uri, $matches)) {
   // Проверяем, существует ли PHP-файл для первого сегмента URL
   $segment = strtolower($matches[1]);
@@ -40,12 +44,10 @@ if ($uri === '/' || $uri === '') {
     require_once __DIR__ . '/slot/gameSlot.php';
   } else {
     http_response_code(404);
-    echo "404 Not Found: $fileName does not exist";
-    exit;
+    require_once __DIR__ . '/404.php';
   }
 } else {
   // Для всех остальных случаев возвращаем 404
   http_response_code(404);
-  echo "404 Not Found";
-  exit;
+  require_once __DIR__ . '/404.php';
 }

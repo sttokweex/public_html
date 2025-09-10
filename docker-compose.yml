@@ -1,0 +1,43 @@
+services:
+  php-app:
+    build:
+      context: .
+      dockerfile: dockerFile
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+      - DB_HOST=mysql
+      - DB_USER=admin
+      - DB_PASSWORD=a2pP3QASzx5p1ZPQWLsm1
+      - DB_NAME=asino777
+    depends_on:
+      - mysql
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    build:
+      context: .
+      dockerfile: dockerFile-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: a2pP3QASzx5p1ZPQWLsm1
+      MYSQL_DATABASE: asino777
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: a2pP3QASzx5p1ZPQWLsm1
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - target: 3306
+        published: 3306
+        protocol: tcp
+        mode: host
+
+volumes:
+  mysql-data:

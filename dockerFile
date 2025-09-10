@@ -1,0 +1,26 @@
+FROM php:8.2-apache
+
+# Update apt sources to use only the main Debian trixie repository
+RUN apt-get update && docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+
+# Enable short tags in php.ini
+RUN echo "short_open_tag = On" >> /usr/local/etc/php/php.ini
+RUN echo "extension=curl" >> /usr/local/etc/php/php.ini
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Copy application files
+COPY . .
+
+# Enable Apache rewrite module for .htaccess
+RUN a2enmod rewrite
+
+# Update Apache configuration to allow .htaccess overrides
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
+# Set permissions for the web root
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+
+# Expose port 80
+EXPOSE 80

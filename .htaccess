@@ -1,21 +1,11 @@
+# Custom error pages
 ErrorDocument 404 /404.php
 ErrorDocument 403 /404.php
 
-RewriteEngine On
+# Skip existing files and directories (e.g., /css/ranks.css)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-# Handle URLs without .php extension
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php [L]
-
-# API endpoints redirected to index.php
-RewriteRule ^slot/api/GetBalance$ index.php [QSA,L]
-RewriteRule ^slot/api/BetWin index.php [QSA,L]
-RewriteRule ^slot/api/Withdraw index.php [QSA,L]
-RewriteRule ^slot/api/Deposit index.php [QSA,L]
-RewriteRule ^slot/api/RollbackTransaction index.php [QSA,L]
-
-# Enable error display for debugging
-php_flag display_errors on
-php_value error_reporting 32767
+# Route all other requests to router.php
+RewriteRule ^ router.php [L]
