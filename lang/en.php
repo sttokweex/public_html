@@ -1060,4 +1060,11 @@ return [
     'appeal_created' => 'Ticket created',
     'no_answer' => 'No answer',
     'ticket_closed' => 'Ticket closed',
+    'your_vip_progress' => 'Your VIP Progress',
+    'largest_online_casino' => 'The world\'s largest online casino with sportsbook',
+    'register' => 'Sign Up',
+    'or_register_via' => 'or sign up via',
+    'casino' => 'Casino',
+    'sports' => 'Sports',
+    'faq_evolution_gaming' => 'Evolution Gaming'
 ];

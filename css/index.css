@@ -521,51 +521,181 @@ System: feature-link:hover {
   flex-direction: column;
   max-width: 100%;
 }
-.rank-card {
-  background: rgb(15, 33, 46);
+.authentificated {
+  width: 100%;
+  height: 100%;
+  margin-right: auto;
+  max-width: 390px;
   display: flex;
-  border-radius: 12px;
-  padding: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: center;
+}
+.rank-card-inner {
+  border: 2px solid #2f4553;
+  background-color: #0f212e;
+  border-radius: 0.25rem;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+}
+.rank-card-main {
+  padding: 0.5rem;
+
+  background-image: linear-gradient(
+    var(--tw-gradient-via-stops, to bottom in oklab, #213743 0%, #0f212e 100%)
+  );
+  border-radius: 0.25rem;
+  justify-content: center;
+  max-width: calc(0.25rem * 96);
+  width: 100%;
+  aspect-ratio: 16/9;
+  position: relative;
+  display: flex;
+}
+@property --tw-gradient-via-stops {
+  syntax: '*';
+  inherits: false;
+}
+.rank-card {
+  padding-block: 1.25rem;
+  padding-inline: 1.5rem;
+  justify-content: space-between;
   flex-direction: column;
   height: 100%;
-  justify-content: space-between;
-
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border: 1px solid #3a3f50;
+  display: flex;
 }
 .progress-value {
-  display: flex;
-  flex-direction: row;
+  gap: 1.25rem;
   justify-content: space-between;
-  width: 50x;
+  align-items: center;
+  display: flex;
 }
 .rank-card .username {
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+.rank-card .username span {
+  color: white;
+  line-height: 1.5;
+  text-align: left;
+  justify-content: flex-start;
+  font-size: 1.125rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
 }
 
 .rank-card .rank-name {
   color: #d4af37;
   font-weight: bold;
 }
-
-.rank-card .progress-text {
-  font-size: 14px;
+.progress-value-main {
+  width: 100%;
 }
-
-.rank-card .levels {
-  font-size: 1rem;
-
+.rank-card .progress-text {
+  transition: 0.25s;
   display: flex;
   justify-content: space-between;
 }
+.progress-text-percent {
+  color: white;
+  line-height: 1.5;
+  text-align: left;
+  justify-content: flex-start;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: center;
+}
+.rank-card .progress-text:hover {
+  transform: translateX(8px);
+}
+
+.rank-card .progress-text:hover button svg {
+  fill: white;
+}
+.rank-card .progress-text button {
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    outline-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    --tw-gradient-from,
+    --tw-gradient-via,
+    --tw-gradient-to,
+    opacity,
+    box-shadow,
+    transform,
+    translate,
+    scale,
+    rotate,
+    filter,
+    -webkit-backdrop-filter,
+    backdrop-filter,
+    display,
+    visibility,
+    content-visibility,
+    overlay,
+    pointer-events;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
+  color: #fff;
+  white-space: nowrap;
+  font-weight: 600;
+  line-height: 1;
+  font-size: 0.875rem;
+  background-color: #0000;
+  border-radius: 0.25rem;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+}
+.rank-card .progress-text button svg {
+  color: #b1bad3;
+}
+.svg-span {
+  display: inline-block;
+}
+.span-text {
+  color: rgb(177, 186, 211);
+  line-height: 120%;
+  text-align: left;
+  justify-content: flex-start;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+.rank-card .levels {
+  justify-content: space-between;
+
+  display: flex;
+  width: 100%;
+}
+.rank-card .levels .levels-div {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: calc(0.25rem * 1.5);
+}
 
 .progressWag {
-  margin-bottom: 5px;
+  background-color: #2f4553;
+  border-radius: 9999px;
+  width: 100%;
+  height: 0.625em;
+  margin: 0.5rem 0;
+  position: relative;
 }
 .rank-anchor {
   color: white;
