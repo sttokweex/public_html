@@ -6,14 +6,14 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
 $requestUri = $_SERVER['REQUEST_URI'];
-require_once '../panels/slider.php';
-require_once '../panels/footer.php';
-require_once '../faq/faq.php';
-require_once '../panels/livefeed.php';
-require_once '../panels/gameinfo.php';
-require_once '../panels/search.php';
-require_once '../panels/homeHeader.php';
-require_once '../panels/chat.php';
+require_once dirname(__DIR__, 1) . '/panels/slider.php';
+require_once dirname(__DIR__, 1) . '/panels/footer.php';
+require_once dirname(__DIR__, 1) . '/faq/faq.php';
+require_once dirname(__DIR__, 1) . '/panels/livefeed.php';
+require_once dirname(__DIR__, 1) . '/panels/gameinfo.php';
+require_once dirname(__DIR__, 1) . '/panels/search.php';
+require_once dirname(__DIR__, 1) . '/panels/homeHeader.php';
+require_once dirname(__DIR__, 1) . '/panels/chat.php';
 
 if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
     require 'slot/api/getBalance.php';
@@ -44,9 +44,9 @@ require("../system/config.php");
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-require("../panels/header.php");
-require("../panels/sidebar.php");
-require("../panels/mobile.php");
+require(dirname(__DIR__, 1) . "/panels/header.php");
+require(dirname(__DIR__, 1) . "/panels/sidebar.php");
+require(dirname(__DIR__, 1) . "/panels/mobile.php");
 
 // Определяем SVG-переменные для баннеров и поиска (пустые)
 $dropdown_arrow_svg = '';
