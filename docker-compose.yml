@@ -31,10 +31,7 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     ports:
-      - target: 2201
-        published: 2201
-        protocol: tcp
-        mode: host
+      - '2201:3306'
 
 volumes:
   mysql-data:
