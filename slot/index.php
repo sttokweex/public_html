@@ -10,7 +10,7 @@ require_once dirname(__DIR__, 1) . '/panels/slider.php';
 require_once dirname(__DIR__, 1) . '/panels/footer.php';
 require_once dirname(__DIR__, 1) . '/faq/faq.php';
 require_once dirname(__DIR__, 1) . '/panels/livefeed.php';
-require_once dirname(__DIR__, 1) . '/panels/gameinfo.php';
+require_once dirname(__DIR__, 1) . '/panels/gameInfo.php';
 require_once dirname(__DIR__, 1) . '/panels/search.php';
 require_once dirname(__DIR__, 1) . '/panels/homeHeader.php';
 require_once dirname(__DIR__, 1) . '/panels/chat.php';
