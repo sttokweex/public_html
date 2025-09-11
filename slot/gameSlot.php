@@ -34,7 +34,7 @@ $gameid = $match && isset($matches[1]) ? $matches[1] : ''; // e.g., 'vs20doghous
 $gamename = $gameid; // Fallback: use gameid as gamename
 
 // Fetch game title from API if available
-$ppResponse = @file_get_contents('http://51.250.83.228:8940/game_list.do');
+$ppResponse = @file_get_contents('http://51.250.83.228:2000/game_list.do');
 $ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
 $ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
 $games = $ppGames;
