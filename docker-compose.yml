@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   php-app:
     build:
@@ -9,16 +11,16 @@ services:
       - .:/var/www/html
     environment:
       - APACHE_DOCUMENT_ROOT=/var/www/html
-      - DB_HOST=mysql
+      - DB_HOST=mysql_secondary
       - DB_USER=admin
       - DB_PASSWORD=a2pP3QASzx5p1ZPQWLsm1
       - DB_NAME=asino777
     depends_on:
-      - mysql
+      - mysql_secondary
     links:
-      - mysql
+      - mysql_secondary
 
-  mysql:
+  mysql_secondary:
     image: mysql:8.0
     build:
       context: .
@@ -29,9 +31,9 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: a2pP3QASzx5p1ZPQWLsm1
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql_secondary-data:/var/lib/mysql
     ports:
       - '2201:3306'
 
 volumes:
-  mysql-data:
+  mysql_secondary-data:
