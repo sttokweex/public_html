@@ -5,14 +5,14 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
 $requestUri = $_SERVER['REQUEST_URI'];
-require_once '/panels/slider.php';
-require_once '/panels/footer.php';
-require_once '/faq/faq.php';
-require_once '/panels/livefeed.php';
-require_once '/panels/gameinfo.php';
-require_once '/panels/search.php';
-require_once '/panels/homeHeader.php';
-require_once '/panels/chat.php';
+require_once './panels/slider.php';
+require_once './panels/footer.php';
+require_once './faq/faq.php';
+require_once './panels/livefeed.php';
+require_once './panels/gameinfo.php';
+require_once './panels/search.php';
+require_once './panels/homeHeader.php';
+require_once './panels/chat.php';
 
 if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
     require 'slot/api/getBalance.php';
