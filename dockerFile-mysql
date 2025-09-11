@@ -1,7 +1,7 @@
 FROM mysql:8.0
 
 # Copy the SQL dump file into the initialization directory
-COPY mersirs8_777.sql /docker-entrypoint-initdb.d/mersirs8_777.sql
+COPY dump.sql /docker-entrypoint-initdb.d/dump.sql
 
 # Ensure the file has correct permissions
-RUN chmod 644 /docker-entrypoint-initdb.d/mersirs8_777.sql
+RUN chmod 644 /docker-entrypoint-initdb.d/dump.sql

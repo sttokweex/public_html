@@ -615,11 +615,15 @@ System: feature-link:hover {
 .rank-card .progress-text:hover {
   transform: translateX(8px);
 }
-
-.rank-card .progress-text:hover button svg {
+.rank-card .progress-text:hover .toRank svg {
   fill: white;
 }
-.rank-card .progress-text button {
+.rank-card .progress-text:hover .toRank {
+  color: white;
+  text-decoration: none;
+}
+.toRank {
+  cursor: pointer;
   transition-property:
     color,
     background-color,
@@ -659,8 +663,9 @@ System: feature-link:hover {
   align-items: center;
   display: inline-flex;
   position: relative;
+  text-decoration: none;
 }
-.rank-card .progress-text button svg {
+.toRank svg {
   color: #b1bad3;
 }
 .svg-span {

@@ -212,7 +212,7 @@ return [
     'number-s_of_wallets_from_which_deposits'=> 'Número(s) de monedero(s) desde los cuales se realizaron depósitos y retiros',
     'private_terms_6' => 'Cada jugador que crea una cuenta tiene un nombre de usuario y una contraseña. La contraseña se almacena en forma cifrada.',
     'private_terms_7' => 'Cómo usamos la información recibida de los jugadores',
-    'private_terms_8' => 'Al convertirse en jugador o al proporcionar de cualquier otra manera información personal a split, usted acepta que recopilemos y utilicemos su información personal para brindar nuestros servicios.',
+    'private_terms_8' => 'Al convertirse en jugador o al proporcionar de cualquier otra manera información personal a stake, usted acepta que recopilemos y utilicemos su información personal para brindar nuestros servicios.',
     'private_terms_9' => 'Usted acepta proporcionar su número de teléfono y/o dirección de correo electrónico a terceros con fines de marketing.',
     'private_terms_10' => 'Usted acepta proporcionar el ID del juego, su nombre de jugador, la apuesta, el coeficiente de ganancia y las ganancias para su publicación en nuestras redes sociales.',
     'private_terms_11' => 'Usted acepta que tenemos derecho a divulgar su información personal únicamente con el fin y en los casos en que dicho requerimiento sea realizado por las autoridades gubernamentales, de conformidad con la legislación vigente.',

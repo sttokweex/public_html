@@ -4,11 +4,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 // Определяем язык
 
-$ppResponse = @file_get_contents('http://localhost:8940/game_list.do');
+$ppResponse = @file_get_contents('http://host.docker.internal:8940/game_list.do');
 $ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
 $ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
-$games =  $ppGames;
-
+$games = $ppGames;
 if (empty($bets)) {
   $bets = [];
   for ($i = 0; $i < 15; $i++) {
@@ -253,7 +252,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <meta name="author" content="termus">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../images/logo-mob.svg" type="image/png">
-  <meta name="description" content="<?= htmlspecialchars($sitename) ?> - Split!">
+  <meta name="description" content="<?= htmlspecialchars($sitename) ?> - stake!">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -280,7 +279,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <script src="/js/custom.js?v=43" crossorigin="anonymous"></script>
   <script src="/js/swiper-bundle.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
-  <title><?= strtoupper($sitename); ?> - Split!</title>
+  <title><?= strtoupper($sitename); ?> - stake!</title>
 </head>
 <style>
   .loader {
@@ -307,8 +306,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 </style>
 
 
-<input id="hashdeps" class="d-none" value="<?= htmlspecialchars($depositesSID) ?>">
-<input id="hash_lock" class="d-none" value="<?= htmlspecialchars($lock_save) ?>">
+
 
 <!-- HEADER -->
 <div id="header" class="headerproject" style="user-select:none;">
@@ -387,7 +385,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
               <a id="gamesBox" href="/slot" class="dropdown-item"><? echo $translations['games'] ?></a>
               <a id="bonusBox" href="/bonus" class="dropdown-item"><? echo $translations['bonus'] ?></a>
               <a id="refsBox" href="/referals" class="dropdown-item"><? echo $translations['referals'] ?></a>
-              <a id="supportBox" href="https://t.me/splitsupports" class="dropdown-item"><? echo $translations['support'] ?></a>
+              <a id="supportBox" href="https://t.me/stakesupports" class="dropdown-item"><? echo $translations['support'] ?></a>
               <a id="ranksBox" href="/ranks" class="dropdown-item"><? echo $translations['ranks'] ?></a>
               <a id="ranksBox" href="/profile" class="dropdown-item"><? echo $translations['profile'] ?></a>
 

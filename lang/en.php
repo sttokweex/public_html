@@ -212,7 +212,7 @@ return [
     'number-s_of_wallets_from_which_deposits' => 'Wallet number(s) from which deposits and withdrawals were made',
     'private_terms_6' => 'Each player who creates an account has a login and password. The password is stored in encrypted form.',
     'private_terms_7' => 'How we use the information received from players',
-    'private_terms_8' => 'By becoming a player or otherwise providing split personal information, you agree that we collect and use your personal information to provide our services.',
+    'private_terms_8' => 'By becoming a player or otherwise providing stake personal information, you agree that we collect and use your personal information to provide our services.',
     'private_terms_9' => 'You agree to provide your phone number and/or email address to third parties for marketing purposes.',
     'private_terms_10' => 'You agree to provide the game ID, your player name, bet amount, win coefficient, and winnings for publication on our social media.',
     'private_terms_11' => 'You agree that we have the right to disclose your personal information only for the purpose and in cases where such a requirement is made by government authorities, in accordance with applicable law.',

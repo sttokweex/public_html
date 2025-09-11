@@ -52,8 +52,7 @@ $dropdown_arrow_svg = '';
 $search_icon_svg = '';
 
 
-
-$ppResponse = @file_get_contents('http://localhost:8940/game_list.do');
+$ppResponse = @file_get_contents('http://host.docker.internal:8940/game_list.do');
 $ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
 $ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
 $games =  $ppGames;

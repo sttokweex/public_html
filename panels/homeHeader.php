@@ -55,13 +55,13 @@ function renderHomeHeader($translations, $login, $depositesSID)
                     <div class="progress-value">
 
                       <div class="progress-text">
-                        <button>
+                        <a class="toRank" href="/ranks">
                           <?php echo $translations['your_vip_progress']; ?>
                           <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
                             <title></title>
                             <path d="M8 37.486h30.909L28.665 47.73l6.313 6.314L56 33.022 34.978 12l-6.313 6.314 10.244 10.244H8v8.933z"></path><!---->
                           </svg>
-                        </button>
+                        </a>
                       </div>
                       <div class="progress-text-percent" id="progressValue"><?php echo number_format($progressValue, 2); ?>%</div>
                     </div>
@@ -214,6 +214,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
       </div>
     </div>
   </div>
+
 <?php
 }
 ?>

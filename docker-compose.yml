@@ -3,11 +3,8 @@ services:
     build:
       context: .
       dockerfile: dockerFile
-    ports:
-      - target: 80
-        published: 80
-        protocol: tcp
-        mode: host
+    ports: 
+      - "8000:8000"
     volumes:
       - .:/var/www/html
     environment:
@@ -20,6 +17,8 @@ services:
       - mysql
     links:
       - mysql
+    networks:
+      - shared-network
 
   mysql:
     image: mysql:8.0
@@ -34,10 +33,16 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     ports:
-      - target: 3306
-        published: 3306
+      - target: 3305
+        published: 3305
         protocol: tcp
         mode: host
+    networks:
+      - shared-network
 
 volumes:
   mysql-data:
+
+networks:
+  shared-network:
+    external: true
