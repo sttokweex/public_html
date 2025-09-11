@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: dockerFile
-    ports: 
-      - "2200:2200"
+    ports:
+      - '2200:2200'
     volumes:
       - .:/var/www/html
     environment:
@@ -17,8 +17,6 @@ services:
       - mysql
     links:
       - mysql
-    networks:
-      - shared-network
 
   mysql:
     image: mysql:8.0
@@ -37,12 +35,6 @@ services:
         published: 2201
         protocol: tcp
         mode: host
-    networks:
-      - shared-network
 
 volumes:
   mysql-data:
-
-networks:
-  shared-network:
-    external: true
