@@ -26,6 +26,7 @@ body {
   -ms-overflow-style: none;
 }
 .main-container {
+  scrollbar-width: none;
   box-sizing: content-box;
   overflow-x: hidden;
   height: 100vh;

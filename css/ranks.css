@@ -60,8 +60,8 @@
 
 .rank:hover {
   transform: scale(1.01);
-  background-color: #3b3c4a;
-  border-color: var(--border-color);
+  background-color: rgb(47, 69, 83);
+  border-color: rgb(47, 69, 83);
 }
 
 .rank img {
