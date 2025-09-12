@@ -36,17 +36,15 @@ function render_slider($games = [], $hasMargin, $translations)
       <?php $counter = 1; ?>
       <?php foreach ($games as $game): ?>
         <div class="game-slider-slide">
-          <div class="game-slider-wrap" data-analytics="slider-ru-trending-games-<?php echo htmlspecialchars($game['g_id']); ?>">
+          <div class="game-slider-wrap" data-analytics="slider-ru-trending-games-<?php echo htmlspecialchars($game['gameid']); ?>">
             <div class="game-slider-image-focus">
               <div class="game-slider-game-card-wrap">
-                <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars(str_replace(' ', '_', $game['g_title'])); ?>">
+                <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars(str_replace(' ', '_', $game['name'])); ?>">
                   <div class="game-slider-img-wrap">
-                    <img id="" class="game-slider-game-image" src="../images/SlotsPreviews/<?php echo htmlspecialchars(str_replace('_', '', $game['g_title'])); ?>.png" background="radial-gradient(at 0 0,#94e7f7,#00000000 50%),radial-gradient(at 33% 0,#9fe3fd,#00000000 50%),radial-gradient(at 67% 0,#c1d5e7,#00000000 50%),radial-gradient(at 100% 0,#93daf2,#00000000 50%),radial-gradient(at 0 50%,#ed54c9,#00000000 50%),radial-gradient(at 33% 50%,#f55fa8,#00000000 50%),radial-gradient(at 67% 50%,#f18b92,#00000000 50%),radial-gradient(at 100% 50%,#f04c78,#00000000 50%),radial-gradient(at 0 100%,#e4b2d0,#00000000 50%),radial-gradient(at 33% 100%,#e8c5da,#00000000 50%),radial-gradient(at 67% 100%,#e8d6d5,#00000000 50%),radial-gradient(at 100% 100%,#e5b7cc,#00000000 50%)" loading="lazy" width="180" height="236" layout="fixed" aspectratio="0" class="max-w-full max-h-full !w-auto !h-full" style="object-fit: cover;
-background: radial-gradient(at 0 0,#94e7f7,#00000000 50%),radial-gradient(at 33% 0,#9fe3fd,#00000000 50%),radial-gradient(at 67% 0,#c1d5e7,#00000000 50%),radial-gradient(at 100% 0,#93daf2,#00000000 50%),radial-gradient(at 0 50%,#ed54c9,#00000000 50%),radial-gradient(at 33% 50%,#f55fa8,#00000000 50%),radial-gradient(at 67% 50%,#f18b92,#00000000 50%),radial-gradient(at 100% 50%,#f04c78,#00000000 50%),radial-gradient(at 0 100%,#e4b2d0,#00000000 50%),radial-gradient(at 33% 100%,#e8c5da,#00000000 50%),radial-gradient(at 67% 100%,#e8d6d5,#00000000 50%),radial-gradient(at 100% 100%,#e5b7cc,#00000000 50%);
-" sizes="180px">
+                    <img id="" class="game-slider-game-image" src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>">
                   </div>
                 </a>
-                <div class="game-slider-ribbon">
+                <div class=" game-slider-ribbon">
                   <div class="game-slider-index-ribbon"><?php echo $counter; ?></div>
                 </div>
               </div>

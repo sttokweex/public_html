@@ -4,6 +4,7 @@ function renderCasinoComponent($translations)
 
   $svg_external_link = '<svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style=""> <title></title> <path d="M24.059 3.766v7.058H10.824v42.352h42.352V39.94h7.058v20.293H3.766V3.766zm36.18 0V24.94h-7.06v-9.12l-25.3 25.296-4.992-4.996 25.297-25.297h-9.125V3.766z"></path><!----></svg>'; // Здесь был SVG для внешних ссылок, оставлен пустым
 ?>
+
   <div class="see-more " data-content="">
     <div class="see-more-content ">
       <div class="see-more-column-container" style="column-count: 2;">

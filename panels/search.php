@@ -113,23 +113,28 @@ function renderSearch($games, $translations)
 
           $searchResults.addClass('active');
           var filteredGames = games.filter(function(game) {
-            return game.g_title && game.g_title.replace("_", ' ').toLowerCase().includes(query);
+            return game.name && game.name.toLowerCase().includes(query);
           });
 
           if (filteredGames.length > 0) {
             filteredGames.forEach(function(game) {
+              // Используем gameid для URL, с fallback на name
+              var gameUrl = game.gameid ? encodeURIComponent(game.gameid) : encodeURIComponent(game.name.replace(/\s+/g, '_'));
+              var gameDisplayName = game.name.replace(/\s+/g, ' ');
+              var gameImageUrl = game.iconurl2 || game.iconurl || game.icon || `../images/SlotsPreviews/${gameDisplayName.replace(/\s+/g, '')}.png`;
+
               var $resultItem = $('<a>')
-                .attr('href', `/slot/${encodeURIComponent(game.g_title)}`)
+                .attr('href', `/slot/${gameUrl}`)
                 .addClass('search-result-item')
                 .append(
-                  $('<img>').attr('src', `../images/SlotsPreviews/${game.g_title.replaceAll("_","")}.png`).attr('alt', game.g_title),
-                  $('<span>').text(game.g_title.replaceAll('_', ' '))
+                  $('<img>').attr('src', gameImageUrl).attr('alt', gameDisplayName),
+                  $('<span>').text(gameDisplayName)
                 );
               console.log('Добавлена ссылка:', $resultItem.attr('href'));
               $searchResults.append($resultItem);
             });
           } else {
-            $searchResults.append('<div class="search-result-item no-results"><? echo $translations['games_not_found']?></div>');
+            $searchResults.append('<div class="search-result-item no-results"><?php echo htmlspecialchars($translations['games_not_found'] ?? 'Игры не найдены'); ?></div>');
           }
         });
 

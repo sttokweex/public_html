@@ -32,7 +32,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
   $progressValue = min(($depositesSID / $progressMax) * 100, 100);
   if ($depositesSID >= $progressMax) $progressValue = 100;
 ?>
-  <link rel="stylesheet" href="/css/ranks.css">
+
   <div class="home-header-wrapper">
     <div class="home-container-upper home-has-padding ">
       <div class="home-header-inner">

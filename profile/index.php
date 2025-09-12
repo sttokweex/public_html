@@ -211,7 +211,7 @@ $allWithdrawsUser = $totalwithsRow['SUM(sum)'];
     </div>
   </div>
   <?
-  renderChatComponent('Иван', $sampleMessages, $translations);
+  // renderChatComponent('Иван', $sampleMessages, $translations);
   require(dirname(__DIR__, 1) . "/panels/footer.php");
   render_footer($translations, 'Stake')
   ?>

@@ -2,8 +2,7 @@
 
 ?>
 
-<link rel="stylesheet" href="/css/game_materials.css" crossorigin="anonymous" />
-<link rel="stylesheet" href="/css/modal.css" crossorigin="anonymous" />
+
 
 
 

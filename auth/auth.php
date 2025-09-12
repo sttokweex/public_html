@@ -44,7 +44,7 @@ if ($_POST['type'] == 'login') {
             'login' => $login,
 
         ]);
-        $ch = curl_init('http://51.250.83.228:2000/userCreate');
+        $ch = curl_init('http://localhost:2000/userCreate');
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -118,7 +118,7 @@ if ($_POST['type'] == 'login') {
             'login' => $login,
 
         ]);
-        $ch = curl_init('http://51.250.83.228:2000/userCreate');
+        $ch = curl_init('http://localhost:2000/userCreate');
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);

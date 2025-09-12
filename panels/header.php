@@ -2,61 +2,7 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
-// Определяем язык
 
-$ppResponse = @file_get_contents('http://51.250.83.228:2000/game_list.do');
-$ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
-$ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
-$games = $ppGames;
-if (empty($bets)) {
-  $bets = [];
-  for ($i = 0; $i < 15; $i++) {
-    $game = $games[array_rand($games)];
-    $betAmount = mt_rand(100, 5000000) / 100; // Random between $1 and $5,000
-    $multiplier = mt_rand(0, 5000) / 100; // Random between 1.00 and 5.00
-    $payout = $betAmount * $multiplier; // Random win or loss
-    $bets[] = [
-      'id' => uniqid(),
-      'game' => $game['g_title'],
-      'user' => 'Скрытый',
-      'time' => date('H:i', strtotime('+' . mt_rand(0, 59) . ' minutes')),
-      'bet_amount' => '$' . number_format($betAmount, 2),
-      'multiplier' => number_format($multiplier, 2),
-      'payout' => ($payout < 0 ? '-' : '') . '$' . number_format(abs($payout), 2)
-    ];
-  }
-} else {
-  // For existing bets, randomize game and recalculate payout
-  foreach ($bets as &$bet) {
-    $bet['game'] = $games[array_rand($games)];
-    // Extract numeric value from bet_amount
-    $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
-    $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
-    $payout = mt_rand(0, 1) ? $betAmount * $multiplier : -$betAmount * $multiplier;
-    $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
-  }
-  unset($bet); // Break reference
-}
-
-// помечаем источник, чтобы на клике знать какой auth дергать
-foreach ($ppGames as &$game) {
-  $game['__source'] = 'PP';
-  // Устанавливаем vendorid, если его нет, например 'pragmatic'
-  if (!isset($game['vendorid'])) {
-    $game['vendorid'] = 'Pragmatic play';
-  }
-}
-
-unset($game);
-
-$games = $ppGames;
-if (!is_array($games)) {
-  $games = []; // Если API не вернул данные, используем пустой массив
-}
-
-// Для отладки: проверить содержимое сессии
-// Раскомментируйте для проверки
-// var_dump($_SESSION); die();
 
 require_once __DIR__ . '/search.php';
 $currency_svg = '<svg fill="none" viewBox="0 0 96 96" class="svg-icon">
@@ -95,7 +41,97 @@ $sampleMessages = [
   ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
   // ... остальные сообщения ...
 ];
+$games = [];
 
+// 1. Игры с localhost:2000 (первые в списке)
+$ppResponseLocal = @file_get_contents('http://localhost:2000/game_list.do');
+if ($ppResponseLocal === false) {
+  file_put_contents('debug.log', "Failed to fetch game_list.do: " . error_get_last()['message'] . "\n", FILE_APPEND);
+  $ppGames = [];
+} else {
+  $ppDecodedLocal = json_decode($ppResponseLocal, true);
+  $ppGames = (isset($ppDecodedLocal['games']) && is_array($ppDecodedLocal['games'])) ? $ppDecodedLocal['games'] : [];
+}
+foreach ($ppGames as $game) {
+  $games[] = [
+    'name' => $game['g_title'],
+    'gameid' => $game['g_id'],
+    'iconurl' => $game['g_icon'] ?? '../images/SlotsPreviews/' . str_replace(' ', '', $game['g_title'] ?? 'default') . '.jpg',
+    '__source' => 'PP_Local',
+    'vendorid' => 'Pragmatic play custom'
+  ];
+}
+function fetchWithRetry($url, $context, $maxRetries = 3, $retryDelay = 1)
+{
+  $attempt = 0;
+  while ($attempt < $maxRetries) {
+    $response = @file_get_contents($url, false, $context);
+    if ($response !== false) {
+      return $response;
+    }
+    $attempt++;
+    if ($attempt < $maxRetries) {
+      sleep($retryDelay); // Задержка перед следующей попыткой
+    }
+  }
+  return false;
+}
+// 2. Игры с frenzycaz.online (добавляем после)
+$ppResponseOnline = fetchWithRetry('https://frenzycaz.online/slot/api/gameListPP.php', stream_context_create([
+  'ssl' => [
+    'verify_peer' => false, // ВРЕМЕННО для обхода TLS-ошибки
+    'verify_peer_name' => false,
+  ]
+]));
+if ($ppResponseOnline === false) {
+
+  $allGames = [];
+} else {
+  $ppDecodedOnline = json_decode($ppResponseOnline, true);
+  $allGames = (isset($ppDecodedOnline['data']) && is_array($ppDecodedOnline['data'])) ? $ppDecodedOnline['data'] : [];
+}
+foreach ($allGames as $game) {
+  $games[] = [
+    'name' =>  str_replace(' ', '_', $game['name']),
+    'gameid' => $game['gameid'],
+    'iconurl' => $game['iconurl2'] ?? $game['iconurl'],
+    '__source' => 'PP_Online',
+    'vendorid' => $game['vendorid'] ?? 'Pragmatic play'
+  ];
+}
+
+if (empty($bets)) {
+  $bets = [];
+  for ($i = 0; $i < 15; $i++) {
+    $game = $games[array_rand($games)];
+    $betAmount = mt_rand(100, 5000000) / 100; // Random between $1 and $5,000
+    $multiplier = mt_rand(0, 5000) / 100; // Random between 0.00 and 50.00
+    $payout = $betAmount * $multiplier; // Random win or loss
+    $bets[] = [
+      'id' => uniqid(),
+      'game' => $game['name'] ?? 'Unknown Game',
+      'user' => 'Скрытый',
+      'time' => date('H:i', strtotime('+' . mt_rand(0, 59) . ' minutes')),
+      'bet_amount' => '$' . number_format($betAmount, 2),
+      'multiplier' => number_format($multiplier, 2),
+      'payout' => ($payout < 0 ? '-' : '') . '$' . number_format(abs($payout), 2)
+    ];
+  }
+} else {
+  foreach ($bets as &$bet) {
+    $game = $games[array_rand($games)];
+    $bet['game'] = $game['name'] ?? 'Unknown Game';
+    $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
+    $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
+    $payout = $betAmount * $multiplier;
+    $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
+  }
+  unset($bet); // Break reference
+}
+
+if (!is_array($games)) {
+  $games = []; // Если API не вернул данные, используем пустой массив
+}
 
 // Проверка реферального параметра
 $refer = isset($_GET['i']) ? $_GET['i'] : '';
@@ -262,6 +298,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <link href="/css/header.css" rel="stylesheet">
   <link href="/css/index.css" rel="stylesheet">
   <link href="/css/modal.css" rel="stylesheet">
+  <link href="/css/ranks.css" rel="stylesheet">
   <link href="/css/chat.css" rel="stylesheet">
   <link href="/css/game_materials.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/slider.css">
@@ -269,6 +306,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <link href="/css/sidebar.css" rel="stylesheet">
   <link href="/css/gameInfo.css" rel="stylesheet">
   <link href="/css/search.css" rel="stylesheet">
+  <link href="/css/slider.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/jquery.dataTables.min.css" />
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="/js/jquery.min.js"></script>
@@ -288,10 +326,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     border-radius: 50%;
     width: 48px;
     height: 48px;
-    -webkit-animation: loader-spins 2s linear infinite;
     animation: loader-spins 2s linear infinite;
-    display: flex;
-    margin: 0 auto;
   }
 
   @keyframes loader-spins {
@@ -300,7 +335,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     }
 
     100% {
-      transform: rotate(3turn);
+      transform: rotate(360deg);
     }
   }
 </style>
@@ -309,6 +344,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 
 <!-- HEADER -->
+
 <div id="header" class="headerproject" style="user-select:none;">
 
   <div class="header-content">

@@ -15,7 +15,7 @@ if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
 // Обработка корневого пути /
 if ($uri === '/' || $uri === '') {
   require_once __DIR__ . '/index.php'; // Перенаправляем на главную страницу
-} elseif (preg_match('#^/slot/api/(GetBalance|BetWin|Withdraw|Deposit|RollbackTransaction)#', $uri)) {
+} elseif (preg_match('#^/slot/api/(GetBalance|BetWin|Withdraw|Deposit|CustomBet|RollbackTransaction)#', $uri)) {
   // Handle API endpoints
   require_once __DIR__ . '/index.php';
   exit;

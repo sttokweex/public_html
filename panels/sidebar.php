@@ -13,7 +13,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
   <div class="sidebar_header">
     <button type="button" class="sidebar__btn-close">
       <svg fill="rgba(177,186,211,1)" viewBox="0 0 64 64" class="svg-icon " style="">
-        <title><?php echo htmlspecialchars($translations['close']); ?></title>
+
         <path d="M64 64H0V51h64zm0-25.5H0v-13h64zM64 13H0V0h64z"></path>
       </svg>
     </button>
@@ -191,7 +191,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
                   <path d="M28.652 60.5H11.883c-1.85 0-3.347-1.5-3.347-3.348V37.036c-1.85 0-3.348-1.5-3.348-3.348v-6.722c0-1.85 1.5-3.348 3.348-3.348h20.116zm26.812-36.884H35.347V60.5h16.768c1.85 0 3.349-1.5 3.349-3.348V37.036c1.85 0 3.348-1.5 3.348-3.348v-6.722c0-1.85-1.5-3.348-3.348-3.348zM45.417 3.5C38.006 3.5 32 9.508 32 16.918h13.417c1.85 0 3.349-1.5 3.349-3.348V6.848c0-1.85-1.5-3.348-3.349-3.348m-26.836 0c-1.85 0-3.347 1.5-3.347 3.348v6.722c0 1.85 1.5 3.348 3.347 3.348H32C32 9.506 25.99 3.5 18.58 3.5"></path>
                 </svg>
                 <svg fill="currentColor" viewBox="0 0 64 64" class="svg_isopen svg-icon" style="">
-                  <title><?php echo htmlspecialchars($translations['toggle_accordion']); ?></title>
+
                   <path d="m26.307 53.996 20.998-20.998L26.307 12 20 18.306 34.694 33 20.001 47.694 26.307 54z"></path>
                 </svg>
                 <div class="header-title overflow-hidden">
@@ -205,7 +205,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
                 </div>
                 <div class="svg_container">
                   <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="transform: rotate(0deg); margin-right: var(--spacing-0);">
-                    <title><?php echo htmlspecialchars($translations['toggle_accordion']); ?></title>
+
                     <path d="M32.274 49.762 9.204 26.69l6.928-6.93 16.145 16.145L48.42 19.762l6.93 6.929-23.072 23.07z"></path>
                   </svg>
                 </div>

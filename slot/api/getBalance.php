@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-require_once('system/connect.php'); // подключение через mysqli_connect()
+require_once(dirname(__DIR__, 2) . '/system/connect.php');
 
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
@@ -15,15 +15,15 @@ if (empty($data['userID'])) {
     exit;
 }
 
-$userID = mysqlI_real_escape_string($connection,$data['userID']);
+$userID = mysqlI_real_escape_string($connection, $data['userID']);
 
-$res = mysqli_query($connection,"SELECT balance FROM users WHERE id = '$userID'");
+$res = mysqli_query($connection, "SELECT balance FROM users WHERE id = '$userID'");
 if (!$res) {
     http_response_code(200);
     echo json_encode([
         'code' => 2,
         'message' => 'Database error',
-        'mysqli_error' => mysqli_error()
+        'mysqli_error' => mysqli_error($connection)
     ]);
     exit;
 }
@@ -41,7 +41,8 @@ $row     = mysqli_fetch_assoc($res);
 $balance = floatval($row['balance']);
 
 // Округление в меньшую сторону до сотых
-function floorToHundredths($value) {
+function floorToHundredths($value)
+{
     return floor($value * 100) / 100;
 }
 

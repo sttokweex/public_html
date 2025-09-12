@@ -36,7 +36,7 @@ function renderBetsTable($bets, $translations)
                             <td class="left">
                                 <button type="button" class="live-button" aria-label="<?php echo htmlspecialchars($translations['open_bet_preview']); ?>">
                                     <?php echo $gameIconSvg; ?>
-                                    <span class="truncate"><?php echo htmlspecialchars($bet['game']); ?></span>
+                                    <span class="truncate"><?php echo htmlspecialchars(str_replace("_", " ", $bet['game'])); ?></span>
                                 </button>
                             </td>
                             <td class="left">

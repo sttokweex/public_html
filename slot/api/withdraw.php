@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-require_once('system/connect.php');
+require_once(dirname(__DIR__, 2) . '/system/connect.php');
 
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
@@ -15,17 +15,17 @@ foreach ($required as $field) {
     }
 }
 
-$userID = mysqlI_real_escape_string($connection,$data['userID']);
+$userID = mysqlI_real_escape_string($connection, $data['userID']);
 $amount = floatval($data['amount']);
-$transactionID = mysqlI_real_escape_string($connection,$data['transactionID']);
-$roundID = isset($data['roundID']) ? mysqlI_real_escape_string($connection,$data['roundID']) : null;
-$freeSpinID = isset($data['freeSpinID']) ? mysqlI_real_escape_string($connection,$data['freeSpinID']) : null;
+$transactionID = mysqlI_real_escape_string($connection, $data['transactionID']);
+$roundID = isset($data['roundID']) ? mysqlI_real_escape_string($connection, $data['roundID']) : null;
+$freeSpinID = isset($data['freeSpinID']) ? mysqlI_real_escape_string($connection, $data['freeSpinID']) : null;
 
 // Проверка дубликата транзакции
-$res = mysqli_query($connection,"SELECT id FROM transactions WHERE transaction_id = '$transactionID'");
+$res = mysqli_query($connection, "SELECT id FROM transactions WHERE transaction_id = '$transactionID'");
 if ($res && mysqli_num_rows($res) > 0) {
     // Уже обработано — вернуть баланс
-    $resBal = mysqli_query($connection,"SELECT balance FROM users WHERE id = '$userID'");
+    $resBal = mysqli_query($connection, "SELECT balance FROM users WHERE id = '$userID'");
     $balance = 0;
     if ($resBal && mysqli_num_rows($resBal) > 0) {
         $balance = floatval(mysqli_fetch_assoc($resBal)['balance']);
@@ -40,7 +40,7 @@ if ($res && mysqli_num_rows($res) > 0) {
 }
 
 // Получение текущего баланса
-$resUser = mysqli_query($connection,"SELECT balance FROM users WHERE id = '$userID'");
+$resUser = mysqli_query($connection, "SELECT balance FROM users WHERE id = '$userID'");
 if (!$resUser || mysqli_num_rows($resUser) === 0) {
     http_response_code(200);
     echo json_encode(['code' => 2, 'message' => 'User not found']);
@@ -53,12 +53,12 @@ $balance = floatval($row['balance']);
 $newBalance = round($balance - $amount, 2);
 
 // Начинаем "ручную транзакцию"
-mysqli_query($connection,"START TRANSACTION");
+mysqli_query($connection, "START TRANSACTION");
 
 // Обновление баланса
-$update = mysqli_query($connection,"UPDATE users SET balance = '$newBalance' WHERE id = '$userID'");
-if (!$update || mysqli_affected_rows() === 0) {
-    mysqli_query($connection,"ROLLBACK");
+$update = mysqli_query($connection, "UPDATE users SET balance = '$newBalance' WHERE id = '$userID'");
+if (!$update || mysqli_affected_rows($connection) === 0) {
+    mysqli_query($connection, "ROLLBACK");
     http_response_code(200);
     echo json_encode(['code' => 3, 'message' => 'Failed to update balance', 'balance' => $balance]);
     exit;
@@ -69,7 +69,7 @@ $type = 'betwin'; // списание
 $platformTransactionID = md5(uniqid('', true));
 $now = date('Y-m-d H:i:s');
 
-$insert = mysqli_query($connection,"
+$insert = mysqli_query($connection, "
     INSERT INTO transactions (
         transaction_id, user_id, bet_amount, win_amount, platform_transaction_id, type, round_id, created_at
     ) VALUES (
@@ -77,14 +77,14 @@ $insert = mysqli_query($connection,"
     )
 ");
 
-if (!$insert || mysqli_affected_rows() === 0) {
-    mysqli_query($connection,"ROLLBACK");
+if (!$insert || mysqli_affected_rows($connection) === 0) {
+    mysqli_query($connection, "ROLLBACK");
     http_response_code(200);
     echo json_encode(['code' => 3, 'message' => 'Failed to insert transaction', 'balance' => $balance]);
     exit;
 }
 
-mysqli_query($connection,"COMMIT");
+mysqli_query($connection, "COMMIT");
 
 echo json_encode([
     'code' => 0,
