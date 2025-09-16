@@ -1,7 +1,4 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-  session_start();
-}
 
 
 require_once __DIR__ . '/search.php';
@@ -39,28 +36,31 @@ $sampleMessages = [
   ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
   ['sender' => 'Иван', 'text' => 'Привет, как дела?'],
   ['sender' => 'Мария', 'text' => 'Отлично, а у тебя?'],
-  // ... остальные сообщения ...
 ];
-$games = [];
 
-// 1. Игры с localhost:2000 (первые в списке)
-$ppResponseLocal = @file_get_contents('http://localhost:2000/game_list.do');
-if ($ppResponseLocal === false) {
-  file_put_contents('debug.log', "Failed to fetch game_list.do: " . error_get_last()['message'] . "\n", FILE_APPEND);
-  $ppGames = [];
-} else {
+$games = [];
+$cacheTTL = 300; // 5 минут
+
+// Кэширование в сессию
+// if (isset($_SESSION['games_cache']) && isset($_SESSION['games_cache_time']) && (time() - $_SESSION['games_cache_time']) < $cacheTTL) {
+//   $games = $_SESSION['games_cache'];
+// } else {
+// Игры с localhost:8940
+$ppResponseLocal = @file_get_contents('http://localhost:8940/game_list.do');
+if ($ppResponseLocal !== false) {
   $ppDecodedLocal = json_decode($ppResponseLocal, true);
   $ppGames = (isset($ppDecodedLocal['games']) && is_array($ppDecodedLocal['games'])) ? $ppDecodedLocal['games'] : [];
+  foreach ($ppGames as $game) {
+    $games[] = [
+      'name' => $game['g_title'],
+      'gameid' => $game['g_id'],
+      'iconurl' => $game['g_icon'] ?? '../images/SlotsPreviews/' . str_replace(' ', '', $game['g_title'] ?? 'default') . '.jpg',
+      '__source' => 'PP_Local',
+      'vendorid' => 'Pragmatic play custom'
+    ];
+  }
 }
-foreach ($ppGames as $game) {
-  $games[] = [
-    'name' => $game['g_title'],
-    'gameid' => $game['g_id'],
-    'iconurl' => $game['g_icon'] ?? '../images/SlotsPreviews/' . str_replace(' ', '', $game['g_title'] ?? 'default') . '.jpg',
-    '__source' => 'PP_Local',
-    'vendorid' => 'Pragmatic play custom'
-  ];
-}
+
 function fetchWithRetry($url, $context, $maxRetries = 3, $retryDelay = 1)
 {
   $attempt = 0;
@@ -71,45 +71,48 @@ function fetchWithRetry($url, $context, $maxRetries = 3, $retryDelay = 1)
     }
     $attempt++;
     if ($attempt < $maxRetries) {
-      sleep($retryDelay); // Задержка перед следующей попыткой
+      sleep($retryDelay);
     }
   }
   return false;
 }
-// 2. Игры с frenzycaz.online (добавляем после)
+
+// Игры с frenzycaz.online
 $ppResponseOnline = fetchWithRetry('https://frenzycaz.online/slot/api/gameListPP.php', stream_context_create([
   'ssl' => [
-    'verify_peer' => false, // ВРЕМЕННО для обхода TLS-ошибки
+    'verify_peer' => false,
     'verify_peer_name' => false,
   ]
 ]));
-if ($ppResponseOnline === false) {
-
-  $allGames = [];
-} else {
+if ($ppResponseOnline !== false) {
   $ppDecodedOnline = json_decode($ppResponseOnline, true);
   $allGames = (isset($ppDecodedOnline['data']) && is_array($ppDecodedOnline['data'])) ? $ppDecodedOnline['data'] : [];
+  foreach ($allGames as $game) {
+    $games[] = [
+      'name' => str_replace(' ', '_', $game['name']),
+      'gameid' => $game['gameid'],
+      'iconurl' => $game['iconurl2'] ?? $game['iconurl'],
+      '__source' => 'PP_Online',
+      'vendorid' => $game['vendorid'] ?? 'Pragmatic play'
+    ];
+  }
 }
-foreach ($allGames as $game) {
-  $games[] = [
-    'name' =>  str_replace(' ', '_', $game['name']),
-    'gameid' => $game['gameid'],
-    'iconurl' => $game['iconurl2'] ?? $game['iconurl'],
-    '__source' => 'PP_Online',
-    'vendorid' => $game['vendorid'] ?? 'Pragmatic play'
-  ];
-}
+
+//   // Сохраняем в сессию
+//   $_SESSION['games_cache'] = $games;
+//   $_SESSION['games_cache_time'] = time();
+// }
 
 if (empty($bets)) {
   $bets = [];
   for ($i = 0; $i < 15; $i++) {
-    $game = $games[array_rand($games)];
-    $betAmount = mt_rand(100, 5000000) / 100; // Random between $1 and $5,000
-    $multiplier = mt_rand(0, 5000) / 100; // Random between 0.00 and 50.00
-    $payout = $betAmount * $multiplier; // Random win or loss
+    $game = $games[array_rand($games)] ?? ['name' => 'Unknown Game'];
+    $betAmount = mt_rand(100, 5000000) / 100;
+    $multiplier = mt_rand(0, 5000) / 100;
+    $payout = $betAmount * $multiplier;
     $bets[] = [
       'id' => uniqid(),
-      'game' => $game['name'] ?? 'Unknown Game',
+      'game' => $game['name'],
       'user' => 'Скрытый',
       'time' => date('H:i', strtotime('+' . mt_rand(0, 59) . ' minutes')),
       'bet_amount' => '$' . number_format($betAmount, 2),
@@ -119,25 +122,22 @@ if (empty($bets)) {
   }
 } else {
   foreach ($bets as &$bet) {
-    $game = $games[array_rand($games)];
-    $bet['game'] = $game['name'] ?? 'Unknown Game';
+    $bet['game'] = $games[array_rand($games)]['name'] ?? 'Unknown Game';
     $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
     $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
     $payout = $betAmount * $multiplier;
     $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
   }
-  unset($bet); // Break reference
+  unset($bet);
 }
 
-if (!is_array($games)) {
-  $games = []; // Если API не вернул данные, используем пустой массив
+if (empty($games)) {
+  $games = [];
 }
 
 // Проверка реферального параметра
-$refer = isset($_GET['i']) ? $_GET['i'] : '';
-if ($refer !== '') {
-  $_SESSION['ref'] = $refer;
-  session_write_close(); // Сохранить данные сессии перед редиректом
+if (!empty($_GET['i'])) {
+  $_SESSION['ref'] = $_GET['i'];
   header('Location: /');
   exit;
 }
@@ -148,13 +148,16 @@ if (!isset($connection) || !$connection) {
 }
 
 // Проверка сессии
-$sid = isset($_SESSION['hash']) ? $_SESSION['hash'] : '';
-$login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
+$sid = $_SESSION['hash'] ?? '';
+$login = $_SESSION['login'] ?? '';
 
 if ($sid) {
-  // Используем подготовленные выражения для защиты от SQL-инъекций
-  $select = "SELECT * FROM users WHERE hash = ?";
-  $stmt = $connection->prepare($select);
+  $query = "SELECT u.*, COALESCE(SUM(d.amount), 0) as total_deposits 
+              FROM users u 
+              LEFT JOIN deposits d ON u.hash = d.hash_user 
+              WHERE u.hash = ? 
+              GROUP BY u.id";
+  $stmt = $connection->prepare($query);
   $stmt->bind_param("s", $sid);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -162,9 +165,9 @@ if ($sid) {
 
   if ($get) {
     $login = $get['login'] ?? '';
-    $wager = $get['wager'] ?? 0;
+    $wager = round($get['wager'] ?? 0, 2);
     $star_limit = $get['star_limit'] ?? 0;
-    $balance = isset($get['balance']) ? round($get['balance'], 2) : 0;
+    $balance = round($get['balance'] ?? 0, 2);
     $id = $get['id'] ?? 0;
     $social_link = $get['social'] ?? '';
     $is_admin = $get['admin'] ?? 0;
@@ -192,8 +195,8 @@ if ($sid) {
     $tgid = $get['tg_id'] ?? '';
     $ref_deps = $get['ref_deps'] ?? 0;
     $ref_deps_sum = $get['ref_deps_sum'] ?? 0;
+    $depositesSID = $get['total_deposits'] ?? 0;
   } else {
-    // Значения по умолчанию, если пользователь не найден
     $login = '';
     $wager = 0;
     $star_limit = 0;
@@ -225,62 +228,29 @@ if ($sid) {
     $tgid = '';
     $ref_deps = 0;
     $ref_deps_sum = 0;
+    $depositesSID = 0;
   }
-}
-
-// Проверка депозитов
-$depositesSID = 0;
-if ($sid) {
-  $getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE hash_user = ?";
-  $stmt = $connection->prepare($getDepsForLevel);
-  $stmt->bind_param("s", $sid);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $leveldeposits = $result->fetch_assoc();
-  $depositesSID = $leveldeposits['SUM(amount)'] ?? 0;
+} else {
+  $depositesSID = 0;
 }
 
 // Установка рангов
-if ($depositesSID < 2000) {
-  $cashback_rankt = '0';
-  $rakeback_rank = "0.1";
-  $bonusdr = 0;
-} elseif ($depositesSID >= 10000) {
-  $cashback_rankt = '3';
-  $rakeback_rank = "0.2";
-  $bonusdr = 0;
-} elseif ($depositesSID >= 50000) {
-  $cashback_rankt = '5';
-  $rakeback_rank = "0.3";
-  $bonusdr = 500;
-} elseif ($depositesSID >= 100000) {
-  $cashback_rankt = '7';
-  $rakeback_rank = "0.4";
-  $bonusdr = 1000;
-} elseif ($depositesSID >= 500000) {
-  $cashback_rankt = '10';
-  $rakeback_rank = "0.5";
-  $bonusdr = 5000;
-}
 
-$wager = isset($wager) ? round($wager, 2) : 0;
 
-if (isset($is_ban) && $is_ban == 1) {
+if ($is_ban == 1) {
   header('Location: /ban');
   exit;
 }
 
-$is_teh = isset($is_teh) ? $is_teh : 0;
+$is_teh = $is_teh ?? 0;
 if ($is_teh == 1 && $is_admin == 0) {
   header('Location: /teh');
   exit;
 }
 
 $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
 ?>
 
-<!-- HTML-код -->
 <html lang="<?= htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') ?>">
 
 <head>
@@ -289,7 +259,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../images/logo-mob.svg" type="image/png">
   <meta name="description" content="<?= htmlspecialchars($sitename) ?> - stake!">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" as="style" onload="this.rel='stylesheet'">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="/css/swiper-bundle.min.css" rel="stylesheet">
@@ -306,7 +276,6 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <link href="/css/sidebar.css" rel="stylesheet">
   <link href="/css/gameInfo.css" rel="stylesheet">
   <link href="/css/search.css" rel="stylesheet">
-  <link href="/css/slider.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/jquery.dataTables.min.css" />
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="/js/jquery.min.js"></script>
@@ -319,6 +288,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
   <title><?= strtoupper($sitename); ?> - stake!</title>
 </head>
+
 <style>
   .loader {
     border: 4px solid #ffffff3b;
@@ -340,15 +310,9 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   }
 </style>
 
-
-
-
-<!-- HEADER -->
-
 <div id="header" class="headerproject" style="user-select:none;">
-
   <div class="header-content">
-    <div class="header-search"><? renderSearch($games, $translations); ?></div>
+    <div class="header-search"><?php renderSearch($games, $translations); ?></div>
     <div class="wrap normal" data-content="">
       <a href="/">
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="svelte-md2ju7">
@@ -360,24 +324,20 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         </svg>
       </a>
     </div>
-    <?php if (!(!isset($_SESSION['login']) || !$_SESSION['login'])) { ?>
+    <?php if (!empty($_SESSION['login'])) { ?>
       <div class="balance-container">
         <div class="balance-toggle">
           <div class="balance-coin-toggle">
             <div class="balance-currency-view">
               <div class="balance-dropdown">
                 <button type="button" class="balance-dropdown-button" aria-label="Open Dropdown">
-                  <span class=" balance-currency">
+                  <span class="balance-currency">
                     <span class="balance-balance"><?php echo htmlspecialchars($balance); ?></span>
-                    <span class="balance-currency-name">
-
-                      <?php echo $currency_svg; ?>
-                    </span>
+                    <span class="balance-currency-name"><?php echo $currency_svg; ?></span>
                   </span>
                   <?php echo $dropdown_svg; ?>
                 </button>
                 <div class="balance-dropdown-menu">
-                  <!-- Populate with currencies from users table or config -->
                   <a href="?currency=gold" class="balance-dropdown-item">Gold</a>
                   <a href="?currency=USD" class="balance-dropdown-item">USD</a>
                   <a href="?currency=RUB" class="balance-dropdown-item">RUB</a>
@@ -391,7 +351,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     <?php } ?>
     <div class="header_Navigation">
       <?php $currentLang = in_array($lang, ['en', 'es', 'ru'], true) ? $lang : 'en'; ?>
-      <?php if (!isset($_SESSION['login']) || !$_SESSION['login']) { ?>
+      <?php if (empty($_SESSION['login'])) { ?>
         <div class="balance_Container">
           <div class="auth-buttons">
             <button id="auth-button" type="button" onClick="$('#authorization').modal('show');" class="login_Button font-semibold"><?= $translations['login'] ?></button>
@@ -399,53 +359,39 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           </div>
         </div>
       <?php } else { ?>
-
-
         <div class="header_RightBlock">
-          <button class=" header-anchor open-search">
-            <!-- SVG icon for toggle (hamburger menu style) -->
-            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style=""><!---->
-              <title></title>
-              <path d="M63.999 56.219 56.217 64 38.55 46.328a28 28 0 0 0 7.777-7.777zM23.1 0a23.1 23.1 0 1 1-.003 46.2A23.1 23.1 0 0 1 23.1 0m5.317 10.258a13.9 13.9 0 0 0-8.032-.79 13.9 13.9 0 0 0-7.117 3.802 13.9 13.9 0 0 0-3.8 7.117 13.9 13.9 0 0 0 .789 8.031 13.903 13.903 0 0 0 22.672 4.512 13.9 13.9 0 0 0-4.512-22.672"></path><!---->
+          <button class="header-anchor open-search">
+            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon">
+              <path d="M63.999 56.219 56.217 64 38.55 46.328a28 28 0 0 0 7.777-7.777zM23.1 0a23.1 23.1 0 1 1-.003 46.2A23.1 23.1 0 0 1 23.1 0m5.317 10.258a13.9 13.9 0 0 0-8.032-.79 13.9 13.9 0 0 0-7.117 3.802 13.9 13.9 0 0 0-3.8 7.117 13.9 13.9 0 0 0 .789 8.031 13.903 13.903 0 0 0 22.672 4.512 13.9 13.9 0 0 0-4.512-22.672"></path>
             </svg>
-            <span><? echo $translations['find'] ?></span>
+            <span><?php echo $translations['find'] ?></span>
           </button>
           <button class="header-dropdown header-anchor">
-            <!-- SVG icon for toggle (hamburger menu style) -->
-            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
-              <title></title>
-              <path d="M50.84 38.191A19.84 19.84 0 0 1 64 56.86V64H0v-7.14a19.84 19.84 0 0 1 13.16-18.67 26.6 26.6 0 0 0 8.645 5.778A26.6 26.6 0 0 0 32 46a26.6 26.6 0 0 0 10.195-2.031 26.6 26.6 0 0 0 8.645-5.778M32 0a19.62 19.62 0 0 1 18.137 12.117 19.632 19.632 0 0 1-21.965 26.766A19.635 19.635 0 0 1 12.746 23.46 19.63 19.63 0 0 1 32 0"></path><!---->
+            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon">
+              <path d="M50.84 38.191A19.84 19.84 0 0 1 64 56.86V64H0v-7.14a19.84 19.84 0 0 1 13.16-18.67 26.6 26.6 0 0 0 8.645 5.778A26.6 26.6 0 0 0 32 46a26.6 26.6 0 0 0 10.195-2.031 26.6 26.6 0 0 0 8.645-5.778M32 0a19.62 19.62 0 0 1 18.137 12.117 19.632 19.632 0 0 1-21.965 26.766A19.635 19.635 0 0 1 12.746 23.46 19.63 19.63 0 0 1 32 0"></path>
             </svg>
-            <!-- Dropdown menu -->
             <div class="dropdown-menu">
-              <a id="gamesBox" href="/slot" class="dropdown-item"><? echo $translations['games'] ?></a>
-              <a id="bonusBox" href="/bonus" class="dropdown-item"><? echo $translations['bonus'] ?></a>
-              <a id="refsBox" href="/referals" class="dropdown-item"><? echo $translations['referals'] ?></a>
-              <a id="supportBox" href="https://t.me/stakesupports" class="dropdown-item"><? echo $translations['support'] ?></a>
-              <a id="ranksBox" href="/ranks" class="dropdown-item"><? echo $translations['ranks'] ?></a>
-              <a id="ranksBox" href="/profile" class="dropdown-item"><? echo $translations['profile'] ?></a>
-
-
+              <a id="gamesBox" href="/slot" class="dropdown-item"><?php echo $translations['games'] ?></a>
+              <a id="bonusBox" href="/bonus" class="dropdown-item"><?php echo $translations['bonus'] ?></a>
+              <a id="refsBox" href="/referals" class="dropdown-item"><?php echo $translations['referals'] ?></a>
+              <a id="supportBox" href="https://t.me/stakesupports" class="dropdown-item"><?php echo $translations['support'] ?></a>
+              <a id="ranksBox" href="/ranks" class="dropdown-item"><?php echo $translations['ranks'] ?></a>
+              <a id="profile" href="/profile" class="dropdown-item"><?php echo $translations['profile'] ?></a>
               <?php if ($is_admin == 1) { ?>
                 <a href="/admin" type="button" class="dropdown-item"><?= $translations['admin_panel'] ?></a>
               <?php } ?>
             </div>
           </button>
-          <button class=" header-anchor header-chat-close">
-            <!-- SVG icon for toggle (hamburger menu style) -->
-            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
-              <title></title>
-              <path d="M32 1.914c-.288-.01-.628-.016-.97-.016C14.254 1.898.586 15.204.002 31.838L0 31.892a28.66 28.66 0 0 0 7.476 19.256l-.02-.024c-.688 4.028-1.89 7.636-3.552 10.974l.102-.228c4.634-.396 8.878-1.73 12.654-3.81l-.164.082c4.474 2.35 9.774 3.728 15.398 3.728h.112H32c.3.01.654.016 1.008.016 16.768 0 30.428-13.31 30.99-29.942l.002-.052C63.414 15.204 49.746 1.9 32.97 1.9q-.512 0-1.018.016l.05-.002zM16.138 37.602a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896m15.862 0a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896m15.862 0a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896"></path><!---->
+          <button class="header-anchor header-chat-close">
+            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon">
+              <path d="M32 1.914c-.288-.01-.628-.016-.97-.016C14.254 1.898.586 15.204.002 31.838L0 31.892a28.66 28.66 0 0 0 7.476 19.256l-.02-.024c-.688 4.028-1.89 7.636-3.552 10.974l.102-.228c4.634-.396 8.878-1.73 12.654-3.81l-.164.082c4.474 2.35 9.774 3.728 15.398 3.728h.112H32c.3.01.654.016 1.008.016 16.768 0 30.428-13.31 30.99-29.942l.002-.052C63.414 15.204 49.746 1.9 32.97 1.9q-.512 0-1.018.016l.05-.002zM16.138 37.602a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896m15.862 0a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896m15.862 0a5.948 5.948 0 1 1 0-11.896 5.948 5.948 0 0 1 0 11.896"></path>
             </svg>
           </button>
-
         </div>
       <?php } ?>
     </div>
   </div>
-
 </div>
-
 
 <script>
   if (location.pathname == "/slot") {
@@ -462,50 +408,46 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   }
 </script>
 <script>
-  $('.balance-dropdown-button').on('click', function(e) {
-    e.stopPropagation();
-    $('.balance-dropdown-menu').toggleClass('active');
-  });
+  $(document).ready(function() {
+    $('.balance-dropdown-button').on('click', function(e) {
+      e.stopPropagation();
+      $('.balance-dropdown-menu').toggleClass('active');
+    });
 
-  // Close dropdown when clicking outside
-  $(document).on('click', function(e) {
-    if (!$(e.target).closest('.balance-dropdown').length) {
-      $('.balance-dropdown-menu').removeClass('active');
-    }
-  });
+    $(document).on('click', function(e) {
+      if (!$(e.target).closest('.balance-dropdown').length) {
+        $('.balance-dropdown-menu').removeClass('active');
+      }
+    });
 
-  // Redirect to /wallet on wallet button click
-  $('.balance-wallet-button').on('click', function() {
-    window.location.href = '/wallet';
-  });
-  $('.header-chat-close').on('click', function() {
-    var $chat = $('.chat-container');
-    $chat.toggleClass('closed');
-    $('body').toggleClass('chat');
-  });
-  $('.open-search').on('click', function(e) {
-    e.stopPropagation();
-    var $search = $('.header-search');
-    $search.toggleClass('is-open');
+    $('.balance-wallet-button').on('click', function() {
+      window.location.href = '/wallet';
+    });
 
-    $search.find('.home-input-wrap input').focus();
+    $('.header-chat-close').on('click', function() {
+      var $chat = $('.chat-container');
+      $chat.toggleClass('closed');
+      $('body').toggleClass('chat');
+    });
 
+    $('.open-search').on('click', function(e) {
+      e.stopPropagation();
+      var $search = $('.header-search');
+      $search.toggleClass('is-open');
+      $search.find('.home-input-wrap input').focus();
+    });
 
-  });
-  $('.header-dropdown').on('click', function(e) {
-    e.stopPropagation();
-    $('.dropdown-menu').toggleClass('active');
-  });
+    $('.header-dropdown').on('click', function(e) {
+      e.stopPropagation();
+      $('.dropdown-menu').toggleClass('active');
+    });
 
-  // Close dropdown when clicking outside
-  $(document).on('click', function(e) {
-    if (!$(e.target).closest('.header-dropdown').length) {
-      $('.dropdown-menu').removeClass('active');
-    }
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
+    $(document).on('click', function(e) {
+      if (!$(e.target).closest('.header-dropdown').length) {
+        $('.dropdown-menu').removeClass('active');
+      }
+    });
+
     var sel = document.getElementById('langSelect');
     if (sel) {
       sel.addEventListener('change', function() {
@@ -513,11 +455,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         window.location.href = '/language.php?lang=' + encodeURIComponent(lang);
       });
     }
-  });
-</script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('register') === '1') {
       $('#authorization').modal('show');

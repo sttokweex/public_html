@@ -1,5 +1,5 @@
 <?php
-function render_slider($games = [], $hasMargin, $translations)
+function render_slider($games, $hasMargin, $translations)
 {
 ?>
   <div class="game-slider<?php echo $hasMargin ? ' home-has-margin' : ''; ?>">
