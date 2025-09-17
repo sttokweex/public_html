@@ -40,10 +40,10 @@ function renderBanners()
                                     MORE INFO
                                   </button>
 
-                                  <img alt="" draggable="false" class="Image__image--2Bt stamp" src="https://www.hollandcasino.nl/library/general/24_stamp.webp" style="transform: translate(0px, 0px);">
+                                  <img alt="" draggable="false" class="Image__image--2Bt stamp" src="../images/24_stamp.webp" style="transform: translate(0px, 0px);">
 
                                 </div>
-                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="https://www.hollandcasino.nl/library/html5-banners/welcome_offers/casino/jul25/banner/asset.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
+                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="../images/asset.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
                               </div>
                             </div>
                           </section>
@@ -54,47 +54,7 @@ function renderBanners()
                     </div>
                   </div><span tabindex="-1" class="Slider__slideNav--3CZ"></span>
                 </li>
-                <li aria-hidden="true" class="Slider__slide--2nK  Slider__fading--30J Slider__visibilityHidden--3pj" style="--slide-gap: 0px;">
-                  <div class="Slide__slide--2BW" tabindex="0">
-                    <div class="Slide__wc--3gK withHollandLayouts__wc--3IO">
-                      <div class="" data-web-content-id="GOTW_CASINO_ROYAL_SEP25_BANNER">
-                        <article>
 
-
-
-                          <section class="promo ">
-                            <div class="hero">
-                              <div class="hero__bg show__desktop" style="background-image: url(&quot;../images/bg3.webp&quot;); opacity: 1;"></div>
-                              <div class="hero__bg show__mobile" style="background-image: url(&quot;/library/GOTW/GOTW%20Casino/Sep25/Gotw_04sep_25/bg_mobile.webp&quot;);"></div>
-                              <div class="hero__caption col-mob-4 col-dsk-12">
-                                <div class="hero__content">
-                                  <div class="hero__heading">
-
-                                    <div class="hero__title text--gradient" style="transform: translate(0px, 0px); opacity: 1;">Royal chances on the reels</div>
-                                    <div class="hero__subtitle" style="transform: translate(0px, 0px); opacity: 1;">with expanding symbols</div>
-                                  </div>
-
-
-
-
-
-                                  <button type="button" class="hero__button Button__btn--THI Button__large--6PM Button__primary--3wk Button__success--3NL Button__dark--2vB" viplevelequal="" style="transform: translate(0px, 0px); opacity: 1;">
-                                    PLAY
-                                  </button>
-
-
-                                </div>
-                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="https://www.hollandcasino.nl/library/GOTW/GOTW%20Casino/Sep25/Gotw_04sep_25/asset.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
-                              </div>
-                            </div>
-                          </section>
-
-
-                        </article>
-                      </div>
-                    </div>
-                  </div>
-                </li>
                 <li aria-hidden="true" class="Slider__slide--2nK  Slider__fading--30J Slider__visibilityHidden--3pj" style="--slide-gap: 0px;">
                   <div class="Slide__slide--2BW" tabindex="0">
                     <div class="Slide__wc--3gK withHollandLayouts__wc--3IO">
@@ -125,7 +85,7 @@ function renderBanners()
 
 
                                 </div>
-                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="https://www.hollandcasino.nl/library/GOTW/GOTW%20Casino/Aug25/GOTW_14aug_25/asset.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
+                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="../images/asset2.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
                               </div>
                             </div>
                           </section>
@@ -166,7 +126,7 @@ function renderBanners()
 
 
                                 </div>
-                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="https://www.hollandcasino.nl/library/html5-banners/RED_TIGER_JACKPOT_OCT24/asset.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
+                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="images/asset3.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
                               </div>
                             </div>
                           </section>
