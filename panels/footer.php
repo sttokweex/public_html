@@ -117,22 +117,22 @@ function render_footer($translations)
 								<img alt="Raw" draggable="false" class="footer-media-providers-image" src="../images/providers/raw.png">
 							</a>
 							<a class="footer-media-image" href="https://www.hollandcasino.nl/en/game-providers/inspired" target="_self">
-								<img alt="Inspired" draggable="false" class="footer-media-providers-image" src="../images/providers/HCO_Partner-logos/inspired.png">
+								<img alt="Inspired" draggable="false" class="footer-media-providers-image" src="../images/providers/inspired.png">
 							</a>
 							<a class="footer-media-image" href="https://www.hollandcasino.nl/en/game-providers/yggdrasil" target="_self">
-								<img alt="Yggdrasil" draggable="false" class="footer-media-providers-image" src="../images/providers/HCO_Partner-logos/yggdrasil.png">
+								<img alt="Yggdrasil" draggable="false" class="footer-media-providers-image" src="../images/providers/yggdrasil.png">
 							</a>
 							<a class="footer-media-image" href="https://www.hollandcasino.nl/en/game-providers/booming-games" target="_self">
-								<img alt="Booming games" draggable="false" class="footer-media-providers-image" src="../images/providers/HCO_Partner-logos/boominggames.png">
+								<img alt="Booming games" draggable="false" class="footer-media-providers-image" src="../images/providers/boominggames.png">
 							</a>
 							<a class="footer-media-image" href="https://www.hollandcasino.nl/en/game-providers/1x2-gaming" target="_self">
-								<img alt="1x2 gaming" draggable="false" class="footer-media-providers-image" src="../images/providers/HCO_Partner-logos/1X2gaming.png">
+								<img alt="1x2 gaming" draggable="false" class="footer-media-providers-image" src="../images/providers/1X2gaming.png">
 							</a>
 							<a class="footer-media-image" href="https://www.hollandcasino.nl/en/game-providers/playzido" target="_self">
-								<img alt="Playzido" draggable="false" class="footer-media-providers-image" src="../images/providers/HCO_Partner-logos/playzido.png">
+								<img alt="Playzido" draggable="false" class="footer-media-providers-image" src="../images/providers/playzido.png">
 							</a>
 							<a class="footer-media-image" href="https://www.hollandcasino.nl/en/game-providers/mga" target="_self">
-								<img alt="MGA" draggable="false" class="footer-media-providers-image" src="../images/providers/HCO_Partner-logos/mga.png">
+								<img alt="MGA" draggable="false" class="footer-media-providers-image" src="../images/providers/mga.png">
 							</a>
 						</div>
 						<div class="footer-media-payment">
