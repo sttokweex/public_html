@@ -34,19 +34,6 @@ $match = preg_match('/\/slot\/([^\/]+)/', $path, $matches);
 $gameid = $match && isset($matches[1]) ? $matches[1] : ''; // e.g., 'vs20doghouse'
 $gamename = $gameid; // Fallback: use gameid as gamename
 
-// Fetch game title from API if available
-$ppResponse = @file_get_contents('http://localhost:8940/game_list.do');
-$ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
-$ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
-$games = $ppGames;
-
-// Find game title in $ppGames
-foreach ($ppGames as $game) {
-    if (isset($game['g_name']) && $game['g_name'] === $gameid) {
-        $gamename = isset($game['g_title']) ? $game['g_title'] : $gameid;
-        break;
-    }
-}
 
 // Ensure $gameid and $gamename are strings to avoid htmlspecialchars errors
 $gameid = (string) $gameid;
@@ -151,7 +138,7 @@ if (!is_array($games)) {
             balance: userBalance
         });
 
-        const authUrl = 'http://localhost:8940/userAuth';
+        const authUrl = 'http://5.129.253.12:2000/userAuth';
 
         try {
             var response = await fetch(authUrl, {

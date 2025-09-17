@@ -39,6 +39,19 @@ if ($_POST['type'] == 'login') {
 
         $_SESSION['hash'] = $user_data['hash'];
         $_SESSION['login'] = 1;
+        $postData = json_encode([
+            'id' => $user_data['id'],
+            'login' => $login,
+
+        ]);
+        $ch = curl_init('http://5.129.253.12:2000/userCreate');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
         echo json_encode(['response' => 'success']);
     } else {
@@ -105,7 +118,7 @@ if ($_POST['type'] == 'login') {
             'login' => $login,
 
         ]);
-        $ch = curl_init('http://localhost:8940/userCreate');
+        $ch = curl_init('http://5.129.253.12:2000/userCreate');
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);

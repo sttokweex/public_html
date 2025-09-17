@@ -57,56 +57,8 @@ $search_icon_svg = '';
 
 
 
-$ppResponse = @file_get_contents('http://localhost:8940/game_list.do');
-$ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
-$ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
-$games =  $ppGames;
 
-if (empty($bets)) {
-    $bets = [];
-    for ($i = 0; $i < 15; $i++) {
-        $game = $games[array_rand($games)];
-        $betAmount = mt_rand(100, 5000000) / 100; // Random between $1 and $5,000
-        $multiplier = mt_rand(0, 5000) / 100; // Random between 1.00 and 5.00
-        $payout = $betAmount * $multiplier; // Random win or loss
-        $bets[] = [
-            'id' => uniqid(),
-            'game' => $game['g_title'],
-            'user' => 'Скрытый',
-            'time' => date('H:i', strtotime('+' . mt_rand(0, 59) . ' minutes')),
-            'bet_amount' => '$' . number_format($betAmount, 2),
-            'multiplier' => number_format($multiplier, 2),
-            'payout' => ($payout < 0 ? '-' : '') . '$' . number_format(abs($payout), 2)
-        ];
-    }
-} else {
-    // For existing bets, randomize game and recalculate payout
-    foreach ($bets as &$bet) {
-        $bet['game'] = $games[array_rand($games)]['g_title'];
-        // Extract numeric value from bet_amount
-        $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
-        $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
-        $payout = $betAmount * $multiplier;
-        $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
-    }
-    unset($bet); // Break reference
-}
 
-// помечаем источник, чтобы на клике знать какой auth дергать
-foreach ($ppGames as &$game) {
-    $game['__source'] = 'PP';
-    // Устанавливаем vendorid, если его нет, например 'pragmatic'
-    if (!isset($game['vendorid'])) {
-        $game['vendorid'] = 'Pragmatic play';
-    }
-}
-
-unset($game);
-
-$games = $ppGames;
-if (!is_array($games)) {
-    $games = []; // Если API не вернул данные, используем пустой массив
-}
 ?>
 
 

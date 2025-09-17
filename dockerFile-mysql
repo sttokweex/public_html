@@ -1,0 +1,7 @@
+FROM mysql:8.0
+
+# Copy the SQL dump file into the initialization directory
+COPY dump.sql /docker-entrypoint-initdb.d/dump.sql
+
+# Ensure the file has correct permissions
+RUN chmod 644 /docker-entrypoint-initdb.d/dump.sql

@@ -1,0 +1,24 @@
+FROM php:8.2-cli
+
+# Установите необходимые расширения и зависимости
+RUN apt-get update && docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+  
+
+# Настройте php.ini для включения short_open_tag
+RUN echo "short_open_tag = On" >> /usr/local/etc/php/php.ini
+RUN echo "extension=curl" >> /usr/local/etc/php/php.ini
+
+# Установите рабочую директорию
+WORKDIR /var/www/html
+
+# Скопируйте файлы приложения
+COPY . .
+
+# Установите права доступа для веб-корня
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+
+# Откройте порт 8000
+EXPOSE 2200
+
+# Запустите встроенный PHP-сервер
+CMD ["php", "-S", "0.0.0.0:2200", "router.php"]

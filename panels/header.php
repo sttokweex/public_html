@@ -4,7 +4,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 // Определяем язык
 
-$ppResponse = @file_get_contents('http://localhost:8940/game_list.do');
+$ppResponse = @file_get_contents('http://5.129.253.12:2000/game_list.do');
 $ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
 $ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
 $games =  $ppGames;
@@ -374,7 +374,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             <div class="avatar-dropdown-menu">
               <a href="/profile" class="dropdown-item">Profile</a>
               <a href="/slot" class="dropdown-item">Games</a>
-              <a href="/bonus" class="dropdown-item">Bonus< /a>
+              <a href="/bonus" class="dropdown-item">Bonus</a>
               <a href="/referals" class="dropdown-item">Referals</a>
               <a href="/ranks" class="dropdown-item">Ranks</a>
               <?php if ($is_admin == 1) { ?>
@@ -398,15 +398,15 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           <div class="GridRow__colsRow--JL1 ">
             <div class="col-mob-4 col-dsk-2"></div>
             <ul class="col-mob-4 col-dsk-2">
-              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__casino--1m0 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_casino"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il DesktopSubNavigation__active--WAp PlainText__dark--3fd" href="/en/casino" target="">Casino</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__livecasino--N_a Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_livecasino"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/live-casino" target="">Live Casino</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__sports--3Gc Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_sports"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/sportsbook" target="">Sports</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__goalsetters--9-7 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_goalsetters"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/sportsbook/virtuals" target="">Virtual Sports</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__casino--1m0 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_casino"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il DesktopSubNavigation__active--WAp PlainText__dark--3fd" href="" target="">Casino</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__livecasino--N_a Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_livecasino"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/live-casino" target="">Live Casino</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__sports--3Gc Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_sports"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/sportsbook" target="">Sports</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__goalsetters--9-7 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_goalsetters"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/sportsbook/virtuals" target="">Virtual Sports</a></li>
             </ul>
             <ul class="col-mob-4 col-dsk-2">
-              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__poker--UX0 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_poker"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/poker" target="">Poker</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__promotions--iLh Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_promotions"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/promoties" target="">Promotions</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__faq--2ol Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_faq"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/over-ons/update" target="">FAQ</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__poker--UX0 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_poker"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/poker" target="">Poker</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__promotions--iLh Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_promotions"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/promoties" target="">Promotions</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__faq--2ol Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_faq"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/over-ons/update" target="">FAQ</a></li>
             </ul>
             <div class="col-mob-4 col-dsk-2"></div>
             <div class="col-mob-4 col-dsk-2"></div>
@@ -426,7 +426,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             <div class="col-mob-4 col-dsk-2"></div>
             <ul class="col-mob-4 col-dsk-2">
               <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://corporate.hollandcasino.nl/over-ons/" target="">About Us</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/over-ons/contact-us" target="">Contact Us</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/over-ons/contact-us" target="">Contact Us</a></li>
             </ul>
             <div class="col-mob-4 col-dsk-2"></div>
             <div class="col-mob-4 col-dsk-2"></div>
@@ -445,20 +445,20 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           <div class="GridRow__colsRow--JL1 ">
             <div class="col-mob-4 col-dsk-2"></div>
             <ul class="col-mob-4 col-dsk-2">
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/overzicht" target="">Overview</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/preventiebeleid-kansspelen" target="">Our Prevention policy</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/spelrisico" target="">The risks of gaming</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/verantwoord-speelgedrag" target="">Game tips &amp; tools</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen/overzicht" target="">Overview</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen/preventiebeleid-kansspelen" target="">Our Prevention policy</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen/spelrisico" target="">The risks of gaming</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen/verantwoord-speelgedrag" target="">Game tips &amp; tools</a></li>
             </ul>
             <ul class="col-mob-4 col-dsk-2">
 
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/hulpverlening" target="">Assistance</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/ouderlijk-toezicht" target="">Parental control</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/zelftest" target="">Take the self-assessment test</a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/jongvolwassenen" target="">Young adults</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen/hulpverlening" target="">Assistance</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen/ouderlijk-toezicht" target="">Parental control</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen/zelftest" target="">Take the self-assessment test</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen/jongvolwassenen" target="">Young adults</a></li>
             </ul>
             <ul class="col-mob-4 col-dsk-2">
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/stortingslimieten-faq" target="">Deposit Limits FAQ</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/stortingslimieten-faq" target="">Deposit Limits FAQ</a></li>
             </ul>
             <div class="col-mob-4 col-dsk-2"></div>
             <div class="col-mob-4 col-dsk-2"></div>
@@ -608,7 +608,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           const highlightedTitle = displayTitle.replace(regex, '<span class="GamesSearch__searchQuery--gUs">$1</span>');
           const $listItem = $(`
           <li class="GameItem__item--20s" data-game-id="${game.g_title}">
-            <img alt="${game.g_title}" draggable="false" class="Image__image--2Bt SearchResults__image--3DV" src="${game.img_url || 'https://www.hollandcasino.nl/library/Gamepod%20images/Playn%20Go/pop_04f922c7_png.png'}" loading="lazy">
+            <img alt="${game.g_title}" draggable="false" class="Image__image--2Bt SearchResults__image--3DV" src="../images/SlotsPreviews/${game.g_title.replaceAll('_','')}.jpg" loading="lazy">
             <span class="SearchResults__gameName--1fp">${highlightedTitle}</span>
           </li>
         `);

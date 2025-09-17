@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  php-app:
+    build:
+      context: .
+      dockerfile: dockerFile
+    ports:
+      - '2200:2200'
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+      - DB_HOST=mysql_holland
+      - DB_USER=admin
+      - DB_PASSWORD=a2pP3QASzx5p1ZPQWLsm1
+      - DB_NAME=asino777
+    depends_on:
+      - mysql_holland
+    links:
+      - mysql_holland
+
+  mysql_holland:
+    image: mysql:8.0
+    build:
+      context: .
+      dockerfile: dockerFile-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: a2pP3QASzx5p1ZPQWLsm1
+      MYSQL_DATABASE: asino777
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: a2pP3QASzx5p1ZPQWLsm1
+    volumes:
+      - mysql_holland-data:/var/lib/mysql
+    ports:
+      - '2201:3306'
+
+volumes:
+  mysql_holland-data:

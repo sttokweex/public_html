@@ -18,7 +18,6 @@ function render_slider($games, $hasMargin, $translations)
       <?php foreach ($games as $game): ?>
         <div class="game-slider-slide">
           <div class="game-slider-wrap" data-analytics="slider-ru-trending-games-<?php echo htmlspecialchars($game['g_id']); ?>">
-
             <div class="game-slider-game-card-wrap">
               <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars(str_replace(' ', '_', $game['g_title'])); ?>">
                 <img id="" class="game-slider-game-image" src="../images/SlotsPreviews/<?php echo htmlspecialchars(str_replace('_', '', $game['g_title'])); ?>.jpg">

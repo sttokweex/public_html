@@ -298,7 +298,7 @@ require("panels/mobile.php");
                             </div>
                             <div>
                                 <?= $translations['terms_5_2_1d'] ?>
-                                <?= $translations['terms_5_2_2d'] ?>
+
                             </div>
                         </div>
                         <div>
@@ -531,8 +531,8 @@ require("panels/mobile.php");
                                 8.1
                             </div>
                             <div>
-                                <?= $translations['terms_8_1_1_1'] ?>
-                                <?= $translations['terms_8_1_1_2_1'] ?> <span><?= $translations['coin'] ?></span> <?= $translations['terms_8_1_1_2_2'] ?>
+                                <?= $translations['terms_8_1_1'] ?>
+                                <?= $translations['terms_8_1_2_1'] ?> <span><?= $translations['coin'] ?></span> <?= $translations['terms_8_1_2_2'] ?>
                             </div>
                         </div>
                         <div>
