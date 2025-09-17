@@ -6,7 +6,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 require(dirname(__DIR__, 1) . "/panels/header.php");
 require(dirname(__DIR__, 1) . "/panels/sidebar.php");
 require(dirname(__DIR__, 1) . "/panels/chat.php");
-    renderChatComponent('Иван', $sampleMessages,$translations);
+// renderChatComponent('Иван', $sampleMessages,$translations);
 require(dirname(__DIR__, 1) . "/panels/mobile.php");
 
 
@@ -115,12 +115,13 @@ require(dirname(__DIR__, 1) . "/panels/mobile.php");
 				</div>
 			</div>
 		</div>
-	</div> <?
-					require(dirname(__DIR__, 1) . "/panels/footer.php");
-					render_footer($translations, )
-					?>
-</div>
+	</div>
 
+</div>
+<?
+require(dirname(__DIR__, 1) . "/panels/footer.php");
+render_footer($translations,)
+?>
 <script>
 	function loadTableRanks() {
 		var userDeps = $('#hashdeps').val();

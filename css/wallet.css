@@ -1,168 +1,240 @@
-.walletInputs{
-    position: relative;    
-    }
-    .validation-message {
-        display:none;
-    position: absolute;
-        z-index: 2;
-        top: -5;
-        color: #ff4b4bd4;
-        background: var(--main-background);
-        font-size: 14px;
-        padding: 5px 8px;
-        border-radius: 8px;
-        white-space: nowrap;
-    }  
-     .walletSentInputs{
-    display: flex;
-        gap: 20px;     
-     }
-     
-     
-    @media screen and (max-width:700px) {
-        
-    .walletSentInputs{
-    display:grid;
-    }
-    
-    }
-    
-    
-    .walletProject {
-    background-clip: padding-box, border-box;
-    background-origin: border-box;
-    gap: 20px;
-    }
-        .walletProject .systems{
-        grid-gap: 10px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        position: relative;
-        }
-        
-        .walletProject .systems .systemwallet{
-        display: grid;
-        background-image: linear-gradient(to bottom, #232531, #232531), linear-gradient(to bottom, #2b303b 1%, #232531 20%);
-        background-clip: padding-box, border-box;
-        background-origin: border-box;
-        border: 3px solid #f000;
-        border-radius: 8px;
-        color: var(--main-color-medium);
-        padding: 12px;
-        cursor:pointer;
-        transition:.3s;
-        user-select:none;
-            gap: 7px;
-            position:relative;
-        }   
-        .walletProject .systems .systemwallet .bonusdep{
-        position: absolute;
-        right: 5;
-        top: 5;
-        color: #fff;
-        background: #ffffff1f;
-        font-size: 10px;
-        border-radius: 6px;
-        padding: 4px;
-        padding-left: 7px;
-        padding-right: 7px;    
-    }    
-        .walletProject .systems .systemwallet:hover{
-        background-image: linear-gradient(to bottom, #232531, #232531), linear-gradient(to bottom, #e2b3498a 1%, #232531 20%);
-        }       
-     
-    .activeWallet{border-color: #d49d0b!important;background: #242630;} 
-    
-    .walletInputs{
-        display: grid;
-        width: 100%;
-        gap: 10px;    
-    }    
-    
-    .walletInputs .info{
-    display: flex;
-        justify-content: space-between;    
-    }
-    .descriptionWallet{
-        color: var(--main-color-hight);
-        font-weight: bold;    
-    }
-    .walletInputs input{
-    outline: none;
-        border-radius: 8px;
-        background: var(--main-background);
-        color: var(--main-color-hight);
-        padding: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
-        border: 2px solid #2b303b47;    
-    }
-    .walletInputs input:focus{
-        border:2px solid #a78f3c;
-    }
-    
-    .systems {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        align-items: stretch;
-    }
-    
-    .systemwallet {
-        display: flex;
-        gap: 0.5rem;
-        flex-direction: column;
-        border: solid 2px #3e3f4a;
-        border-radius: 12px;
-        padding: 14px;
-        font-size: 14px;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        transition: 0.2s ease;
-    }
-    
-    .systemwallet:hover {
-       border: solid 2px #535463; 
-    }
-    
-    .systemwallet img {
-        max-height: 32px;
-    }
-    
-    .systemwallet span {
-        color: #d9d9d9 !important;
-    }
+@font-face {
+  font-family: 'Cadiz';
+  src: url('../assets/fonts/Cadiz/Cadiz-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cadiz';
+  src: url('../assets/fonts/Cadiz/Cadiz-Light.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cadiz';
+  src: url('../assets/fonts/Cadiz/Cadiz-Book.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cadiz';
+  src: url('../assets/fonts/Cadiz/Cadiz-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --background-dark: #0a2540;
+  --accent-gray: #334466;
+  --text-light: #ffffff;
+  --text-muted: #b3b9c8;
+  --card-bg: #1e2a44;
+  --border-color: #3b4a6b;
+  --button-bg: linear-gradient(90deg, #ff4081, #ff7d40, #ff4081);
+  --button-text: #ffffff;
+  --hover-bg: linear-gradient(90deg, #ff7d40, #ff4081, #ff7d40);
+}
+
+.walletInputs {
+  position: relative;
+  display: grid;
+  width: 100%;
+  gap: 0.625rem;
+  font-family: 'Cadiz', sans-serif;
+}
+
+.validation-message {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: -0.3125rem;
+  color: #ff616d;
+  background: var(--card-bg);
+  font-size: 0.875rem;
+  padding: 0.3125rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.walletSentInputs {
+  display: flex;
+  gap: 1.25rem;
+}
+
+@media screen and (max-width: 700px) {
+  .walletSentInputs {
+    display: grid;
+    gap: 0.625rem;
+  }
+}
+
+.walletProject {
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  gap: 1.25rem;
+}
+
+.walletProject .systems {
+  display: grid;
+  grid-gap: 0.625rem;
+  grid-template-columns: repeat(auto-fill, minmax(9.375rem, 1fr));
+  position: relative;
+}
+
+.walletProject .systems .systemwallet {
+  display: grid;
+  background-image:
+    linear-gradient(to bottom, var(--card-bg), var(--card-bg)),
+    linear-gradient(to bottom, var(--border-color) 1%, var(--card-bg) 20%);
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  border: 2px solid var(--border-color);
+  border-radius: 0.5rem;
+  color: var(--text-muted);
+  padding: 0.75rem;
+  cursor: pointer;
+  transition:
+    background-image 0.3s ease,
+    border-color 0.3s ease;
+  user-select: none;
+  gap: 0.4375rem;
+  position: relative;
+}
+
+.walletProject .systems .systemwallet .bonusdep {
+  position: absolute;
+  right: 0.3125rem;
+  top: 0.3125rem;
+  color: var(--text-light);
+  background: var(--accent-gray);
+  font-size: 0.625rem;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.4375rem;
+}
+
+.walletProject .systems .systemwallet:hover {
+  background-image:
+    linear-gradient(to bottom, var(--card-bg), var(--card-bg)),
+    linear-gradient(to bottom, #ff616d80 1%, var(--card-bg) 20%);
+  border-color: #ff616d;
+}
+
+.activeWallet {
+  border-color: #ff616d !important;
+  background: var(--accent-gray);
+}
+
+.walletInputs .info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.descriptionWallet {
+  color: var(--text-light);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.walletInputs input {
+  outline: none;
+  border-radius: 0.5rem;
+  background: var(--card-bg);
+  color: var(--text-light);
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--border-color);
+  height: 2.5rem;
+  font-family: 'Cadiz', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.walletInputs input:hover {
+  background-color: var(--accent-gray);
+}
+
+.walletInputs input:focus {
+  border-color: #ff616d;
+  background-color: var(--card-bg);
+}
+
+.systems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.systemwallet {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+  font-size: 0.875rem;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.systemwallet:hover {
+  border-color: #ff616d;
+  background-color: var(--accent-gray);
+}
+
+.systemwallet img {
+  max-height: 2rem;
+}
+
+.systemwallet span {
+  color: var(--text-light) !important;
+}
 
 .walletInputs > div span {
-    color: #a3a4af;
+  color: var(--text-muted);
 }
+
 .walletInputs > div > div span {
-    color: #f5a60b;
+  color: #ff616d;
 }
 
 .wallet-alert {
-    padding: 8px 10px;
-    background: #3b3c4a;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: fit-content;
-    border-radius: 6px;
-    font-size: 14px;
-    border: dashed 1px #70717c;
+  padding: 0.5rem 0.625rem;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  border: 1px dashed var(--border-color);
 }
 
 .wallet-alert i {
-    color: #e2ae43;
+  color: #ff616d;
 }
 
 .wallet-select-bank {
-    display:none;
-    background-color: #17181f;
-    color: var(--main-color-hight);
-    border-color: #20222b;
-    padding: 10px;
-    max-width: 340px;
-    width: 100%;
+  display: none;
+  background-color: var(--card-bg);
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
+  padding: 0.625rem;
+  max-width: 21.25rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-family: 'Cadiz', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.wallet-select-bank:focus {
+  border-color: #ff616d;
 }

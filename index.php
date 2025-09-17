@@ -23,6 +23,10 @@ if (strpos($requestUri, '/slot/api/BetWin') !== false) {
     require 'slot/api/betWin.php';
     exit;
 }
+if (strpos($requestUri, '/slot/api/CustomBet') !== false) {
+    require 'slot/api/customBet.php';
+    exit;
+}
 
 if (strpos($requestUri, '/slot/api/Withdraw') !== false) {
     require 'slot/api/withdraw.php';

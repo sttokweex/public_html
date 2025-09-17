@@ -210,13 +210,13 @@ $allWithdrawsUser = $totalwithsRow['SUM(sum)'];
 
     </div>
   </div>
-  <?
-  renderChatComponent('Иван', $sampleMessages, $translations);
-  require(dirname(__DIR__, 1) . "/panels/footer.php");
-  render_footer($translations)
-  ?>
-</div>
 
+</div>
+<?
+//renderChatComponent('Иван', $sampleMessages, $translations);
+require(dirname(__DIR__, 1) . "/panels/footer.php");
+render_footer($translations)
+?>
 <script>
   $(document).ready(function() {
     $('#user_details').DataTable({

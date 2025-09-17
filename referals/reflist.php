@@ -13,7 +13,7 @@ require(dirname(__DIR__, 1) . "/panels/header.php");
 require(dirname(__DIR__, 1) . "/panels/sidebar.php");
 require(dirname(__DIR__, 1) . "/panels/chat.php");
 require(dirname(__DIR__, 1) . "/panels/mobile.php");
-    renderChatComponent('Иван', $sampleMessages,$translations);
+//  renderChatComponent('Иван', $sampleMessages,$translations);
 
 $sql_refer1 = "SELECT COUNT(*) FROM users WHERE ref_id = '$id' ORDER BY id DESC";
 $sql_refer12 = mysqli_query($connection, $sql_refer1);
@@ -146,21 +146,22 @@ if ($refuser == NULL) {
         </div>
       </div>
     </div>
-    <?php
-    require(dirname(__DIR__, 1) . "/panels/footer.php");
-    render_footer($translations);
-    ?>
-  </div>
 
-  <script>
-    $(document).ready(function() {
-      $('#referals_table').DataTable({
-        pageLength: 10,
-        order: [
-          [0, 'desc']
-        ]
-      });
-      $('#referals_table_length').hide();
-      $('#referals_table_info').hide();
+  </div>
+</div><?php
+      require(dirname(__DIR__, 1) . "/panels/footer.php");
+      render_footer($translations);
+      ?>
+
+<script>
+  $(document).ready(function() {
+    $('#referals_table').DataTable({
+      pageLength: 10,
+      order: [
+        [0, 'desc']
+      ]
     });
-  </script>
+    $('#referals_table_length').hide();
+    $('#referals_table_info').hide();
+  });
+</script>

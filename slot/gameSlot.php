@@ -21,6 +21,7 @@ require_once(dirname(__DIR__, 1) . '/panels/slider.php');
 require_once(dirname(__DIR__, 1) . '/panels/footer.php');
 require_once(dirname(__DIR__, 1) . '/panels/livefeed.php');
 require_once(dirname(__DIR__, 1) . '/panels/chat.php');
+require(dirname(__DIR__, 1) . "/faq/faq.php");
 
 $hash = mysqli_real_escape_string($connection, $_SESSION['hash']);
 $select = "SELECT * FROM users WHERE hash = '$hash'";
@@ -123,15 +124,15 @@ if (!is_array($games)) {
         <div class="other-content-inner">
             <?php
             render_slider($games, false, $translations);
-            renderBetsTable($bets, $translations);
+            render_faq($translations);
             ?>
         </div>
     </div>
-    <?php
-    renderChatComponent('Иван', $sampleMessages, $translations);
-    render_footer($translations,);
-    ?>
-</div>
+
+</div> <?php
+        //  renderChatComponent('Иван', $sampleMessages, $translations);
+        render_footer($translations,);
+        ?>
 <script>
     (async function() {
         const path = window.location.pathname;

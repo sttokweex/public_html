@@ -13,7 +13,7 @@ if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
 require dirname(__DIR__, 1) . ("/panels/header.php");
 require dirname(__DIR__, 1) . ("/panels/sidebar.php");
 require dirname(__DIR__, 1) . ("/panels/chat.php");
-    renderChatComponent('Иван', $sampleMessages,$translations);
+//renderChatComponent('Иван', $sampleMessages,$translations);
 require dirname(__DIR__, 1) . ("/panels/mobile.php");
 ?>
 <link href="/css/bonus.css" rel="stylesheet">
@@ -304,8 +304,8 @@ require dirname(__DIR__, 1) . ("/panels/mobile.php");
                 </div>
             </div>
         </div>
-    </div> <?
-            require(dirname(__DIR__, 1) . "/panels/footer.php");
-            render_footer($translations, )
-            ?>
-</div>
+    </div>
+</div><?
+        require(dirname(__DIR__, 1) . "/panels/footer.php");
+        render_footer($translations,)
+        ?>

@@ -818,10 +818,6 @@ function getrankimgProfile() {
 }
 document.addEventListener('DOMContentLoaded', getrankimgProfile);
 
-
-
-
-}
 /* ЗАГРУЗКА КАРТИНКИ РАНГА ВОЗЛЕ ФОТКИ ПРОФИЛЯ В HEADER END */
 
 /* УСТАНОВКА ДАТЫ РОЖДЕНИЯ В ПРОФИЛЕ START */

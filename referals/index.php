@@ -174,31 +174,33 @@ if ($row['COUNT(*)'] >= 100) {
         </div>
       </div>
     </div>
-    <?php
-    require(dirname(__DIR__, 1) . "/panels/footer.php");
-    render_footer($translations);
-        renderChatComponent('Иван', $sampleMessages,$translations);
-    ?>
+
   </div>
+</div>
+<?php
+require(dirname(__DIR__, 1) . "/panels/footer.php");
+render_footer($translations);
+//renderChatComponent('Иван', $sampleMessages,$translations);
+?>
 
-  <script>
-    function loadRefsCounter() {
-      var userRefs = $('#refsCount').val();
-      if (userRefs == 1) $('#lvl1').addClass('active');
-      if (userRefs == 2) $('#lvl2').addClass('active');
-      if (userRefs == 3) $('#lvl3').addClass('active');
-      if (userRefs == 4) $('#lvl4').addClass('active');
-      if (userRefs == 5) $('#lvl5').addClass('active');
-    }
-    document.addEventListener("DOMContentLoaded", loadRefsCounter);
-  </script>
-  <script>
-    var referal_link = document.getElementById("reflink");
-    var reflink = $('#reflink').val();
+<script>
+  function loadRefsCounter() {
+    var userRefs = $('#refsCount').val();
+    if (userRefs == 1) $('#lvl1').addClass('active');
+    if (userRefs == 2) $('#lvl2').addClass('active');
+    if (userRefs == 3) $('#lvl3').addClass('active');
+    if (userRefs == 4) $('#lvl4').addClass('active');
+    if (userRefs == 5) $('#lvl5').addClass('active');
+  }
+  document.addEventListener("DOMContentLoaded", loadRefsCounter);
+</script>
+<script>
+  var referal_link = document.getElementById("reflink");
+  var reflink = $('#reflink').val();
 
-    function copyRefer() {
-      referal_link.select();
-      document.execCommand("copy");
-      toastr['success']("<?= htmlspecialchars($translations['copied_value']) ?> " + reflink);
-    }
-  </script>
+  function copyRefer() {
+    referal_link.select();
+    document.execCommand("copy");
+    toastr['success']("<?= htmlspecialchars($translations['copied_value']) ?> " + reflink);
+  }
+</script>

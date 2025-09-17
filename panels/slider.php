@@ -21,7 +21,7 @@ function render_slider($games, $hasMargin, $translations)
 
             <div class="game-slider-game-card-wrap">
               <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars(str_replace(' ', '_', $game['g_title'])); ?>">
-                <img id="" class="game-slider-game-image" src="../images/SlotsPreviews/<?php echo htmlspecialchars(str_replace('_', '', $game['g_title'])); ?>.png">
+                <img id="" class="game-slider-game-image" src="../images/SlotsPreviews/<?php echo htmlspecialchars(str_replace('_', '', $game['g_title'])); ?>.jpg">
               </a>
             </div>
           </div>

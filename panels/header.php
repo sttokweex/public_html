@@ -313,17 +313,33 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 <!-- HEADER -->
 <div id="header" class="headerproject" style="user-select:none;">
-
   <div class="header-content">
-
     <div class="header-left-section" data-content="">
+
       <a href="/" target="_self">
-        <img alt="Holland Casino Logo"></img>
+        <img alt="Holland Casino Logo" src="/images/logo-mob.svg"></img>
       </a>
+    </div>
+    <div class="GamesSearch__active--3Df">
+      <div class="GridRow__colsRow--JL1 GamesSearch__gridRow--1xF">
+        <div class="col-mob-4 col-dsk-2"></div>
+        <div class="col-mob-4 col-dsk-8">
+          <div class="GamesSearch__inputWrapper--1s1">
+            <div class="GamesSearch__inputContainer--1pZ"><input class="components__input--2w4 GamesSearch__input--AJm" placeholder="Search for games" value=""><span class="GamesSearch__inputIconContainer--2mR"><span class="Icon__icon--x96 Icon__search--1AY Icon__medium--DLa Icon__isRound--3vi GamesSearch__icon--1P6 undefined" role="img" aria-label="icon_search"></span></span></div>
+          </div>
+        </div>
+        <div class="col-mob-4 col-dsk-2 GamesSearch__closeButtonContainer--3Pf"><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg GamesSearch__closeBtn--1IO PlainText__dark--3fd">Close<span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button></div>
+      </div>
+      <div class="SearchResults__list--1aE SearchResults__shown--3yB" style="opacity: 1;">
+        <div class="col-dsk-2"></div>
+        <ul class="col-mob-4 col-dsk-8">
+        </ul>
+        <div class="col-dsk-2"></div>
+      </div>
     </div>
     <nav class="header-navigation">
       <ul class="header-nav-list">
-        <li class="nav-list-item">
+        <li class="nav-list-item Item__active--9wz">
           <span class="nav-list-item-innetText">Online</span>
           <span class="nav-list-item-image icon-x96"></span>
         </li>
@@ -341,12 +357,278 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       <span class="header-search">
         <span class="header-search-icon icon-x96" role="img"></span>
       </span>
-      <button class="header-login-button header-auth" onClick="$('#authorization').modal('show');">Login</button>
-      <a class="header-register-button header-auth" onClick="event.preventDefault(); $('#registration').modal('show');">Register</a>
+      <?php if (!empty($_SESSION['login'])) { ?>
+        <div class="user-container">
+          <div class="balance-display">
+            <span class="balance-amount"><?php echo htmlspecialchars(number_format($balance, 2)); ?></span>
+            <span class="balance-currency-name"><?php echo $currency_svg; ?></span>
+          </div>
+          <div class="avatar-dropdown">
+            <button type="button" class="avatar-button" aria-label="User Menu">
+              <?php if (!empty($img)) { ?>
+                <img src="<?php echo htmlspecialchars($img); ?>" alt="User Avatar" class="user-avatar">
+              <?php } else { ?>
+                <span class="user-avatar-placeholder"><?php echo htmlspecialchars(substr($login, 0, 1)); ?></span>
+              <?php } ?>
+            </button>
+            <div class="avatar-dropdown-menu">
+              <a href="/profile" class="dropdown-item">Profile</a>
+              <a href="/slot" class="dropdown-item">Games</a>
+              <a href="/bonus" class="dropdown-item">Bonus< /a>
+              <a href="/referals" class="dropdown-item">Referals</a>
+              <a href="/ranks" class="dropdown-item">Ranks</a>
+              <?php if ($is_admin == 1) { ?>
+                <a href="/admin" type="button" class="dropdown-item"><?= $translations['admin_panel'] ?></a>
+              <?php } ?>
+            </div>
+          </div>
+        </div>
+
+      <?php } else { ?>
+        <button class="header-login-button header-auth" onClick="$('#authorization').modal('show');">Login</button>
+        <a class="header-register-button header-auth" onClick="event.preventDefault(); $('#registration').modal('show');">Register</a>
+      <?php } ?>
+    </div>
+    <div class="SubContainer__subContainer--3AF" style="opacity: 0;">
+      <div class="SubContainer__subContainerWrapper--2Fz">
+        <nav class="col-mob-4 col-dsk-12 DesktopSubNavigation__container--30L">
+          <ul class="col-mob-4 col-dsk-8 LevelsPath__paths--2bJ">
+            <li class="LevelsPath__pathTitle--2CI">Online</li>
+          </ul>
+          <div class="GridRow__colsRow--JL1 ">
+            <div class="col-mob-4 col-dsk-2"></div>
+            <ul class="col-mob-4 col-dsk-2">
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__casino--1m0 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_casino"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il DesktopSubNavigation__active--WAp PlainText__dark--3fd" href="/en/casino" target="">Casino</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__livecasino--N_a Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_livecasino"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/live-casino" target="">Live Casino</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__sports--3Gc Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_sports"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/sportsbook" target="">Sports</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__goalsetters--9-7 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_goalsetters"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/sportsbook/virtuals" target="">Virtual Sports</a></li>
+            </ul>
+            <ul class="col-mob-4 col-dsk-2">
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__poker--UX0 Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_poker"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/poker" target="">Poker</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__promotions--iLh Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_promotions"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/promoties" target="">Promotions</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><span class="Icon__icon--x96 Icon__faq--2ol Icon__large--2F8 DesktopSubNavigation__menuIcon--34N" role="img" aria-label="icon_faq"></span><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/over-ons/update" target="">FAQ</a></li>
+            </ul>
+            <div class="col-mob-4 col-dsk-2"></div>
+            <div class="col-mob-4 col-dsk-2"></div>
+            <div class="col-mob-4 col-dsk-2"></div>
+          </div>
+        </nav><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg  PlainText__dark--3fd">Close<span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button>
+      </div>
     </div>
 
+    <div class="SubContainer__subContainer--3AF" style="opacity: 0;">
+      <div class="SubContainer__subContainerWrapper--2Fz">
+        <nav class="col-mob-4 col-dsk-12 DesktopSubNavigation__container--30L">
+          <ul class="col-mob-4 col-dsk-8 LevelsPath__paths--2bJ">
+            <li class="LevelsPath__pathTitle--2CI">About us</li>
+          </ul>
+          <div class="GridRow__colsRow--JL1 ">
+            <div class="col-mob-4 col-dsk-2"></div>
+            <ul class="col-mob-4 col-dsk-2">
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://corporate.hollandcasino.nl/over-ons/" target="">About Us</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/over-ons/contact-us" target="">Contact Us</a></li>
+            </ul>
+            <div class="col-mob-4 col-dsk-2"></div>
+            <div class="col-mob-4 col-dsk-2"></div>
+            <div class="col-mob-4 col-dsk-2"></div>
+            <div class="col-mob-4 col-dsk-2"></div>
+          </div>
+        </nav><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg  PlainText__dark--3fd">Close<span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button>
+      </div>
+    </div>
+    <div class="SubContainer__subContainer--3AF" style="opacity: 0;">
+      <div class="SubContainer__subContainerWrapper--2Fz">
+        <nav class="col-mob-4 col-dsk-12 DesktopSubNavigation__container--30L">
+          <ul class="col-mob-4 col-dsk-8 LevelsPath__paths--2bJ">
+            <li class="LevelsPath__pathTitle--2CI">Play Responsibly</li>
+          </ul>
+          <div class="GridRow__colsRow--JL1 ">
+            <div class="col-mob-4 col-dsk-2"></div>
+            <ul class="col-mob-4 col-dsk-2">
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/overzicht" target="">Overview</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/preventiebeleid-kansspelen" target="">Our Prevention policy</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/spelrisico" target="">The risks of gaming</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/verantwoord-speelgedrag" target="">Game tips &amp; tools</a></li>
+            </ul>
+            <ul class="col-mob-4 col-dsk-2">
+
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/hulpverlening" target="">Assistance</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/ouderlijk-toezicht" target="">Parental control</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/zelftest" target="">Take the self-assessment test</a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/jongvolwassenen" target="">Young adults</a></li>
+            </ul>
+            <ul class="col-mob-4 col-dsk-2">
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="/en/stortingslimieten-faq" target="">Deposit Limits FAQ</a></li>
+            </ul>
+            <div class="col-mob-4 col-dsk-2"></div>
+            <div class="col-mob-4 col-dsk-2"></div>
+          </div>
+        </nav><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg  PlainText__dark--3fd">Close<span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button>
+      </div>
+    </div>
+
+    <div class="Header__fadingContainer--1hB" style="opacity: 0;"></div>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+    // Avatar dropdown toggle
+    $('.avatar-button').on('click', function() {
+      $(this).siblings('.avatar-dropdown-menu').toggle();
+    });
+    $(document).on('click', function(e) {
+      if (!$(e.target).closest('.avatar-dropdown').length) {
+        $('.avatar-dropdown-menu').hide();
+      }
+    });
+
+    // Track which sub-container is active and if mouse is over it
+    let activeSubContainer = null;
+    let isOverSubContainer = false;
+    let isSearchOpen = false;
+
+    // Map nav-list-item to corresponding SubContainer__subContainer--3AF
+    const navItems = $('.nav-list-item');
+    const subContainers = $('.SubContainer__subContainer--3AF');
+
+    // Handle hover on nav-list-item
+    navItems.each(function(index) {
+      $(this).on('mouseenter', function() {
+        if (isSearchOpen) return; // Skip if search is open
+        // Remove Item__active--9wz from all elements
+        $('.Item__active--9wz').removeClass('Item__active--9wz');
+        // Remove Item__hoveredItem--Qos from all nav-list-item
+        navItems.removeClass('Item__hoveredItem--Qos');
+        // Add Item__hoveredItem--Qos to the hovered item
+        $(this).addClass('Item__hoveredItem--Qos');
+        // Hide all sub-containers and show the corresponding one
+        subContainers.css('opacity', '0').removeClass('open');
+        $(subContainers[index]).css('opacity', '1').addClass('open');
+        activeSubContainer = subContainers[index];
+        // Set opacity to 0 for Header__fadingContainer--1hB
+        $('.Header__fadingContainer--1hB').css('opacity', '1');
+
+        // Bind close button click for sub-container
+        $(activeSubContainer).find('.LabeledCloseButton__close--2kg').off('click').on('click', function() {
+          $(activeSubContainer).css('opacity', '0').removeClass('open');
+          navItems.removeClass('Item__hoveredItem--Qos');
+          navItems.first().addClass('Item__active--9wz');
+          $('.Header__fadingContainer--1hB').css('opacity', '0');
+          activeSubContainer = null;
+          isOverSubContainer = false;
+        });
+
+        // Bind sub-container hover events
+        $(activeSubContainer).off('mouseenter mouseleave').on('mouseenter', function() {
+          isOverSubContainer = true;
+        }).on('mouseleave', function(event) {
+          isOverSubContainer = false;
+          const targetElement = document.elementFromPoint(event.clientX, event.clientY);
+          if (!$(targetElement).closest('#header.headerproject, .nav-list-item').length) {
+            $(activeSubContainer).css('opacity', '0').removeClass('open');
+            navItems.removeClass('Item__hoveredItem--Qos');
+            navItems.first().addClass('Item__active--9wz');
+            $('.Header__fadingContainer--1hB').css('opacity', '0');
+            activeSubContainer = null;
+          }
+        });
+      });
+    });
+
+    // Handle mouseleave on header
+    $('#header.headerproject').on('mouseleave', function(event) {
+      if (!isOverSubContainer && activeSubContainer && !isSearchOpen) {
+        const targetElement = document.elementFromPoint(event.clientX, event.clientY);
+        if (!$(targetElement).closest('.SubContainer__subContainer--3AF').length) {
+          $(activeSubContainer).css('opacity', '0').removeClass('open');
+          navItems.removeClass('Item__hoveredItem--Qos');
+          navItems.first().addClass('Item__active--9wz');
+          $('.Header__fadingContainer--1hB').css('opacity', '0');
+          activeSubContainer = null;
+        }
+      }
+    });
+
+    $('.header-search').on('click', function() {
+      isSearchOpen = true;
+      $('.GamesSearch__active--3Df').addClass('open');
+      $('.header-nav-list, .header-right-section').css('display', 'none');
+      subContainers.css('opacity', '0').removeClass('open');
+      navItems.removeClass('Item__hoveredItem--Qos');
+      navItems.first().addClass('Item__active--9wz');
+      $('.Header__fadingContainer--1hB').css('opacity', '1');
+      activeSubContainer = null;
+      isOverSubContainer = false;
+      // Clear search input and results
+      $('.GamesSearch__input--AJm').val('').trigger('input');
+    });
+
+    // Handle search close button
+    $('.GamesSearch__active--3Df .LabeledCloseButton__close--2kg').on('click', function() {
+      isSearchOpen = false;
+      $('.GamesSearch__active--3Df').removeClass('open');
+      $('.header-nav-list, .header-right-section').css('display', '');
+      navItems.removeClass('Item__hoveredItem--Qos');
+      navItems.first().addClass('Item__active--9wz');
+      $('.Header__fadingContainer--1hB').css('opacity', '0');
+      // Clear search input and results
+      $('.GamesSearch__input--AJm').val('');
+      $('.SearchResults__list--1aE ul').empty();
+    });
+
+    // Pass PHP games array to JavaScript
+    const games = <?php echo json_encode($games); ?>;
+
+    // Handle search input
+    $('.GamesSearch__input--AJm').on('input', function() {
+      const query = $(this).val().trim().toLowerCase();
+      const $resultsList = $('.SearchResults__list--1aE ul');
+      $resultsList.empty(); // Clear previous results
+
+      if (query === '') {
+        $('.SearchResults__list--1aE').css('opacity', '0');
+        return;
+      }
+
+      // Filter games
+      const filteredGames = games.filter(game =>
+        game.g_title &&
+        game.g_title.toLowerCase().replace(/_/g, ' ').includes(query)
+      );
+
+      // Render results
+      if (filteredGames.length > 0) {
+        $('.SearchResults__list--1aE').css('opacity', '1');
+        filteredGames.forEach(game => {
+          // Prepare display title by replacing underscores with spaces
+          const displayTitle = game.g_title.replace(/_/g, ' ');
+          // Escape query for regex to prevent errors with special characters
+          const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const regex = new RegExp(`(${escapedQuery})`, 'gi');
+          const highlightedTitle = displayTitle.replace(regex, '<span class="GamesSearch__searchQuery--gUs">$1</span>');
+          const $listItem = $(`
+          <li class="GameItem__item--20s" data-game-id="${game.g_title}">
+            <img alt="${game.g_title}" draggable="false" class="Image__image--2Bt SearchResults__image--3DV" src="${game.img_url || 'https://www.hollandcasino.nl/library/Gamepod%20images/Playn%20Go/pop_04f922c7_png.png'}" loading="lazy">
+            <span class="SearchResults__gameName--1fp">${highlightedTitle}</span>
+          </li>
+        `);
+          // Add click event to redirect to game page
+          $listItem.on('click', function() {
+            window.location.href = `/slot/${game.g_title}`;
+          });
+          $resultsList.append($listItem);
+        });
+      } else {
+        $('.SearchResults__list--1aE').css('opacity', '0');
+      }
+
+    });
+
+
+    // Set initial active state for the first nav-list-item
+    navItems.first().addClass('Item__active--9wz');
+  });
+</script>
 
 
 

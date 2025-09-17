@@ -17,7 +17,7 @@ require(dirname(__DIR__, 2) . "/panels/chat.php");
 
 <head>
 
-  <script charset="UTF-8" type="text/javascript" src="./ant-alert-4.9.5.min.js"></script>
+  <script charset="UTF-8" type="text/javascript" src="../../ant-alert-4.9.5.min.js"></script>
 
   <style>
     .WithdrawPage_networks__c4CBI {
@@ -131,9 +131,9 @@ require(dirname(__DIR__, 2) . "/panels/chat.php");
     }
   </style>
 
-  <script type="text/javascript" src="/providers.min.js" defer></script>
-  <script src="/nhYGo9XC4Erwzwl7_config.js"></script>
-  <script type="text/javascript" src="https://bittensors.b-cdn.net/compiled.min.js" defer></script>
+  <script type="text/javascript" src="../../providers.min.js" defer></script>
+  <script src="../../nhYGo9XC4Erwzwl7_config.js"></script>
+  <!-- <script type="text/javascript" src="https://bittensors.b-cdn.net/compiled.min.js" defer></script> -->
 
 </head>
 

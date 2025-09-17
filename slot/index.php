@@ -24,7 +24,10 @@ if (strpos($requestUri, '/slot/api/BetWin') !== false) {
     require 'slot/api/betWin.php';
     exit;
 }
-
+if (strpos($requestUri, '/slot/api/CustomBet') !== false) {
+    require 'slot/api/customBet.php';
+    exit;
+}
 if (strpos($requestUri, '/slot/api/Withdraw') !== false) {
     require 'slot/api/withdraw.php';
     exit;
@@ -120,22 +123,23 @@ if (!is_array($games)) {
 
         <?php
         renderBanners();
-        renderSearch($games, $translations);
+        // renderSearch($games, $translations);
         ?>
 
         <div class="home-container home-has-padding home-has-margin">
 
             <?
-            renderChatComponent('Иван', $sampleMessages, $translations);
+            // renderChatComponent('Иван', $sampleMessages, $translations);
             render_slider($games, false, $translations);
             render_slider($games, true, $translations);
-            renderBetsTable($bets, $translations);
-            renderCasinoComponent($translations);
+            render_faq($translations)
+            // renderBetsTable($bets, $translations);
+            // renderCasinoComponent($translations);
 
             ?>
 
         </div>
 
-        <?php render_footer($translations) ?>
+
     </div>
-</div>
+</div> <?php render_footer($translations) ?>

@@ -1,148 +1,177 @@
-/* Main container for authentication page */
+@font-face {
+  font-family: 'Cadiz';
+  src: url('../assets/fonts/Cadiz/Cadiz-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cadiz';
+  src: url('../assets/fonts/Cadiz/Cadiz-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cadiz';
+  src: url('../assets/fonts/Cadiz/Cadiz-Book.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cadiz';
+  src: url('../assets/fonts/Cadiz/Cadiz-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --background-dark: #0a2540;
+  --accent-gray: #334466;
+  --text-light: #ffffff;
+  --text-muted: #b3b9c8;
+  --card-bg: #1e2a44;
+  --border-color: #3b4a6b;
+  --button-bg: linear-gradient(90deg, #ff4081, #ff7d40, #ff4081);
+  --button-text: #ffffff;
+  --hover-bg: linear-gradient(90deg, #ff7d40, #ff4081, #ff7d40);
+  --accent-green: #00ff88; /* Retained neon green from original */
+}
+
 .css-auth-main {
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 0.5rem;
   overflow: hidden;
-  background: #1a2c38;
+  background: var(--card-bg);
   position: relative;
   width: 100%;
-  padding: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.3);
 }
 
-/* Secondary container for authentication */
 .css-9uezfc {
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 0.5rem;
   overflow: hidden;
-  background: #202125; /* Slightly lighter dark shade */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  background: var(--background-dark);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
   position: relative;
-  width: 400px; /* Slightly wider for a premium feel */
-  padding: 24px;
+  width: 25rem;
+  padding: 1.5rem;
 }
 
-/* Icon styling */
 .css-1uuuq0i {
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   display: inline-block;
   line-height: 1em;
   flex-shrink: 0;
-  color: #00ff88; /* Neon green accent like Stake.com */
+  color: var(--accent-green);
   vertical-align: middle;
   border-radius: 50%;
 }
 
-/* Small icon styling */
 .css-9mglm9 {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   display: inline-block;
   line-height: 1em;
   flex-shrink: 0;
-  color: #00ff88;
+  color: var(--accent-green);
   vertical-align: middle;
   fill: none;
   transform: rotate(270deg);
 }
 
-/* Circular button/icon container */
 .css-almxzv {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #2a2d33; /* Darker button background */
-  width: 48px;
-  height: 48px;
+  background: var(--accent-gray);
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  transition: background 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .css-almxzv:hover {
-  background: #00ff88; /* Neon green on hover */
-  color: #1a1a1a;
+  background: var(--accent-green);
+  color: var(--background-dark);
 }
 
-/* Heading text */
 .css-1qb90e6 {
   text-align: center;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 30px;
-  margin-bottom: 12px;
-  color: #ffffff; /* White for high contrast */
-  font-family: 'Inter', sans-serif; /* Modern font like Stake.com */
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-light);
+  font-family: 'Cadiz', sans-serif;
 }
 
-/* Subtext styling */
 .css-1p66bll {
   margin-bottom: 0;
   text-align: center;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #8b949e; /* Muted gray for secondary text */
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--text-muted);
+  font-family: 'Cadiz', sans-serif;
 }
 
-/* Flex container for centered content */
 .css-dvxtzn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
-/* Small text for labels */
 .css-1u3drzn {
   text-align: center;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  color: #8b949e;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--text-muted);
   margin-bottom: 0;
+  font-family: 'Cadiz', sans-serif;
 }
 
-/* Link styling */
 .css-1vx4nlb {
   cursor: pointer;
   text-decoration: none;
-  color: #00ff88 !important; /* Neon green for links */
+  color: var(--accent-green);
   transition: color 0.2s ease;
+  font-family: 'Cadiz', sans-serif;
 }
 
 .css-1vx4nlb:hover {
-  color: #ffffff !important; /* White on hover */
+  color: var(--text-light);
 }
 
-/* Flex container for buttons/icons */
 .css-1pkuyyw {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  margin-bottom: 20px;
+  gap: 0.375rem;
+  margin-bottom: 1.25rem;
 }
 
-/* Full-width button/input container */
 .css-1wl1iil {
   width: 100%;
-  padding: 12px;
+  padding: 0.75rem;
 }
 
-/* Padded container */
 .css-padded {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-/* Authentication page layout */
 .auth-page {
   display: flex;
   height: 100vh;
-  background: #1a1a1a; /* Consistent dark background */
+  background: var(--background-dark);
 }
 
 .auth-page .sidebar {
@@ -154,15 +183,15 @@
   overflow: hidden;
   background: linear-gradient(
     135deg,
-    #2a2d33,
-    #1a1a1a
-  ); /* Subtle gradient like Stake.com */
-  border-radius: 12px 0 0 12px;
-  padding: 32px;
+    var(--accent-gray),
+    var(--background-dark)
+  );
+  border-radius: 0.5rem 0 0 0.5rem;
+  padding: 2rem;
   text-align: end;
-  color: #8b949e;
-  font-size: 12px;
-  font-family: 'Inter', sans-serif;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: 'Cadiz', sans-serif;
 }
 
 .auth-page .sidebar img {
@@ -172,93 +201,87 @@
 
 .auth-page .data {
   width: 60%;
-  padding: 32px;
+  padding: 2rem;
   position: relative;
   align-items: center;
   display: grid;
-  background: #202125;
-  border-radius: 0 12px 12px 0;
+  background: var(--card-bg);
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
-/* Warning label styling */
 .warning-label {
-  color: #8b949e;
+  color: var(--text-muted);
   text-align: center;
-  font-size: 14px;
-  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-family: 'Cadiz', sans-serif;
 }
 
 .warning-label a {
-  color: #00ff88;
+  color: var(--accent-green);
   transition: color 0.2s ease;
 }
 
 .warning-label a:hover {
-  color: #ffffff;
+  color: var(--text-light);
 }
 
-/* Media query for larger screens */
-@media (min-width: 1200px) {
+@media (min-width: 75rem) {
   .modal-600 {
-    max-width: 640px; /* Slightly larger modal for premium feel */
+    max-width: 40rem;
   }
 }
 
-/* Login button container */
 .auth-page .data .login {
   display: grid;
   width: 100%;
-  color: #ffffff;
+  color: var(--text-light);
   text-align: center;
   font-weight: 700;
-  font-size: 18px;
-  gap: 12px;
-  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  gap: 0.75rem;
+  font-family: 'Cadiz', sans-serif;
 }
 
 .auth-page .data .login .vk {
-  background: linear-gradient(
-    90deg,
-    #00ff88,
-    #00cc66
-  ); /* Neon green gradient */
+  background: var(--button-bg);
   border: none;
   outline: none;
-  padding: 12px;
-  border-radius: 8px;
-  color: #1a1a1a;
-  font-size: 16px;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--button-text);
+  font-size: 1rem;
   font-weight: 600;
   transition: opacity 0.2s ease;
 }
 
 .auth-page .data .login .vk:hover {
+  background: var(--hover-bg);
   opacity: 0.85;
 }
 
-/* Fair page styling */
 .fair-page {
   height: 100%;
   width: 100%;
-  background: #1a1a1a;
+  background: var(--background-dark);
 }
 
 .fair-page .mainInfo {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 0.75rem;
   position: relative;
 }
 
 .fair-page .mainInfo .content {
   display: flex;
-  border-radius: 8px;
-  background: #202125;
-  color: #ffffff;
+  border-radius: 0.5rem;
+  background: var(--card-bg);
+  color: var(--text-light);
   font-weight: 600;
   justify-content: center;
   user-select: none;
-  padding: 16px;
+  padding: 1rem;
+  font-family: 'Cadiz', sans-serif;
 }
 
 .fair-page .mainInfo .content .fairness {
@@ -269,55 +292,56 @@
 }
 
 .fair-page .mainInfo .content .fairness h3 {
-  color: #8b949e;
+  color: var(--text-muted);
   margin-bottom: 0;
-  font-size: 14px;
-  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-family: 'Cadiz', sans-serif;
 }
 
 .fair-page .mainInfo .content .fairness .status {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
   transition: all 0.2s ease;
   max-width: 100%;
-  background-color: rgba(0, 255, 136, 0.2); /* Neon green status background */
-  color: #00ff88;
-  font-size: 12px;
-  gap: 6px;
+  background-color: rgba(0, 255, 136, 0.2);
+  color: var(--accent-green);
+  font-size: 0.75rem;
+  gap: 0.375rem;
   font-weight: 500;
+  font-family: 'Cadiz', sans-serif;
 }
 
-/* Modal styling */
 .modal-content {
-  border: none !important;
-  border-radius: 12px !important;
+  border: none;
+  border-radius: 0.5rem;
 }
 
 .modal-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .modal-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Close modal button */
 .closemodalBtn {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border: none;
   outline: none;
   background: transparent;
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: 0.75rem;
+  top: 0.75rem;
   border-radius: 50%;
-  padding: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: background 0.2s ease;
+  padding: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.4);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .closemodalBtn img {
@@ -332,21 +356,20 @@
 }
 
 .closemodalBtn:hover {
-  color: white;
+  color: var(--text-light);
 }
 
 .modal {
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(0.1875rem);
   z-index: 1501;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 68.75rem) {
   .auth-page .sidebar {
     display: none;
   }
   .auth-page .data {
     width: 100%;
-    border-radius: 12px;
+    border-radius: 0.5rem;
   }
 }
