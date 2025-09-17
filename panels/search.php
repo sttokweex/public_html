@@ -119,7 +119,7 @@ function renderSearch($games, $translations)
           if (filteredGames.length > 0) {
             filteredGames.forEach(function(game) {
               // Используем gameid для URL, с fallback на name
-              var gameUrl = game.gameid ? encodeURIComponent(game.gameid) : encodeURIComponent(game.name.replace(/\s+/g, '_'));
+              var gameUrl = game['name'].replaceAll(' ', '_');
               var gameDisplayName = game.name.replace(/\s+/g, ' ');
               var gameImageUrl = game.iconurl2 || game.iconurl || game.icon || `../images/SlotsPreviews/${gameDisplayName.replace(/\s+/g, '')}.png`;
 
