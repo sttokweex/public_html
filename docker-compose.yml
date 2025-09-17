@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: dockerFile
     ports:
-      - '2200:2200'
+      - '2202:2202'
     volumes:
       - .:/var/www/html
     environment:
@@ -33,7 +33,7 @@ services:
     volumes:
       - mysql_secondary-data:/var/lib/mysql
     ports:
-      - '2201:3306'
+      - '2203:3306'
 
 volumes:
   mysql_secondary-data:

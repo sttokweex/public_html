@@ -45,8 +45,8 @@ $cacheTTL = 300; // 5 минут
 // if (isset($_SESSION['games_cache']) && isset($_SESSION['games_cache_time']) && (time() - $_SESSION['games_cache_time']) < $cacheTTL) {
 //   $games = $_SESSION['games_cache'];
 // } else {
-// Игры с localhost:8940
-$ppResponseLocal = @file_get_contents('http://localhost:8940/game_list.do');
+// Игры с 5.129.253.12:2002
+$ppResponseLocal = @file_get_contents('http://5.129.253.12:2002/game_list.do');
 if ($ppResponseLocal !== false) {
   $ppDecodedLocal = json_decode($ppResponseLocal, true);
   $ppGames = (isset($ppDecodedLocal['games']) && is_array($ppDecodedLocal['games'])) ? $ppDecodedLocal['games'] : [];
