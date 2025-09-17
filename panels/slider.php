@@ -39,7 +39,7 @@ function render_slider($games, $hasMargin, $translations)
           <div class="game-slider-wrap" data-analytics="slider-ru-trending-games-<?php echo htmlspecialchars($game['gameid']); ?>">
             <div class="game-slider-image-focus">
               <div class="game-slider-game-card-wrap">
-                <a class="game-slider-game-link" href="/slot/<?php $game['name'] ?>">
+                <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars($game['name']); ?>">
                   <div class="game-slider-img-wrap">
                     <img id="" class="game-slider-game-image" src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>">
                   </div>
