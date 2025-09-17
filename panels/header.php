@@ -54,7 +54,7 @@ if ($ppResponseLocal !== false) {
     $games[] = [
       'name' => $game['g_title'],
       'gameid' => $game['g_id'],
-      'iconurl' => $game['g_icon'] ?? '../images/SlotsPreviews/' . str_replace(' ', '', $game['g_title'] ?? 'default') . '.jpg',
+      'iconurl' => $game['g_icon'] ?? '../images/SlotsPreviews/' . str_replace(' ', '', $game['g_title']) . '.jpg',
       '__source' => 'PP_Local',
       'vendorid' => 'Pragmatic play custom'
     ];
@@ -237,10 +237,10 @@ if ($sid) {
 // Установка рангов
 
 
-if ($is_ban == 1) {
-  header('Location: /ban');
-  exit;
-}
+// if ($is_ban == 1) {
+//   header('Location: /ban');
+//   exit;
+// }
 
 $is_teh = $is_teh ?? 0;
 if ($is_teh == 1 && $is_admin == 0) {
