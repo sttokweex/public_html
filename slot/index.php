@@ -68,7 +68,7 @@ $search_icon_svg = '';
         <div class="home-container home-has-padding home-has-margin">
             <?php
             // renderChatComponent('Иван', $sampleMessages, $translations);
-            render_slider($games, false, $translations);
+            render_slider($games, false, $translations, true);
             render_slider($games, true, $translations);;
             renderBetsTable($bets, $translations);
             renderCasinoComponent($translations);

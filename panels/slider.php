@@ -1,6 +1,17 @@
 <?php
-function render_slider($games, $hasMargin, $translations)
+function render_slider($games, $hasMargin, $translations, $isOurGames = false)
 {
+  // Filter games if isOurGames is true
+  if ($isOurGames) {
+    $games = array_filter($games, function ($game) {
+      return isset($game['vendorid']) && $game['vendorid'] === 'Pragmatic play custom';
+    });
+  } else {
+    // Keep only games that don't have 'Pragmatic play custom' vendorid
+    $games = array_filter($games, function ($game) {
+      return !isset($game['vendorid']) || $game['vendorid'] !== 'Pragmatic play custom';
+    });
+  }
 ?>
   <div class="game-slider<?php echo $hasMargin ? ' home-has-margin' : ''; ?>">
     <div class="game-slider-header">
@@ -44,7 +55,7 @@ function render_slider($games, $hasMargin, $translations)
                     <img id="" class="game-slider-game-image" src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>">
                   </div>
                 </a>
-                <div class=" game-slider-ribbon">
+                <div class="game-slider-ribbon">
                   <div class="game-slider-index-ribbon"><?php echo $counter; ?></div>
                 </div>
               </div>

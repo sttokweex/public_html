@@ -24,16 +24,8 @@ $winAmount     = floatval($data['winAmount']);
 $transactionID = mysqli_real_escape_string($connection, $data['transactionID']);
 $roundID       = isset($data['roundID']) ? mysqli_real_escape_string($connection, $data['roundID']) : '';
 $freeSpinID    = isset($data['freeSpinID']) ? mysqli_real_escape_string($connection, $data['freeSpinID']) : '';
+$balance = isset($data['balance']) ? mysqli_real_escape_string($connection, $data['balance']) : '';
 
-// Получение баланса
-$res = mysqli_query($connection, "SELECT balance FROM users WHERE id = '$userID'");
-if (!$res || mysqli_num_rows($res) === 0) {
-  http_response_code(200);
-  echo json_encode(['code' => 2, 'message' => 'User not found']);
-  exit;
-}
-$row     = mysqli_fetch_assoc($res);
-$balance = floatval($row['balance']);
 
 // Проверка дублирования транзакции
 $check = mysqli_query($connection, "SELECT id FROM transactions WHERE transaction_id = '$transactionID'");
@@ -47,7 +39,7 @@ if (mysqli_num_rows($check) > 0) {
 }
 
 // Расчёт нового баланса
-$newBalance = floor(($balance - $betAmount + $winAmount) * 100) / 100;
+$newBalance = $balance;
 
 // Обновление баланса
 $update = mysqli_query($connection, "UPDATE users SET balance = '$newBalance' WHERE id = '$userID'");

@@ -90,7 +90,7 @@ $search_icon_svg = '';
                 <?
                 renderSearch($games, $translations);
                 // renderChatComponent('Иван', $sampleMessages, $translations);
-                render_slider($games, false, $translations);
+                render_slider($games, false, $translations, true);
                 render_slider($games, true, $translations);;
                 renderBetsTable($bets, $translations);
                 render_faq($translations, 'Stake');
