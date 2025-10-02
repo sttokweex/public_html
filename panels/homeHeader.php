@@ -105,7 +105,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
               </div>
             </a>
             <div class="hero-button-wrapper">
-              <a href="#" class="modal-trigger" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" data-analytics="hero-button-casino-4" style="min-width: 7.5rem; max-width: 10.625rem;"><?php echo htmlspecialchars($translations['learn_more']); ?></a>
+              <a href="#" class="modal-trigger"  data-modal="modal-bonus-5000" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" data-analytics="hero-button-casino-4" style="min-width: 7.5rem; max-width: 10.625rem;"><?php echo htmlspecialchars($translations['learn_more']); ?></a>
             </div>
           </div>
         </div>
