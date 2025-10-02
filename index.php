@@ -134,15 +134,15 @@ require("panels/mobile.php");
                 // Add 'active' to the clicked button's parent tabs-content
                 $(this).addClass('active');
                 var tabText = $(this).find('span').text().trim();
-
+                const translations = <?php echo json_encode($translations, JSON_UNESCAPED_UNICODE); ?>
                 // Show/hide sliders based on tab text
-                if (tabText === $translations['lobby']) {
+                if (tabText === translations['lobby']) {
                     $('.slider-first').show();
                     $('.slider-second').show();
-                } else if (tabText === $translations['popular']) {
+                } else if (tabText === translations['popular']) {
                     $('.slider-first').show();
                     $('.slider-second').hide();
-                } else if (tabText === $translations['slots']) {
+                } else if (tabText === translations['slots']) {
                     $('.slider-first').hide();
                     $('.slider-second').show();
                 }
