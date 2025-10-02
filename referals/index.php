@@ -177,7 +177,7 @@ if ($row['COUNT(*)'] >= 100) {
     <?php
     require(dirname(__DIR__, 1) . "/panels/footer.php");
     render_footer($translations, 'Stake');
-        // renderChatComponent('Иван', $sampleMessages,$translations);
+    renderchatComponent('Иван', $sampleMessages, $translations);
     ?>
   </div>
 

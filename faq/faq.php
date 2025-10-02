@@ -6,7 +6,7 @@ function render_faq($translations, $sitename)
 	$faq_header_icon_svg = '';
 
 	$faq_arrow_icon_svg = '<svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="transform: rotate(0deg);
-   "><!----> <title></title> <path d="M32.274 49.762 9.204 26.69l6.928-6.93 16.145 16.145L48.42 19.762l6.93 6.929-23.072 23.07z"></path><!----></svg>';
+   "> <title></title> <path d="M32.274 49.762 9.204 26.69l6.928-6.93 16.145 16.145L48.42 19.762l6.93 6.929-23.072 23.07z"></path></svg>';
 
 ?>
 	<link href="/css/faq.css" rel="stylesheet">

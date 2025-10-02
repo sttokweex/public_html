@@ -64,9 +64,7 @@ $allWithdrawsUser = $totalwithsRow['SUM(sum)'];
               <li id="gt4">
                 <div class="icon"><i class="fa fa-bookmark"></i></div><?= $translations['statistic'] ?>
               </li>
-              <li id="logout">
-                <div class="icon"><i class="fa fa-arrow-left"></i></div><?= $translations['log_out'] ?>
-              </li>
+
             </ul>
           </div>
 
@@ -169,32 +167,32 @@ $allWithdrawsUser = $totalwithsRow['SUM(sum)'];
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All deposits</p>
-                  <h2><?= round($allDepositsUser, 2); ?>₽</h2>
+                  <h2><?= isset($allDepositsUser) ? round($allDepositsUser, 2) : '0'; ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All withdrawl</p>
-                  <h2><?= round($allWithdrawsUser, 2); ?>₽</h2>
+                  <h2><?= isset($allWithdrawsUser) ? round($allWithdrawsUser, 2) : '0'; ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All transwer</p>
-                  <h2><?= round(intval($total_send), 2); ?>₽</h2>
+                  <h2><?= isset($total_send) ? round($total_send, 2) : '0'; ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All rakeback</p>
-                  <h2><?= round(intval($total_rakeback), 2); ?>₽</h2>
+                  <h2><?= isset($total_rakeback) ? round($total_rakeback, 2) : '0'; ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All cashback</p>
-                  <h2><?= round(intval($total_cashback), 2); ?>₽</h2>
+                  <h2><?= isset($total_cashback) ? round($total_cashback, 2) : '0'; ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All promo</p>
-                  <h2><?= round(intval($total_promo), 2); ?>₽</h2>
+                  <h2><?= isset($total_promo) ? round($total_promo, 2) : '0'; ?>₽</h2>
                 </div>
 
 
@@ -211,7 +209,7 @@ $allWithdrawsUser = $totalwithsRow['SUM(sum)'];
     </div>
   </div>
   <?
-  // renderChatComponent('Иван', $sampleMessages, $translations);
+  renderchatComponent('Иван', $sampleMessages, $translations);
   require(dirname(__DIR__, 1) . "/panels/footer.php");
   render_footer($translations, 'Stake')
   ?>

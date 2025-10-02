@@ -4,6 +4,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 
 $requestUri = $_SERVER['REQUEST_URI'];
+require(dirname(__DIR__, 1) . "/panels/header.php");
 require_once dirname(__DIR__, 1) . '/panels/slider.php';
 require_once dirname(__DIR__, 1) . '/panels/footer.php';
 require_once dirname(__DIR__, 1) . '/faq/faq.php';
@@ -46,7 +47,7 @@ require("../system/config.php");
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-require(dirname(__DIR__, 1) . "/panels/header.php");
+
 require(dirname(__DIR__, 1) . "/panels/sidebar.php");
 require(dirname(__DIR__, 1) . "/panels/mobile.php");
 
@@ -67,10 +68,10 @@ $search_icon_svg = '';
         ?>
         <div class="home-container home-has-padding home-has-margin">
             <?php
-            // renderChatComponent('Иван', $sampleMessages, $translations);
+            renderchatComponent('Иван', $sampleMessages, $translations);
             render_slider($games, false, $translations, true);
             render_slider($games, true, $translations);;
-            renderBetsTable($bets, $translations);
+            renderBetsTable($translations);
             renderCasinoComponent($translations);
             ?>
         </div>

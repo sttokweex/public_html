@@ -11,7 +11,7 @@ function renderChatComponent($userName, $messages, $translations)
 
 ?>
 
-    <div class="chat-container">
+    <div class="chat-container closed">
 
         <div class="chat-header">
             <span class="chat-language-icon"> <?php echo $languageIcon; ?> </span>

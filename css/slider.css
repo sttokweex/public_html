@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 100%;
   overflow-x: hidden;
+  height: fit-content;
 }
 
 /* Стили для заголовка слайдера */
@@ -11,7 +12,9 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.game-slider-image-focus {
+  height: fit-content;
+}
 /* Стили для ссылки в заголовке */
 .game-slider-header-link {
   display: inline-flex;
@@ -94,13 +97,14 @@
 .game-slider-gallery {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 12.5%;
+
   margin-left: -5.5px;
   margin-right: -5.5px;
   padding-top: 0.75rem; /* Ваше изменение */
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  gap: 10px;
 }
 
 /* Стили для слайдов */
@@ -108,9 +112,8 @@
   scroll-snap-align: start;
   will-change: opacity;
   transition: opacity 0.3s;
-  padding: 0 5.5px;
+
   flex: 0 0 auto;
-  width: 100px;
 }
 
 /* Псевдоэлемент для последнего слайда */
@@ -133,11 +136,6 @@
 }
 
 /* Стили для карточек игр */
-.game-slider-game-card-wrap {
-  width: 8vw;
-  max-width: 140px;
-  height: 10vh;
-}
 
 .game-slider-game-link {
   transform: translate(0);
@@ -147,9 +145,6 @@
 }
 
 .game-slider-img-wrap {
-  width: 8vw;
-  max-width: 140px;
-  height: 10vh;
   overflow: hidden;
   position: relative;
 }

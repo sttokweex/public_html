@@ -1,5 +1,5 @@
 <?php
-function renderBetsTable($bets, $translations)
+function renderBetsTable($translations)
 {
     // SVG placeholders
     $gameIconSvg = '<svg fill="currentColor" viewBox="0 0 96 96" class="svg-icon " style=""> <title></title> <path d="M30.48 42.441a79.7 79.7 0 0 0-5.8 15.84 30.1 30.1 0 0 0 0 14.36l.718 3-16.277 4A37.9 37.9 0 0 1 12 53.719l-12 2.84v-11.68l29.36-7.04zM96 46.88l-.922 4.64A85.5 85.5 0 0 0 83.2 63.32a30.56 30.56 0 0 0-6 13.04l-.597 3L60 76.32a38.12 38.12 0 0 1 13.36-22.28l-12-2.36 5.038-10.64zM72 24.12a134 134 0 0 0-15.2 22.957 49.8 49.8 0 0 0-5.6 22.8v5H32.32a55.6 55.6 0 0 1 5-22.757A87 87 0 0 1 50.8 31h-28V16.36H72z"></path><!----></svg>';
@@ -11,8 +11,8 @@ function renderBetsTable($bets, $translations)
             <div class="inner-tabs">
                 <div class="tabs-wrapper">
                     <div class="tabs-slider">
-                        <div class="tabs-content">
-                            <button type='button' class="tabs-button"><span><?php echo htmlspecialchars($translations['casino_bets']); ?></span></button>
+                        <div class="tabs-content ">
+                            <button type='button' class="tabs-button active"><span><?php echo htmlspecialchars($translations['casino_bets']); ?></span></button>
                         </div>
                     </div>
                 </div>
@@ -31,46 +31,7 @@ function renderBetsTable($bets, $translations)
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($bets as $index => $bet): ?>
-                        <tr data-bet-index="<?php echo $index; ?>" data-test-id="<?php echo $bet['id']; ?>">
-                            <td class="left">
-                                <button type="button" class="live-button" aria-label="<?php echo htmlspecialchars($translations['open_bet_preview']); ?>">
-                                    <?php echo $gameIconSvg; ?>
-                                    <span class="truncate"><?php echo htmlspecialchars(str_replace("_", " ", $bet['game'])); ?></span>
-                                </button>
-                            </td>
-                            <td class="left">
-                                <div class="live-hoverable">
-                                    <div class="flex items-center gap-1 w-full">
-                                        <?php echo $userIconSvg; ?>
-                                        <span class="truncate">
-                                            <span class="weight-semibold"><?php echo htmlspecialchars($bet['user']); ?></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="right"><?php echo htmlspecialchars($bet['time']); ?></td>
-                            <td class="right">
-                                <div class="live-currency">
-                                    <span><?php echo htmlspecialchars($bet['bet_amount']); ?></span>
-                                    <?php echo $currencyIconSvg; ?>
-                                </div>
-                            </td>
-                            <td class="right">
-                                <div class="flex items-center justify-end gap-1">
-                                    <span><?php echo htmlspecialchars($bet['multiplier']); ?>×</span>
-                                </div>
-                            </td>
-                            <td class="right">
-                                <div class="live-currency">
-                                    <span class="<?php echo $bet['payout'][0] == '-' ? 'live-text-subtle' : 'live-text-success'; ?>">
-                                        <?php echo htmlspecialchars($bet['payout']); ?>
-                                    </span>
-                                    <?php echo $currencyIconSvg; ?>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+
                 </tbody>
             </table>
         </div>

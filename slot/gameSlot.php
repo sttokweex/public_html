@@ -11,8 +11,9 @@ if (!isset($_SESSION['hash'])) {
 }
 
 require(dirname(__DIR__, 1) . "/system/config.php");
-require(dirname(__DIR__, 1) . "/panels/sidebar.php");
 require(dirname(__DIR__, 1) . "/panels/header.php");
+require(dirname(__DIR__, 1) . "/panels/sidebar.php");
+
 require_once(dirname(__DIR__, 1) . '/panels/slider.php');
 require_once(dirname(__DIR__, 1) . '/panels/footer.php');
 require_once(dirname(__DIR__, 1) . '/panels/livefeed.php');
@@ -72,12 +73,12 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
             <div class="other-content-inner">
                 <?php
                 render_slider($games, false, $translations);
-                renderBetsTable($bets, $translations);
+                renderBetsTable($translations);
                 ?>
             </div>
         </div>
         <?php
-        renderChatComponent('Иван', $sampleMessages, $translations);
+        renderchatComponent('Иван', $sampleMessages, $translations);
         render_footer($translations, 'Stake');
         ?>
     </div>
@@ -102,7 +103,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                     lobbyUrl: window.location.origin + '/slot',
                     balance: userBalance
                 });
-                authUrl = 'http://5.129.253.12:2002/userAuth';
+                authUrl = 'http://localhost:8940/userAuth';
             } else {
                 postData = new URLSearchParams({
                     agentID: 'frenzycazUSD',
@@ -112,7 +113,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                     gameid: game?.gameid ?? gameName,
                     lobbyUrl: "https://frenzycaz.online/slot"
                 });
-                authUrl = 'http://5.129.253.12:2202/slot/api/userAuthPP.php';
+                authUrl = 'http://localhost:8940/slot/api/userAuthPP.php';
             }
 
             try {

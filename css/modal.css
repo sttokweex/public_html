@@ -339,7 +339,576 @@
   backdrop-filter: blur(3px);
   z-index: 1501;
 }
+.vault-modal-container,
+.vip-modal-container,
+.promo-modal-container {
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 1700;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.modal-overlay {
+  background-color: oklab(0% none none / 0.75);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  touch-action: none;
+}
+.vault-systemwallet {
+  display: flex;
+  justify-content: center;
+}
+.vault-systemwallet img {
+  max-height: 100px;
+  max-width: 150px;
+}
+.vault-modal-card {
+  color: #b1bad3;
+  background-position: 50%;
+  background-size: cover;
+  background-color: #1a2c38;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  min-width: 200px;
+  max-width: 500px;
+  width: 100%;
+  max-height: calc(100% - 4em);
+  flex-direction: column;
+  display: flex;
+  position: relative;
+}
 
+.vault-modal-header {
+  padding: 1rem;
+  justify-content: space-between;
+  display: flex;
+  touch-action: none;
+}
+.vault-header-stack {
+  padding: 0;
+  gap: 0.5rem;
+  align-self: center;
+  justify-content: stretch;
+  grid-auto-flow: column;
+  display: grid;
+}
+.vault-title-group {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.vault-icon {
+  display: inline-block;
+  flex-shrink: 0;
+}
+.vault-heading {
+  color: white;
+  font:
+    700 1.125rem/1.75rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+  margin: 0;
+}
+.vault-close-button,
+.vip-close-button {
+  color: #b1bad3;
+  white-space: nowrap;
+  font-weight: 600;
+  background: transparent;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.vault-content-container {
+  flex-direction: column;
+  display: flex;
+  position: relative;
+  touch-action: auto;
+}
+.vault-content-inner {
+  padding-bottom: 1rem;
+  padding-inline: 1rem;
+  gap: 1rem;
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+}
+.vault-tabs-slider {
+  display: flex;
+  flex-grow: 1;
+  background: rgb(15, 33, 46);
+  border-radius: 3rem;
+  padding: calc(0.25rem * 1.5);
+  flex-shrink: 0;
+  font-weight: 600;
+}
+.vault-tab-button,
+.vip-tab-button {
+  margin: 0;
+  flex: 1;
+  color: white;
+  white-space: nowrap;
+  padding-block: 0.625rem;
+  padding-inline: 1.25rem;
+  background: transparent;
+  border-radius: 9999px;
+  gap: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.vault-tab-button:hover {
+  background-color: #2f4553 !important;
+}
+.vault-tab-active,
+.vip-tab-active {
+  background-color: #2f4553 !important;
+}
+.vault-deposit-form {
+  flex-direction: column;
+  justify-items: center;
+  display: flex;
+  width: 100%;
+  overflow-y: auto;
+  height: 100%;
+}
+.vault-input-label {
+  width: 100%;
+  font:
+    400 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+  display: inline-flex;
+  position: relative;
+}
+.vault-input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-shrink: 0;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.2),
+    0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 0.5rem;
+}
+.vault-input-content {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+}
+.vault-input-icon {
+  cursor: text;
+  right: 0.75rem;
+  position: absolute;
+  display: flex;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgb(177, 186, 211);
+  z-index: 2;
+}
+.vault-input-field {
+  padding: 0.5rem;
+  padding-right: 2rem;
+  width: 100%;
+  color: white;
+  border: 2px solid rgb(47, 69, 83);
+  background: rgb(15, 33, 46);
+  border-radius: 0.5rem;
+  outline: none;
+  margin: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.vault-input-field::placeholder {
+  color: white;
+}
+.vault-input-button-wrapper {
+  display: inline-flex;
+}
+.vault-max-button {
+  white-space: nowrap;
+  color: white;
+  font-weight: 600;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  background-color: #2f4553;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.vault-label-content {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: rgb(177, 186, 211);
+  padding: 0 0 0.25ren 0;
+  justify-content: space-between;
+}
+.vault-label-left {
+  display: inline-flex;
+  width: 100%;
+}
+.vault-label-text {
+  font:
+    600 0.875rem/1.25rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.vault-currency-conversion {
+  display: inline-flex;
+  align-items: center;
+  font-size: 75rem;
+  margin-left: 0.25rem;
+}
+.vault-conversion-text {
+  font:
+    400 0.875rem/1.25rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.vault-submit-wrapper {
+  margin-top: 1rem;
+  width: 100%;
+  align-items: flex-end;
+  flex: 1;
+  display: flex;
+}
+.vault-submit-button {
+  white-space: nowrap;
+  color: white;
+  font-weight: 600;
+  padding-block: 0.625rem;
+  padding-inline: 1.25rem;
+  background-color: #1475e1;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  min-width: 12ch;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.vault-submit-text {
+  font:
+    600 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.vault-footer {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  background: rgb(15, 33, 46);
+  width: 100%;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 0.75rem;
+}
+.vault-learn-more-link {
+  color: #b1bad3;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.hide-modal {
+  display: none;
+}
+.vip-modal-unstate {
+  padding-bottom: 1rem;
+  padding-inline: 1rem;
+  gap: 1rem;
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.vip-modal-banner-outer {
+  height: 100%;
+  margin-inline: -1rem;
+}
+.vip-modal-banner {
+  padding: 1rem;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.vip-modal-more {
+  background-color: #0f212e;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+}
+.vip-modal-more-open {
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+}
+.vip-modal-more-container {
+  padding-bottom: 1rem;
+  padding-inline: 1rem;
+}
+.vip-modal-more-content {
+  padding-top: calc(0.25rem * 1.5);
+  gap: 1rem;
+  flex-direction: column;
+  display: flex;
+}
+.vip-modal-more-level {
+  gap: 0.5rem;
+  flex-direction: column;
+  display: flex;
+}
+.vip-modal-more-level-header {
+  gap: 0.5rem;
+  align-items: center;
+  display: flex;
+}
+.vip-modal-more-level-header span {
+  font:
+    600 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.vip-modal-more-benefits {
+  padding-inline: calc(0.25rem * 1.5);
+  gap: calc(0.25rem * 0.5);
+  flex-direction: column;
+  display: flex;
+}
+.vip-modal-more-benefit {
+  align-items: center;
+  display: flex;
+}
+.vip-modal-more-benefit-dot {
+  font:
+    400 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+  background-color: #b1bad3;
+  border-radius: 9999px;
+  width: 0.25rem;
+  height: 0.25rem;
+  margin-right: 0.5rem;
+}
+.vip-modal-more-benefit-text {
+  font:
+    400 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.vip-modal-more-divider {
+  background-color: #213743;
+  width: 100%;
+  height: calc(0.25rem * 0.5);
+}
+.closed {
+  display: none;
+}
+.vip-footer {
+  padding-top: 1rem;
+  justify-content: center;
+  display: flex;
+}
+.promo-banner-image {
+  display: flex;
+  justify-content: center;
+}
+.promo-banner {
+  position: relative;
+  background-color: rgb(33, 55, 67);
+  margin: 0 -2rem;
+  padding: 0 2rem 1rem 2rem;
+}
+.timer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+.timer-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(15, 33, 46);
+  width: 56px;
+  height: 56px;
+  border-radius: 0.5rem;
+}
+.timer-item span {
+  font:
+    600 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.text-white {
+  color: white;
+}
+.promoMain {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+.promo-modal-header {
+  padding-top: 0.75rem;
+  justify-content: space-between;
+  display: flex;
+  touch-action: none;
+}
+.promo-description {
+  font:
+    400 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.promo-cta {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+  justify-content: center;
+}
+.raffle-progress {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  background: rgb(33, 55, 67);
+  border-radius: 0.5rem;
+}
+.raffle-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ds-body-md {
+  font:
+    400 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.ds-body-md-strong {
+  font:
+    600 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.promo-progress-bar {
+  background-color: #2f4553;
+  border-radius: 9999px;
+  overflow: hidden;
+  width: 100%;
+  height: 1em;
+  margin-block: 0.5rem;
+  position: relative;
+}
+.promo-progress-bar div {
+  right: 100%;
+  background-color: rgb(0, 231, 1);
+  border-radius: 9999px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.text-neutral-default {
+  color: white;
+}
+.progress-promo {
+  gap: 0.25rem;
+  align-items: center;
+  max-width: 100%;
+  display: inline-flex;
+}
+.progress-promo-content {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.progress-promo-content span {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.promo-cta-link button {
+  border-radius: 0.5rem;
+  color: #fff;
+  white-space: nowrap;
+  font-weight: 600;
+  line-height: 1;
+  padding-block: 0.625rem;
+  padding-inline: 1.25rem;
+  background-color: #1475e1;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+  outline: none;
+}
 /* Responsive adjustments */
 @media screen and (max-width: 1100px) {
   .auth-page .sidebar {

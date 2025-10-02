@@ -22,11 +22,10 @@
   width: 100%;
 }
 .bonus-content {
-
   max-width: calc(1200px);
   width: 100%;
   margin-bottom: 2rem;
-    margin-top:2rem ;
+  margin-top: 2rem;
   background-color: var(--card-bg);
   border-radius: 12px;
   padding: 0 3vw 2rem 3vw;
@@ -89,9 +88,8 @@
 }
 
 .bonuspromo {
-
   height: 72px;
-width: 100%;
+  width: 100%;
   border-radius: 8px;
   padding: 16px 0;
 
@@ -386,8 +384,7 @@ width: 100%;
   margin-top: 10px;
 }
 
-.bonus .buttonProject:hover,
-.bonus .buttonProjectSuccess:hover {
+.bonus .buttonProject:hover {
   background: var(--hover-bg);
 }
 

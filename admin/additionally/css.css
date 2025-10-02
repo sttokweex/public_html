@@ -177,7 +177,7 @@
   color: #fff !important;
 }
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .userInfoProfile .more {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -188,9 +188,9 @@
   .userInfoProfile .main {
     width: 100%;
   }
-}
+} */
 
-@media (max-width: 780px) {
+/* @media (max-width: 780px) {
   .userInfoProfile .more {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
@@ -202,7 +202,7 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
     width: fit-content;
   }
-}
+} */
 .chatButtonAd {
   background: var(--main-background2);
   color: #fff !important;
@@ -448,13 +448,13 @@ input {
 [id='navs-toggle']:checked ~ .navs > .navs-toggle:after {
   content: '\2715';
 }
-
+/* 
 @media screen and (max-width: 320px) {
   .navs {
     width: 100%;
     box-shadow: none;
   }
-}
+} */
 
 /**
  * Формируем стиль заголовка (логотип) панели
@@ -854,7 +854,7 @@ input {
 .additionalBtn:hover {
   background: linear-gradient(#2f4553, #2f4553) padding-box;
 }
-@media screen and (max-width: 960px) {
+/* @media screen and (max-width: 960px) {
   .settingsMenu .listwrap .list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -868,4 +868,4 @@ input {
   .settingsMenu .listwrap .list {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-}
+} */

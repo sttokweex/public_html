@@ -1,0 +1,9 @@
+.transaction-empty-text {
+  margin-top: 1.5rem;
+  font:
+    400 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}

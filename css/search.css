@@ -56,9 +56,14 @@
 .search-close-button:hover {
   color: white;
 }
-.home-input-wrap:focus-within,
+
+.home-input-wrap:focus-within {
+  z-index: 1400;
+  color: white;
+  border-color: rgb(85, 112, 134);
+}
+
 .home-input-wrap:hover {
-  z-index: 1500;
   color: white;
   border-color: rgb(85, 112, 134);
 }

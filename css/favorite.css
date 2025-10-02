@@ -1,0 +1,116 @@
+.favorite-container {
+  display: flex;
+
+  flex-direction: column;
+  max-width: 100%;
+}
+.favorite-inner {
+  width: 100%;
+  display: flex;
+  max-width: 1200px;
+  align-self: center;
+  margin: 0;
+  flex-direction: column;
+  max-width: calc(1200px + 6vw);
+  padding: 0 3vw;
+  padding-bottom: 2rem;
+}
+.group-banner-wrap.favorite-page {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.group-banner-bg.favorite-page {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: -100%;
+  width: 300%;
+  background: #213743;
+}
+.banner-wrap.favorite-page {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  line-height: 1;
+}
+.banner.favorite-page {
+  width: 100%;
+  height: 115px;
+  display: flex;
+  overflow: hidden;
+}
+.left.favorite-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+.left.favorite-page h1 {
+  color: white;
+  font:
+    700 1.5rem/2.25rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.right.favorite-page {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+.right.favorite-page img:where(.favorite-page) {
+  width: auto;
+  height: 100%;
+}
+.no-games.favorite-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  color: rgb(177, 186, 211);
+  margin-top: 1.5rem;
+}
+.no-games.favorite-empty span {
+  font:
+    400 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
+.no-games.favorite-empty svg {
+  vertical-align: unset;
+}
+.favorite-slider {
+  margin-top: 1.5rem;
+  gap: 1rem;
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+}
+.favorite-slider-button {
+  color: white;
+  white-space: nowrap;
+  font-weight: 600;
+  padding-block: 0.625rem;
+  padding-inline: 1.25rem;
+  background-color: #2f4553;
+  border-radius: 0.25rem;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+}
+.favorite-slider-button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

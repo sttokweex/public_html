@@ -113,7 +113,7 @@ function renderSearch($games, $translations)
 
           $searchResults.addClass('active');
           var filteredGames = games.filter(function(game) {
-            return game.name && game.name.toLowerCase().includes(query);
+            return game.name.replaceAll('_', ' ') && game.name.replaceAll('_', ' ').toLowerCase().includes(query);
           });
 
           if (filteredGames.length > 0) {
@@ -128,7 +128,7 @@ function renderSearch($games, $translations)
                 .addClass('search-result-item')
                 .append(
                   $('<img>').attr('src', gameImageUrl).attr('alt', gameDisplayName),
-                  $('<span>').text(gameDisplayName)
+                  $('<span>').text(gameDisplayName.replaceAll('_', ' '))
                 );
               console.log('Добавлена ссылка:', $resultItem.attr('href'));
               $searchResults.append($resultItem);

@@ -46,8 +46,8 @@ function betMin() {
         $('#succes_bet').show();
         $('#succes_bet').html(`${T.win} <b>` + obj.fullwin);
 
-        $('#userBalance').text(obj.new_balance);
-        $('#userBalance').attr('myBalance', obj.new_balance);
+        $('.balance-balance').text(obj.new_balance);
+        $('.balance-balance').attr('myBalance', obj.new_balance);
 
         $('#hashBet').fadeOut('slow', function () {
           $('#hashBet').fadeIn('slow', function () {});
@@ -64,8 +64,8 @@ function betMin() {
       }
 
       if (obj.success == 'error') {
-        $('#userBalance').text(obj.new_balance);
-        $('#userBalance').attr('myBalance', obj.new_balance);
+        $('.balance-balance').text(obj.new_balance);
+        $('.balance-balance').attr('myBalance', obj.new_balance);
         $('#succes_bet').css('display', 'none');
         $('#error_bet').html(obj.error);
         $('#hashBet').fadeOut('slow', function () {
@@ -102,8 +102,8 @@ function betMax() {
       $('#betLoad').css('display', 'none');
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        $('#userBalance').text(obj.new_balance);
-        $('#userBalance').attr('myBalance', obj.new_balance);
+        $('.balance-balance').text(obj.new_balance);
+        $('.balance-balance').attr('myBalance', obj.new_balance);
 
         $('#error_bet').css('display', 'none');
         $('#succes_bet').html(`${T.win} <b>` + obj.fullwin);
@@ -122,8 +122,8 @@ function betMax() {
       }
 
       if (obj.success == 'error') {
-        $('#userBalance').text(obj.new_balance);
-        $('#userBalance').attr('myBalance', obj.new_balance);
+        $('.balance-balance').text(obj.new_balance);
+        $('.balance-balance').attr('myBalance', obj.new_balance);
         $('#succes_bet').css('display', 'none');
         $('#error_bet').html(obj.error);
         $('#hashBet').fadeOut('slow', function () {
@@ -169,8 +169,8 @@ function bubble() {
         });
         $('#hashBet').html(obj.game_hash);
 
-        $('#userBalance').text(obj.game_balance).toFixed(2);
-        $('#userBalance').attr('myBalance', obj.game_balance).toFixed(2);
+        $('.balance-balance').text(obj.game_balance).toFixed(2);
+        $('.balance-balance').attr('myBalance', obj.game_balance).toFixed(2);
       }
 
       if (obj.success == 'lose') {
@@ -189,8 +189,8 @@ function bubble() {
         });
         $('#hashBet').html(obj.game_hash);
 
-        $('#userBalance').text(obj.game_balance).toFixed(2);
-        $('#userBalance').attr('myBalance', obj.game_balance).toFixed(2);
+        $('.balance-balance').text(obj.game_balance).toFixed(2);
+        $('.balance-balance').attr('myBalance', obj.game_balance).toFixed(2);
       }
 
       if (obj.success == 'error') {
@@ -254,10 +254,11 @@ function vkBonus() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        $('#userBalance').html(obj.new_balance);
-        return toastr['success'](T.you_received_1000_coins);
+        $('.balance-balance').html(obj.new_balance);
+
+        toastr['success']('+1000');
       } else {
-        return toastr['error'](obj.error);
+        toastr['error'](obj.error);
       }
     },
   });
@@ -273,10 +274,10 @@ function vkBonsdfus() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        $('#userBalance').html(obj.new_balance);
-        return toastr['success'](T.you_received_100_coins);
+        $('.balance-balance').html(obj.new_balance);
+        toastr['success']('+100');
       } else {
-        return toastr['error'](obj.error);
+        toastr['error'](obj.error);
       }
     },
   });
@@ -300,7 +301,7 @@ function getRakeback() {
         toastr['success'](
           `${T.enrolled} Rakeback: <b>` + obj.rakebacksize + '</b>'
         );
-        $('#userBalance').html(obj.new_balance);
+        $('.balance-balance').html(obj.new_balance);
         updateBalance(obj.balance, obj.new_balance);
       } else {
         $('#rbbtn').html(T.take);
@@ -328,7 +329,7 @@ function getCashback() {
         toastr['success'](
           `${T.enrolled} Cashback: <b>` + obj.cashbacksize + '</b>'
         );
-        $('#userBalance').html(obj.new_balance);
+        $('.balance-balance').html(obj.new_balance);
         updateBalance(obj.balance, obj.new_balance);
       } else {
         $('#csbtn').html(T.take);
@@ -349,11 +350,11 @@ function getDaily() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        toastr['success'](`${T.you_got} <b>` + obj.bonussize);
-        $('#userBalance').html(obj.new_balance);
+        toastr['success'](`You got ${obj.bonussize}`);
+        $('.balance-balance').html(obj.new_balance);
         updateBalance(obj.balance, obj.new_balance);
       } else {
-        return toastr['error'](obj.error);
+        toastr['error'](obj.error);
       }
     },
   });
@@ -369,9 +370,9 @@ function vkRepost() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        return toastr['success'](T.you_received_1000_coins);
+        toastr['success']('+5000');
       } else {
-        return toastr['error'](obj.error);
+        toastr['error'](obj.error);
       }
     },
   });
@@ -422,7 +423,7 @@ function activePromo() {
           toastr['success'](T.promo_code_activated);
         }
 
-        $('#userBalance').html(obj.new_balance);
+        $('.balance-balance').html(obj.new_balance);
         updateBalance(obj.balance, obj.new_balance);
       } else {
         return toastr['error'](obj.message);
@@ -445,7 +446,7 @@ function activePromo() {
 //                 window.location.reload();
 //                 //$("#activedbonustbl").load("bonusnew.php #activedbonustbl");
 //                 toastr['success']('Промокод активирован')
-//                 $('#userBalance').html(obj.new_balance);
+//                 $('.balance-balance').html(obj.new_balance);
 //                 updateBalance(obj.balance, obj.new_balance);
 //             } else {
 //                 return toastr['error'](obj.error)
@@ -500,7 +501,7 @@ function buybonus() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        $('#userBalance').html(obj.new_balance);
+        $('.balance-balance').html(obj.new_balance);
         $('#playbtn').prop('disabled', true);
 
         function setCoefficient1() {
@@ -532,7 +533,7 @@ function buybonus() {
         }
 
         function getWin() {
-          $('#userBalance').html(obj.new_balance2);
+          $('.balance-balance').html(obj.new_balance2);
           toastr['success'](obj.winmess);
         }
 
@@ -669,7 +670,7 @@ function createwithdraw() {
         $('#withdrawT').load('../wallet/withdraw.php #withdrawT');
         $('#withBtn').html(T.create_payment);
         toastr['success'](T.application_created);
-        $('#userBalance').html(obj.new_balance);
+        $('.balance-balance').html(obj.new_balance);
         location.reload();
         return;
       } else {
@@ -693,7 +694,7 @@ function removeWithdraw(id) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
         $('#withdrawT').load('../wallet/withdraw.php #withdrawT');
-        $('#userBalance').html(obj.new_balance);
+        $('.balance-balance').html(obj.new_balance);
         location.reload();
       }
     },
@@ -817,9 +818,49 @@ function getrankimgProfile() {
   }
 }
 document.addEventListener('DOMContentLoaded', getrankimgProfile);
+function updateDash() {
+  const $wrapper = $('.mybets-nav-wrapper');
+  const $links = $wrapper.find('.mybets-nav-link');
+  const $dash = $('.mybets-nav-dash');
+
+  // Calculate the height of the dash (100% / number of links)
+  const linkCount = $links.length;
+  const dashHeight = linkCount > 0 ? 100 / linkCount + '%' : '0%';
+  $dash.css('height', dashHeight);
+
+  // Find the index of the active link and set translateY
+  $links.each(function (index) {
+    if ($(this).hasClass('mybets-nav-active')) {
+      const translateY = index * 100 + '%';
+      $dash.css('transform', `translateY(${translateY})`);
+    }
+  });
+}
 
 $(document).ready(function () {
-  if ($('.chat-container').length > 0) {
+  $('.mybets-nav-link').on('click', function () {
+    // Remove mybets-nav-active from all links
+    $('.mybets-nav-link').removeClass('mybets-nav-active');
+    // Add mybets-nav-active to the clicked link
+    $(this).addClass('mybets-nav-active');
+    // Update dash position and height
+    updateDash();
+    const spanText = $(this).find('span').text().trim().toLowerCase();
+    const pageClass = `${spanText}-page`;
+
+    // Toggle hide class on mybets-table-section divs
+    $('.mybets-table-section').addClass('hide');
+    $(`.mybets-table-section.${pageClass}`).removeClass('hide');
+  });
+  if ($('.mybets-nav-dash').length > 0) {
+    updateDash();
+  }
+  if (
+    $('.chat-container').length > 0 &&
+    $('.chat-container').hasClass('closed')
+  ) {
+    $('body').removeClass('chat');
+  } else if ($('.chat-conteiner').length > 0) {
     $('body').addClass('chat');
   } else {
     $('body').removeClass('chat');
@@ -830,19 +871,29 @@ $(document).ready(function () {
     $('body').removeClass('chat');
   });
   checkSidebar();
-  hover();
-  sidebarPromo();
-});
-function sidebarPromo() {
-  $('.promo_anchor_button').click(function () {
-    var $svgMini = $(this).find('.svg_isopen');
 
+  sidebarPromo();
+  animateSidebarSimple();
+
+  // Инициализация оверлея
+  setupOverlayHandler();
+  setupResizeHandler();
+});
+
+function sidebarPromo() {
+  $('.promo_anchor_button').click(function (e) {
+    e.stopPropagation();
+    var $svgMini = $(this).find('.svg_isopen');
     var $accordion = $(this).closest('.accordion');
     var $content = $accordion.find('.content');
+
     if ($svgMini) {
       $('.sidebar_project').removeClass('closed');
       $('body').removeClass('sidebar');
+      toggleOverlay(true);
+      // Управление оверлеем для мобильных
     }
+
     if ($content.hasClass('isopen')) {
       $content.removeClass('isopen');
     } else {
@@ -850,58 +901,149 @@ function sidebarPromo() {
     }
   });
 }
+
 function checkSidebar() {
   var $accordion = $('.accordion');
   var $content = $accordion.find('.content');
+
   if (localStorage.getItem('sidebar') === 'closed') {
     $('.sidebar_project').addClass('closed');
     $('body').addClass('sidebar');
+    // Скрываем оверлей при загрузке если сайдбар закрыт
+    toggleOverlay(false);
   } else {
     $('.sidebar_project').removeClass('closed');
     $('body').removeClass('sidebar');
+    animateSidebarSimple();
+    // Проверяем нужно ли показать оверлей на мобильных
+    setTimeout(function () {
+      if (window.innerWidth < 1200) {
+        toggleOverlay(true);
+      }
+    }, 100);
   }
 
   $('.sidebar__btn-close').click(function () {
+    // Анимация сайдбара
+    animateSidebarSimple();
+
     if ($('.sidebar_project').hasClass('closed')) {
       $('.sidebar_project').removeClass('closed');
       $('body').removeClass('sidebar');
-
       localStorage.removeItem('sidebar');
+      // Показываем оверлей при открытии на мобильных
+      if (window.innerWidth < 1200) {
+        toggleOverlay(true);
+      }
     } else {
       $('.sidebar_project').addClass('closed');
       $('body').addClass('sidebar');
       $content.removeClass('isopen');
       localStorage.setItem('sidebar', 'closed');
+      // Скрываем оверлей при закрытии
+      toggleOverlay(false);
     }
   });
 }
-function hover() {
-  $('#casino').hover(
-    function () {
-      $(this)
-        .find('.productImg')
-        .attr('src', '/assets/media/active-casino.D98ZVQ96.svg');
-    },
-    function () {
-      $(this)
-        .find('.productImg')
-        .attr('src', '/assets/media/default-casino.CqlOLRkM.svg');
-    }
-  );
 
-  $('#sport').hover(
-    function () {
-      $(this)
-        .find('.productImg')
-        .attr('src', '/assets/media/active-sports.CxIU50TW.svg');
-    },
-    function () {
-      $(this)
-        .find('.productImg')
-        .attr('src', '/assets/media/default-sports.KM8Zs5_U.svg');
-    }
-  );
+// Простая анимация для сайдбара
+function animateSidebarSimple() {
+  var $sidebar = $('.inner_content');
+
+  if (!$sidebar.length) return;
+
+  // Сбрасываем все анимации
+  $sidebar.css({
+    transition: 'none',
+    opacity: '',
+    transform: '',
+  });
+
+  // Принудительно обновляем
+  $sidebar[0].offsetHeight;
+
+  // Этап 3: через 400ms - opacity 1 + вверх 5px (нормальное положение)
+  setTimeout(function () {
+    $sidebar.css({
+      transition: 'opacity 0.5s ease, transform 0.5s ease',
+      opacity: 1,
+      transform: 'translateY(0px)',
+    });
+  }, 500);
 }
+
+// Функция управления оверлеем
+function toggleOverlay(show) {
+  var $overlay = $('.overlay[data-layout]');
+
+  if (!$overlay.length) return;
+
+  var isMobile = window.innerWidth < 1200;
+
+  if (!isMobile) {
+    // На десктопе оверлей не нужен
+    $overlay.removeClass('active').hide();
+    return;
+  }
+
+  if (show) {
+    // Показываем оверлей
+    $overlay.addClass('active').show();
+  } else {
+    // Скрываем оверлей
+    $overlay.removeClass('active').hide();
+  }
+}
+
+// Обработчик клика по оверлею
+function setupOverlayHandler() {
+  $(document).on('click', '.overlay[data-layout].active', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Закрываем сайдбар при клике на оверлей (только на мобильных)
+    if (window.innerWidth < 1200) {
+      $('.sidebar_project').addClass('closed');
+      $('body').addClass('sidebar');
+      $('.accordion .content').removeClass('isopen');
+      localStorage.setItem('sidebar', 'closed');
+
+      // Анимация закрытия
+      animateSidebarSimple();
+
+      // Скрываем оверлей
+      toggleOverlay(false);
+    }
+  });
+}
+
+// Мониторинг изменения размера окна
+function setupResizeHandler() {
+  var resizeTimer;
+  $(window).on('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      var isMobile = window.innerWidth < 1200;
+      var sidebarIsOpen = !$('body').hasClass('sidebar');
+
+      // Если перешли на десктоп - скрываем оверлей
+      if (!isMobile) {
+        toggleOverlay(false);
+        return;
+      }
+
+      // Если на мобильном и сайдбар открыт - показываем оверлей
+      if (isMobile && sidebarIsOpen) {
+        toggleOverlay(true);
+      } else {
+        toggleOverlay(false);
+      }
+    }, 150);
+  });
+}
+
+// Инициализация
+
 /* ЗАГРУЗКА КАРТИНКИ РАНГА ВОЗЛЕ ФОТКИ ПРОФИЛЯ В HEADER END */
 
 /* УСТАНОВКА ДАТЫ РОЖДЕНИЯ В ПРОФИЛЕ START */
@@ -938,7 +1080,7 @@ function getBonusBirthday() {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
         toastr['success'](T.bonus_received);
-        $('#userBalance').html(obj.new_balance);
+        $('.balance-balance').html(obj.new_balance);
         updateBalance(obj.balance, obj.new_balance);
         return;
       } else {

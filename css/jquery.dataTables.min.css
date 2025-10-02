@@ -10,7 +10,6 @@ table.dataTable {
 
 /* Header styles */
 table.dataTable thead th {
-  background: rgb(33, 55, 67);
   color: #ffffff;
   font-weight: 600;
   padding: 10px 18px;

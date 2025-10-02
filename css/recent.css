@@ -1,0 +1,22 @@
+.empty-list-recent {
+  padding: 1rem !important;
+  color: rgb(177, 186, 211);
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+.large-icon-recent {
+  font-size: 6rem;
+  color: rgb(85, 112, 134);
+}
+.empty-list-recent span {
+  margin-top: 1.5rem;
+  font:
+    400 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
+}
