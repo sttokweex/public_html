@@ -136,13 +136,13 @@ require("panels/mobile.php");
                 var tabText = $(this).find('span').text().trim();
 
                 // Show/hide sliders based on tab text
-                if (tabText === 'Lobby') {
+                if (tabText === $translations['lobby']) {
                     $('.slider-first').show();
                     $('.slider-second').show();
-                } else if (tabText === 'Popular') {
+                } else if (tabText === $translations['popular']) {
                     $('.slider-first').show();
                     $('.slider-second').hide();
-                } else if (tabText === 'Slots') {
+                } else if (tabText === $translations['slots']) {
                     $('.slider-first').hide();
                     $('.slider-second').show();
                 }
