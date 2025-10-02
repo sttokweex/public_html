@@ -289,6 +289,7 @@ if ($depositesSID >= $progressMax) $progressValue = 100;
                     response: jqXHR.responseText
                 });
                 toastr['error']('Ошибка соединения: ' + textStatus + (errorThrown ? ' (' + errorThrown + ')' : ''));
+                console.log('Ошибка соединения: ' + textStatus + (errorThrown ? ' (' + errorThrown + ')' : ''))
             })
             .always(function() {
                 if (DEBUG) console.groupEnd?.();
