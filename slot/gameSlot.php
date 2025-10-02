@@ -103,7 +103,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                     lobbyUrl: window.location.origin + '/slot',
                     balance: userBalance
                 });
-                authUrl = 'http://localhost:8940/userAuth';
+                authUrl = 'http://5.129.253.12:2002/userAuth';
             } else {
                 postData = new URLSearchParams({
                     agentID: 'frenzycazUSD',
@@ -113,7 +113,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                     gameid: game?.gameid ?? gameName,
                     lobbyUrl: "https://frenzycaz.online/slot"
                 });
-                authUrl = 'http://localhost:8940/slot/api/userAuthPP.php';
+                authUrl = 'http://5.129.253.12:2002/slot/api/userAuthPP.php';
             }
 
             try {
