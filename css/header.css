@@ -747,9 +747,9 @@ a {
   }
 }  */
 .game {
+  margin-top: 2rem;
   padding: 0 3vw;
   width: 100%;
-  min-height: 100vh;
   /* Full viewport height to allow vertical centering */
   display: flex;
   justify-content: center;
