@@ -137,10 +137,10 @@ if ($depositesSID >= $progressMax) $progressValue = 100;
                         </label>
 
                         <div class="vault-submit-wrapper">
-                            <button class="vault-submit-button" data-testid="vault-deposit-submit" id="depBtn" onclick="deposit();">
+                            <button class="vault-submit-button" type="button" data-testid="vault-deposit-submit" id="depBtn" onclick="deposit();">
                                 <span class="vault-submit-text"><?php echo $translations['modal_vault_deposit_button']; ?></span>
                             </button>
-                            <button class="vault-submit-button hide-modal" data-testid="vault-deposit-submit" id="withBtn">
+                            <button class="vault-submit-button hide-modal" type="button" data-testid="vault-deposit-submit" id="withBtn">
                                 <span class="vault-submit-text"><?php echo $translations['modal_vault_withdraw_button']; ?></span>
                             </button>
                         </div>
