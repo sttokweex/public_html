@@ -62,7 +62,7 @@ function render_slider($games, $hasMargin, $translations, $isOurGames = false)
               <div class="game-slider-game-card-wrap">
                 <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars($game['name']); ?>">
                   <div class="game-slider-img-wrap">
-                    <img class="game-slider-game-image" src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>">
+                    <img class="game-slider-game-image" loading="lazy" src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>">
                   </div>
                 </a>
                 <div class="game-slider-ribbon">
