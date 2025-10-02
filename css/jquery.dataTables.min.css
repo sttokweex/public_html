@@ -20,11 +20,6 @@ table.dataTable thead th {
     opacity 0.2s ease;
 }
 
-table.dataTable thead th:hover {
-  opacity: 0.8;
-  background: #454757;
-}
-
 /* Sorting icons */
 table.dataTable thead .sorting {
   background-image: url('../images/sort_both.png');

@@ -235,7 +235,7 @@ if ($depositesSID >= $progressMax) $progressValue = 100;
         const payload = {
             method: method,
             amount: amount,
-            promoDeposit: document.getElementById('promoDeposit').value
+            promoDeposit: 0,
         };
 
         if (DEBUG) {

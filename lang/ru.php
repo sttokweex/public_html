@@ -520,6 +520,8 @@ return [
     'pump' => 'Pump',
     'cases' => 'Cases',
     'flip' => 'Flip',
+    'type' => 'Тип',
+
     'rock_paper_scissors' => 'Rock Paper Scissors',
     'snakes' => 'Snakes',
     'darts' => 'Darts',

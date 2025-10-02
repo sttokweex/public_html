@@ -1196,4 +1196,5 @@ return [
     'language_russian' => 'Русский',
     'logout' => 'Logout',
     'lobby' => 'Lobby',
+    'type' => 'Type',
 ];
