@@ -38,7 +38,7 @@ if($_POST['method'] == 'cryptobot') {
             }
 
             $sql_select2 = "SELECT * FROM promo_log WHERE promo_id='$idpromo' and user_id ='$user_id'";
-		    $result2 = mysqli_query($connection,$sql_select2) or die(mysqli_error());
+		    $result2 = mysqli_query($connection,$sql_select2) or die(mysqli_error($connection));
 		    $row2 = mysqli_fetch_array($result2);
 		    if ($row2) {
 			    exit(json_encode(['response' => 'error', 'message' => 'Вы уже активировали данный промо-код!']));
@@ -122,7 +122,7 @@ if($_POST['method'] == 'cryptobot') {
             }
 
             $sql_select2 = "SELECT * FROM promo_log WHERE promo_id='$idpromo' and user_id ='$user_id'";
-		    $result2 = mysqli_query($connection,$sql_select2) or die(mysqli_error());
+		    $result2 = mysqli_query($connection,$sql_select2) or die(mysqli_error($connection));
 		    $row2 = mysqli_fetch_array($result2);
 		    if ($row2) {
 			    exit(json_encode(['response' => 'error', 'message' => 'Вы уже активировали данный промо-код!']));
