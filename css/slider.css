@@ -112,7 +112,7 @@
   scroll-snap-align: start;
   will-change: opacity;
   transition: opacity 0.3s;
-
+  height: fit-content;
   flex: 0 0 auto;
 }
 
