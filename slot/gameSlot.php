@@ -138,7 +138,7 @@ if (!is_array($games)) {
             balance: userBalance
         });
 
-        const authUrl = 'http://5.129.253.12:2000/userAuth';
+        const authUrl = 'http://localhost:8940/userAuth';
 
         try {
             var response = await fetch(authUrl, {

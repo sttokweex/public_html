@@ -6,7 +6,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 require (dirname(__DIR__, 1)."/panels/header.php");
 require (dirname(__DIR__, 1)."/panels/sidebar.php");
 require (dirname(__DIR__, 1)."/panels/chat.php");
-require (dirname(__DIR__, 1)."/panels/mobile.php");
 
 ?>
 <body>

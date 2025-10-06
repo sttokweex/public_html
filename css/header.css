@@ -1,3 +1,7 @@
+:root {
+  --gutter: 1rem;
+  --layout-max-width: 1280px;
+}
 body {
   background-color: #011c38;
   color: white;
@@ -36,7 +40,6 @@ body {
   min-width: calc(1000px - 20vw);
   width: calc(80vw - 1rem * 11 / 12 * 12 + 1rem * 11);
   background-color: #fff0;
-
   margin: auto;
   padding-top: 64px;
 }
@@ -282,6 +285,7 @@ ul {
     background-position: 0 0;
   }
 }
+
 .game {
   padding: 0 3vw;
   width: 100%;
@@ -570,6 +574,21 @@ a:hover {
   margin: auto;
   padding: 0 0 2em;
 }
+.col-dsk-4 {
+  max-width: calc(1280px / 12 * 4 - 0.66667rem);
+  min-width: calc(333.33333px - 6.66667vw - 0.66667rem);
+  width: calc(26.66667vw - 1rem * 11 / 12 * 4 + 1rem * 3);
+}
+.col-dsk-6 {
+  max-width: calc(1280px / 12 * 6 - 0.5rem);
+  min-width: calc(500px - 10vw - 0.5rem);
+  width: calc(40vw - 1rem * 11 / 12 * 6 + 1rem * 5);
+}
+.col-dsk-3 {
+  max-width: calc(1280px / 12 * 3 - 0.75rem);
+  min-width: calc(250px - 5vw - 0.75rem);
+  width: calc(20vw - 1rem * 11 / 12 * 3 + 1rem * 2);
+}
 .col-dsk-12 {
   max-width: calc(1280px / 12 * 12);
   min-width: calc(1000px - 20vw);
@@ -736,11 +755,7 @@ a:hover {
   color: white;
   font-size: 0.875rem;
 }
-.Image__image--2Bt {
-  border: 0;
-  height: 100%;
-  object-fit: cover;
-}
+
 .SearchResults__image--3DV {
   border-radius: 0;
   height: 2.5rem;
@@ -771,6 +786,58 @@ a:hover {
 }
 .GamesSearch__searchQuery--gUs {
   color: #ff616d;
+}
+@media (max-width: 1000px) {
+  .main-container {
+    --hc-distance-between-components: 2rem;
+    max-width: calc(1000px - 2rem);
+    width: calc(100vw - 2rem - 1rem * 3 / 4 * 4 + 1rem * 3);
+    min-width: unset;
+  }
+  .footer-media-terms {
+    justify-content: center;
+    margin: 1em 0;
+  }
+  .footer-media-sponsors {
+    justify-content: center;
+
+    margin: 0.5em 0;
+  }
+  .footer-menu-inner {
+    display: none;
+  }
+  .footer-menu-block {
+    cursor: pointer;
+    flex: 1 0 100%;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .QuickLinks__quickLinks--3F2 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    overflow: auto;
+  }
+  .col-mob-4 {
+    max-width: calc(1000px - 2rem);
+    width: calc(100vw - 2rem - var(--gutter) * 3 / 4 * 4 + var(--gutter) * 3);
+    min-width: unset;
+  }
+  .withHollandLayouts__wrapper--1pq {
+    --margin-to-content-from-header: 9.25rem;
+    --content-height: 8.875rem;
+    --arrows-margin: 1rem;
+  }
+  .header-navigation {
+    display: none;
+  }
+  .header-right-section .header-search {
+    display: none;
+  }
+  .header-auth {
+    font-size: 0.875rem;
+    padding: 0.25rem 1rem;
+  }
 }
 @font-face {
   font-family: 'Cadiz';

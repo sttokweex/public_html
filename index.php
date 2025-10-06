@@ -3,16 +3,18 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
+require("system/config.php");
 
+require("panels/header.php");
+
+require("panels/sidebar.php");
 $requestUri = $_SERVER['REQUEST_URI'];
+
 require_once './panels/slider.php';
 require_once './panels/footer.php';
 require_once './faq/faq.php';
-require_once './panels/livefeed.php';
-require_once './panels/gameInfo.php';
 require_once './panels/search.php';
 require_once './panels/banners.php';
-require_once './panels/chat.php';
 
 if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
     require 'slot/api/getBalance.php';
@@ -43,13 +45,7 @@ if (strpos($requestUri, '/slot/api/RollbackTransaction') !== false) {
     exit;
 }
 
-require("system/config.php");
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
-require("panels/header.php");
-require("panels/sidebar.php");
-require("panels/mobile.php");
+
 
 // Определяем SVG-переменные для баннеров и поиска (пустые)
 $dropdown_arrow_svg = '';
@@ -88,7 +84,7 @@ $search_icon_svg = '';
             <?
 
             // renderChatComponent('Иван', $sampleMessages, $translations);
-            render_slider($games, false, $translations);
+            render_slider($games, false, $translations, true);
             render_slider($games, true, $translations);
 
             render_faq($translations, 'Stake');

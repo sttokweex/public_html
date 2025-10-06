@@ -12,7 +12,6 @@ if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
 require (dirname(__DIR__, 1)."/panels/header.php");
 require (dirname(__DIR__, 1)."/panels/sidebar.php");
 require (dirname(__DIR__, 1)."/panels/chat.php");
-require (dirname(__DIR__, 1)."/panels/mobile.php");
 
 if($usersRef < 50){
 $percent_refs = 2;

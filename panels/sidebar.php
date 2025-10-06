@@ -29,7 +29,7 @@ $image_map = [
 <section class="sidebar">
   <div class="sidebar-content">
     <?php foreach ($sidebar_items as $item): ?>
-      <div style="opacity: 1; margin-left: 0rem;">
+      <div style="opacity: 1; margin-left: 0rem;" class="sidebar-item-outer">
         <div class="sidebar-item">
           <a href="<?php
                     if ($item == 'casino') {
@@ -58,12 +58,13 @@ $image_map = [
       const $link = $item.find('a');
       const defaultSrc = $img.attr('src');
       const activeSrc = $img.data('active-src');
-      const currentPath = window.location.pathname.replace(/\/$/, '');
+      const currentPathRaw = window.location.pathname;
+      const currentPath = currentPathRaw
+      const isRoot = (currentPathRaw === '/' || currentPath === '' || currentPath === '/');
       const itemHref = $link.attr('href') ? $link.attr('href').replace(/\/$/, '') : '';
-      const itemText = $item.find('.sidebar-item-text').text().toLowerCase();
-
+      const itemText = $item.find('.sidebar-item-text').text()
       // Set active state for casino item if on root URL, or if URL matches item href
-      if ((currentPath === '' || currentPath === '/') && itemText === '<?php echo strtolower($translations['casino']); ?>') {
+      if (isRoot && itemText === '<?php echo ($translations['casino']); ?>') {
         $item.addClass('active');
         $img.attr('src', activeSrc);
       } else if (itemHref && currentPath === itemHref) {
@@ -73,14 +74,13 @@ $image_map = [
 
       // Hover events
       $item.on('mouseenter', function() {
-        $item.addClass('active');
+
         $img.attr('src', activeSrc);
       });
 
       $item.on('mouseleave', function() {
         // Only remove active class and revert image if not on current page or not casino on root
         if (!((currentPath === '' || currentPath === '/') && itemText === '<?php echo strtolower($translations['casino']); ?>') && currentPath !== itemHref) {
-          $item.removeClass('active');
           $img.attr('src', defaultSrc);
         }
       });

@@ -11,7 +11,7 @@ function renderBanners()
           <div class="Slider__component--1n1 withHollandLayouts__slider--1Em">
             <div class="Slider__container--3ik Banner__sliderContainer---jy">
               <div class="Slider__sliderOverlay--1GK hidden" style="height: 981px;"></div>
-              <ul class="Slider__slider---o- Banner__slider--vgq" style="height: 100vh; width: 1128px;">
+              <ul class="Slider__slider---o- Banner__slider--vgq" style="height: 100vh; width: 100%;">
                 <li aria-hidden="false" class="Slider__slide--2nK  Slider__fading--30J Slider__fadingActive--2U9" style="--slide-gap: 0px;">
                   <div class="Slide__slide--2BW" tabindex="0">
                     <div class="Slide__wc--3gK withHollandLayouts__wc--3IO">
@@ -23,7 +23,7 @@ function renderBanners()
                           <section class="promo ">
                             <div class="hero">
                               <div class="hero__bg show__desktop" style="background-image: url(&quot;../images/bg.webp&quot;); opacity: 1;"></div>
-                              <div class="hero__bg show__mobile" style="background-image: url(&quot;/library/html5-banners/welcome_offers/casino/jul25/banner/bg_mobile.webp&quot;);"></div>
+                              <div class="hero__bg show__mobile" style="background-image: url(&quot;/../images/bg_mobile.webp&quot;);"></div>
                               <div class="hero__caption col-mob-4 col-dsk-12">
                                 <div class="hero__content">
                                   <div class="hero__heading">
@@ -40,10 +40,10 @@ function renderBanners()
                                     MORE INFO
                                   </button>
 
-                                  <img alt="" draggable="false" class="Image__image--2Bt stamp" src="../images/24_stamp.webp" style="transform: translate(0px, 0px);">
+                                  <img loading="lazy" alt="" draggable="false" class="Image__image--2Bt stamp" src="../images/24_stamp.webp" style="transform: translate(0px, 0px);">
 
                                 </div>
-                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="../images/asset.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
+                                <img loading="lazy" alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="../images/asset.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
                               </div>
                             </div>
                           </section>
@@ -85,7 +85,7 @@ function renderBanners()
 
 
                                 </div>
-                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="../images/asset2.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
+                                <img loading="lazy" alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="../images/asset2.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
                               </div>
                             </div>
                           </section>
@@ -126,7 +126,7 @@ function renderBanners()
 
 
                                 </div>
-                                <img alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="images/asset3.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
+                                <img loading="lazy" alt="Key Visual" draggable="false" class="Image__image--2Bt hero__asset animate-zoom" src="images/asset3.webp" data-animation="zoom" style="opacity: 1; transform: translate(0px, 0px);">
                               </div>
                             </div>
                           </section>

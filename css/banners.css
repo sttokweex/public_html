@@ -109,9 +109,12 @@
   .withHollandLayouts__wc--3IO {
   align-items: center;
   display: flex;
-  height: 12.125rem;
+  height: var(--content-height);
   justify-content: center;
-  top: calc(64px + 5rem + 12.125rem);
+  top: calc(
+    var(--header-height) * -1 + var(--margin-to-content-from-header) +
+      var(--content-height)
+  );
   transform: translateY(-100%);
 }
 .Slider__leftArrow--1hV {
@@ -121,7 +124,10 @@
   .withHollandLayouts__arrows--2WC,
 .withHollandLayouts__wrapper--1pq.withHollandLayouts__hero--1XD
   .withHollandLayouts__loader--3Fl {
-  top: calc(-64px * -1 + 12.125rem / 2 + 6rem);
+  top: calc(
+    var(--header-height) * -1 + var(--content-height) / 2 +
+      var(--margin-to-content-from-header)
+  );
 }
 .AccessibilityElement__wrapper--3x7.AccessibilityElement__inline--1Fk {
   display: inline-block;
@@ -129,7 +135,7 @@
 
 .withHollandLayouts__arrows--2WC + .withHollandLayouts__arrows--2WC {
   left: auto;
-  right: calc(10vw - 0.7rem);
+  right: calc(var(--arrows-margin) - 0.7rem);
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -145,7 +151,7 @@
 }
 .withHollandLayouts__arrows--2WC {
   background-position: 50%;
-  left: calc(10vw - 0.7rem);
+  left: calc(var(--arrows-margin) - 0.7rem);
   margin: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -165,7 +171,11 @@
 .Icon__rightArrow--2UI {
   background-image: url(../images/js__components__common__holland__Icon__assets__stateIcons__arrow-inactive.svg);
 }
-
+.Image__image--2Bt {
+  border: 0;
+  height: 100%;
+  object-fit: cover;
+}
 .Icon__common--RzD {
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -517,11 +527,14 @@
 }
 
 .QuickLinks__quickLinks--3F2 {
+  --link-margin: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: calc(4rem - 0.5rem);
-  margin-top: calc(4rem - 0.5rem);
+  margin-bottom: calc(
+    var(--hc-distance-between-components) - var(--link-margin)
+  );
+  margin-top: calc(var(--hc-distance-between-components) - var(--link-margin));
   width: 100%;
 }
 .Item__link--2UQ:first-child {
@@ -566,4 +579,5 @@
   border-color: #ff616d;
   text-decoration: none;
 }
+
 /* Include all other styles from the HTML similarly */

@@ -4,55 +4,90 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 // Определяем язык
 
-$ppResponse = @file_get_contents('http://5.129.253.12:2000/game_list.do');
-$ppDecoded = $ppResponse ? json_decode($ppResponse, true) : null;
-$ppGames = (isset($ppDecoded['games']) && is_array($ppDecoded['games'])) ? $ppDecoded['games'] : [];
-$games =  $ppGames;
 
-if (empty($bets)) {
-  $bets = [];
-  for ($i = 0; $i < 15; $i++) {
-    $game = $games[array_rand($games)];
-    $betAmount = mt_rand(100, 5000000) / 100; // Random between $1 and $5,000
-    $multiplier = mt_rand(0, 5000) / 100; // Random between 1.00 and 5.00
-    $payout = $betAmount * $multiplier; // Random win or loss
-    $bets[] = [
-      'id' => uniqid(),
-      'game' => $game['g_title'],
-      'user' => 'Скрытый',
-      'time' => date('H:i', strtotime('+' . mt_rand(0, 59) . ' minutes')),
-      'bet_amount' => '$' . number_format($betAmount, 2),
-      'multiplier' => number_format($multiplier, 2),
-      'payout' => ($payout < 0 ? '-' : '') . '$' . number_format(abs($payout), 2)
+$games = [];
+$cacheTTL = 300; // 5 минут
+
+// Кэширование в сессию
+// if (isset($_SESSION['games_cache']) && isset($_SESSION['games_cache_time']) && (time() - $_SESSION['games_cache_time']) < $cacheTTL) {
+//   $games = $_SESSION['games_cache'];
+// } else {
+// Игры с 5.129.253.12:2002
+$ppResponseLocal = fetchWithRetry('http://5.129.253.12:2002/game_list.do');
+if ($ppResponseLocal !== false) {
+  $ppDecodedLocal = json_decode($ppResponseLocal, true);
+  $ppGames = (isset($ppDecodedLocal['games']) && is_array($ppDecodedLocal['games'])) ? $ppDecodedLocal['games'] : [];
+  foreach ($ppGames as $game) {
+    $games[] = [
+      'name' => $game['g_title'],
+      'gameid' => $game['g_id'],
+      'iconurl' => $game['g_icon'] ?? '../images/slotsPreviews/' . str_replace(' ', '', $game['g_title']) . '.jpg',
+      '__source' => 'PP_Local',
+      'vendorid' => 'Pragmatic play custom'
     ];
   }
-} else {
-  // For existing bets, randomize game and recalculate payout
-  foreach ($bets as &$bet) {
-    $bet['game'] = $games[array_rand($games)];
-    // Extract numeric value from bet_amount
-    $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
-    $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
-    $payout = mt_rand(0, 1) ? $betAmount * $multiplier : -$betAmount * $multiplier;
-    $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
-  }
-  unset($bet); // Break reference
 }
 
-// помечаем источник, чтобы на клике знать какой auth дергать
-foreach ($ppGames as &$game) {
-  $game['__source'] = 'PP';
-  // Устанавливаем vendorid, если его нет, например 'pragmatic'
-  if (!isset($game['vendorid'])) {
-    $game['vendorid'] = 'Pragmatic play';
+function fetchWithRetry($url, $maxRetries = 6, $retryDelay = 1, $timeout = 5)
+{
+  $attempt = 0;
+  while ($attempt < $maxRetries) {
+    $context = stream_context_create([
+      'http' => [
+        'timeout' => $timeout // Устанавливаем таймаут 5 секунд на запрос
+      ]
+    ]);
+    $response = @file_get_contents($url, false, $context);
+    if ($response !== false) {
+      return $response;
+    }
+    $attempt++;
+    if ($attempt < $maxRetries) {
+      sleep($retryDelay);
+    }
+  }
+  return false;
+}
+// Игры с frenzycaz.online
+$excludedGames = [
+  'Starlight_Princess',
+  'Sweet_Bonanza',
+  'Gates_of_Olympus',
+  'The_Dog_House',
+  'Pirate_Gold',
+  'Great_Rhino',
+  'Monkey_Warrior',
+  'The_Dog_House_Megaways'
+];
+$ppResponseOnline = fetchWithRetry('https://frenzycaz.online/slot/api/gameListPP.php');
+if ($ppResponseOnline !== false) {
+  $ppDecodedOnline = json_decode($ppResponseOnline, true);
+  $allGames = (isset($ppDecodedOnline['data']) && is_array($ppDecodedOnline['data'])) ? $ppDecodedOnline['data'] : [];
+  foreach ($allGames as $game) {
+    // Пропускаем игры с исключёнными именами
+    $gameName = str_replace(' ', '_', $game['name']);
+    if (in_array($gameName, $excludedGames)) {
+      continue;
+    }
+    $games[] = [
+      'name' => $gameName,
+      'gameid' => $game['gameid'],
+      'iconurl' => $game['iconurl2'] ?? $game['iconurl'],
+      '__source' => 'PP_Online',
+      'vendorid' => $game['vendorid'] ?? 'Pragmatic play'
+    ];
   }
 }
 
-unset($game);
+//   // Сохраняем в сессию
+//   $_SESSION['games_cache'] = $games;
+//   $_SESSION['games_cache_time'] = time();
+// }
 
-$games = $ppGames;
-if (!is_array($games)) {
-  $games = []; // Если API не вернул данные, используем пустой массив
+
+
+if (empty($games)) {
+  $games = [];
 }
 
 // Для отладки: проверить содержимое сессии
@@ -248,11 +283,91 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 <!-- HTML-код -->
 
 
+
+<style>
+  .hl-loader {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+  }
+
+  .hl-loader,
+  .hl-loader .hl-loader-circle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+  }
+
+  .hl-loader .hl-loader-circle {
+    background: #fff;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 -41px 0 44px #011c38 inset;
+    animation: rotate 1s infinite linear;
+  }
+
+  .hl-loader .hl-loader-cross,
+  .hl-loader .hl-loader-roulette {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .hl-loader .hl-loader-roulette {
+    background-image: url(../images/loader-roulette.svg);
+    animation: spin 1s linear infinite;
+  }
+
+  .hl-loader .hl-loader-cross {
+    background-image: url(../images/loader-cross.svg);
+    animation: spin-cross 5s linear infinite;
+  }
+
+  .loader {
+    background-color: #011c38;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    position: relative;
+  }
+
+  @keyframes spin-cross {
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+</style>
+
 <head>
   <meta charset="utf-8">
   <meta name="author" content="termus">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../images/logo-mob.svg" type="image/png">
+  <link rel="preload" href="../images/loader-roulette.svg" as="image">
+  <link rel="preload" href="../images/loader-cross.svg" as="image">
   <meta name="description" content="<?= htmlspecialchars($sitename) ?> - Holland Casino">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -283,41 +398,21 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
   <title><?= strtoupper($sitename); ?> - Holland Casino!</title>
 </head>
-<style>
-  .loader {
-    border: 4px solid #ffffff3b;
-    border-top-color: #ffffff;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    -webkit-animation: loader-spins 2s linear infinite;
-    animation: loader-spins 2s linear infinite;
-    display: flex;
-    margin: 0 auto;
-  }
-
-  @keyframes loader-spins {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(3turn);
-    }
-  }
-</style>
-
-
 <input id="hashdeps" class="d-none" value="<?= htmlspecialchars($depositesSID) ?>">
-<input id="hash_lock" class="d-none" value="<?= htmlspecialchars($lock_save) ?>">
-
+<div class="loader">
+  <div class="hl-loader">
+    <div class="hl-loader-circle"></div>
+    <div class="hl-loader-roulette"></div>
+    <div class="hl-loader-cross"></div>
+  </div>
+</div>
 <!-- HEADER -->
 <div id="header" class="headerproject" style="user-select:none;">
   <div class="header-content">
     <div class="header-left-section" data-content="">
 
       <a href="/" target="_self">
-        <img alt="Holland Casino Logo" src="/images/logo-mob.svg"></img>
+        <img alt="Holland Casino Logo" loading="lazy" src="/images/logo-mob.svg"></img>
       </a>
     </div>
     <div class="GamesSearch__active--3Df">
@@ -366,7 +461,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           <div class="avatar-dropdown">
             <button type="button" class="avatar-button" aria-label="User Menu">
               <?php if (!empty($img)) { ?>
-                <img src="<?php echo htmlspecialchars($img); ?>" alt="User Avatar" class="user-avatar">
+                <img loading="lazy" src="<?php echo htmlspecialchars($img); ?>" alt="User Avatar" class="user-avatar">
               <?php } else { ?>
                 <span class="user-avatar-placeholder"><?php echo htmlspecialchars(substr($login, 0, 1)); ?></span>
               <?php } ?>
@@ -470,6 +565,37 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     <div class="Header__fadingContainer--1hB" style="opacity: 0;"></div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+
+    // Функция для проверки загрузки всех CSS-файлов
+    function areCSSLoaded() {
+      return $('link[rel="stylesheet"]').toArray().every(link => {
+        try {
+          return link.sheet && link.sheet.cssRules.length >= 0;
+        } catch (e) {
+          return true; // Игнорируем ошибки CORS или недоступные стили
+        }
+      });
+    }
+
+
+    // Функция для проверки полной загрузки страницы
+    function checkResourcesLoaded() {
+      if (document.readyState === 'complete' && areCSSLoaded()) {
+        // Скрываем лоадер
+        $('.loader').hide();
+      } else {
+        // Продолжаем проверять, если ресурсы ещё не загружены
+        setTimeout(checkResourcesLoaded, 100);
+      }
+    }
+
+    // Запускаем проверку загрузки ресурсов
+    checkResourcesLoaded();
+  });
+</script>
 <script>
   $(document).ready(function() {
     // Avatar dropdown toggle

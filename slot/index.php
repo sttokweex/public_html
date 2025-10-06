@@ -49,7 +49,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 require("../panels/header.php");
 require("../panels/sidebar.php");
-require("../panels/mobile.php");
 
 // Определяем SVG-переменные для баннеров и поиска (пустые)
 $dropdown_arrow_svg = '';
