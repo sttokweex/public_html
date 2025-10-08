@@ -4,6 +4,7 @@
   width: 100%;
   overflow-x: hidden;
   position: relative;
+  padding-bottom: 2rem;
 }
 
 /* Стили для заголовка слайдера */
@@ -16,7 +17,7 @@
 /* Стили для ссылки в заголовке */
 .game-slider-header-link {
   align-self: center;
-  color: #ff616d;
+  color: #ff616d !important;
   display: flex;
   flex-shrink: 0;
   font-size: 0.875rem;
@@ -84,12 +85,19 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 }
+.game-slider-gallery-categories {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  gap: 16px;
+}
 
 /* Стили для слайдов */
 .game-slider-slide {
   scroll-snap-align: start;
   will-change: opacity;
   transition: opacity 0.3s;
+  height: fit-content;
 }
 
 /* Псевдоэлемент для последнего слайда */

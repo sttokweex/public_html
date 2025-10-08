@@ -12,6 +12,11 @@
   width: 100%;
   display: flex;
 }
+.truncate {
+  overflow: hidden; /* Скрывает текст, выходящий за пределы контейнера */
+  text-overflow: ellipsis; /* Добавляет многоточие (...) для обрезанного текста */
+  white-space: nowrap;
+}
 .inner-tabs {
   padding: 0;
   gap: 0.5rem;
@@ -33,23 +38,53 @@
 }
 .tabs-content {
   display: flex;
+  margin-left: calc(0.25rem * 1.5);
+}
+.tabs-slider > *:first-child {
+  margin-left: 0;
+}
+.slider-first,
+.slider-second {
+  display: block; /* Default: both sliders visible */
+}
+.slider-first[style*='display: none'],
+.slider-second[style*='display: none'] {
+  display: none !important; /* Ensure jQuery's hide() works */
 }
 .tabs-button {
   margin-left: 0;
   color: white;
+  align-items: center;
   white-space: nowrap;
-  font-weight: 600;
+  font:
+    600 1rem/1.5rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
   line-height: 1;
-  font-size: 0.875rem;
-  padding-block: 0.9375rem;
+  background: transparent;
+  padding-block: 0.625rem;
   padding-inline: 1.25rem;
-  background-color: #2f4553 !important;
+  text-align: center;
   border-radius: 9999px;
   gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
   display: inline-flex;
   position: relative;
+}
+
+.tabs-button svg {
+  fill: #b1bad3;
+  color: #b1bad3;
+}
+.tabs-button:hover,
+.tabs-button.active {
+  background-color: #2f4553 !important;
+}
+.tabs-button.active svg,
+.tabs-button:hover svg {
+  fill: white;
+  color: white;
 }
 .live-table-wrapper {
   overflow-x: auto;
@@ -200,7 +235,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  justify-content: center;
+
   border-radius: 0.25rem;
   font-weight: 600;
   white-space: nowrap;
@@ -210,6 +245,7 @@
   text-decoration: none;
   font-size: 0.875rem;
   line-height: 1;
+  width: 100%;
 }
 
 .live-button:hover {
@@ -252,4 +288,24 @@
 
 .live-text-subtle {
   color: #9b9b9b;
+}
+@media (max-width: 960px) {
+  .live-table-content thead tr th:nth-child(3),
+  .live-table-content tbody tr td:nth-child(3),
+  .live-table-content tbody tr td:nth-child(4),
+  .live-table-content thead tr th:nth-child(4) {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .live-table-content thead tr th:nth-child(3),
+  .live-table-content tbody tr td:nth-child(3),
+  .live-table-content tbody tr td:nth-child(4),
+  .live-table-content thead tr th:nth-child(4),
+  .live-table-content thead tr th:nth-child(5),
+  .live-table-content tbody tr td:nth-child(5),
+  .live-table-content tbody tr td:nth-child(2),
+  .live-table-content thead tr th:nth-child(2) {
+    display: none;
+  }
 }

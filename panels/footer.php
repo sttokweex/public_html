@@ -1,6 +1,10 @@
 <?php
-function render_footer($translations)
+function render_footer($translations, $current_language = 'en')
 {
+	// Use session language if set, otherwise fall back to default
+	if (isset($_SESSION['lang'])) {
+		$current_language = $_SESSION['lang']; // Use language code (e.g., 'ru' or 'en')
+	}
 ?>
 	<link href="/css/footer.css" rel="stylesheet">
 	<footer>
@@ -160,6 +164,19 @@ function render_footer($translations)
 				</div>
 				<div class="footer-grid">
 					<div class="col-mob-4 col-dsk-12">
+						<div class="footer-language">
+							<h4 class="footer-language-title"><?php echo $translations['footer_language_selection']; ?></h4>
+							<div class="footer-language-select">
+								<select class="footer-language-dropdown" id="language-select">
+									<option value="en" <?php echo $current_language === 'en' ? 'selected' : ''; ?>><?php echo $translations['footer_language_en']; ?></option>
+									<option value="ru" <?php echo $current_language === 'ru' ? 'selected' : ''; ?>><?php echo $translations['footer_language_ru']; ?></option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-grid">
+					<div class="col-mob-4 col-dsk-12">
 						<div class="footer-contact">
 							<div class="footer-contact-wrapper">
 								<p class="footer-contact-text"><span><?php echo $translations['footer_copyright']; ?></span></p>
@@ -173,6 +190,12 @@ function render_footer($translations)
 			</div>
 		</div>
 	</footer>
+	<script>
+		document.getElementById('language-select').addEventListener('change', function() {
+			var lang = this.value;
+			window.location.href = '/language.php?lang=' + encodeURIComponent(lang);
+		});
+	</script>
 <?php
 }
 ?>

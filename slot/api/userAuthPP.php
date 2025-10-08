@@ -23,15 +23,29 @@ if (!empty($missingFields)) {
     exit;
 }
 
-// Подготовка данных в формате JSON
-$jsonData = json_encode([
+// Секретный ключ
+$secretkey = '982cd2995e1a46c291dce1090a947d15';
+
+// Подготовка данных
+$data = [
     'agentID'   => $_POST['agentID'],
     'userID'    => $_POST['userID'],
     'isaffiliate' => filter_var($_POST['isaffiliate'], FILTER_VALIDATE_BOOLEAN),
     'lang'      => $_POST['lang'],
     'gameid'    => (int)$_POST['gameid'],
     'lobbyUrl'  => $_POST['lobbyUrl']
-]);
+];
+
+// Создание подписи (HMAC-SHA256)
+$stringToSign = http_build_query($data); // Формируем строку из параметров
+$signature = hash_hmac('sha256', $stringToSign, $secretkey); // Создаём подпись
+$data['signature'] = $signature; // Добавляем подпись в данные
+
+// Преобразуем данные в JSON
+$jsonData = json_encode($data);
+
+// Логирование для отладки
+file_put_contents('debug.log', "Request: $jsonData\n", FILE_APPEND);
 
 $curl = curl_init();
 
@@ -40,16 +54,19 @@ curl_setopt_array($curl, array(
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 10,
+    CURLOPT_TIMEOUT => 30, // Увеличен таймаут до 30 секунд
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_2,
     CURLOPT_POSTFIELDS => $jsonData,
     CURLOPT_HTTPHEADER => array(
         'Authorization: Bearer 31c3a1f2b3324ae1bb4d296ef49eda0c',
         'Content-Type: application/json',
         'Accept: application/json'
     ),
+    CURLOPT_VERBOSE => true, // Включить отладку cURL
+    CURLOPT_STDERR => fopen('curl_debug.log', 'a') // Логировать в файл
 ));
 
 $response = curl_exec($curl);
@@ -57,6 +74,9 @@ $curlError = curl_error($curl);
 $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
+
+// Логирование ответа
+file_put_contents('debug.log', "Response: $response\nError: $curlError\nHTTP Code: $httpCode\n", FILE_APPEND);
 
 // Проверка ответа
 if ($response === false || trim($response) === '') {

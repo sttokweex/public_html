@@ -26,7 +26,7 @@ function render_slider($games, $hasMargin, $translations, $isOurGames = false)
   <div class="game-slider<?php echo $hasMargin ? ' home-has-margin' : ''; ?>">
     <div class="game-slider-header">
       <div class="game-slider-header-title"><?php echo $translations['trending_games']; ?></div>
-      <a class="game-slider-header-link"> Больше игр</a>
+      <a class="game-slider-header-link" href="/categories/trending-games"> Больше игр</a>
       <button class="game-slider-left"></button>
       <button class="game-slider-right"></button>
     </div>
@@ -55,11 +55,11 @@ function render_slider($games, $hasMargin, $translations, $isOurGames = false)
         return;
       }
 
-      const slideWidthPx = 140;
+      const slideWidthPx = 175;
       const countSlide = Math.max(1, Math.floor(totalWidth / slideWidthPx));
       const slideWidthPercent = 100 / countSlide;
       $gallery.css({
-        'grid-auto-columns': `calc(${slideWidthPercent}% - 10px)`
+        'grid-auto-columns': `calc(${slideWidthPercent}% - 16px)`
       });
 
       const $container = $gallery.closest('.game-slider');

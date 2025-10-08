@@ -15,8 +15,9 @@ if (!isset($_SESSION['hash'])) {
 }
 
 require(dirname(__DIR__, 1) . "/system/config.php");
-require(dirname(__DIR__, 1) . "/panels/sidebar.php");
 require(dirname(__DIR__, 1) . "/panels/header.php");
+require(dirname(__DIR__, 1) . "/panels/sidebar.php");
+
 require_once(dirname(__DIR__, 1) . '/panels/slider.php');
 require_once(dirname(__DIR__, 1) . '/panels/footer.php');
 require_once(dirname(__DIR__, 1) . '/panels/livefeed.php');
@@ -31,58 +32,11 @@ $user = mysqli_fetch_assoc($result);
 // Extract gameid from URL (e.g., /slot/vs20doghouse)
 $path = $_SERVER['REQUEST_URI'];
 $match = preg_match('/\/slot\/([^\/]+)/', $path, $matches);
-$gameid = $match && isset($matches[1]) ? $matches[1] : ''; // e.g., 'vs20doghouse'
-$gamename = $gameid; // Fallback: use gameid as gamename
+$gameid = $match && isset($matches[1]) ? $matches[1] : '';
+$gamename = (string)$gameid; // Fallback: использовать gameid как имя игры
 
 
-// Ensure $gameid and $gamename are strings to avoid htmlspecialchars errors
-$gameid = (string) $gameid;
-$gamename = (string) $gamename;
 
-// Existing bets logic
-if (empty($bets)) {
-    $bets = [];
-    for ($i = 0; $i < 15; $i++) {
-        $game = $games[array_rand($games)];
-        $betAmount = mt_rand(100, 5000000) / 100; // Random between $1 and $5,000
-        $multiplier = mt_rand(0, 5000) / 100; // Random between 1.00 and 5.00
-        $payout = $betAmount * $multiplier; // Random win or loss
-        $bets[] = [
-            'id' => uniqid(),
-            'game' => $game['g_title'],
-            'user' => 'Скрытый',
-            'time' => date('H:i', strtotime('+' . mt_rand(0, 59) . ' minutes')),
-            'bet_amount' => '$' . number_format($betAmount, 2),
-            'multiplier' => number_format($multiplier, 2),
-            'payout' => ($payout < 0 ? '-' : '') . '$' . number_format(abs($payout), 2)
-        ];
-    }
-} else {
-    // For existing bets, randomize game and recalculate payout
-    foreach ($bets as &$bet) {
-        $bet['game'] = $games[array_rand($games)]['g_title'];
-        // Extract numeric value from bet_amount
-        $betAmount = floatval(str_replace(['$', ','], '', $bet['bet_amount']));
-        $multiplier = floatval(str_replace('×', '', $bet['multiplier']));
-        $payout = $betAmount * $multiplier;
-        $bet['payout'] = ($payout < 0 ? '-' : '') . '$' . number_format($payout, 2);
-    }
-    unset($bet); // Break reference
-}
-
-// Add __source and vendorid to ppGames
-foreach ($ppGames as &$game) {
-    $game['__source'] = 'PP';
-    if (!isset($game['vendorid'])) {
-        $game['vendorid'] = 'Pragmatic play';
-    }
-}
-unset($game);
-
-$games = $ppGames;
-if (!is_array($games)) {
-    $games = [];
-}
 ?>
 
 <!DOCTYPE html>
@@ -122,26 +76,40 @@ if (!is_array($games)) {
         ?>
 <script>
     (async function() {
-        const path = window.location.pathname;
-        const match = path.match(/\/slot\/([^/]+)/);
-        const gameName = match ? match[1] : null;
-        const userId = <?php echo json_encode($user['id'] ?? ''); ?>;
-        const userBalance = <?php echo json_encode($user['balance'] ?? 0); ?>;
-        const lang = <?php echo json_encode($lang); ?>;
-        var postData = new URLSearchParams({
-            agentID: 'frenzycazUSD',
-            userId: userId,
-            isaffiliate: 'true',
-            lang: lang,
-            gameName: gameName,
-            lobbyUrl: 'http://localhost/slot',
-            balance: userBalance
-        });
+        const gameName = <?= json_encode($gameid) ?>;
+        const userId = <?= json_encode($user['id'] ?? '') ?>;
+        const userBalance = <?= json_encode($user['balance'] ?? 0) ?>;
+        const lang = <?= json_encode($lang) ?>;
+        const games = <?= json_encode($games) ?>;
 
-        const authUrl = 'http://localhost:8940/userAuth';
+        const game = games.find(g => g.name && gameName && g.name.replaceAll(' ', '_').toLowerCase() === gameName.toLowerCase());
+        let authUrl, postData;
+
+        if (game && game.__source === 'PP_Local') {
+            postData = new URLSearchParams({
+                gameName: gameName,
+                userId: userId,
+                agentID: 'frenzycazUSD',
+                isaffiliate: 'true',
+                lang: lang,
+                lobbyUrl: window.location.origin + '/slot',
+                balance: userBalance
+            });
+            authUrl = 'http://5.129.253.12:2000/userAuth';
+        } else {
+            postData = new URLSearchParams({
+                agentID: 'frenzycazUSD',
+                userID: userId,
+                isaffiliate: 'true',
+                lang: 'us',
+                gameid: game?.gameid ?? gameName,
+                lobbyUrl: "https://frenzycaz.online/slot"
+            });
+            authUrl = 'http://5.129.253.12:2200/slot/api/userAuthPP.php';
+        }
 
         try {
-            var response = await fetch(authUrl, {
+            const response = await fetch(authUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -150,30 +118,21 @@ if (!is_array($games)) {
                 body: postData.toString()
             });
 
-            if (!response.ok) {
-                throw new Error('Ошибка API: ' + response.status);
-            }
-
-            var data = await response.json();
-            document.getElementById('game-iframe-<?php echo htmlspecialchars($gameid); ?>').src = data.url;
-            if (!data.url) {
-                throw new Error('В ответе нет ссылки на игру');
-            }
+            if (!response.ok) throw new Error('API Error: ' + response.status);
+            const data = await response.json();
+            if (!data.url) throw new Error('No game URL in response');
+            document.getElementById('game-iframe-<?= htmlspecialchars($gameid) ?>').src = data.url;
         } catch (error) {
-            console.error('Ошибка при получении ссылки:', error.message);
+            console.error('Error fetching game URL:', error);
         }
     })();
 
     function toggleFullscreen(iframeId) {
         const iframe = document.getElementById(iframeId);
         if (!document.fullscreenElement) {
-            iframe.requestFullscreen().catch(err => {
-                console.error('Error entering fullscreen:', err);
-            });
+            iframe.requestFullscreen().catch(err => console.error('Error entering fullscreen:', err));
         } else {
-            document.exitFullscreen().catch(err => {
-                console.error('Error exiting fullscreen:', err);
-            });
+            document.exitFullscreen().catch(err => console.error('Error exiting fullscreen:', err));
         }
     }
 </script>

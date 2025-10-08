@@ -1,6 +1,7 @@
 :root {
   --gutter: 1rem;
   --layout-max-width: 1280px;
+  --hc-distance-between-components: 4rem;
 }
 body {
   background-color: #011c38;
@@ -642,12 +643,7 @@ a:hover {
   font-size: 0.875rem;
   line-height: 1.375rem;
 }
-.DesktopSubNavigation__menuIcon--34N {
-  flex: 0 0 auto;
-  height: 1.5rem;
-  margin-right: 0.5rem;
-  width: 1.5rem;
-}
+
 .Icon__icon--x96 {
   background-position: 50%;
   background-repeat: no-repeat;
@@ -658,16 +654,19 @@ a:hover {
   -webkit-user-select: none;
   user-select: none;
 }
+.Icon__isRound--3vi {
+  border-radius: 50%;
+}
 .Icon__casino--1m0 {
-  background-image: url(../images/casino-inactive.svg);
+  background-image: url(../images/sidebar/icons/dog-house.gif);
   position: relative;
 }
 .Icon__livecasino--N_a {
-  background-image: url(../images/livecasino-inactive.svg);
+  background-image: url(../images/sidebar/icons/sweet.gif);
   position: relative;
 }
 .Icon__sports--3Gc {
-  background-image: url(../images/sports-inactive.svg);
+  background-image: url(../images/sidebar/icons/best.gif);
   position: relative;
 }
 .Icon__poker--UX0 {
@@ -683,7 +682,7 @@ a:hover {
   position: relative;
 }
 .Icon__goalsetters--9-7 {
-  background-image: url(../images/virtual-sport-inactive.svg);
+  background-image: url(../images/sidebar/icons/sugar-rush.png);
   position: relative;
 }
 .LabeledCloseButton__close--2kg .LabeledCloseButton__closeIcon--11r {
@@ -713,6 +712,10 @@ a:hover {
   background-image: url(../images/close-button-active.svg);
   position: relative;
 }
+.Icon__large--2F8 {
+  height: 2rem;
+  width: 2rem;
+}
 
 .LabeledCloseButton__close--2kg {
   background: none;
@@ -736,7 +739,7 @@ a:hover {
 .LabeledCloseButton__close--2kg:hover {
   color: #ff616d;
 }
-.GamesSearch__active--3Df {
+.header-content .GamesSearch__active--3Df {
   display: none;
 }
 .GamesSearch__active--3Df.open {
@@ -787,12 +790,375 @@ a:hover {
 .GamesSearch__searchQuery--gUs {
   color: #ff616d;
 }
+.MobileMenu__menuIcon--1Gb {
+  margin-right: 1.125em;
+}
+.Icon__navigation-menu--R7v {
+  display: none;
+  background-image: url('../images/navigation-menu.svg');
+}
+.SideMenus__menus--38M {
+  display: none;
+}
+.DesktopSubNavigation__menuIcon--34N {
+  flex: 0 0 auto;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  width: 1.5rem;
+}
+@media (min-width: 1000px) {
+  .Icon__navigation-menu--R7v {
+    display: none !important;
+  }
+}
 @media (max-width: 1000px) {
+  .Header__fadingContainer--1hB {
+    background-color: #011c38;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    top: 0;
+    z-index: -1;
+  }
+  .SideMenus__menus--38M {
+    display: block;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+  }
+  .Sidebar__container--2Ro .Sidebar__overlay--uHV {
+    will-change: opacity;
+  }
+  .Overlay__overlay--13G {
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+  }
+  .Sidebar__overlay--uHV {
+    z-index: 1;
+  }
+  .Sidebar__sidebar--1pz {
+    width: 28rem;
+  }
+  .Sidebar__sidebar--3j1.Sidebar__left--1qg {
+    left: 0;
+  }
+  .Sidebar__sidebar--1pz {
+    z-index: 2;
+  }
+  .Sidebar__sidebar--3j1 {
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+  }
+  .Sidebar__sidebarContent--Jmu {
+    height: 100%;
+    pointer-events: auto;
+    width: 100%;
+  }
+  .Sidebar__dark--Ga_ .Sidebar__sidebarContent--Jmu {
+    background-color: #011c38;
+  }
+  .SearchResults__shown--3yB {
+    max-height: 100% !important;
+  }
+  .SearchResults__list--1aE {
+    border-radius: 0;
+    left: 0;
+    top: 3rem;
+    width: 100%;
+  }
+  .SidebarContent__sidebarContent--1YE {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 1rem;
+  }
+  .GamesSearch__active--3Df {
+    z-index: 102;
+  }
+  .GridRow__colsRow--JL1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .GamesSearch__gridRow--1xF {
+    display: flex;
+  }
+  .GamesSearch__inputWrapper--1s1 {
+    width: 100%;
+  }
+  .GamesSearch__inputContainer--1pZ {
+    align-items: center;
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+  input.GamesSearch__input--AJm {
+    background-color: #ffffff1a;
+    border: none;
+    height: 3rem;
+    padding: 1rem 2rem 1rem 3.5rem;
+    width: 100%;
+    outline: none;
+  }
+  .GamesSearch__inputIconContainer--2mR {
+    background-color: #ffffff1a;
+    border-radius: 1.5rem;
+    height: 3rem;
+    width: 3rem;
+  }
+  .GamesSearch__counter--18v,
+  .GamesSearch__icon--1P6 {
+    position: absolute;
+  }
+  .Tabs__tabs--o9x {
+    display: flex;
+    flex: 0 0 auto;
+    margin: 0 0 1rem;
+    min-height: 5.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .Tabs__tab--2rN {
+    align-items: center;
+    display: flex;
+    flex: 0 0 25%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    justify-content: flex-start;
+    opacity: 0.6;
+    padding: 1rem 0.5rem 0;
+    text-align: center;
+    text-decoration: none;
+    margin: 0;
+  }
+  .Icon__slots--mAl:after {
+    background-image: url(../images/js__components__common__holland__Icon__assets__stateIcons__slots-active.svg?t=1758634318261);
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: '';
+    display: inline-block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+  }
+
+  .Icon__multiple-users--1L0:after {
+    background-image: url(../images/js__components__common__holland__Icon__assets__stateIcons__multiple-users-active.svg?t=1758634318261);
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: '';
+    display: inline-block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+  }
+  .Icon__responsible-gaming--2Gl:after {
+    background-image: url(../images/js__components__common__holland__Icon__assets__stateIcons__responsible-gaming-active.svg?t=1758634318261);
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: '';
+    display: inline-block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+  }
+  .Icon__close-medium--2c4:after {
+    background-image: url(../images/js__components__common__holland__Icon__assets__stateIcons__close-medium-active.svg?t=1758634318261);
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: '';
+    display: inline-block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+  }
+  .Sidebar__sidebar--3j1 {
+    transition: transform 0.3s ease-in-out;
+  }
+  .Overlay__overlay--13G {
+    transition: opacity 0.3s ease-in-out;
+  }
+  .Header__fadingContainer--1hB {
+    transition: opacity 0.3s ease-in-out;
+  }
+  .MobileMenu__menuIcon--1Gb {
+    transition: opacity 0.3s ease-in-out;
+  }
+  .Icon__close-medium--2c4.Icon__active--1EL:after,
+  .Icon__close-medium--2c4.Icon__hasHover--34c:hover:after {
+    visibility: visible;
+  }
+  .Icon__close-medium--2c4.Icon__active--1EL,
+  .Icon__close-medium--2c4.Icon__hasHover--34c:hover {
+    visibility: hidden;
+  }
+  .Icon__close-medium--2c4.Icon__active--1EL:after,
+  .Icon__close-medium--2c4.Icon__hasHover--34c:hover:after {
+    visibility: visible;
+  }
+  .Icon__responsible-gaming--2Gl.Icon__active--1EL,
+  .Icon__responsible-gaming--2Gl.Icon__hasHover--34c:hover {
+    visibility: hidden;
+  }
+  .Icon__responsible-gaming--2Gl.Icon__active--1EL:after,
+  .Icon__responsible-gaming--2Gl.Icon__hasHover--34c:hover:after {
+    visibility: visible;
+  }
+  .Icon__multiple-users--1L0.Icon__active--1EL,
+  .Icon__multiple-users--1L0.Icon__hasHover--34c:hover {
+    visibility: hidden;
+  }
+  .Icon__multiple-users--1L0.Icon__active--1EL:after,
+  .Icon__multiple-users--1L0.Icon__hasHover--34c:hover:after {
+    visibility: visible;
+  }
+  .Icon__slots--mAl.Icon__active--1EL,
+  .Icon__slots--mAl.Icon__hasHover--34c:hover {
+    visibility: hidden;
+  }
+  .Icon__slots--mAl.Icon__active--1EL:after,
+  .Icon__slots--mAl.Icon__hasHover--34c:hover:after {
+    visibility: visible;
+  }
+  .Icon__close-medium--2c4 {
+    background-image: url(../images/js__components__common__holland__Icon__assets__stateIcons__close-medium-inactive.svg?t=1758634318261);
+    position: relative;
+  }
+  .Icon__multiple-users--1L0 {
+    background-image: url(../images/js__components__common__holland__Icon__assets__stateIcons__multiple-users-inactive.svg?t=1758634318261);
+    position: relative;
+  }
+  .Icon__responsible-gaming--2Gl {
+    background-image: url(../images/js__components__common__holland__Icon__assets__stateIcons__responsible-gaming-inactive.svg?t=1758634318261);
+    position: relative;
+  }
+  .Icon__slots--mAl {
+    background-image: url('../images/js__components__common__holland__Icon__assets__stateIcons__slots-inactive.svg?t=1758634318261');
+    position: relative;
+  }
+  .Tabs__tab--2rN .Tabs__text--2uU {
+    line-height: 1.2em;
+  }
+  .Tabs__tab--2rN.Tabs__tabs-width-3--2Kz {
+    flex: 0 0 33.33%;
+  }
+  .Tabs__dark--1zL .Tabs__tab--2rN {
+    border-bottom: 0.0625rem solid #ffffff1a;
+    color: #fff;
+  }
+  .Tabs__dark--1zL .Tabs__tab--2rN.Tabs__active--1K8 {
+    border-bottom: 0.125rem solid #ff616d;
+    opacity: 1;
+  }
+
+  .SlidingPane__panel--3DT {
+    height: 100%;
+    position: relative;
+  }
+  .Overlay__overlay--1hJ {
+    background: #000;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: 0.6;
+    pointer-events: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 100%;
+  }
+  [class*='Overlay__overlay'] {
+    opacity: 0.98;
+  }
+  .SlidingPane__panel--3DT .SlidingPane__sliding--3Sw {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    will-change: transform, opacity;
+  }
+  .MenuItem__itemTitle--1dC {
+    flex: 1 0 auto;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .MenuItem__item--1ED {
+    align-items: center;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 1;
+  }
+  .MenuItem__active--zbo.MenuItem__dark--gB7 .MenuItem__itemTitle--1dC {
+    color: #ff616d;
+  }
+  .MenuItem__active--zbo .MenuItem__itemTitle--1dC {
+    text-decoration: underline;
+  }
+  .SidebarContent__slidingMenu--2dQ {
+    height: auto;
+  }
+  .SlidingMenu__slidingPanel--2AQ {
+    flex: 1 0 auto;
+    height: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+  }
+  .header-left-section {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    right: 0;
+  }
+  .header-left-section img {
+    max-height: 2em;
+    max-width: 4.75em;
+  }
   .main-container {
     --hc-distance-between-components: 2rem;
     max-width: calc(1000px - 2rem);
     width: calc(100vw - 2rem - 1rem * 3 / 4 * 4 + 1rem * 3);
     min-width: unset;
+  }
+  .Icon__navigation-menu--R7v {
+    display: block;
   }
   .footer-media-terms {
     justify-content: center;

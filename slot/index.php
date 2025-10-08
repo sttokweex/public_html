@@ -73,7 +73,7 @@ $search_icon_svg = '';
     <div class="home-page-content-inner">
 
         <?php
-        renderBanners();
+        renderBanners($translations);
         // renderSearch($games, $translations);
         ?>
 

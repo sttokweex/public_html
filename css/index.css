@@ -14,7 +14,6 @@
 .home-container {
   width: 100%;
   display: flex;
-  max-width: 1200px;
   align-self: center;
   margin: 0;
   flex-direction: column;
@@ -40,7 +39,111 @@
   margin: 0;
   padding: 0;
 }
-
+.popup-theme-dark,
+.portlet-theme-dark {
+  color: white;
+}
+.chat-input-row form,
+.portlet__content_border_none {
+  padding: 0;
+}
+.Card__cardContainer--3vW {
+  border-radius: 0.18rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+.Card__imageContainer--2iX {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-height: 24rem;
+  min-height: 16rem;
+  overflow: auto;
+  position: relative;
+}
+.Card__imageContainer--2iX:before {
+  background: #1d1a2099;
+  bottom: 0;
+  content: '';
+  height: 100%;
+  min-height: 14rem;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  z-index: 1;
+}
+.Card__cornerIcon--3I6 {
+  height: 6rem;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 3rem;
+}
+.Card__contentBlock--2LI {
+  float: right;
+  height: 100%;
+  padding: 1.25rem;
+  position: relative;
+  width: 50%;
+  z-index: 1;
+}
+.Card__containerImages--28g {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+}
+.Card__containerImages--28g .Card__icon24--3n1 {
+  height: 2.68rem;
+  width: 3rem;
+}
+.Card__header--Ono {
+  background-clip: text;
+  background-image: linear-gradient(225deg, #ff914c, #ff328c);
+  color: #0000;
+  display: inline;
+}
+.PlainText__large--2Lt {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+.Card__description--3Yf,
+.Card__subtitle--2nS {
+  margin-top: 1rem;
+}
+.Headings__dark--1eH {
+  color: white;
+}
+.Headings__h2--3Bv {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+.Headings__bold--iD3 {
+  font-weight: 700;
+}
+.Card__imageContainer--2iX:after {
+  background: linear-gradient(180deg, #1d1a2000, #1d1a20d1 82.01%, #1d1a20);
+  bottom: 0;
+  content: '';
+  height: 50%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.Card__image--1yK {
+  left: 5%;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+}
+.Card__contentBlock--2LI.Card__iconPresent--9n6 {
+  padding: 1.25rem 5rem 1.25rem 1.25rem;
+}
 .home-feature-title {
   font-size: 0.875rem;
   font-weight: 700;
@@ -49,6 +152,10 @@
   color: #ffffff;
   display: flex;
   align-items: center;
+}
+.Button__large--6PM {
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
 }
 
 .home-feature-status {
@@ -355,7 +462,9 @@ System: feature-link:hover {
   gap: 0.375rem;
   min-height: 1.125rem;
 }
-
+.SpotlightIcon__icon24--1YT {
+  background-image: url(../images/24_stamp.webp);
+}
 /* Стили для контейнера иконок */
 .home-icon-container {
   display: none;
@@ -492,5 +601,62 @@ System: feature-link:hover {
   display: flex;
   justify-content: space-between;
 }
-
+@media (max-width: 1000px) {
+  .Card__contentBlock--2LI {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    left: 0;
+    padding: 1rem;
+    position: absolute;
+    width: 100%;
+  }
+  .Card__cornerIcon--3I6 {
+    height: 3.5rem;
+    width: 2rem;
+  }
+  .Card__image--1yK {
+    left: 0;
+    max-height: calc(100% - 6rem);
+    top: 2rem;
+    transform: translate(0);
+    width: 100%;
+  }
+  .Card__contentBlock--2LI {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    left: 0;
+    padding: 1rem !important;
+    position: absolute;
+    width: 100%;
+  }
+  .Card__containerImages--28g {
+    bottom: 1rem;
+    flex-direction: row;
+    height: 42px;
+    justify-content: space-between;
+    padding: 0 1rem;
+    right: 0;
+    top: auto;
+    width: 100%;
+  }
+  .Card__header--Ono {
+    display: none;
+  }
+  .Card__description--3Yf,
+  .Card__subtitle--2nS {
+    display: none;
+  }
+  .Headings__h2--3Bv {
+    display: none;
+  }
+  .Card__imageContainer--2iX::before {
+    display: none;
+  }
+}
 /* Define font-face for different weights */

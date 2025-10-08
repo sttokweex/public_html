@@ -341,7 +341,6 @@ require(dirname(__DIR__, 2) . "/panels/chat.php");
                       $ps = $row['ps'];
                       $sum = $row['sum'];
                       $wallet = $row['wallet'];
-                      $fake = $row['fake'];
                       $status = $row['status'];
                       $data = $row['date'];
 
