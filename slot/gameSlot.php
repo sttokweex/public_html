@@ -71,7 +71,6 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
     </div>
 
 </div> <?php
-        //  renderChatComponent('Иван', $sampleMessages, $translations);
         render_footer($translations,);
         ?>
 <script>

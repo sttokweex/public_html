@@ -445,7 +445,6 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             </button>
             <div class="avatar-dropdown-menu">
               <a href="/profile" class="dropdown-item"><?= $translations['profile'] ?></a>
-              <a href="/slot" class="dropdown-item"><?= $translations['games'] ?></a>
               <a href="/bonus" class="dropdown-item"><?= $translations['bonus'] ?></a>
               <a href="/referals" class="dropdown-item"><?= $translations['referrals'] ?></a>
               <a href="/ranks" class="dropdown-item"><?= $translations['ranks'] ?></a>

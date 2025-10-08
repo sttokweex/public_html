@@ -13,7 +13,7 @@ if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
 require dirname(__DIR__, 1) . ("/panels/header.php");
 require dirname(__DIR__, 1) . ("/panels/sidebar.php");
 require dirname(__DIR__, 1) . ("/panels/chat.php");
-//renderChatComponent('Иван', $sampleMessages,$translations);
+
 ?>
 <link href="/css/bonus.css" rel="stylesheet">
 

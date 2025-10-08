@@ -80,7 +80,6 @@ $search_icon_svg = '';
         <div class="home-container home-has-padding home-has-margin">
 
             <?
-            // renderChatComponent('Иван', $sampleMessages, $translations);
             render_slider($games, false, $translations);
             render_slider($games, true, $translations);
             render_faq($translations)
