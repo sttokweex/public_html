@@ -83,7 +83,6 @@ $search_icon_svg = '';
 
             <?
 
-            // renderChatComponent('Иван', $sampleMessages, $translations);
             render_slider($games, false, $translations, true); ?>
             <div class="fn-portlet portlet__content portlet__content_border_none portlet__content_type_56 portlet-theme-dark">
                 <div class="" data-web-content-id="SPOTLIGHT_CASINO_WO_JUL25">
