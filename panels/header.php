@@ -30,7 +30,7 @@ if ($ppResponseLocal !== false) {
     $games[] = [
       'name' => $game['g_title'],
       'gameid' => $game['g_id'],
-      'iconurl' => $game['g_icon'] ?? '../images/slotsPreviews/' . str_replace(' ', '', $game['g_title']) . '.jpg',
+      'iconurl' => $game['g_icon'] ?? '../images/SlotsPreviews/' . str_replace(' ', '', $game['g_title']) . '.jpg',
       '__source' => 'PP_Local',
       'vendorid' => 'Pragmatic play custom'
     ];
