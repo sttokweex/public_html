@@ -77,7 +77,7 @@ body {
   width: calc(100% - 60px);
   margin-left: 60px;
   height: 60px;
-  z-index: 7;
+  z-index: 1530 ;
   box-shadow:
     #0003 0 4px 6px -1px,
     #0000001f 0 2px 4px -1px;
@@ -122,14 +122,14 @@ body {
 }
 @media (min-width: 1200px) {
   .main-container {
-    margin-left: 240px;
+    margin-left: 260px;
   }
   .headerproject {
-    width: calc(100% - 240px);
-    margin-left: 240px;
+    width: calc(100% - 260px);
+    margin-left: 260px;
   }
   .chat .main-container {
-    margin-left: 240px;
+    margin-left: 260px;
     margin-right: 370px;
   }
   .sidebar.chat .main-container {
@@ -138,8 +138,8 @@ body {
   }
 
   .chat .headerproject {
-    width: calc(100% - 240px - 370px);
-    margin-left: 240px;
+    width: calc(100% - 260px - 370px);
+    margin-left: 260px;
     margin-right: 370px;
   }
   .chat.sidebar .headerproject {
@@ -179,7 +179,7 @@ body {
   gap: 0.5rem;
 }
 .wrap.normal {
-  max-width: 66.95px;
+  max-width: 80px;
 }
 .wrap.normal a {
   width: 100%;
@@ -879,7 +879,14 @@ a {
     color 0.3s ease,
     transform 0.1s ease;
 }
-
+.scrollY{
+  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scroll: touch;
+  scrollbar-width: none;
+  scrollbar-color: var(--color-grey-400) transparent;
+  min-height: 0;
+  overflow: hidden auto;
+}
 .notification-close svg {
   color: #b1bad3; /* fallback если переменная не задана */
   background-color: transparent;

@@ -941,33 +941,4 @@ System: feature-link:hover {
   }
 }
 /* Define font-face for different weights */
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima Nova/proximanova_regular.ttf')
-    format('truetype');
-  font-weight: 400; /* Regular */
-  font-style: normal;
-}
 
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima Nova/proximanova_bold.otf')
-    format('opentype');
-  font-weight: 600; /* Bold */
-  font-style: normal;
-}
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima Nova/proximanova_extrabold.otf')
-    format('opentype');
-  font-weight: 700; /* Bold */
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima Nova/proximanova_light.otf')
-    format('opentype');
-  font-weight: 300; /* Light */
-  font-style: normal;
-}

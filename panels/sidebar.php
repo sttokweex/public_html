@@ -18,10 +18,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
 
   <div class="sidebar_header">
     <button type="button" class="sidebar__btn-close">
-      <svg fill="rgba(177,186,211,1)" viewBox="0 0 64 64" class="svg-icon " style="">
-
-        <path d="M64 64H0V51h64zm0-25.5H0v-13h64zM64 13H0V0h64z"></path>
-      </svg>
+      <svg data-ds-icon="Menu" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="M19 4H5a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1m.15 6H4.85a.85.85 0 0 0-.85.85v2.3c0 .47.38.85.85.85h14.3c.47 0 .85-.38.85-.85v-2.3a.85.85 0 0 0-.85-.85M19 16H5a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path></svg>
 
     </button>
     <div class="link_wrap">
@@ -38,43 +35,31 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
         <a class="sidebar_anchor_base" style='position:relative;'>
           <img class="productImg " alt="Product Img " draggable="false" src="/assets/media/active-casino-mini.C2xccerq.svg">
           <button type="button" tabindex="0" class="anchor_button" style='cursor:default;' disabled=true data-button-root="">
-            <svg data-ds-icon="Casino" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="svg-icon" style="color: white;"><!---->
+            <svg data-ds-icon="Casino" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="svg-icon" style="color: white;">
               <path fill="currentColor" d="m2.14 4.63 7.25-3.38c.63-.3 1.34-.23 1.89.11-.09.14-.18.28-.26.43L4.81 15.1 1.17 7.29c-.47-1-.03-2.19.97-2.66"></path>
               <path fill="currentColor" fill-rule="evenodd" d="m21.86 4.63-7.25-3.38c-1-.47-2.19-.03-2.66.97l-6.76 14.5c-.47 1-.03 2.19.97 2.66l7.25 3.38c1 .47 2.19.03 2.66-.97l6.76-14.5c.47-1 .03-2.19-.97-2.66m-9.54 11-.85-4.81 4.23-2.44.85 4.81z" clip-rule="evenodd"></path>
-            </svg><!----> <!----> <!----> <!----><!----><!----></button></a>
+            </svg> </button></a>
         <a class="sidebar_anchor_base favorite-box" href="/favorites">
           <button type="button" tabindex="0" class="anchor_button" data-button-root="">
-            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
-              <title><?php echo htmlspecialchars($translations['favorites']); ?></title>
-              <path d="m32.001 16 3.094 5.759c1.742 3.218 4.813 5.525 8.457 6.201l.074.012 6.425 1.146-4.505 4.72a12 12 0 0 0-3.396 8.385q0 .882.124 1.732l-.008-.064.88 6.453-5.546-2.666c-1.635-.807-3.563-1.281-5.599-1.281s-3.964.471-5.675 1.313l.075-.034-5.545 2.666.88-6.453c.074-.5.116-1.08.116-1.668a12 12 0 0 0-3.398-8.39l.004.005-4.505-4.854 6.425-1.146a12.15 12.15 0 0 0 8.501-6.15l.032-.063 3.094-5.626zm0-14.613h-.006c-1.32 0-2.466.736-3.052 1.822l-.01.018-7.599 14.292a3.53 3.53 0 0 1-2.432 1.784l-.022.004-15.998 2.88A3.47 3.47 0 0 0 0 25.602c0 .93.366 1.774.962 2.398l-.002-.002 11.225 11.705a3.37 3.37 0 0 1 .93 2.982l.004-.02-2.186 15.998a3.466 3.466 0 0 0 3.432 3.946h.008a3.25 3.25 0 0 0 1.644-.382l-.018.008 14.264-6.88a4.19 4.19 0 0 1 3.704.01l-.024-.01 14.053 6.88a3.15 3.15 0 0 0 1.5.374h.021-.002q.052.003.114.002a3.466 3.466 0 0 0 3.43-3.966l.002.018-2.186-15.998a3.37 3.37 0 0 1 .934-2.88L63.034 28.08a3.468 3.468 0 0 0-1.872-5.81l-.022-.003-15.998-2.88a3.53 3.53 0 0 1-2.47-1.846l-.01-.02-7.6-14.292a3.47 3.47 0 0 0-3.061-1.84h-.006z"></path>
-            </svg>
+           <svg data-ds-icon="FavouriteFilled" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="M12 19.48 6.72 21.9c-.82.37-1.73-.29-1.63-1.18l.67-5.77-3.93-4.28c-.61-.66-.26-1.74.62-1.92l5.7-1.15L11 2.54c.44-.79 1.57-.79 2.02 0l2.85 5.06 5.7 1.15c.88.18 1.23 1.25.62 1.92l-3.93 4.28.67 5.77c.1.9-.81 1.56-1.63 1.18l-5.28-2.42z"></path></svg>
             <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['favorites']); ?></span>
           </button>
         </a>
         <a class="sidebar_anchor_base recent-box" href="/recent">
           <button type="button" tabindex="0" class="anchor_button" data-button-root="">
-            <svg fill="currentColor" viewBox="0 0 96 96" class="svg-icon " style="">
-              <title><?php echo htmlspecialchars($translations['recent']); ?></title>
-              <path d="M52.117 4.113C76.354 4.116 96 23.763 96 48S76.353 91.886 52.113 91.887c-11.019 0-21.087-4.058-28.742-10.719l8.707-10.04a30.4 30.4 0 0 0 19.996 7.462c16.852 0 30.515-13.664 30.516-30.516S68.927 17.56 52.074 17.56c-15.184 0-27.777 11.086-30.148 25.785h7.828L14.855 64.426 0 43.344h8.473l.015-.203c2.539-21.885 21.079-38.898 43.63-39.028M45.45 29.375h13.332v15.86L70.988 57.44l-9.437 9.438-16.102-16.106z"></path>
-            </svg>
+          <svg data-ds-icon="Recent" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" fill-rule="evenodd" d="M12 1C5.92 1 1 5.92 1 12s4.92 11 11 11 11-4.92 11-11S18.08 1 12 1m4.21 15.21c-.2.2-.45.29-.71.29s-.51-.1-.71-.29l-3.5-3.5A1 1 0 0 1 11 12V4c0-.55.45-1 1-1s1 .45 1 1v7.59l3.21 3.21c.39.39.39 1.02 0 1.41" clip-rule="evenodd"></path></svg>
             <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['recent']); ?></span>
           </button>
         </a>
         <a class="sidebar_anchor_base challenge-box" href="/challenges">
           <button type="button" tabindex="0" class="anchor_button" data-button-root="">
-            <svg fill="currentColor" viewBox="0 0 96 96" class="svg-icon " style="">
-              <title><?php echo htmlspecialchars($translations['contests']); ?></title>
-              <path d="M48.05.055C74.535.055 96 21.52 96 48.004s-21.467 47.949-47.95 47.95C21.569 95.953.103 74.485.103 48.003c0-6.845 1.435-13.358 3.898-18.941h6.594l2.992 2.953a37.9 37.9 0 0 0-3.578 16.125c0 21.031 17.05 38.082 38.082 38.082 21.031 0 38.082-17.05 38.082-38.082S69.122 10.059 48.09 10.059c-5.853 0-11.398 1.322-16.121 3.582l-2.996-2.996V4.05l-.301.12A47.3 47.3 0 0 1 46.668.075l1.285-.02zm-.105 19.98c15.446 0 27.97 12.52 27.97 27.969-.001 15.445-12.524 27.969-27.97 27.969s-27.968-12.521-27.968-27.97v-.073c0-2.957.469-5.803 1.28-8.278l8.75 8.79v.023c.247 9.706 8.182 17.501 17.942 17.52l-.004.042h.22c9.93 0 17.979-8.05 17.98-17.98 0-9.854-7.927-17.862-17.762-17.984l-8.79-8.75-.195.054a27.4 27.4 0 0 1 8.477-1.332zm-27.047-6.117 26.215 26.094h.84A7.993 7.993 0 1 1 40 48.82l-.04-.8a6 6 0 0 1 0-.855L17.903 25.026l-3.992-3.996H8.313L0 21.027V11.04h10.988V.051h9.91z"></path>
-            </svg>
+           <svg data-ds-icon="Challenge" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="m7.92 12.32 1.25-1.88c.37-.56 1.29-.56 1.66 0L12 12.19l1.17-1.75c.37-.56 1.29-.56 1.66 0l1.23 1.85 1.44-1.85L16 7h-3V5h6l-2-2 2-2h-8v6H8l-1.54 3.53zm10.5.2-1.63 2.09c-.2.25-.5.41-.83.38-.32-.01-.62-.18-.8-.44l-1.17-1.75-1.17 1.75c-.37.56-1.29.56-1.66 0L9.99 12.8l-1.17 1.75c-.18.26-.47.43-.78.44h-.05c-.3 0-.58-.13-.77-.37l-1.67-2.04L1 23h22z"></path></svg>
             <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['contests']); ?></span>
           </button>
         </a>
         <a class="sidebar_anchor_base mybets-box" href="my-bets">
           <button type="button" tabindex="0" class="anchor_button" data-button-root="">
-            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
-              <title><?php echo htmlspecialchars($translations['my_bets']); ?></title>
-              <path d="M0 3.55v7.12h7.12v49.787h6.214c.778-3.122 3.556-5.398 6.866-5.398a7.07 7.07 0 0 1 6.856 5.348l.01.048h9.974c.778-3.122 3.556-5.398 6.866-5.398a7.07 7.07 0 0 1 6.856 5.348l.01.048h6.16V10.667h7.066v-7.12zm35.546 37.335h-17.76V35.55h17.76zM46.214 26.67H17.788v-5.334h28.426z"></path>
-            </svg>
+            <svg data-ds-icon="MyBets" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="M22 1h-7c0 1.66-1.34 3-3 3S9 2.66 9 1H2v22h7c0-1.66 1.34-3 3-3s3 1.34 3 3h7zm-3.54 7.91-7.22 5.78a1.436 1.436 0 0 1-1.92-.1L6.43 11.7c-.56-.56-.56-1.48 0-2.04s1.48-.56 2.04 0l1.97 1.97 6.21-4.97c.62-.5 1.53-.4 2.03.23.5.62.4 1.53-.23 2.03z"></path></svg>
             <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['my_bets']); ?></span>
           </button>
         </a>
@@ -82,29 +67,28 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
           <hr class="spacing">
         </div>
         <div class="wrapper-text"><span class="" style="max-width: 100%;"><?php echo htmlspecialchars($translations['games']); ?></span></div>
+            <a class="sidebar_anchor_base" href="group/new-releases">
+          <button type="button" tabindex="0" class="anchor_button" data-button-root="">
+<svg data-ds-icon="New" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="M22 12c-7.8 1.21-8.79 2.2-10 10-1.21-7.8-2.2-8.79-10-10 7.8-1.21 8.79-2.2 10-10 1.21 7.8 2.2 8.79 10 10m2-7c-3.12.48-3.52.88-4 4-.48-3.12-.88-3.52-4-4 3.12-.48 3.52-.88 4-4 .48 3.12.88 3.52 4 4M8 19c-3.12.48-3.52.88-4 4-.48-3.12-.88-3.52-4-4 3.12-.48 3.52-.88 4-4 .48 3.12.88 3.52 4 4"></path></svg>            <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['new_releases']); ?></span>
+          </button>
+        </a>
         <div id="slots" data-testid="slots" class="sidebar_accordion">
           <div class="accordion accordion-stacked">
             <div class="header header-stacked">
               <button type="button" tabindex="0" class="promo_anchor_button" aria-label="<?php echo htmlspecialchars($translations['slots']); ?>" data-button-root="">
-                <svg fill="currentColor" viewBox="0 0 96 96" class="svg-icon is_small" style="">
-                  <title><?php echo htmlspecialchars($translations['slots']); ?></title>
-                  <path d="M30.48 42.441a79.7 79.7 0 0 0-5.8 15.84 30.1 30.1 0 0 0 0 14.36l.718 3-16.277 4A37.9 37.9 0 0 1 12 53.719l-12 2.84v-11.68l29.36-7.04zM96 46.88l-.922 4.64A85.5 85.5 0 0 0 83.2 63.32a30.56 30.56 0 0 0-6 13.04l-.597 3L60 76.32a38.12 38.12 0 0 1 13.36-22.28l-12-2.36 5.038-10.64zM72 24.12a134 134 0 0 0-15.2 22.957 49.8 49.8 0 0 0-5.6 22.8v5H32.32a55.6 55.6 0 0 1 5-22.757A87 87 0 0 1 50.8 31h-28V16.36H72z"></path>
-                </svg>
-                <svg fill="currentColor" viewBox="0 0 64 64" class="svg_isopen svg-icon" style="">
-                  <path d="m26.307 53.996 20.998-20.998L26.307 12 20 18.306 34.694 33 20.001 47.694 26.307 54z"></path>
-                </svg>
-                <div class="header-title overflow-hidden">
+                  <svg data-ds-icon="Fire" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0 svg_isopen"><!----><path fill="currentColor" d="M19.38 5.59c-.64-.83-1.93-.77-2.51.11L16 7l-2.56-4.48C12.6 1.05 10.7.55 9.27 1.45c-2.82 1.79-6.86 5.28-7.24 10.7-.36 5.11 3.19 9.84 8.24 10.69A10 10 0 0 0 22 12.99c0-3.02-1.13-5.48-2.62-7.41zM12 21c-2.21 0-4-1.22-4-3 0-2.91 4-6 4-6s4 3.09 4 6c0 1.78-1.79 3-4 3"></path></svg>          
+              <svg data-ds-icon="ChevronRight" width="12" height="12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0 svg_isopen" style="position: absolute; right: 0px;"><!----><path fill="currentColor" d="M8.293 5.293a1 1 0 0 1 1.338-.069l.076.069 6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L13.586 12 8.293 6.707l-.068-.076a1 1 0 0 1 .068-1.338"></path></svg>
+              
+              <div class="header-title overflow-hidden">
                   <span slot="title" class="sidebar_accordion_title">
-                    <svg fill="currentColor" viewBox="0 0 96 96" class="svg-icon " style="">
-                      <title><?php echo htmlspecialchars($translations['slots']); ?></title>
-                      <path d="M30.48 42.441a79.7 79.7 0 0 0-5.8 15.84 30.1 30.1 0 0 0 0 14.36l.718 3-16.277 4A37.9 37.9 0 0 1 12 53.719l-12 2.84v-11.68l29.36-7.04zM96 46.88l-.922 4.64A85.5 85.5 0 0 0 83.2 63.32a30.56 30.56 0 0 0-6 13.04l-.597 3L60 76.32a38.12 38.12 0 0 1 13.36-22.28l-12-2.36 5.038-10.64zM72 24.12a134 134 0 0 0-15.2 22.957 49.8 49.8 0 0 0-5.6 22.8v5H32.32a55.6 55.6 0 0 1 5-22.757A87 87 0 0 1 50.8 31h-28V16.36H72z"></path>
-                    </svg>
-                    <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['slots']); ?></span>
+                  <svg data-ds-icon="Fire" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="M19.38 5.59c-.64-.83-1.93-.77-2.51.11L16 7l-2.56-4.48C12.6 1.05 10.7.55 9.27 1.45c-2.82 1.79-6.86 5.28-7.24 10.7-.36 5.11 3.19 9.84 8.24 10.69A10 10 0 0 0 22 12.99c0-3.02-1.13-5.48-2.62-7.41zM12 21c-2.21 0-4-1.22-4-3 0-2.91 4-6 4-6s4 3.09 4 6c0 1.78-1.79 3-4 3"></path></svg>          
+
+ 
+                    <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['popular']); ?></span>
                   </span>
                 </div>
                 <div class="svg_container">
                   <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="transform: rotate(0deg); margin-right: 0;">
-
                     <path d="M32.274 49.762 9.204 26.69l6.928-6.93 16.145 16.145L48.42 19.762l6.93 6.929-23.072 23.07z"></path>
                   </svg>
                 </div>
@@ -112,27 +96,27 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
             </div>
             <div class="content render-content">
               <div class="sidebar_content" style="">
-                <a class="sidebar_anchor_base" data-sveltekit-reload="off" data-sveltekit-preload-data="off" href="/slot/The_Dog_House">
+                <a class="sidebar_anchor_base" data-sveltekit-reload="off" data-sveltekit-preload-data="off" href="/group/popular-dogs">
 
                   <button type="button" tabindex="0" class="anchor_button">
                     <img src="/images/sidebar/icons/dog-house.gif" class="svg-icon gif-icon">
                     <span class="is-truncate" style="max-width: 100%;">The Dogs House</span>
                   </button>
                 </a>
-                <a class="sidebar_anchor_base" data-sveltekit-reload="off" data-sveltekit-preload-data="off" href="slot/Sugar_Rush">
+                <a class="sidebar_anchor_base" data-sveltekit-reload="off" data-sveltekit-preload-data="off" href="/group/popular-sugar">
 
                   <button type="button" tabindex="0" class="anchor_button">
                     <img src="/images/sidebar/icons/sugar-rush.png" class="svg-icon gif-icon">
                     <span class="is-truncate" style="max-width: 100%;">Sugar Rush</span>
                   </button>
                 </a>
-                <a class="sidebar_anchor_base" data-sveltekit-reload="off" data-sveltekit-preload-data="off" href="slot/Gates_Of_Olympus">
+                <a class="sidebar_anchor_base" data-sveltekit-reload="off" data-sveltekit-preload-data="off" href="/group/popular-zews">
                   <button type="button" tabindex="0" class="anchor_button">
                     <img src="/images/sidebar/icons/best.gif" class="svg-icon gif-icon">
                     <span class="is-truncate" style="max-width: 100%;">Gates of Olympus</span>
                   </button>
                 </a>
-                <a class="sidebar_anchor_base" data-sveltekit-reload="off" data-sveltekit-preload-data="off" href="slot/Sweet_Bonanza">
+                <a class="sidebar_anchor_base" data-sveltekit-reload="off" data-sveltekit-preload-data="off" href="/group/popular-fruits">
                   <button type="button" tabindex="0" class="anchor_button" data-analytics="sidebar-all-promotions-link" data-button-root="">
                     <img src="/images/sidebar/icons/sweet.gif" class="svg-icon gif-icon">
                     <span class="is-truncate" style="max-width: 100%;">Sweet Bonanza</span>
@@ -142,15 +126,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
             </div>
           </div>
         </div>
-        <a class="sidebar_anchor_base" href="">
-          <button type="button" tabindex="0" class="anchor_button" data-button-root="">
-            <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
-              <title><?php echo htmlspecialchars($translations['popular']); ?></title>
-              <path d="M57.164 0a6.836 6.836 0 0 1 6.79 7.629l-.798 6.836-.011.133a28.9 28.9 0 0 1-8.266 17.086L44.188 42.367l.93 8.473L31.976 64 30.34 51.078c-8.374-3.028-14.1-8.943-17.438-17.437L0 32.023l13.16-13.14 8.473.93L32.316 9.12c4.491-4.477 10.446-7.494 17.22-8.277l6.8-.793q.408-.05.828-.05M8.637 41.125c2.4 6.9 7.869 12.368 14.937 14.82 0 0-4.697 8.467-20.676 5.649C.07 45.615 8.586 40.957 8.586 40.957zm35.64-30.187a7.995 7.995 0 0 0 0 15.988v.039a7.995 7.995 0 0 0 7.996-7.992v-.04a8 8 0 0 0-7.996-7.995"></path>
-            </svg>
-            <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['popular']); ?></span>
-          </button>
-        </a>
+      
 
         <div class="spacing_div">
           <hr class="spacing">
@@ -159,20 +135,16 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
           <div class="accordion accordion-stacked">
             <div class="header header-stacked">
               <button type="button" tabindex="0" class="promo_anchor_button" aria-label="<?php echo htmlspecialchars($translations['promotions']); ?>" data-button-root="">
-                <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon is_small" style="">
-                  <title><?php echo htmlspecialchars($translations['promotions']); ?></title>
-                  <path d="M28.652 60.5H11.883c-1.85 0-3.347-1.5-3.347-3.348V37.036c-1.85 0-3.348-1.5-3.348-3.348v-6.722c0-1.85 1.5-3.348 3.348-3.348h20.116zm26.812-36.884H35.347V60.5h16.768c1.85 0 3.349-1.5 3.349-3.348V37.036c1.85 0 3.348-1.5 3.348-3.348v-6.722c0-1.85-1.5-3.348-3.348-3.348zM45.417 3.5C38.006 3.5 32 9.508 32 16.918h13.417c1.85 0 3.349-1.5 3.349-3.348V6.848c0-1.85-1.5-3.348-3.349-3.348m-26.836 0c-1.85 0-3.347 1.5-3.347 3.348v6.722c0 1.85 1.5 3.348 3.347 3.348H32C32 9.506 25.99 3.5 18.58 3.5"></path>
-                </svg>
-                <svg fill="currentColor" viewBox="0 0 64 64" class="svg_isopen svg-icon" style="">
-                  <path d="m26.307 53.996 20.998-20.998L26.307 12 20 18.306 34.694 33 20.001 47.694 26.307 54z"></path>
-                </svg>
+              <svg data-ds-icon="Gift" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0 svg_isopen"><!----><path fill="currentColor" d="M21 5h-3.35c.22-.46.35-.96.35-1.5C18 1.57 16.43 0 14.5 0c-.98 0-1.86.41-2.5 1.06A3.5 3.5 0 0 0 9.5 0C7.57 0 6 1.57 6 3.5c0 .54.13 1.04.35 1.5H3c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m-6.5-3c.83 0 1.5.67 1.5 1.5S15.33 5 14.5 5 13 4.33 13 3.5 13.67 2 14.5 2M8 3.5C8 2.67 8.67 2 9.5 2s1.5.67 1.5 1.5S10.33 5 9.5 5 8 4.33 8 3.5M3 21c0 1.1.9 2 2 2h6V12H3zm10 2h6c1.1 0 2-.9 2-2v-9h-8z"></path></svg>
+                <svg data-ds-icon="ChevronRight" width="12" height="12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0 svg_isopen" style="position: absolute; right: 0px;"><!----><path fill="currentColor" d="M8.293 5.293a1 1 0 0 1 1.338-.069l.076.069 6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L13.586 12 8.293 6.707l-.068-.076a1 1 0 0 1 .068-1.338"></path></svg>
+               
+
                 <div class="header-title overflow-hidden">
                   <span slot="title" class="sidebar_accordion_title">
-                    <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="">
-                      <title><?php echo htmlspecialchars($translations['promotions']); ?></title>
-                      <path d="M28.652 60.5H11.883c-1.85 0-3.347-1.5-3.347-3.348V37.036c-1.85 0-3.348-1.5-3.348-3.348v-6.722c0-1.85 1.5-3.348 3.348-3.348h20.116zm26.812-36.884H35.347V60.5h16.768c1.85 0 3.349-1.5 3.349-3.348V37.036c1.85 0 3.348-1.5 3.348-3.348v-6.722c0-1.85-1.5-3.348-3.348-3.348zM45.417 3.5C38.006 3.5 32 9.508 32 16.918h13.417c1.85 0 3.349-1.5 3.349-3.348V6.848c0-1.85-1.5-3.348-3.349-3.348m-26.836 0c-1.85 0-3.347 1.5-3.347 3.348v6.722c0 1.85 1.5 3.348 3.347 3.348H32C32 9.506 25.99 3.5 18.58 3.5"></path>
-                    </svg>
-                    <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['promotions']); ?></span>
+              <svg data-ds-icon="Gift" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="M21 5h-3.35c.22-.46.35-.96.35-1.5C18 1.57 16.43 0 14.5 0c-.98 0-1.86.41-2.5 1.06A3.5 3.5 0 0 0 9.5 0C7.57 0 6 1.57 6 3.5c0 .54.13 1.04.35 1.5H3c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m-6.5-3c.83 0 1.5.67 1.5 1.5S15.33 5 14.5 5 13 4.33 13 3.5 13.67 2 14.5 2M8 3.5C8 2.67 8.67 2 9.5 2s1.5.67 1.5 1.5S10.33 5 9.5 5 8 4.33 8 3.5M3 21c0 1.1.9 2 2 2h6V12H3zm10 2h6c1.1 0 2-.9 2-2v-9h-8z"></path></svg>
+                  
+              
+                <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['promotions']); ?></span>
                   </span>
                 </div>
                 <div class="svg_container">
@@ -207,9 +179,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
         </div>
         <a class="sidebar_anchor_base" href="https://t.me/splitsupports" target="_blank">
           <button type="button" tabindex="0" class="anchor_button" data-button-root="">
-            <svg data-ds-icon="Support" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!---->
-              <path fill="currentColor" d="M12 1C6.49 1 2 5.34 2 10.67v4.61a1 1 0 0 0 .69.95l3.89 1.26c1.25.27 2.42-.68 2.42-1.96v-4.05c0-1.27-1.17-2.22-2.42-1.96l-2.55.55C4.35 6.12 7.8 3.01 12 3.01s7.65 3.12 7.97 7.06l-2.55-.55c-1.25-.27-2.42.68-2.42 1.96v4.05c0 1.27 1.17 2.22 2.42 1.96l2.58-.55v1.07c0 1.1-.9 2-2 2h-4v-.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v1.5c0 .55.45 1 1 1h6c2.21 0 4-1.79 4-4v-7.33c0-5.33-4.49-9.67-10-9.67z"></path>
-            </svg>
+          <svg data-ds-icon="Support" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="M12 1C6.49 1 2 5.34 2 10.67v4.61a1 1 0 0 0 .69.95l3.89 1.26c1.25.27 2.42-.68 2.42-1.96v-4.05c0-1.27-1.17-2.22-2.42-1.96l-2.55.55C4.35 6.12 7.8 3.01 12 3.01s7.65 3.12 7.97 7.06l-2.55-.55c-1.25-.27-2.42.68-2.42 1.96v4.05c0 1.27 1.17 2.22 2.42 1.96l2.58-.55v1.07c0 1.1-.9 2-2 2h-4v-.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v1.5c0 .55.45 1 1 1h6c2.21 0 4-1.79 4-4v-7.33c0-5.33-4.49-9.67-10-9.67z"></path></svg>
             <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['support']); ?></span>
           </button>
         </a>
@@ -220,19 +190,10 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
           <div class="accordion accordion-stacked">
             <div class="header header-stacked">
               <button type="button" tabindex="0" class="promo_anchor_button" aria-label="<?php echo htmlspecialchars($translations['language'] . ': ' . $current_language); ?>" data-button-root="">
-                <svg data-ds-icon="Language" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="svg_icon is_small">
-                  <title><?php echo htmlspecialchars($translations['language']); ?></title>
-                  <path fill="currentColor" d="M7.14 9.87c1.49.31 3.13.48 4.86.48s3.37-.18 4.86-.48c-.34-4.02-1.6-7.36-3.23-8.73-.53-.08-1.07-.13-1.63-.13s-1.1.05-1.63.13C8.74 2.52 7.48 5.86 7.14 9.87m8.32-8.31c1.28 1.84 2.19 4.69 2.49 8.05 1.75-.46 3.21-1.11 4.2-1.88a11.05 11.05 0 0 0-6.68-6.17zM18.05 12c0 1.59-.14 3.09-.38 4.48 1.4.33 2.64.77 3.67 1.31a10.92 10.92 0 0 0 1.18-8.99c-1.14.81-2.68 1.48-4.5 1.94q.03.615.03 1.26m-12.1 0c0-.43.01-.84.03-1.26-1.82-.46-3.37-1.13-4.5-1.94a10.92 10.92 0 0 0 1.18 8.99c1.04-.54 2.28-.99 3.67-1.31-.24-1.39-.38-2.89-.38-4.48m1.12-1.01c-.01.33-.02.67-.02 1.01 0 1.49.13 2.93.37 4.25 1.42-.26 2.96-.4 4.58-.4s3.17.15 4.58.4c.23-1.32.37-2.76.37-4.25 0-.34 0-.68-.02-1.01-1.51.3-3.17.46-4.93.46s-3.42-.16-4.93-.46m10.38 6.57c-.45 1.98-1.14 3.66-1.99 4.88 2.11-.7 3.93-2.02 5.26-3.74-.92-.46-2.02-.85-3.26-1.14zM12 16.95c-1.54 0-3.01.14-4.37.38.58 2.54 1.57 4.54 2.74 5.53.53.08 1.07.13 1.63.13s1.1-.05 1.63-.13c1.17-.99 2.15-2.99 2.74-5.53-1.36-.25-2.83-.38-4.37-.38m-3.46 5.49c-.85-1.23-1.54-2.9-1.99-4.88-1.24.29-2.34.68-3.26 1.14a11.06 11.06 0 0 0 5.26 3.74zM1.86 7.73c.99.77 2.45 1.42 4.2 1.88.3-3.36 1.2-6.21 2.49-8.05-3.02 1-5.46 3.26-6.68 6.17z"></path>
-                </svg>
-                <svg fill="currentColor" viewBox="0 0 64 64" class="svg_isopen svg-icon" style="">
-                  <path d="m26.307 53.996 20.998-20.998L26.307 12 20 18.306 34.694 33 20.001 47.694 26.307 54z"></path>
-                </svg>
+                <svg data-ds-icon="Language" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!----><path fill="currentColor" d="M7.14 9.87c1.49.31 3.13.48 4.86.48s3.37-.18 4.86-.48c-.34-4.02-1.6-7.36-3.23-8.73-.53-.08-1.07-.13-1.63-.13s-1.1.05-1.63.13C8.74 2.52 7.48 5.86 7.14 9.87m8.32-8.31c1.28 1.84 2.19 4.69 2.49 8.05 1.75-.46 3.21-1.11 4.2-1.88a11.05 11.05 0 0 0-6.68-6.17zM18.05 12c0 1.59-.14 3.09-.38 4.48 1.4.33 2.64.77 3.67 1.31a10.92 10.92 0 0 0 1.18-8.99c-1.14.81-2.68 1.48-4.5 1.94q.03.615.03 1.26m-12.1 0c0-.43.01-.84.03-1.26-1.82-.46-3.37-1.13-4.5-1.94a10.92 10.92 0 0 0 1.18 8.99c1.04-.54 2.28-.99 3.67-1.31-.24-1.39-.38-2.89-.38-4.48m1.12-1.01c-.01.33-.02.67-.02 1.01 0 1.49.13 2.93.37 4.25 1.42-.26 2.96-.4 4.58-.4s3.17.15 4.58.4c.23-1.32.37-2.76.37-4.25 0-.34 0-.68-.02-1.01-1.51.3-3.17.46-4.93.46s-3.42-.16-4.93-.46m10.38 6.57c-.45 1.98-1.14 3.66-1.99 4.88 2.11-.7 3.93-2.02 5.26-3.74-.92-.46-2.02-.85-3.26-1.14zM12 16.95c-1.54 0-3.01.14-4.37.38.58 2.54 1.57 4.54 2.74 5.53.53.08 1.07.13 1.63.13s1.1-.05 1.63-.13c1.17-.99 2.15-2.99 2.74-5.53-1.36-.25-2.83-.38-4.37-.38m-3.46 5.49c-.85-1.23-1.54-2.9-1.99-4.88-1.24.29-2.34.68-3.26 1.14a11.06 11.06 0 0 0 5.26 3.74zM1.86 7.73c.99.77 2.45 1.42 4.2 1.88.3-3.36 1.2-6.21 2.49-8.05-3.02 1-5.46 3.26-6.68 6.17z"></path></svg>
+                <svg data-ds-icon="ChevronRight" width="12" height="12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0 svg_isopen" style="position: absolute; right: 0px;"><!----><path fill="currentColor" d="M8.293 5.293a1 1 0 0 1 1.338-.069l.076.069 6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L13.586 12 8.293 6.707l-.068-.076a1 1 0 0 1 .068-1.338"></path></svg>
                 <div class="header-title overflow-hidden">
                   <span slot="title" class="sidebar_accordion_title">
-                    <svg data-ds-icon="Language" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="svg_icon">
-                      <title><?php echo htmlspecialchars($translations['language']); ?></title>
-                      <path fill="currentColor" d="M7.14 9.87c1.49.31 3.13.48 4.86.48s3.37-.18 4.86-.48c-.34-4.02-1.6-7.36-3.23-8.73-.53-.08-1.07-.13-1.63-.13s-1.1.05-1.63.13C8.74 2.52 7.48 5.86 7.14 9.87m8.32-8.31c1.28 1.84 2.19 4.69 2.49 8.05 1.75-.46 3.21-1.11 4.2-1.88a11.05 11.05 0 0 0-6.68-6.17zM18.05 12c0 1.59-.14 3.09-.38 4.48 1.4.33 2.64.77 3.67 1.31a10.92 10.92 0 0 0 1.18-8.99c-1.14.81-2.68 1.48-4.5 1.94q.03.615.03 1.26m-12.1 0c0-.43.01-.84.03-1.26-1.82-.46-3.37-1.13-4.5-1.94a10.92 10.92 0 0 0 1.18 8.99c1.04-.54 2.28-.99 3.67-1.31-.24-1.39-.38-2.89-.38-4.48m1.12-1.01c-.01.33-.02.67-.02 1.01 0 1.49.13 2.93.37 4.25 1.42-.26 2.96-.4 4.58-.4s3.17.15 4.58.4c.23-1.32.37-2.76.37-4.25 0-.34 0-.68-.02-1.01-1.51.3-3.17.46-4.93.46s-3.42-.16-4.93-.46m10.38 6.57c-.45 1.98-1.14 3.66-1.99 4.88 2.11-.7 3.93-2.02 5.26-3.74-.92-.46-2.02-.85-3.26-1.14zM12 16.95c-1.54 0-3.01.14-4.37.38.58 2.54 1.57 4.54 2.74 5.53.53.08 1.07.13 1.63.13s1.1-.05 1.63-.13c1.17-.99 2.15-2.99 2.74-5.53-1.36-.25-2.83-.38-4.37-.38m-3.46 5.49c-.85-1.23-1.54-2.9-1.99-4.88-1.24.29-2.34.68-3.26 1.14a11.06 11.06 0 0 0 5.26 3.74zM1.86 7.73c.99.77 2.45 1.42 4.2 1.88.3-3.36 1.2-6.21 2.49-8.05-3.02 1-5.46 3.26-6.68 6.17z"></path>
-                    </svg>
                     <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['language'] . ': ' . $current_language); ?></span>
                   </span>
                 </div>

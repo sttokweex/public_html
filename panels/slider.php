@@ -1,37 +1,86 @@
 <?php
-function render_slider($games, $hasMargin, $translations, $isOurGames = false)
-{
-  // Filter games if isOurGames is true
-  if ($isOurGames) {
-    $games = array_filter($games, function ($game) {
-      return isset($game['vendorid']) && $game['vendorid'] === 'Pragmatic play custom';
-    });
-  } else {
-    $excludedGames = [
-      'Starlight_Princess',
-      'Sweet_Bonanza',
-      'Gates_of_Olympus',
-      'The_Dog_House',
-      'Pirate_Gold',
-      'Great_Rhino',
-      'Monkey_Warrior',
-      'Dog_House_Megaways'
-    ];
-    // Keep only games that don't have 'Pragmatic play custom' vendorid
-    $games = array_filter($games, function ($game) {
-      return !isset($game['vendorid']) || $game['vendorid'] !== 'Pragmatic play custom';
-    });
-  }
+function render_slider($games, $hasMargin, $translations, $type) {
+    // Определяем текст и иконку в зависимости от $type
+
+    if ($type === "ourGames") {
+        $text = $translations['new_releases'];
+        $icon = '<svg data-ds-icon="New" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0">
+                    <path fill="currentColor" d="M22 12c-7.8 1.21-8.79 2.2-10 10-1.21-7.8-2.2-8.79-10-10 7.8-1.21 8.79-2.2 10-10 1.21 7.8 2.2 8.79 10 10m2-7c-3.12.48-3.52.88-4 4-.48-3.12-.88-3.52-4-4 3.12-.48 3.52-.88 4-4 .48 3.12.88 3.52 4 4M8 19c-3.12.48-3.52.88-4 4-.48-3.12-.88-3.52-4-4 3.12-.48 3.52-.88 4-4 .48 3.12.88 3.52 4 4"></path>
+                </svg>';
+        $games = array_filter($games, function ($game) {
+            return isset($game['vendorid']) && $game['vendorid'] === 'Pragmatic play custom';
+        });
+        $groupSlug = 'new-releases';
+    } elseif ($type === 'sugar') {
+        $icon = '<img src="/images/sidebar/icons/sugar-rush.png" class="svg-icon gif-icon">';
+        $text = "Sugar Rush";
+        $games = array_filter($games, function($game) {
+            $search_terms = ['sugar_rush'];
+            $game_name = strtolower($game['name']);
+            foreach ($search_terms as $term) {
+                if (stripos($game_name, $term) !== false) {
+                    return true;
+                }
+            }
+            return false;
+        });
+        $groupSlug = 'popular-sugar';
+    } elseif ($type === 'zews') {
+        $icon = '<img src="/images/sidebar/icons/best.gif" class="svg-icon gif-icon">';
+        $text = "Gates of Olympus";
+        $games = array_filter($games, function($game) {
+            $search_terms = ['gates_of_olympus'];
+            $game_name = strtolower($game['name']);
+            foreach ($search_terms as $term) {
+                if (stripos($game_name, $term) !== false) {
+                    return true;
+                }
+            }
+            return false;
+        });
+        $groupSlug = 'popular-zews';
+    } elseif ($type === 'sweet') {
+        $icon = '<img src="/images/sidebar/icons/sweet.gif" class="svg-icon gif-icon">';
+        $text = "Sweet Bonanza";
+        $games = array_filter($games, function($game) {
+            $search_terms = ['sweet_bonanza'];
+            $game_name = strtolower($game['name']);
+            foreach ($search_terms as $term) {
+                if (stripos($game_name, $term) !== false) {
+                    return true;
+                }
+            }
+            return false;
+        });
+        $groupSlug = 'popular-fruits';
+    } elseif ($type === 'dogs') {
+        $icon = '<img src="/images/sidebar/icons/dog-house.gif" class="svg-icon gif-icon">';
+        $text = "The Dog House";
+        $games = array_filter($games, function($game) {
+            $search_terms = ['the_dog_house'];
+            $game_name = strtolower($game['name']);
+            foreach ($search_terms as $term) {
+                if (stripos($game_name, $term) !== false) {
+                    return true;
+                }
+            }
+            return false;
+        });
+        $groupSlug = 'popular-dogs';
+    } else {
+        $icon = '<svg data-ds-icon="Slots" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0" style="color: var(--color-grey-200) !important;"><!----><path fill="currentColor" d="M7.62 10.61a20 20 0 0 0-1.45 3.96 7.5 7.5 0 0 0 0 3.59l.18.75-4.07 1A9.47 9.47 0 0 1 3 13.43l-3 .71v-2.92l7.34-1.76zM24 11.72l-.23 1.16a21.4 21.4 0 0 0-2.97 2.95 7.64 7.64 0 0 0-1.5 3.26l-.15.75-4.15-.76a9.53 9.53 0 0 1 3.34-5.57l-3-.59 1.26-2.66z"></path><path fill="currentColor" d="M18 6.03a33.5 33.5 0 0 0-3.8 5.74 12.44 12.44 0 0 0-1.4 5.7v1.25H8.08a13.9 13.9 0 0 1 1.25-5.69 21.7 21.7 0 0 1 3.37-5.28h-7V4.09H18z"></path></svg>'; // Можно задать иконку по умолчанию, если нужно
+        $text = $translations['slots'];
+        $groupSlug = 'all-slots';
+        // Игры не фильтруются, используются все
+    }
+
 ?>
-  <div class="game-slider" data-slider-id="<?php echo uniqid(); ?>">
+  <div class="game-slider" data-slider-id="<?php echo $text?>">
     <div class="game-slider-header">
       <span class="game-slider-wrapper">
-        <a class="game-slider-header-link" href="/ru/casino/group/recommended-slots?sort=popular">
-          <svg fill="currentColor" viewBox="0 0 64 64" class="svg-icon " style="color: rgb(177, 186, 211) !important;">
-            <title><?php echo htmlspecialchars($translations['trending_games'] ?? 'Trending Games'); ?></title>
-            <path d="M12.265 47.728.21 14.605a3.574 3.574 0 0 1 2.108-4.552l.024-.008L21.624 3.03a3.55 3.55 0 0 1 4.553 2.082l.008.024.694 1.92L12.69 46.075a9 9 0 0 0-.418 1.598zM63.79 15.513 48.002 58.931a3.53 3.53 0 0 1-4.558 2.1l.024.009-21.948-8.001a3.58 3.58 0 0 1-2.124-4.585l-.008.024 15.787-43.39a3.555 3.555 0 0 1 4.559-2.126l-.024-.008 21.948 8a3.58 3.58 0 0 1 2.124 4.585l.008-.024zM50.457 32.687l-1.386-3.254a1.79 1.79 0 0 0-2.333-.956l.012-.005-2.666 1.175a1.787 1.787 0 0 1-2.316-.948l-.004-.012-1.146-2.667a1.764 1.764 0 0 0-2.332-.93l.012-.004-3.28 1.386a1.74 1.74 0 0 0-.929 2.33l-.004-.01 3.92 9.255a1.816 1.816 0 0 0 2.359.928l-.012.005 9.227-3.947a1.736 1.736 0 0 0 .794-2.356l.004.01z"></path>
-          </svg>
-          <span class="game-slider-header-title"><?php echo htmlspecialchars($translations['trending_games']); ?></span>
+    <a class="game-slider-header-link" href="/group/<?php echo htmlspecialchars($groupSlug); ?>">
+          <? echo ($icon)?>
+          <span class="game-slider-header-title"><?php echo htmlspecialchars($text) ?></span>
         </a>
       </span>
       <div class="game-slider-arrows">
@@ -56,6 +105,11 @@ function render_slider($games, $hasMargin, $translations, $isOurGames = false)
     <div class="game-slider-gallery game-slider-scrollX game-slider-hide-scrollbar">
       <?php $counter = 1; ?>
       <?php foreach ($games as $game): ?>
+        <?php
+
+
+?>
+
         <div class="game-slider-slide">
           <div class="game-slider-wrap" data-analytics="slider-ru-trending-games-<?php echo htmlspecialchars($game['gameid']); ?>">
             <div class="game-slider-image-focus">
@@ -65,16 +119,10 @@ function render_slider($games, $hasMargin, $translations, $isOurGames = false)
                     <img class="game-slider-game-image" loading="lazy" src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>">
                   </div>
                 </a>
-                <div class="game-slider-ribbon">
-                  <div class="game-slider-index-ribbon"><?php echo $counter; ?></div>
-                </div>
+                
               </div>
-              <div class="game-slider-stack">
-                <span class="game-slider-player-count">
-                  <span class="game-slider-player-indicator"></span>
-                  <span>&nbsp;<span class="game-slider-player-number">123213</span> <?php echo htmlspecialchars($translations['players'] ?? 'Players'); ?></span>
-                </span>
-              </div>
+             <div class="stack x-flex-start y-center gap-smaller padding-none direction-horizontal padding-left-auto
+    padding-top-smaller padding-bottom-auto padding-right-auto svelte-1klblr3"><!----><span class="scale-up block svelte-rxhcv3 is-relative" style="width: 6px; height: 6px;"><!----></span><!----> <!----><span type="body" tag="span" size="xs" class="ds-body-xs" data-ds-text="true"><!----><!----><!----><span tag="span" type="body" size="xs" variant="neutral-default" class="text-neutral-default ds-body-xs" data-ds-text="true"><!----><!----> <?php echo htmlspecialchars($game['online']); ?></span><!----> playing</span><!----><!----></div>
             </div>
           </div>
         </div>
@@ -107,7 +155,7 @@ function render_slider($games, $hasMargin, $translations, $isOurGames = false)
           return;
         }
 
-        const slideWidthPx = 140;
+        const slideWidthPx = 200;
         const promowidthPx = 390;
         const countSlide = Math.max(1, Math.floor(totalWidth / slideWidthPx));
         const countPromo = Math.max(1, Math.floor(totalWidth / promowidthPx));
@@ -137,7 +185,6 @@ function render_slider($games, $hasMargin, $translations, $isOurGames = false)
 
       // Инициализация всех слайдеров
       function initSliders() {
-        console.log('Инициализация слайдеров');
 
         $('.game-slider').each(function() {
           const $container = $(this);
@@ -145,12 +192,7 @@ function render_slider($games, $hasMargin, $translations, $isOurGames = false)
           const $forwardBtn = $container.find('.game-slider-forward');
           const $backwardBtn = $container.find('.game-slider-backward');
 
-          console.log('Найдены элементы:', {
-            container: $container.length,
-            gallery: $gallery.length,
-            forward: $forwardBtn.length,
-            backward: $backwardBtn.length
-          });
+        
 
           if (!$gallery.length) {
             console.warn('Галерея не найдена');

@@ -1,31 +1,37 @@
-<?
+<?php
 require("connect.php");
 require("carset.php");
-// Определяем язык
+
+// Начинаем сессию, если она еще не начата
 if (session_status() === PHP_SESSION_NONE) {
-  session_start();
+    session_start();
 }
 
 
-// Определяем язык
-if (isset($_SESSION['lang'])) {
-  $lang = $_SESSION['lang'];
-} elseif (isset($_COOKIE['lang'])) {
-  $lang = $_COOKIE['lang'];
-} else {
-  $lang = 'en';
+
+// Проверяем сначала сессию, затем куки
+if (isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+    $lang = $_SESSION['lang'];
+} elseif (isset($_COOKIE['lang']) && !empty($_COOKIE['lang'])) {
+    $lang = $_COOKIE['lang'];
 }
 
-$allowed = array('en', 'es', 'ru');
+// Проверяем, что язык разрешен
+$allowed = ['en', 'es', 'ru'];
 if (!in_array($lang, $allowed, true)) {
-  $lang = 'en';
+    $lang = 'en';
 }
 
-// Load translation file
+// Формируем путь к файлу перевода
 $path = dirname(__DIR__, 1) . "/lang/{$lang}.php";
+
+// Загружаем файл перевода
 if (is_file($path) && is_readable($path)) {
-  $translations = require $path;
+    $translations = require $path;
 } else {
-  error_log("Translation file not found or unreadable: $path");
-  $translations = dirname(__DIR__, 1) . "/lang/ru.php";
+    // Если файл перевода не найден, логируем ошибку и загружаем язык по умолчанию (en)
+    error_log("Translation file not found or unreadable: $path");
+    $path = dirname(__DIR__, 1) . "/lang/en.php";
+    $translations = is_file($path) && is_readable($path) ? require $path : [];
 }
+?>

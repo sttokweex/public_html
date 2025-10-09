@@ -72,7 +72,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
         <div class="other-content">
             <div class="other-content-inner">
                 <?php
-                render_slider($games, false, $translations);
+                render_slider($games, false, $translations, 'default');
                 renderBetsTable($translations);
                 ?>
             </div>
@@ -113,7 +113,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                     gameid: game?.gameid ?? gameName,
                     lobbyUrl: "https://frenzycaz.online/slot"
                 });
-                authUrl = 'http://5.129.253.12:2002/slot/api/userAuthPP.php';
+                authUrl = 'http://5.129.253.12:2202/slot/api/userAuthPP.php';
             }
 
             try {

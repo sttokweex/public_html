@@ -1,11 +1,46 @@
 .game-slider {
+  margin-top:1.5rem;
   display: flex;
   flex-direction: column;
   width: 100%;
   overflow-x: hidden;
   height: fit-content;
+}.game-slider:first-of-type {
+  margin-top: 0;
 }
-
+.home-container .game-slider:first-child{
+  margin-top: 0;
+}
+.game-slider-header-link:hover{
+  color:white;
+}
+.stack.padding-top-smaller.svelte-1klblr3 {
+    padding-top: 0.25rem;
+}.stack.padding-none.svelte-1klblr3 {
+    padding: 0;
+}.stack.gap-smaller.svelte-1klblr3 {
+    gap: .25rem;
+}.stack.y-center.svelte-1klblr3 {
+    align-items: center;
+}.stack.x-flex-start.svelte-1klblr3 {
+    justify-content: flex-start;
+}.stack.direction-horizontal.svelte-1klblr3 {
+    grid-auto-flow: column;
+}.stack.svelte-1klblr3 {
+    display: grid
+;
+}span.svelte-rxhcv3 {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    z-index: 1;
+    background: #1fff20
+;
+}.ds-body-xs {
+    font: 400 .75rem/1rem "proxima-nova",ui-sans-serif,-apple-system,system-ui,sans-serif
+;
+}
 /* Стили для заголовка слайдера */
 .game-slider-header {
   display: flex;
@@ -40,6 +75,8 @@
   text-align: left;
   justify-content: flex-start;
   color: #fff;
+  font:700 1.25rem/1.75rem "proxima-nova",ui-sans-serif,-apple-system,system-ui,sans-serif
+;
 }
 
 /* Стили для контейнера стрелок */
@@ -98,7 +135,6 @@
   display: grid;
   grid-auto-flow: column;
 
-  margin-left: -5.5px;
   margin-right: -5.5px;
   padding-top: 0.75rem; /* Ваше изменение */
   overflow-x: auto;
