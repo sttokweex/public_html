@@ -310,7 +310,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     width: 100%;
     height: 100%;
     z-index: 2000;
-    position: relative;
+    position: fixed;
   }
 
   @keyframes spin-cross {
