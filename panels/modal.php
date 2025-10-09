@@ -360,7 +360,7 @@
                                         <div class="Control__content--36z Checkbox__content--1sO"><label tabindex="0" class="CheckboxShallow__checkbox--25p AccessibilityElement__wrapper--3x7" for="fd544967-ae6c-4031-b1be-1619f5d7b9d0" aria-label="checkbox"><input tabindex="-1" type="checkbox" id="fd544967-ae6c-4031-b1be-1619f5d7b9d0" class="CheckboxShallow__input--3xj " name="rememberMe" value=""><span class="CheckboxShallow__checkMark--3Wb"></span><span class="CheckboxShallow__label--3R0">Remember me</span></label></div>
                                     </div>
                                 </div>
-                                <div class="LoginReact__formActions--2Oo"><button type="submit" class="Button__btn--THI Button__large--6PM Button__primary--3wk Button__success--3NL Button__fluid--Kf2 Button__light--dPe" onclick="authlogpass()">LOG IN</button></div>
+                                <div class="LoginReact__formActions--2Oo"><button type="button" class="Button__btn--THI Button__large--6PM Button__primary--3wk Button__success--3NL Button__fluid--Kf2 Button__light--dPe" onclick="authlogpass()">LOG IN</button></div>
                             </form>
                             <div class="GridRow__colsRow--JL1 LoginPopup__helpLinks--2EF">
                                 <p class="PlainText__text--1wg PlainText__small--2s0 col-mob-4 col-dsk-3 PlainText__light--3iV"><span class=""><span bold="">No account yet? <a href="#" onclick="showreg(event)" underline="">Register here.</a></span></span></p>
