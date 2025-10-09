@@ -22,7 +22,7 @@ $cacheTTL = 300; // 5 минут
 //   $games = $_SESSION['games_cache'];
 // } else {
 // Игры с 5.129.253.12:2002
-$ppResponseLocal = fetchWithRetry('http://5.129.253.12:2002/game_list.do');
+$ppResponseLocal = fetchWithRetry('http://5.129.253.12:2000/game_list.do');
 if ($ppResponseLocal !== false) {
   $ppDecodedLocal = json_decode($ppResponseLocal, true);
   $ppGames = (isset($ppDecodedLocal['games']) && is_array($ppDecodedLocal['games'])) ? $ppDecodedLocal['games'] : [];
