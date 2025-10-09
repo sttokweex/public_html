@@ -64,7 +64,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
     <div class="other-content">
         <div class="other-content-inner">
             <?php
-            render_slider($games, false, $translations);
+            render_slider($games, false, $translations, 'default');
             render_faq($translations);
             ?>
         </div>
