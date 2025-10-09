@@ -191,6 +191,7 @@
 
 .systemwallet img {
   max-height: 2rem;
+  width: auto;
 }
 
 .systemwallet span {

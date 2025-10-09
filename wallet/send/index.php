@@ -56,7 +56,7 @@ require(dirname(__DIR__, 2) . "/panels/chat.php");
                                 <input placeholder="Enter sum" id="playerSum" type="number">
                             </div>
                         </div>
-                        <button class="buttonProject" id="sendBtn" style="width:fit-content; padding-left:20px;padding-right:20px;" onClick="sendMoney();"><?= $translations['send'] ?></button>
+                        <button class="buttonProject btn_type_success" id="sendBtn" style="width:fit-content; padding-left:20px;padding-right:20px;" onClick="sendMoney();"><?= $translations['send'] ?></button>
                     </div>
                 </div>
             </div>

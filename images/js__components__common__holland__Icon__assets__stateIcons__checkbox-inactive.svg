@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BAA9008F-6A62-40F5-A39D-21B169999CC9</title>
+    <g id="Library" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="GENERAL_SPECS" transform="translate(-249.000000, -858.000000)">
+            <g id="checkbox-inactive" transform="translate(249.000000, 858.000000)">
+                <rect id="container" x="0" y="0" width="24" height="24"></rect>
+                <path d="M16,4 C18.209139,4 20,5.790861 20,8 L20,16 C20,18.209139 18.209139,20 16,20 L8,20 C5.790861,20 4,18.209139 4,16 L4,8 C4,5.790861 5.790861,4 8,4 L16,4 Z M16,6 L8,6 C6.9456382,6 6.08183488,6.81587779 6.00548574,7.85073766 L6,8 L6,16 C6,17.0543618 6.81587779,17.9181651 7.85073766,17.9945143 L8,18 L16,18 C17.0543618,18 17.9181651,17.1841222 17.9945143,16.1492623 L18,16 L18,8 C18,6.9456382 17.1841222,6.08183488 16.1492623,6.00548574 L16,6 Z" id="Rectangle" fill="#B6B6B6" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

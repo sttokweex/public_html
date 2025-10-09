@@ -418,10 +418,10 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           <span class="nav-list-item-innetText"><?= $translations['about_us'] ?></span>
           <span class="nav-list-item-image icon-x96"></span>
         </li>
-        <li class="nav-list-item">
+        <!-- <li class="nav-list-item">
           <span class="nav-list-item-innetText"><?= $translations['play_responsibly'] ?></span>
           <span class="nav-list-item-image icon-x96"></span>
-        </li>
+        </li> -->
       </ul>
     </nav>
     <div class="header-right-section">
@@ -457,8 +457,8 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           </div>
         </div>
       <?php } else { ?>
-        <button class="header-login-button header-auth" onClick="$('#authorization').modal('show');"><?= $translations['login'] ?></button>
-        <a class="header-register-button header-auth" onClick="event.preventDefault(); $('#registration').modal('show');"><?= $translations['register'] ?></a>
+        <button class="header-login-button header-auth" onClick="$('#authorization').removeClass('hide-modal');"><?= $translations['login'] ?></button>
+        <a class="header-register-button header-auth" onClick="event.preventDefault(); $('#registration').removeClass('hide-modal');"><?= $translations['register'] ?></a>
       <?php } ?>
     </div>
     <div class="SubContainer__subContainer--3AF" style="opacity: 0;">
@@ -493,18 +493,19 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           <div class="GridRow__colsRow--JL1 ">
             <div class="col-mob-4 col-dsk-2"></div>
             <ul class="col-mob-4 col-dsk-2">
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://corporate.hollandcasino.nl/over-ons/" target=""><?= $translations['about_us'] ?></a></li>
-              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://www.hollandcasino.nl/en/over-ons/contact-us" target=""><?= $translations['contact_us'] ?></a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://t.me/splitsupports" target=""><?= $translations['about_us'] ?></a></li>
+              <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://t.me/splitsupports" target=""><?= $translations['contact_us'] ?></a></li>
             </ul>
-            <div class="col-mob-4 col-dsk-2"></div>
-            <div class="col-mob-4 col-dsk-2"></div>
-            <div class="col-mob-4 col-dsk-2"></div>
-            <div class="col-mob-4 col-dsk-2"></div>
+            <div class=" col-mob-4 col-dsk-2">
           </div>
-        </nav><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg  PlainText__dark--3fd"><?= $translations['close'] ?><span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button>
+          <div class="col-mob-4 col-dsk-2"></div>
+          <div class="col-mob-4 col-dsk-2"></div>
+          <div class="col-mob-4 col-dsk-2"></div>
       </div>
+      </nav><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg  PlainText__dark--3fd"><?= $translations['close'] ?><span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button>
     </div>
-    <div class="SubContainer__subContainer--3AF" style="opacity: 0;">
+  </div>
+  <!-- <div class="SubContainer__subContainer--3AF" style="opacity: 0;">
       <div class="SubContainer__subContainerWrapper--2Fz">
         <nav class="col-mob-4 col-dsk-12 DesktopSubNavigation__container--30L">
           <ul class="col-mob-4 col-dsk-8 LevelsPath__paths--2bJ">
@@ -532,9 +533,9 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           </div>
         </nav><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg  PlainText__dark--3fd"><?= $translations['close'] ?><span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button>
       </div>
-    </div>
+    </div> -->
 
-  </div>
+</div>
 </div>
 <script>
   $(document).ready(function() {
@@ -781,7 +782,10 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       $resultsList.empty(); // Clear previous results
 
       if (query === '') {
-        $('.SearchResults__list--1aE').css('opacity', '0');
+        $('.SearchResults__list--1aE').css({
+          'opacity': '0',
+          'display': 'none'
+        });
         return;
       }
 
@@ -793,7 +797,10 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
       // Render results
       if (filteredGames.length > 0) {
-        $('.SearchResults__list--1aE').css('opacity', '1');
+        $('.SearchResults__list--1aE').css({
+          'opacity': '1',
+          'display': 'block'
+        });
         filteredGames.forEach(game => {
           // Prepare display title by replacing underscores with spaces
           const displayTitle = game.name.replace(/_/g, ' ');
@@ -814,7 +821,10 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
           $resultsList.append($listItem);
         });
       } else {
-        $('.SearchResults__list--1aE').css('opacity', '0');
+        $('.SearchResults__list--1aE').css({
+          'opacity': '0',
+          'display': 'none'
+        });
       }
     });
 

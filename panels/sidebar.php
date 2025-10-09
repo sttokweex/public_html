@@ -57,10 +57,10 @@ $image_map = [
                 <span class="Icon__icon--x96 Icon__multiple-users--1L0 Icon__large--2F8" role="img" aria-label="icon_multiple-users"></span>
                 <span class="Tabs__text--2uU"><?= $translations['about_us'] ?></span>
               </p>
-              <p class="PlainText__text--1wg PlainText__medium--1_S Tabs__tab--2rN Tabs__tabs-width-3--2Kz PlainText__dark--3fd">
+              <!-- <p class="PlainText__text--1wg PlainText__medium--1_S Tabs__tab--2rN Tabs__tabs-width-3--2Kz PlainText__dark--3fd">
                 <span class="Icon__icon--x96 Icon__responsible-gaming--2Gl Icon__large--2F8" role="img" aria-label="icon_responsible-gaming"></span>
                 <span class="Tabs__text--2uU"><?= $translations['play_responsibly'] ?></span>
-              </p>
+              </p> -->
             </div>
             <div class="SlidingPane__panel--3DT SlidingMenu__slidingPanel--2AQ SidebarContent__slidingMenu--2dQ">
               <div class="SlidingPane__sliding--3Sw" style="transform: translate3d(0%, 0px, 0px);">
@@ -78,14 +78,14 @@ $image_map = [
                 </a>
               </div>
               <div class="SlidingPane__sliding--3Sw" style="transform: translate3d(0%, 0px, 0px);">
-                <a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh MenuItem__item--1ED MenuItem__dark--gB7 PlainText__dark--3fd" href="https://corporate.hollandcasino.nl/over-ons/" target="_self">
+                <a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh MenuItem__item--1ED MenuItem__dark--gB7 PlainText__dark--3fd" href="https://t.me/splitsupports" target="_self">
                   <span class="MenuItem__itemTitle--1dC"><?= $translations['about_us'] ?></span>
                 </a>
-                <a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh MenuItem__item--1ED MenuItem__dark--gB7 PlainText__dark--3fd" href="/en/over-ons/contact-us" target="_self">
+                <a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh MenuItem__item--1ED MenuItem__dark--gB7 PlainText__dark--3fd" href="https://t.me/splitsupports" target="_self">
                   <span class="MenuItem__itemTitle--1dC"><?= $translations['contact_us'] ?></span>
                 </a>
               </div>
-              <div class="SlidingPane__sliding--3Sw" style="transform: translate3d(0%, 0px, 0px);">
+              <!-- <div class="SlidingPane__sliding--3Sw" style="transform: translate3d(0%, 0px, 0px);">
                 <a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh MenuItem__item--1ED MenuItem__dark--gB7 PlainText__dark--3fd" href="/en/online/veilig-en-verantwoord-spelen/overzicht" target="_self">
                   <span class="MenuItem__itemTitle--1dC"><?= $translations['overview'] ?></span>
                 </a>
@@ -113,7 +113,7 @@ $image_map = [
                 <a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh MenuItem__item--1ED MenuItem__dark--gB7 PlainText__dark--3fd" href="/en/stortingslimieten-faq" target="_self">
                   <span class="MenuItem__itemTitle--1dC"><?= $translations['deposit_limits_faq'] ?></span>
                 </a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -164,7 +164,10 @@ $image_map = [
       $resultsList.empty(); // Clear previous results
 
       if (query === '') {
-        $('#side-menus .SearchResults__list--1aE').css('opacity', '0');
+        $('#side-menus .SearchResults__list--1aE').css({
+          'opacity': '0',
+          'display': 'none'
+        });
         $tabs.css('opacity', '1');
         $slidingMenu.css('opacity', '1');
         return;
@@ -178,7 +181,10 @@ $image_map = [
 
       // Render results
       if (filteredGames.length > 0) {
-        $('#side-menus .SearchResults__list--1aE').css('opacity', '1');
+        $('#side-menus .SearchResults__list--1aE').css({
+          'opacity': '1',
+          'display': 'block'
+        });
         $tabs.css('opacity', '0'); // Hide tabs during search
         $slidingMenu.css('opacity', '0'); // Hide sliding menu during search
         filteredGames.forEach(game => {
@@ -203,7 +209,10 @@ $image_map = [
           $resultsList.append($listItem);
         });
       } else {
-        $('#side-menus .SearchResults__list--1aE').css('opacity', '0');
+        $('#side-menus .SearchResults__list--1aE').css({
+          'opacity': '0',
+          'display': 'none'
+        });
         $tabs.css('opacity', '1');
         $slidingMenu.css('opacity', '1');
       }
@@ -219,7 +228,10 @@ $image_map = [
       // Clear search input and results
       $searchInput.val('');
       $resultsList.empty();
-      $('#side-menus .SearchResults__list--1aE').css('opacity', '0');
+      $('#side-menus .SearchResults__list--1aE').css({
+        'opacity': '0',
+        'display': 'none'
+      });
       $tabs.css('opacity', '1');
       $slidingMenu.css('opacity', '1');
     });
@@ -242,7 +254,10 @@ $image_map = [
         // Clear search input and results
         $searchInput.val('');
         $resultsList.empty();
-        $('#side-menus .SearchResults__list--1aE').css('opacity', '0');
+        $('#side-menus .SearchResults__list--1aE').css({
+          'opacity': '0',
+          'display': 'none'
+        });
         $tabs.css('opacity', '1');
         $slidingMenu.css('opacity', '1');
       }, 100); // 100ms delay to allow click events to process

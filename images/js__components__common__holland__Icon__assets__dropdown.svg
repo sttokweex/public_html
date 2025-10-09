@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Element / Icon / Dropdown</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.113725 0 0 0 0 0.101961 0 0 0 0 0.125490 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Element-/-Icon-/-Dropdown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g filter="url(#filter-1)" id="Icon-/-Arrow-accordion-/-On-dark">
+            <g transform="translate(7.000000, 9.000000)">
+                <polygon id="Path" fill="#FF616D" transform="translate(5.000000, 3.500000) rotate(-270.000000) translate(-5.000000, -3.500000) " points="2.08578644 0.5 3.5 -0.914213562 7.91421356 3.5 3.5 7.91421356 2.08578644 6.5 5.084 3.5"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

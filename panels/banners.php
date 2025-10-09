@@ -114,7 +114,19 @@ function renderBanners($translations)
           .attr('aria-hidden', 'false');
       }
 
-      // Right arrow click (next slide)
+      // Rig let autoSlideInterval;
+      let autoSlideInterval;
+      // Function to start auto-sliding
+      function startAutoSlide() {
+        clearInterval(autoSlideInterval); // Clear any existing interval
+        autoSlideInterval = setInterval(function() {
+          const $currentSlide = $slides.filter('.Slider__fadingActive--2U9');
+          const currentIndex = $slides.index($currentSlide);
+          const nextIndex = (currentIndex + 1) % $slides.length; // Loop to first slide
+          updateSlides(currentIndex, nextIndex);
+        }, 10000); // 10 seconds
+      }
+
       $rightArrow.on('click', function() {
         const $currentSlide = $slides.filter('.Slider__fadingActive--2U9');
         const currentIndex = $slides.index($currentSlide);
@@ -129,6 +141,8 @@ function renderBanners($translations)
         const prevIndex = (currentIndex - 1 + $slides.length) % $slides.length; // Loop to last slide if at the start
         updateSlides(currentIndex, prevIndex);
       });
+      // Start auto-sliding when page loads
+      startAutoSlide();
     });
   </script>
 <?php

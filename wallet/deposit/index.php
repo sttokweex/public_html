@@ -101,7 +101,7 @@ require(dirname(__DIR__, 2) . "/panels/chat.php");
 
                             <input type="hidden" id="userId" value="<?php echo $userId; ?>">
 
-                            <button class="buttonProject" id="depBtn" style="width:fit-content; padding-left:20px;padding-right:20px;" onClick="deposit();"><?= $translations['process_payment'] ?></button>
+                            <button class="buttonProject btn_type_success" id="depBtn" style="width:fit-content; padding-left:20px;padding-right:20px;" onClick="deposit();"><?= $translations['process_payment'] ?></button>
 
                         </div>
 

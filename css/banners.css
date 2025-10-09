@@ -28,6 +28,59 @@
   position: absolute;
   width: calc(100vw - var(--scrollbar-width));
 }
+.Button__primary--3wk.Button__success--3NL:hover {
+  transform: scale(1.05);
+}
+:not(.emulate-mobile) .btn:active,
+:not(.emulate-mobile) .btn:hover,
+:not(.emulate-mobile) .btn_type_success:active,
+:not(.emulate-mobile) .btn_type_success:hover,
+:not(.emulate-mobile)
+  .deposit-suggestions
+  .deposit-suggestions__wrapper
+  .deposit-suggestions__list
+  .deposit-suggestions__item:active,
+:not(.emulate-mobile)
+  .deposit-suggestions
+  .deposit-suggestions__wrapper
+  .deposit-suggestions__list
+  .deposit-suggestions__item:hover,
+:not(.emulate-mobile) .form_name_cashier-deposit .form__actions .btn:active,
+:not(.emulate-mobile) .form_name_cashier-deposit .form__actions .btn:hover,
+:not(.emulate-mobile) .form_name_cashier-withdraw .form__actions .btn:active,
+:not(.emulate-mobile) .form_name_cashier-withdraw .form__actions .btn:hover {
+  transform: scale(1.05);
+}
+.btn_type_success:active,
+.btn_type_success:hover {
+  animation: hover 0.3s step-start;
+  animation-fill-mode: forwards;
+}
+.Button__primary--3wk.Button__success--3NL.Button__active--2Mk,
+.Button__primary--3wk.Button__success--3NL:active,
+.Button__primary--3wk.Button__success--3NL:hover {
+  animation: Button__hover--1wi 0.3s step-start;
+  animation-fill-mode: forwards;
+  color: white;
+}
+@keyframes hover {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+@keyframes Button__hover--1wi {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
 .Banner__banner--3iV {
   overflow: hidden;
 }

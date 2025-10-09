@@ -168,33 +168,34 @@ $allWithdrawsUser = $totalwithsRow['SUM(sum)'];
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All deposits</p>
-                  <h2><?= round($allDepositsUser, 2); ?>₽</h2>
+                  <h2><?= round(isset($allDepositsUser) ? $allDepositsUser : 0, 2); ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All withdrawl</p>
-                  <h2><?= round($allWithdrawsUser, 2); ?>₽</h2>
+                  <h2><?= round(isset($allWithdrawsUser) ? $allWithdrawsUser : 0, 2); ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All transwer</p>
-                  <h2><?= round(intval($total_send), 2); ?>₽</h2>
+                  <h2><?= round(intval($total_send ?? 0), 2); ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All rakeback</p>
-                  <h2><?= round(intval($total_rakeback), 2); ?>₽</h2>
+                  <h2><?= round(intval($total_rakeback ?? 0), 2); ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All cashback</p>
-                  <h2><?= round(intval($total_cashback), 2); ?>₽</h2>
+                  <h2><?= round(intval($total_cashback ?? 0), 2); ?>₽</h2>
                 </div>
                 <div class="user_statistic">
                   <img src="/images/profile/moneyBig.png" alt="money">
                   <p>All promo</p>
-                  <h2><?= round(intval($total_promo), 2); ?>₽</h2>
+                  <h2><?= round(intval($total_promo ?? 0), 2); ?>₽</h2>
                 </div>
+
 
 
               </div>

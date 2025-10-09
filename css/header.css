@@ -78,7 +78,16 @@ img {
   width: 100%;
   z-index: 12;
 }
-
+.col-dsk-10 {
+  max-width: calc(1280px / 12 * 10 - 0.16667rem);
+  min-width: calc(833.33333px - 16.66667vw - 0.16667rem);
+  width: calc(66.66667vw - 1rem * 11 / 12 * 10 + 1rem * 9);
+}
+.col-dsk-7 {
+  max-width: calc(1280px / 12 * 7 - 0.41667rem);
+  min-width: calc(583.33333px - 11.66667vw - 0.41667rem);
+  width: calc(46.66667vw - 1rem * 11 / 12 * 7 + 1rem * 6);
+}
 .header-content {
   align-items: center;
   position: relative;
@@ -133,7 +142,7 @@ img {
   font-size: 1rem;
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  gap: 9rem;
   min-width: 25.5em;
 }
 .nav-list-item {
@@ -748,6 +757,7 @@ a:hover {
 .SearchResults__list--1aE.SearchResults__shown--3yB {
   max-height: 50vh;
   opacity: 1;
+  display: none;
 }
 .GameItem__item--20s {
   align-items: center;

@@ -267,7 +267,7 @@ require(dirname(__DIR__, 2) . "/panels/chat.php");
             </div>
 
             <input id="systemwithdraw" value="" style="display:none;">
-            <button class="connectButton buttonProject" onclick="openModal()" style="width:fit-content; padding-left:20px; padding-right:20px;">
+            <button class="connectButton buttonProject btn_type_success" onclick="openModal()" style="width:fit-content; padding-left:20px; padding-right:20px;">
               Create request
             </button>
 

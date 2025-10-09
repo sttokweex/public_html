@@ -1175,5 +1175,8 @@ return [
     'daily_offer' => 'Ежедневное предложение',
     'footer_language_selection' => 'Настройки',
     'footer_language_en' => 'English',
-    'footer_language_ru' => 'Русский'
+    'footer_language_ru' => 'Русский',
+    'best_deals_small' => 'Лучшие предложения',
+    'SPOTLIGHT' => 'В ЦЕНТРЕ ВНИМАНИЯ',
+    'bonus_deposit' => 'Бонус за депозит'
 ];
