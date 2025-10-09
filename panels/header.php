@@ -305,6 +305,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   }
 
   .loader {
+    overflow-y: hidden;
     background-color: #011c38;
     width: 100%;
     height: 100%;
@@ -497,15 +498,15 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
               <li class="DesktopSubNavigation__itemContainer--35m"><a class="PlainText__text--1wg PlainText__small--2s0 Link__link--3vh DesktopSubNavigation__linkItem--2il  PlainText__dark--3fd" href="https://t.me/splitsupports" target=""><?= $translations['contact_us'] ?></a></li>
             </ul>
             <div class=" col-mob-4 col-dsk-2">
+            </div>
+            <div class="col-mob-4 col-dsk-2"></div>
+            <div class="col-mob-4 col-dsk-2"></div>
+            <div class="col-mob-4 col-dsk-2"></div>
           </div>
-          <div class="col-mob-4 col-dsk-2"></div>
-          <div class="col-mob-4 col-dsk-2"></div>
-          <div class="col-mob-4 col-dsk-2"></div>
+        </nav><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg  PlainText__dark--3fd"><?= $translations['close'] ?><span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button>
       </div>
-      </nav><button class="PlainText__text--1wg PlainText__small--2s0 LabeledCloseButton__close--2kg  PlainText__dark--3fd"><?= $translations['close'] ?><span class="Icon__icon--x96 Icon__close-small--35Q Icon__small--12i Icon__active--1EL LabeledCloseButton__closeIcon--11r" role="img" aria-label="icon_close-small"></span></button>
     </div>
-  </div>
-  <!-- <div class="SubContainer__subContainer--3AF" style="opacity: 0;">
+    <!-- <div class="SubContainer__subContainer--3AF" style="opacity: 0;">
       <div class="SubContainer__subContainerWrapper--2Fz">
         <nav class="col-mob-4 col-dsk-12 DesktopSubNavigation__container--30L">
           <ul class="col-mob-4 col-dsk-8 LevelsPath__paths--2bJ">
@@ -535,7 +536,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       </div>
     </div> -->
 
-</div>
+  </div>
 </div>
 <script>
   $(document).ready(function() {
