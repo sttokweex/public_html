@@ -2,7 +2,10 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
-
+if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
+  header('Location: /');
+  die();
+}
 
 
 $sid = $_SESSION['hash'];

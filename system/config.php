@@ -5,8 +5,6 @@ require("carset.php");
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
-
-
 // Определяем язык
 if (isset($_SESSION['lang'])) {
   $lang = $_SESSION['lang'];
@@ -15,12 +13,10 @@ if (isset($_SESSION['lang'])) {
 } else {
   $lang = 'ru';
 }
-
 $allowed = array('en', 'es', 'ru');
 if (!in_array($lang, $allowed, true)) {
   $lang = 'en';
 }
-
 // Load translation file
 $path = dirname(__DIR__, 1) . "/lang/{$lang}.php";
 if (is_file($path) && is_readable($path)) {
