@@ -35,7 +35,7 @@ $filtered_games = array_filter($games, function ($game) {
         <div class="banner-wrap favorite-page">
           <div class="banner favorite-page">
             <div class="left favorite-page">
-              <h1 type="heading" variant="neutral-default" tag="h1" size="xl" class="text-neutral-default ds-heading-xl" data-ds-text="true"><?php echo htmlspecialchars($translations['popular']) ?></h1>
+              <h1 type="heading" variant="neutral-default" tag="h1" size="xl" class="text-neutral-default ds-heading-xl" data-ds-text="true">The Dog House</h1>
             </div>
             <div class="right favorite-page"><img class="favorite-page" src="https://mediumrare.imgix.net/group-banner-default.png" alt="Favorites"></div>
           </div>

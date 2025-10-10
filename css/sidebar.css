@@ -509,6 +509,7 @@ textarea {
 .tabs-button .gif-icon {
   width: 40px;
   height: 40px;
+  object-fit: contain;
 }
 /* Скрываем на десктопе */
 @media (min-width: 1200px) {

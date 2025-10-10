@@ -9,11 +9,11 @@ if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
   die();
 }
 
-require(dirname(__DIR__, 2) . "/panels/header.php");
-require(dirname(__DIR__, 2) . "/panels/sidebar.php");
-require_once(dirname(__DIR__, 2) . "/panels/footer.php");
-require_once(dirname(__DIR__, 2) . "/panels/livefeed.php");
-require_once(dirname(__DIR__, 2) . "/panels/search.php");
+require(dirname(__DIR__, 1) . "/panels/header.php");
+require(dirname(__DIR__, 1) . "/panels/sidebar.php");
+require_once(dirname(__DIR__, 1) . "/panels/footer.php");
+require_once(dirname(__DIR__, 1) . "/panels/livefeed.php");
+require_once(dirname(__DIR__, 1) . "/panels/search.php");
 // Фильтрация игр по указанным названиям
 $filtered_games = array_filter($games, function ($game) {
   $search_terms = ['gates_of_olympus'];
@@ -35,7 +35,7 @@ $filtered_games = array_filter($games, function ($game) {
         <div class="banner-wrap favorite-page">
           <div class="banner favorite-page">
             <div class="left favorite-page">
-              <h1 type="heading" variant="neutral-default" tag="h1" size="xl" class="text-neutral-default ds-heading-xl" data-ds-text="true"><?php echo htmlspecialchars($translations['popular']) ?></h1>
+              <h1 type="heading" variant="neutral-default" tag="h1" size="xl" class="text-neutral-default ds-heading-xl" data-ds-text="true">Gates of Olympus</h1>
             </div>
             <div class="right favorite-page"><img class="favorite-page" src="https://mediumrare.imgix.net/group-banner-default.png" alt="Favorites"></div>
           </div>
