@@ -1194,6 +1194,7 @@ return [
     'language' => 'Language',
     'language_english' => 'English',
     'language_russian' => 'Русский',
+    'language_es' => 'Español',
     'logout' => 'Logout',
     'lobby' => 'Lobby',
     'type' => 'Type',

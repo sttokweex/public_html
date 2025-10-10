@@ -1238,4 +1238,5 @@ return [
     'bonus_5000_deposit_desc' => 'Внесите $5,000 и получите бонус $500 для эпичных побед!',
     'language_english' => 'English',
     'language_russian' => 'Русский',
+    'language_es' => 'Español',
 ];
