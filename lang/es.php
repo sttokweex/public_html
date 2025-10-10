@@ -1155,6 +1155,7 @@ System: jugar con dinero real.',
     'footer_language_en' => 'English',
     'footer_language_ru' => 'Русский',
     'footer_language_es' => 'Español',
+    'anonim' => 'anónimo',
     'best_deals_small' => 'Mejores ofertas',
     'SPOTLIGHT' => 'EN EL FOCO',
     'bonus_deposit' => 'Bono por depósito'

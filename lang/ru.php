@@ -1177,6 +1177,7 @@ return [
     'footer_language_en' => 'English',
     'footer_language_ru' => 'Русский',
     'footer_language_es' => 'Español',
+    'anonim' => 'Скрытый',
     'best_deals_small' => 'Лучшие предложения',
     'SPOTLIGHT' => 'В ЦЕНТРЕ ВНИМАНИЯ',
     'bonus_deposit' => 'Бонус за депозит'

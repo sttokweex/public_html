@@ -550,7 +550,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       const betAmount = (Math.random() * (50000 - 1) + 1).toFixed(2);
       const multiplier = (Math.random() * 50).toFixed(2);
       const payout = (betAmount * multiplier).toFixed(2);
-      const user = 'Скрытый';
+      const user = <?php echo json_encode($translations['anonim']); ?>;
       const time = new Intl.DateTimeFormat('en-US', {
         hour: '2-digit',
         minute: '2-digit',

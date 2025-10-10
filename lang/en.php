@@ -1182,6 +1182,7 @@ return [
     'footer_language_en' => 'English',
     'footer_language_ru' => 'Русский',
     'footer_language_es' => 'Español',
+    'anonim' => 'anonymous',
     'best_deals_small' => 'Best deals',
     'SPOTLIGHT' => 'SPOTLIGHT',
     'bonus_deposit' => 'Deposit Bonuse'
