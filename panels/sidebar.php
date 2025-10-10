@@ -250,7 +250,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
                   <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['language_russian']); ?></span>
                   <span class="indicator size-md variant-default custom-radio-indicator"></span>
                 </label>
-                <label class="anchor_button lang-button <?php echo $current_language === 'Español' ? 'selected' : ''; ?>" data-lang="ea" data-analytics="language-select-Español">
+                <label class="anchor_button lang-button <?php echo $current_language === 'Español' ? 'selected' : ''; ?>" data-lang="es" data-analytics="language-select-Español">
                   <input type="radio" name="language" value="en" <?php echo $current_language === 'Español' ? 'checked' : ''; ?> style="display: none;">
                   <span class="is-truncate" style="max-width: 100%;"><?php echo htmlspecialchars($translations['language_es']); ?></span>
                   <span class="indicator size-md variant-default custom-radio-indicator"></span>
