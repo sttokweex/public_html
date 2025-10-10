@@ -262,7 +262,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                             <button type="button" tabindex="0" class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] inline-flex relative items-center gap-2 justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] bg-transparent text-white hover:bg-transparent hover:text-white focus-visible:outline-hidden var(--ds-font-size-sm) [&amp;_svg]:text-grey-200 [&amp;:hover&gt;svg]:text-white" data-analytics="toggle-play-real-button" data-button-root="">
                                 <span type="body" tag="span" size="md" strong="true" variant="neutral-default" class="text-neutral-default ds-body-md-strong" data-ds-text="true">Fun Play</span>
                                 <label class="variant-default svelte-g4k249">
-                                    <input type="checkbox" aria-checked="false" class="svelte-g4k249" id="play-mode-toggle">
+                                    <input type="checkbox" aria-checked="false" class="svelte-g4k249" checked id="play-mode-toggle">
                                     <span class="slider svelte-g4k249">
                                         <div class="indicator svelte-g4k249"></div>
                                     </span>
