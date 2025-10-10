@@ -677,7 +677,12 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       $('.dropdown-menu-settings').toggleClass('active');
       $('.notifications-widget').addClass('closed');
     });
-
+    $('.modal-trigger').on('click', function(e) {
+      e.preventDefault(); // Prevent default link behavior
+      var modalId = $(this).data('modal'); // Get target modal ID
+      $('.vault-modal-container').addClass('hide-modal'); // Hide all modals
+      $(`[data-testid="${modalId}"]`).removeClass('hide-modal'); // Show target modal
+    });
     $(document).on('click', function(e) {
       if (!$(e.target).closest('.header-dropdown').length) {
         $('.dropdown-menu-settings').removeClass('active');

@@ -176,12 +176,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
         $(window).on('resize', updateArrows);
 
         // Modal trigger logic
-        $('.modal-trigger').on('click', function(e) {
-          e.preventDefault(); // Prevent default link behavior
-          var modalId = $(this).data('modal'); // Get target modal ID
-          $('.vault-modal-container').addClass('hide-modal'); // Hide all modals
-          $(`[data-testid="${modalId}"]`).removeClass('hide-modal'); // Show target modal
-        });
+    
 
         // Modal close logic
         $('.vault-close-button').on('click', function() {
