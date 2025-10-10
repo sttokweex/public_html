@@ -296,49 +296,6 @@ ul {
   }
 }
 
-.game {
-  padding: 0 3vw;
-  width: 100%;
-  min-height: 100vh;
-  /* Full viewport height to allow vertical centering */
-  display: flex;
-  justify-content: center;
-  /* Center horizontally */
-  align-items: center;
-  /* Center vertically */
-  flex-direction: column;
-  /* Stack iframe and button vertically */
-  gap: 10px;
-  /* Space between iframe and button */
-}
-
-.game-iframe {
-  width: 100%;
-  /* 80% of viewport width */
-  height: 80vh;
-  /* 80% of viewport height */
-  max-width: 1200px;
-  /* Maximum width to prevent overly large iframes */
-  max-height: 800px;
-  /* Maximum height for consistency */
-  border: none;
-  border-radius: 8px;
-  /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  /* Subtle shadow */
-}
-
-.fullscreen-button {
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  background-color: #1b2338;
-  border: 1px solid rgba(111, 125, 157, 0.18);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 .GamesSearch__gridRow--1xF {
   display: flex;
 }
@@ -350,6 +307,10 @@ ul {
   display: flex;
   position: relative;
   width: 100%;
+}
+
+.game-list-game-image {
+  border-radius: 0.25rem;
 }
 input.GamesSearch__input--AJm {
   align-items: center;
@@ -725,6 +686,15 @@ a:hover {
   height: 2rem;
   width: 2rem;
 }
+.game-list-item {
+  flex: 1 0 180px;
+  /* Grow to fill space, don't shrink below 180px */
+  min-width: 140px;
+  /* Minimum width to prevent cards from becoming too small */
+  max-width: 220px;
+  /* Maximum width to keep cards from growing too large */
+  height: fit-content;
+}
 
 .LabeledCloseButton__close--2kg {
   background: none;
@@ -803,6 +773,39 @@ a:hover {
 .MobileMenu__menuIcon--1Gb {
   margin-right: 1.125em;
 }
+.GamesHeader__categoryTitle--aFh {
+  align-items: center;
+  display: flex;
+  margin-top: 1rem;
+  min-height: 3rem;
+}
+.GoBack__container--F0q {
+  margin: 2rem 0 -3.5rem;
+  position: relative;
+  text-align: right;
+}
+.game-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow wrapping to next line */
+  gap: 20px;
+  /* Space between game cards */
+}
+.GoBack__container--F0q .GoBack__goBack--2Ee {
+  color: #ff616d;
+  font-size: 0.875rem;
+  position: relative;
+  z-index: 1;
+}
+.GamesHeader__categoryTitle--aFh .GamesHeader__categoryName--WNE {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
 .Icon__navigation-menu--R7v {
   display: none;
   background-image: url('../images/navigation-menu.svg');
@@ -816,12 +819,12 @@ a:hover {
   margin-right: 0.5rem;
   width: 1.5rem;
 }
-@media (min-width: 1000px) {
+@media (min-width: 970px) {
   .Icon__navigation-menu--R7v {
     display: none !important;
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 970px) {
   .Header__fadingContainer--1hB {
     background-color: #011c38;
     bottom: 0;
@@ -1213,6 +1216,11 @@ a:hover {
   .header-auth {
     font-size: 0.875rem;
     padding: 0.25rem 1rem;
+  }
+}
+@media (max-width: 450px) {
+  .game-list-item {
+    max-width: 400px;
   }
 }
 @font-face {

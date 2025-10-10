@@ -1185,5 +1185,6 @@ return [
     'anonim' => 'anonymous',
     'best_deals_small' => 'Best deals',
     'SPOTLIGHT' => 'SPOTLIGHT',
-    'bonus_deposit' => 'Deposit Bonuse'
+    'bonus_deposit' => 'Deposit Bonuse',
+    'more_games' => 'More games',
 ];

@@ -7,7 +7,14 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 require(dirname(__DIR__, 1) . "/panels/header.php");
 require(dirname(__DIR__, 1) . "/panels/sidebar.php");
 $games = array_filter($games, function ($game) {
-  return isset($game['vendorid']) && $game['vendorid'] === 'Pragmatic play custom';
+  $search_terms = ['the_dog_house'];
+  $game_name = strtolower($game['name']);
+  foreach ($search_terms as $term) {
+    if (stripos($game_name, $term) !== false) {
+      return true;
+    }
+  }
+  return false;
 });
 ?>
 <style>
@@ -26,7 +33,7 @@ $games = array_filter($games, function ($game) {
 <div class="main-container" id="main-content">
   <div class="GoBack__container--F0q"><a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh GoBack__goBack--2Ee PlainText__dark--3fd" href="/" target="_self">Go back</a></div>
   <div class="GamesHeader__categoryTitle--aFh cms-games-grid-category-title">
-    <h2 class="Headings__head--2LV Headings__bold--iD3 Headings__h2--3Bv Headings__dark--1eH GamesHeader__categoryName--WNE "><? $translations['popular'] ?></h2>
+    <h2 class="Headings__head--2LV Headings__bold--iD3 Headings__h2--3Bv Headings__dark--1eH GamesHeader__categoryName--WNE ">Dog House</h2>
   </div>
   <div class="game-list-container" id="game-list-container">
     <?php foreach ($games as $game): ?>

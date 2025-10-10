@@ -4,11 +4,10 @@ function render_slider($games, $hasMargin, $translations, $type)
   // Filter games if isOurGames is true
   if ($type === "ourGames") {
     $text = $translations['best_deals_small'];
-
     $games = array_filter($games, function ($game) {
       return isset($game['vendorid']) && $game['vendorid'] === 'Pragmatic play custom';
     });
-    $groupSlug = 'new-releases';
+    $moreGamesLink = '/categories/best-deals';
   } elseif ($type === 'sugar') {
     $text = "Sugar Rush";
     $games = array_filter($games, function ($game) {
@@ -21,7 +20,7 @@ function render_slider($games, $hasMargin, $translations, $type)
       }
       return false;
     });
-    $groupSlug = 'popular-sugar';
+    $moreGamesLink = '/categories/sugar-rush';
   } elseif ($type === 'zews') {
     $text = "Gates of Olympus";
     $games = array_filter($games, function ($game) {
@@ -34,7 +33,7 @@ function render_slider($games, $hasMargin, $translations, $type)
       }
       return false;
     });
-    $groupSlug = 'popular-zews';
+    $moreGamesLink = '/categories/gates-of-olympus';
   } elseif ($type === 'sweet') {
     $text = "Sweet Bonanza";
     $games = array_filter($games, function ($game) {
@@ -47,7 +46,7 @@ function render_slider($games, $hasMargin, $translations, $type)
       }
       return false;
     });
-    $groupSlug = 'popular-fruits';
+    $moreGamesLink = '/categories/sweet-bonanza';
   } elseif ($type === 'dogs') {
     $text = "The Dog House";
     $games = array_filter($games, function ($game) {
@@ -60,17 +59,19 @@ function render_slider($games, $hasMargin, $translations, $type)
       }
       return false;
     });
-    $groupSlug = 'popular-dogs';
+    $moreGamesLink = '/categories/the-dog-house';
   } else {
     $text = $translations['slots'];
-    $groupSlug = 'all-slots';
+    $moreGamesLink = '/categories/all-slots';
     // Игры не фильтруются, используются все
   }
 ?>
   <div class="game-slider<?php echo $hasMargin ? ' home-has-margin' : ''; ?>">
     <div class="game-slider-header">
-      <div class="game-slider-header-title"><?php echo $text; ?></div>
-      <a class="game-slider-header-link" href="/categories/trending-games"> Больше игр</a>
+      <div class="game-slider-header-title truncate"><?php echo $text; ?></div>
+      <a class="game-slider-header-link" href="<?php echo $moreGamesLink; ?>">
+        <? echo $translations['more_games'] ?> (<?php echo count($games); ?>)
+      </a>
       <button class="game-slider-left"></button>
       <button class="game-slider-right"></button>
     </div>
@@ -102,7 +103,6 @@ function render_slider($games, $hasMargin, $translations, $type)
   <script>
     // Проверяем jQuery
 
-
     // Функция расчета ширины слайдов и scrollAmount
     function calculateSlideWidth($gallery) {
       const totalWidth = $gallery.width();
@@ -113,10 +113,15 @@ function render_slider($games, $hasMargin, $translations, $type)
       const slideWidthPx = 240;
       const countSlide = Math.max(1, Math.floor(totalWidth / slideWidthPx));
       const slideWidthPercent = 100 / countSlide;
-      $gallery.css({
-        'grid-auto-columns': `calc(${slideWidthPercent}% - 16px)`
-      });
-
+      if (countSlide == 1) {
+        $gallery.css({
+          'grid-auto-columns': `${slideWidthPercent}%`
+        });
+      } else {
+        $gallery.css({
+          'grid-auto-columns': `calc(${slideWidthPercent}% - 10px)`
+        });
+      }
       const $container = $gallery.closest('.game-slider');
       const $forwardBtn = $container.find('.game-slider-right');
       const $backwardBtn = $container.find('.game-slider-left');
@@ -147,7 +152,6 @@ function render_slider($games, $hasMargin, $translations, $type)
         const $forwardBtn = $container.find('.game-slider-right');
         const $backwardBtn = $container.find('.game-slider-left');
         // Инициализация кнопок
-
 
         if (!$gallery.length || !$forwardBtn.length || !$backwardBtn.length) {
           console.warn('Галерея или кнопки не найдены');
@@ -188,8 +192,6 @@ function render_slider($games, $hasMargin, $translations, $type)
         $gallery.off('scroll.slider').on('scroll.slider', function() {
           updateButtonState($gallery, $backwardBtn, $forwardBtn);
         });
-
-
       });
     }
 
