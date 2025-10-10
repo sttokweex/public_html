@@ -1198,4 +1198,5 @@ return [
     'logout' => 'Logout',
     'lobby' => 'Lobby',
     'type' => 'Type',
+    'all-slots'  => 'All slots'
 ];

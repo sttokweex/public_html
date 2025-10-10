@@ -135,19 +135,7 @@ function render_slider($games, $hasMargin, $translations, $type)
       <?php endforeach; ?>
     </div>
   </div>
-  <script>
-    document.querySelectorAll('.copy-slot-link-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const hostname = window.location.origin;
-        const gameName = button.getAttribute('data-gamename');
-        const url = hostname + "/slot/" + gameName;
 
-        navigator.clipboard.writeText(url).catch(err => {
-          console.error('Ошибка копирования: ', err);
-        });
-      });
-    });
-  </script>
   <script>
     (function($) {
       'use strict';

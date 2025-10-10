@@ -15,7 +15,7 @@ require_once(dirname(__DIR__, 1) . "/panels/footer.php");
 require_once(dirname(__DIR__, 1) . "/panels/livefeed.php");
 require_once(dirname(__DIR__, 1) . "/panels/search.php");
 // Фильтрация игр по указанным названиям
-$filtered_games = array_filter($games, function($game) {
+$filtered_games = array_filter($games, function ($game) {
   $search_terms = ['the_dog_house'];
   $game_name = strtolower($game['name']);
   foreach ($search_terms as $term) {
@@ -45,15 +45,14 @@ $filtered_games = array_filter($games, function($game) {
       renderSearch($games, $translations);
       ?>
       <!-- Сетка для отображения игр -->
-      <div class="games-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; padding: 16px;">
-        <?php if (!empty($filtered_games)): ?>
+      <div class="games-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; padding: 16px 0;"> <?php if (!empty($filtered_games)): ?>
           <?php foreach ($filtered_games as $game): ?>
-                  <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars($game['name']); ?>">
-            <div class="game-card" style="background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden;">
-              <img src="<?php echo htmlspecialchars($game['iconurl']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>" style="width: 100%; height: 100% ; object-fit: cover;">
-            
-            </div>
-             </a>
+            <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars($game['name']); ?>">
+              <div class="game-card" style="background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden;">
+                <img src="<?php echo htmlspecialchars($game['iconurl']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>" style="width: 100%; height: 100% ; object-fit: cover;">
+
+              </div>
+            </a>
           <?php endforeach; ?>
         <?php else: ?>
           <p style="text-align: center; color: #666;">Нет игр для отображения.</p>

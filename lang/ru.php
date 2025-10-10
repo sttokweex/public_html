@@ -1199,7 +1199,7 @@ return [
     'modal_vip_benefit_legend_3' => 'Бонус от ВИП-менеджера в предпочитаемой валюте',
     'modal_vip_benefit_legend_4' => 'Увеличенный еженедельный и ежемесячный бонус',
     'modal_vip_learn_more' => 'Узнайте больше о программе ВИП Stake',
-
+    'all-slots'  => 'Все игры',
     // Modal Close Button (shared across all modals)
     'modal_close_aria_label' => 'Закрыть модальное окно',
 

@@ -838,36 +838,54 @@ function updateDash() {
 }
 
 $(document).ready(function () {
+  document.querySelectorAll('.copy-slot-link-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const hostname = window.location.origin;
+      const gameName = button.getAttribute('data-gamename');
+      const url = hostname + '/slot/' + gameName;
+
+      navigator.clipboard.writeText(url).catch(err => {
+        console.error('Ошибка копирования: ', err);
+      });
+    });
+  });
   const toggleButtons = document.querySelectorAll('.passToogle');
 
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Находим ближайший input внутри родительского .input-content
+      const input = button.closest('.input-content')?.querySelector('input');
 
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Находим ближайший input внутри родительского .input-content
-            const input = button.closest('.input-content')?.querySelector('input');
+      if (input) {
+        // Переключаем тип input между password и text
+        input.type = input.type === 'password' ? 'text' : 'password';
 
-            if (input) {
-                // Переключаем тип input между password и text
-                input.type = input.type === 'password' ? 'text' : 'password';
-                
-                // Обновляем aria-label для доступности
-                button.setAttribute('aria-label', input.type === 'password' ? 'Reveal password' : 'Hide password');
+        // Обновляем aria-label для доступности
+        button.setAttribute(
+          'aria-label',
+          input.type === 'password' ? 'Reveal password' : 'Hide password'
+        );
 
-                // Обновляем иконку (ViewOn/ViewOff)
-                const svg = button.querySelector('svg');
-                if (svg) {
-                    svg.setAttribute('data-ds-icon', input.type === 'password' ? 'ViewOn' : 'ViewOff');
-                    if (input.type === 'text') {
-                        // SVG для ViewOff (пароль виден)
-                        svg.innerHTML = '<path fill="currentColor" d="M7.46 17.6c-.68.48-.5 1.54.3 1.78 1.3.4 2.73.62 4.24.62 6.08 0 11-3.58 11-8 0-1.24-.38-2.41-1.07-3.45-.31-.47-.95-.57-1.41-.25L7.47 17.6zm11.41-9.43 4.09-2.92.62-.44-1.16-1.62-3.58 2.55C16.97 4.65 14.59 4 12 4 5.92 4 1 7.58 1 12c0 1.82.83 3.5 2.24 4.84L.52 18.78l.62.87.54.76zM3 12c0-3.25 4.12-6 9-6 1.83 0 3.56.39 5 1.05l-2.54 1.8C13.78 8.32 12.92 8 12 8a4 4 0 0 0-3.78 5.3l-3.3 2.35C3.72 14.63 3 13.36 3 12"/>';
-                    } else {
-                        // SVG для ViewOn (пароль скрыт)
-                        svg.innerHTML = '<path fill="currentColor" d="M12 4C5.92 4 1 7.58 1 12s4.92 8 11 8 11-3.58 11-8-4.92-8-11-8m0 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5"/><path fill="currentColor" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>';
-                    }
-                }
-            }
-        });
+        // Обновляем иконку (ViewOn/ViewOff)
+        const svg = button.querySelector('svg');
+        if (svg) {
+          svg.setAttribute(
+            'data-ds-icon',
+            input.type === 'password' ? 'ViewOn' : 'ViewOff'
+          );
+          if (input.type === 'text') {
+            // SVG для ViewOff (пароль виден)
+            svg.innerHTML =
+              '<path fill="currentColor" d="M7.46 17.6c-.68.48-.5 1.54.3 1.78 1.3.4 2.73.62 4.24.62 6.08 0 11-3.58 11-8 0-1.24-.38-2.41-1.07-3.45-.31-.47-.95-.57-1.41-.25L7.47 17.6zm11.41-9.43 4.09-2.92.62-.44-1.16-1.62-3.58 2.55C16.97 4.65 14.59 4 12 4 5.92 4 1 7.58 1 12c0 1.82.83 3.5 2.24 4.84L.52 18.78l.62.87.54.76zM3 12c0-3.25 4.12-6 9-6 1.83 0 3.56.39 5 1.05l-2.54 1.8C13.78 8.32 12.92 8 12 8a4 4 0 0 0-3.78 5.3l-3.3 2.35C3.72 14.63 3 13.36 3 12"/>';
+          } else {
+            // SVG для ViewOn (пароль скрыт)
+            svg.innerHTML =
+              '<path fill="currentColor" d="M12 4C5.92 4 1 7.58 1 12s4.92 8 11 8 11-3.58 11-8-4.92-8-11-8m0 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5"/><path fill="currentColor" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>';
+          }
+        }
+      }
     });
+  });
   $('.mybets-nav-link').on('click', function () {
     // Remove mybets-nav-active from all links
     $('.mybets-nav-link').removeClass('mybets-nav-active');

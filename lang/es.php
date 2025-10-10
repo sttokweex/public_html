@@ -991,6 +991,7 @@ return [
     'aml_policy' => 'Política AML',
     'terms' => 'Acuerdo de usuario',
     'payments' => 'Sobre pagos',
+    'all-slots' => 'Todos los juegos',
     'deposits_withdrawals' => 'Depósitos y retiros',
     'currency_guide' => 'Guía de monedas fiduciarias',
     'crypto_guide' => 'Guía de criptomonedas',
