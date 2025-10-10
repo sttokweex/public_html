@@ -2,11 +2,26 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
-if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
-  header('Location: /');
-  die();
+
+if (isset($_SESSION['lang'])) {
+  $lang = $_SESSION['lang'];
+} elseif (isset($_COOKIE['lang'])) {
+  $lang = $_COOKIE['lang'];
+} else {
+  $lang = 'en';
+}
+$allowed = ['en', 'es', 'ru'];
+if (!in_array($lang, $allowed, true)) {
+  $lang = 'en';
 }
 
+// подключаем файл перевода
+$path = dirname(dirname(__DIR__)) . "/lang/{$lang}.php";
+if (is_file($path)) {
+  $translations = require $path;
+} else {
+  $translations = require dirname(dirname(__DIR__)) . "/lang/en.php";
+}
 
 $sid = $_SESSION['hash'];
 $select = "SELECT * FROM users WHERE hash = '$sid'";
@@ -36,6 +51,8 @@ require('modals.php');
   <link rel="icon" href="../../images/logo-mob.png" type="image/png">
 
   <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=Rubik&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
 
   <!-- End CSS -->
@@ -43,10 +60,11 @@ require('modals.php');
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" crossorigin="anonymous"></script>
   <!-- End Scripts -->
   <script src="../../js/toastr.min.js"></script>
-  <script src="js/functions.js?v=1"></script>
+  <script src="../../admin/js/functions.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../../css/toastr.css" crossorigin="anonymous" />
   <!-- NEW CSS -->
@@ -54,11 +72,11 @@ require('modals.php');
   <link href='../../css/livefeed.css' rel='stylesheet'>
   <link href='../../css/footer.css' rel='stylesheet'>
   <link href='../../css/sidebar.css' rel='stylesheet'>
-  <link href='../../css/gameInfo.css' rel='stylesheet'>
+  <link href='../../css/more.css' rel='stylesheet'>
   <link href='../../css/modal.css' rel='stylesheet'>
 
   <link href="../../css/toastr.css" rel="stylesheet">
-  <link href="additionally/css.css" rel="stylesheet">
+  <link href="../../admin/additionally/css.css" rel="stylesheet">
   <title><?= $sitename ?> - Admin Dashboard</title>
 </head>
 <style>
@@ -92,7 +110,6 @@ require('modals.php');
 <div class="headerproject">
 
   <a class="site_logo_wrapper" href="/">
-    <!-- <img alt="<?= $sitename ?>" width="40" height="40" src="/images/logo-mob_2.png"> -->
     <span class="hideonmob"><?= $sitename ?></span>
   </a>
 

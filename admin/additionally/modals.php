@@ -21,7 +21,7 @@
           <span class="title">Название</span>
           <div style="display: flex;gap: 15px;">
             <input class="enter" id="promoname" placeholder="Название промокода">
-            <button class="buttonProject" style="width:10%;height: 100%;" onclick="generateRandomCode()"><i class="fa fa-brush" aria-hidden="true"></i></button>
+            <button class="buttonProject" style="width:10%;height: 100%;" onclick="generateRandomCode()"><i style="color:#000;" class="fa fa-brush" aria-hidden="true"></i></button>
           </div>
         </div>
         <div class="modal-forms">

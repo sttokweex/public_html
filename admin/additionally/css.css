@@ -1,3 +1,21 @@
+:root {
+  --main-gradient: linear-gradient(45.87deg, #e1a337 6.6%, #e3db75 102.94%);
+  --main-background: #17181f;
+  --main-background2: #1b1c24;
+  --main-background3: #1d1e27;
+  --main-background4: #22232d;
+  --main-color-low: #6c8198a1;
+  --main-color-medium: #748198ba;
+  --main-color-hight: #748198;
+  --border-yellow: linear-gradient(
+    231.26deg,
+    #ffe3a6 9.72%,
+    rgba(255, 203, 91, 0) 67.39%
+  );
+}
+.modal-content {
+  background: var(--main-background);
+}
 .ticket_wraps {
   display: grid;
   gap: 10px;
@@ -41,41 +59,14 @@
   height: 100%;
   width: 100%;
 }
-.btn-info {
-  height: fit-content;
-  width: fit-content;
-  background-color: #1475e1;
-  font-size: 16px;
-  padding: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-.btn-danger {
-  height: fit-content;
-  width: fit-content;
-  background-color: #1475e1;
-  font-size: 16px;
-  padding: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-.btn-success {
-  height: fit-content;
-  width: fit-content;
-  background-color: #1475e1;
-  font-size: 16px;
-  padding: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
-}
 .t_area {
   height: 136px;
   display: block;
   resize: none;
   outline: none;
   border-radius: 8px;
-  background: rgb(15, 33, 46);
-  color: white;
+  background: var(--main-background);
+  color: var(--main-color-hight);
   padding: 10px;
   padding-left: 15px;
   padding-right: 15px;
@@ -177,7 +168,7 @@
   color: #fff !important;
 }
 
-/* @media (max-width: 992px) {
+@media (max-width: 992px) {
   .userInfoProfile .more {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -188,9 +179,9 @@
   .userInfoProfile .main {
     width: 100%;
   }
-} */
+}
 
-/* @media (max-width: 780px) {
+@media (max-width: 780px) {
   .userInfoProfile .more {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
@@ -202,7 +193,7 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
     width: fit-content;
   }
-} */
+}
 .chatButtonAd {
   background: var(--main-background2);
   color: #fff !important;
@@ -322,41 +313,41 @@ input {
 }
 
 /**
- * Кнопка переключения панели
- * тег <label>
+ * РљРЅРѕРїРєР° РїРµСЂРµРєР»СЋС‡РµРЅРёСЏ РїР°РЅРµР»Рё
+ * С‚РµРі <label>
  */
 
 .navs-toggle {
-  /* абсолютно позиционируем */
+  /* Р°Р±СЃРѕР»СЋС‚РЅРѕ РїРѕР·РёС†РёРѕРЅРёСЂСѓРµРј */
   position: absolute;
-  /* относительно правого края панели */
+  /* РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РїСЂР°РІРѕРіРѕ РєСЂР°СЏ РїР°РЅРµР»Рё */
   right: 300px;
-  /* отступ от верхнего края панели */
+  /* РѕС‚СЃС‚СѓРї РѕС‚ РІРµСЂС…РЅРµРіРѕ РєСЂР°СЏ РїР°РЅРµР»Рё */
   top: 45%;
-  /* внутренние отступы */
+  /* РІРЅСѓС‚СЂРµРЅРЅРёРµ РѕС‚СЃС‚СѓРїС‹ */
   padding: 0.5em;
   border-radius: 6px 6px 0 0;
-  /* определяем цвет фона переключателя
-     * чаще вчего в соответствии с цветом фона панели
+  /* РѕРїСЂРµРґРµР»СЏРµРј С†РІРµС‚ С„РѕРЅР° РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЏ
+     * С‡Р°С‰Рµ РІС‡РµРіРѕ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ С†РІРµС‚РѕРј С„РѕРЅР° РїР°РЅРµР»Рё
     */
   background: inherit;
-  /* цвет текста */
-  /* вид курсора */
+  /* С†РІРµС‚ С‚РµРєСЃС‚Р° */
+  /* РІРёРґ РєСѓСЂСЃРѕСЂР° */
   cursor: pointer;
-  /* размер шрифта */
+  /* СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р° */
   color: #fff !important;
   font-size: 1.2em;
   line-height: 1;
-  /* всегда поверх других элементов страницы */
+  /* РІСЃРµРіРґР° РїРѕРІРµСЂС… РґСЂСѓРіРёС… СЌР»РµРјРµРЅС‚РѕРІ СЃС‚СЂР°РЅРёС†С‹ */
   z-index: 2001;
-  /* анимируем цвет текста при наведении */
+  /* Р°РЅРёРјРёСЂСѓРµРј С†РІРµС‚ С‚РµРєСЃС‚Р° РїСЂРё РЅР°РІРµРґРµРЅРёРё */
   -webkit-transition: color 0.25s ease-in-out;
   -moz-transition: color 0.25s ease-in-out;
   transition: color 0.25s ease-in-out;
 }
 
-/* определяем текст кнопки
- * символ Unicode (TRIGRAM FOR HEAVEN)
+/* РѕРїСЂРµРґРµР»СЏРµРј С‚РµРєСЃС‚ РєРЅРѕРїРєРё 
+ * СЃРёРјРІРѕР» Unicode (TRIGRAM FOR HEAVEN)
 */
 
 .navs-toggle:after {
@@ -364,15 +355,15 @@ input {
   text-decoration: none;
 }
 
-/* цвет текста при наведении */
+/* С†РІРµС‚ С‚РµРєСЃС‚Р° РїСЂРё РЅР°РІРµРґРµРЅРёРё */
 
 .navs-toggle:hover {
 }
 
 /**
- * Скрытый чекбокс (флажок)
- * невидим и недоступен :)
- * имя селектора атрибут флажка
+ * РЎРєСЂС‹С‚С‹Р№ С‡РµРєР±РѕРєСЃ (С„Р»Р°Р¶РѕРє)
+ * РЅРµРІРёРґРёРј Рё РЅРµРґРѕСЃС‚СѓРїРµРЅ :)
+ * РёРјСЏ СЃРµР»РµРєС‚РѕСЂР° Р°С‚СЂРёР±СѓС‚ С„Р»Р°Р¶РєР°
  */
 
 [id='navs-toggle'] {
@@ -381,43 +372,43 @@ input {
 }
 
 /**
- * изменение положения переключателя
- * при просмотре на мобильных устройствах
- * когда навигация раскрыта, распологаем внутри панели
+ * РёР·РјРµРЅРµРЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЏ 
+ * РїСЂРё РїСЂРѕСЃРјРѕС‚СЂРµ РЅР° РјРѕР±РёР»СЊРЅС‹С… СѓСЃС‚СЂРѕР№СЃС‚РІР°С…
+ * РєРѕРіРґР° РЅР°РІРёРіР°С†РёСЏ СЂР°СЃРєСЂС‹С‚Р°, СЂР°СЃРїРѕР»РѕРіР°РµРј РІРЅСѓС‚СЂРё РїР°РЅРµР»Рё
 */
 
 [id='navs-toggle']:checked ~ .navs > .navs-toggle {
-  /* абсолютно позиционируем */
+  /* Р°Р±СЃРѕР»СЋС‚РЅРѕ РїРѕР·РёС†РёРѕРЅРёСЂСѓРµРј */
   position: absolute;
-  /* относительно правого края панели */
+  /* РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РїСЂР°РІРѕРіРѕ РєСЂР°СЏ РїР°РЅРµР»Рё */
   right: 303px;
-  /* отступ от верхнего края панели */
+  /* РѕС‚СЃС‚СѓРї РѕС‚ РІРµСЂС…РЅРµРіРѕ РєСЂР°СЏ РїР°РЅРµР»Рё */
   top: 45%;
   border-radius: 6px 6px 0 0;
-  /* внутренние отступы */
+  /* РІРЅСѓС‚СЂРµРЅРЅРёРµ РѕС‚СЃС‚СѓРїС‹ */
   padding: 0.5em;
-  /* определяем цвет фона переключателя
-     * чаще вчего в соответствии с цветом фона панели
+  /* РѕРїСЂРµРґРµР»СЏРµРј С†РІРµС‚ С„РѕРЅР° РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЏ
+     * С‡Р°С‰Рµ РІС‡РµРіРѕ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ С†РІРµС‚РѕРј С„РѕРЅР° РїР°РЅРµР»Рё
     */
   background: inherit;
-  /* цвет текста */
-  /* вид курсора */
+  /* С†РІРµС‚ С‚РµРєСЃС‚Р° */
+  /* РІРёРґ РєСѓСЂСЃРѕСЂР° */
   color: #fff !important;
   cursor: pointer;
-  /* размер шрифта */
+  /* СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р° */
   font-size: 1.2em;
   line-height: 1;
-  /* всегда поверх других элементов страницы */
+  /* РІСЃРµРіРґР° РїРѕРІРµСЂС… РґСЂСѓРіРёС… СЌР»РµРјРµРЅС‚РѕРІ СЃС‚СЂР°РЅРёС†С‹ */
   z-index: 2001;
-  /* анимируем цвет текста при наведении */
+  /* Р°РЅРёРјРёСЂСѓРµРј С†РІРµС‚ С‚РµРєСЃС‚Р° РїСЂРё РЅР°РІРµРґРµРЅРёРё */
   -webkit-transition: color 0.25s ease-in-out;
   -moz-transition: color 0.25s ease-in-out;
   transition: color 0.25s ease-in-out;
 }
 
 /**
- * Когда флажок установлен, открывается панель
- * используем псевдокласс:checked
+ * РљРѕРіРґР° С„Р»Р°Р¶РѕРє СѓСЃС‚Р°РЅРѕРІР»РµРЅ, РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РїР°РЅРµР»СЊ
+ * РёСЃРїРѕР»СЊР·СѓРµРј РїСЃРµРІРґРѕРєР»Р°СЃСЃ:checked
  */
 
 [id='navs-toggle']:checked ~ .navs {
@@ -427,10 +418,10 @@ input {
   -webkit-box-shadow: -4px 0px 20px 0px rgb(201 0 255 / 6%);
 }
 
-/*
- * смещение контента страницы
- * на размер ширины панели,
- * фишка необязательная, на любителя
+/* 
+ * СЃРјРµС‰РµРЅРёРµ РєРѕРЅС‚РµРЅС‚Р° СЃС‚СЂР°РЅРёС†С‹
+ * РЅР° СЂР°Р·РјРµСЂ С€РёСЂРёРЅС‹ РїР°РЅРµР»Рё,
+ * С„РёС€РєР° РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅР°СЏ, РЅР° Р»СЋР±РёС‚РµР»СЏ
 */
 
 [id='navs-toggle']:checked ~ main > article {
@@ -440,24 +431,24 @@ input {
 }
 
 /*
- * изменение символа переключателя,
- * привычный крестик (MULTIPLICATION X),
- * вы можете испльзовать любой другой значок
+ * РёР·РјРµРЅРµРЅРёРµ СЃРёРјРІРѕР»Р° РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЏ,
+ * РїСЂРёРІС‹С‡РЅС‹Р№ РєСЂРµСЃС‚РёРє (MULTIPLICATION X), 
+ * РІС‹ РјРѕР¶РµС‚Рµ РёСЃРїР»СЊР·РѕРІР°С‚СЊ Р»СЋР±РѕР№ РґСЂСѓРіРѕР№ Р·РЅР°С‡РѕРє
 */
 
 [id='navs-toggle']:checked ~ .navs > .navs-toggle:after {
   content: '\2715';
 }
-/* 
+
 @media screen and (max-width: 320px) {
   .navs {
     width: 100%;
     box-shadow: none;
   }
-} */
+}
 
 /**
- * Формируем стиль заголовка (логотип) панели
+ * Р¤РѕСЂРјРёСЂСѓРµРј СЃС‚РёР»СЊ Р·Р°РіРѕР»РѕРІРєР° (Р»РѕРіРѕС‚РёРї) РїР°РЅРµР»Рё 
 */
 
 .navs h2 {
@@ -497,7 +488,7 @@ input {
   text-transform: uppercase;
 }
 
-/*плавное появление заголовка (логотипа) при раскрытии панели */
+/*РїР»Р°РІРЅРѕРµ РїРѕСЏРІР»РµРЅРёРµ Р·Р°РіРѕР»РѕРІРєР° (Р»РѕРіРѕС‚РёРїР°) РїСЂРё СЂР°СЃРєСЂС‹С‚РёРё РїР°РЅРµР»Рё */
 
 [id='navs-toggle']:checked ~ .navs h2 {
   opacity: 1;
@@ -508,9 +499,9 @@ input {
 }
 
 /**
- * формируем непосредственно само меню
- * используем неупорядоченный список для пунктов меню
- * прикрутим трансфомации и плавные переходы
+ * С„РѕСЂРјРёСЂСѓРµРј РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ СЃР°РјРѕ РјРµРЅСЋ
+ * РёСЃРїРѕР»СЊР·СѓРµРј РЅРµСѓРїРѕСЂСЏРґРѕС‡РµРЅРЅС‹Р№ СЃРїРёСЃРѕРє РґР»СЏ РїСѓРЅРєС‚РѕРІ РјРµРЅСЋ
+ * РїСЂРёРєСЂСѓС‚РёРј С‚СЂР°РЅСЃС„РѕРјР°С†РёРё Рё РїР»Р°РІРЅС‹Рµ РїРµСЂРµС…РѕРґС‹
  */
 
 .navs > ul {
@@ -549,7 +540,7 @@ input {
   transform: translateX(0);
 }
 
-/* определяем интервалы появления пунктов меню */
+/* РѕРїСЂРµРґРµР»СЏРµРј РёРЅС‚РµСЂРІР°Р»С‹ РїРѕСЏРІР»РµРЅРёСЏ РїСѓРЅРєС‚РѕРІ РјРµРЅСЋ */
 
 .navs > ul > li:nth-child(2) {
   -webkit-transition:
@@ -606,7 +597,7 @@ input {
 }
 
 /**
- * оформление ссылок пунктов меню
+ * РѕС„РѕСЂРјР»РµРЅРёРµ СЃСЃС‹Р»РѕРє РїСѓРЅРєС‚РѕРІ РјРµРЅСЋ
  */
 
 .navs > ul > li > a {
@@ -621,7 +612,7 @@ input {
   color: #dadada;
   width: 100%;
   text-decoration: none;
-  /* плавный переход */
+  /* РїР»Р°РІРЅС‹Р№ РїРµСЂРµС…РѕРґ */
   -webkit-transition:
     color 0.5s ease,
     padding 0.5s ease;
@@ -634,7 +625,7 @@ input {
 }
 
 /**
- * состояние ссылок меню при наведении
+ * СЃРѕСЃС‚РѕСЏРЅРёРµ СЃСЃС‹Р»РѕРє РјРµРЅСЋ РїСЂРё РЅР°РІРµРґРµРЅРёРё
  */
 
 .navs > ul > li > a:hover,
@@ -752,7 +743,6 @@ input {
 .buttonProject {
   height: fit-content;
   width: fit-content;
-  background-color: #1475e1;
   font-size: 16px;
   padding: 8px;
   padding-left: 12px;
@@ -771,8 +761,8 @@ input {
 .modal-forms .enter {
   outline: none;
   border-radius: 8px;
-  background: rgb(15, 33, 46);
-  color: white;
+  background: var(--main-background);
+  color: var(--main-color-hight);
   padding: 10px;
   padding-left: 15px;
   padding-right: 15px;
@@ -786,8 +776,8 @@ input {
 .main-form-input {
   outline: none;
   border-radius: 8px;
-  background: rgb(15, 33, 46);
-  color: white;
+  background: var(--main-background);
+  color: var(--main-color-hight);
   padding: 10px;
   padding-left: 15px;
   padding-right: 15px;
@@ -841,8 +831,10 @@ input {
   border-radius: 8px;
 }
 .additionalBtn {
-  background: linear-gradient(rgb(15, 33, 46), rgb(15, 33, 46)) padding-box;
-
+  background:
+    linear-gradient(var(--main-background2), var(--main-background2))
+      padding-box,
+    linear-gradient(45deg, #cd95347d, #e2cb648a) border-box;
   border: 2px solid transparent;
   border-radius: 8px;
   color: #fff;
@@ -852,9 +844,11 @@ input {
   -webkit-transition: 0.2s;
 }
 .additionalBtn:hover {
-  background: linear-gradient(#2f4553, #2f4553) padding-box;
+  background:
+    linear-gradient(var(--main-background), var(--main-background)) padding-box,
+    linear-gradient(45deg, #cd9534, #e2cb64) border-box;
 }
-/* @media screen and (max-width: 960px) {
+@media screen and (max-width: 960px) {
   .settingsMenu .listwrap .list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -868,4 +862,4 @@ input {
   .settingsMenu .listwrap .list {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-} */
+}
