@@ -844,12 +844,43 @@ $(document).ready(function () {
       const gameName = button.getAttribute('data-gamename');
       const url = hostname + '/slot/' + gameName;
 
-      navigator.clipboard.writeText(url).catch(err => {
-        console.error('Ошибка копирования: ', err);
+      copyToClipboard(url).catch(err => {
+        console.error('Ошибка копирования:', err);
       });
     });
   });
-  const toggleButtons = document.querySelectorAll('.passToogle');
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      // Clipboard API доступен
+      return navigator.clipboard.writeText(text);
+    } else {
+      // fallback для HTTP или браузеров без Clipboard API
+      return new Promise((resolve, reject) => {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed'; // чтобы не сдвинуло страницу
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+
+        try {
+          const successful = document.execCommand('copy');
+          document.body.removeChild(textarea);
+          if (successful) {
+            resolve();
+          } else {
+            reject(new Error('Команда копирования не удалась'));
+          }
+        } catch (err) {
+          document.body.removeChild(textarea);
+          reject(err);
+        }
+      });
+    }
+  }
+  toggleButtons = document.querySelectorAll('.passToogle');
 
   toggleButtons.forEach(button => {
     button.addEventListener('click', () => {
