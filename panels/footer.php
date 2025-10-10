@@ -170,7 +170,7 @@ function render_footer($translations, $current_language = 'en')
 								<select class="footer-language-dropdown" id="language-select">
 									<option value="en" <?php echo $current_language === 'en' ? 'selected' : ''; ?>><?php echo $translations['footer_language_en']; ?></option>
 									<option value="ru" <?php echo $current_language === 'ru' ? 'selected' : ''; ?>><?php echo $translations['footer_language_ru']; ?></option>
-									<option value="es" <?php echo $current_language === 'es' ? 'selected' : ''; ?>><?php echo $translations['footer_language_en']; ?></option>
+									<option value="es" <?php echo $current_language === 'es' ? 'selected' : ''; ?>><?php echo $translations['footer_language_ea']; ?></option>
 
 								</select>
 							</div>
