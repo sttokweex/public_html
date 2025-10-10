@@ -311,7 +311,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
             const gameName = <?= json_encode($gameid) ?>;
             const userId = <?= json_encode($user['id'] ?? '') ?>;
             try {
-                const response = await fetch(`http://5.129.253.12:2200/gameStartDemo?gameName=${encodeURIComponent(gameName)}&userId=${encodeURIComponent(userId)}`, {
+                const response = await fetch(`http://5.129.253.12:2002/gameStartDemo?gameName=${encodeURIComponent(gameName)}&userId=${encodeURIComponent(userId)}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json'
@@ -349,7 +349,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                     lobbyUrl: window.location.origin + '/slot',
                     balance: userBalance
                 });
-                authUrl = 'http://5.129.253.12:2200/userAuth';
+                authUrl = 'http://5.129.253.12:2002/userAuth';
             } else {
                 postData = new URLSearchParams({
                     agentID: 'frenzycazUSD',
