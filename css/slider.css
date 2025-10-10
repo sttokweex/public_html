@@ -1,45 +1,56 @@
 .game-slider {
-  margin-top:1.5rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   width: 100%;
   overflow-x: hidden;
   height: fit-content;
-}.game-slider:first-of-type {
+}
+.game-slider:first-of-type {
   margin-top: 0;
 }
-.home-container .game-slider:first-child{
+.home-container .game-slider:first-child {
   margin-top: 0;
 }
-.game-slider-header-link:hover{
-  color:white;
+.game-slider-header-link:hover {
+  color: white;
 }
 .stack.padding-top-smaller.svelte-1klblr3 {
-    padding-top: 0.25rem;
-}.stack.padding-none.svelte-1klblr3 {
-    padding: 0;
-}.stack.gap-smaller.svelte-1klblr3 {
-    gap: .25rem;
-}.stack.y-center.svelte-1klblr3 {
-    align-items: center;
-}.stack.x-flex-start.svelte-1klblr3 {
-    justify-content: flex-start;
-}.stack.direction-horizontal.svelte-1klblr3 {
-    grid-auto-flow: column;
-}.stack.svelte-1klblr3 {
-    display: grid
-;
-}span.svelte-rxhcv3 {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 9999px;
-    z-index: 1;
-    background: #1fff20
-;
-}.ds-body-xs {
-    font: 400 .75rem/1rem "proxima-nova",ui-sans-serif,-apple-system,system-ui,sans-serif
-;
+  padding-top: 0.25rem;
+}
+.stack.padding-none.svelte-1klblr3 {
+  padding: 0;
+}
+.stack.gap-smaller.svelte-1klblr3 {
+  gap: 0.25rem;
+}
+.stack.y-center.svelte-1klblr3 {
+  align-items: center;
+}
+.stack.x-flex-start.svelte-1klblr3 {
+  justify-content: flex-start;
+}
+.stack.direction-horizontal.svelte-1klblr3 {
+  grid-auto-flow: column;
+}
+.stack.svelte-1klblr3 {
+  display: grid;
+}
+span.svelte-rxhcv3 {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  z-index: 1;
+  background: #1fff20;
+}
+.ds-body-xs {
+  font:
+    400 0.75rem/1rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
 }
 /* Стили для заголовка слайдера */
 .game-slider-header {
@@ -75,8 +86,12 @@
   text-align: left;
   justify-content: flex-start;
   color: #fff;
-  font:700 1.25rem/1.75rem "proxima-nova",ui-sans-serif,-apple-system,system-ui,sans-serif
-;
+  font:
+    700 1.25rem/1.75rem 'proxima-nova',
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    sans-serif;
 }
 
 /* Стили для контейнера стрелок */
@@ -255,11 +270,40 @@
 .game-slider-external-button:hover {
   background: #777;
 }
-
+.game-slider-game-card-wrap {
+  transition: 0.3s;
+  position: relative;
+}
+.game-slider-game-card-wrap:hover {
+  transform: translateY(-4%);
+}
 .game-slider-game-card-wrap:hover .game-slider-hover-button {
   display: block;
 }
+.py-3 {
+  padding-block: 0.75rem;
+}
+.px-\[0\.75rem\] {
+  padding-inline: 0.75rem;
+}
+.bg-grey-400 {
+  background-color: #2f4553;
+}
 
+.hover-button.svelte-zglogk {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+@media (hover: hover) {
+  .game-slider-game-card-wrap:hover .hover-button:where(.svelte-zglogk) {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
 .game-slider-stack {
   display: flex;
   align-items: center;

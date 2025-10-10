@@ -77,7 +77,7 @@ body {
   width: calc(100% - 60px);
   margin-left: 60px;
   height: 60px;
-  z-index: 1530 ;
+  z-index: 1530;
   box-shadow:
     #0003 0 4px 6px -1px,
     #0000001f 0 2px 4px -1px;
@@ -746,37 +746,8 @@ a {
 
   }
 }  */
-.game {
-  margin-top: 2rem;
-  padding: 0 3vw;
-  width: 100%;
-  /* Full viewport height to allow vertical centering */
-  display: flex;
-  justify-content: center;
-  /* Center horizontally */
-  align-items: center;
-  /* Center vertically */
-  flex-direction: column;
-  /* Stack iframe and button vertically */
-  gap: 10px;
-  /* Space between iframe and button */
-}
 
-.game-iframe {
-  width: 100%;
-  /* 80% of viewport width */
-  height: 80vh;
-  /* 80% of viewport height */
-  max-width: 1200px;
-  /* Maximum width to prevent overly large iframes */
-  max-height: 800px;
-  /* Maximum height for consistency */
-  border: none;
-  border-radius: 8px;
-  /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  /* Subtle shadow */
-}
+
 
 .fullscreen-button {
   padding: 8px 16px;
@@ -811,8 +782,8 @@ a {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: calc(60px + 0.5rem);
-  right: 1.5rem;
+  top: 52px;
+  right: 1rem;
   width: 100%;
   max-width: 375px;
   max-height: 400px;
@@ -879,7 +850,7 @@ a {
     color 0.3s ease,
     transform 0.1s ease;
 }
-.scrollY{
+.scrollY {
   -webkit-overflow-scrolling: touch;
   -webkit-overflow-scroll: touch;
   scrollbar-width: none;
@@ -974,4 +945,5 @@ a {
     display: none;
   }
 }
+
 /* Responsive adjustments */
