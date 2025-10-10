@@ -973,8 +973,7 @@ return [
     'faq_tennis' => 'partidos de tenis',
     'faq_to' => ' hasta ',
     'faq_mma' => 'peleas de MMA',
-    'faq_how_to_stream' => 'Para ver la transmisión en directo de los últimos eventos deportivos, haz clic en el ícono de transmisión en vivo junto al evento en ',<?php
-return [
+    'faq_how_to_stream' => 'Para ver la transmisión en directo de los últimos eventos deportivos, haz clic en el ícono de transmisión en vivo junto al evento en ',
     'multiplier' => 'Multiplicador',
     'payout' => 'Pago',
     'open_bet_preview' => 'Abrir vista previa de la apuesta',
