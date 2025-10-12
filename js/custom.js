@@ -364,6 +364,7 @@ function vkRepost() {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
         toastr['success']('+500');
+        $('.balance-balance').html(obj.new_balance);
       } else {
         toastr['error'](obj.error);
       }
