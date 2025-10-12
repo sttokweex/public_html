@@ -207,35 +207,29 @@ if ($sid) {
 }
 
 // Проверка депозитов
-$depositesSID = 0;
-if ($sid) {
-  $getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE hash_user = ?";
-  $stmt = $connection->prepare($getDepsForLevel);
-  $stmt->bind_param("s", $sid);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $leveldeposits = $result->fetch_assoc();
-  $depositesSID = $leveldeposits['SUM(amount)'] ?? 0;
-}
 
+$getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE hash_user='$sid' AND status ='1'";
+$getDepsForLevel2 = mysqli_query($connection, $getDepsForLevel);
+$leveldeposits = mysqli_fetch_array($getDepsForLevel2);
+$depositesSID = $leveldeposits['SUM(amount)'];
 // Установка рангов
-if ($depositesSID < 2000) {
+if ($depositesSID < 500) {
   $cashback_rankt = '0';
   $rakeback_rank = "0.1";
   $bonusdr = 0;
-} elseif ($depositesSID >= 10000) {
+} elseif ($depositesSID >= 500) {
   $cashback_rankt = '3';
   $rakeback_rank = "0.2";
   $bonusdr = 0;
-} elseif ($depositesSID >= 50000) {
+} elseif ($depositesSID >= 2500) {
   $cashback_rankt = '5';
   $rakeback_rank = "0.3";
   $bonusdr = 500;
-} elseif ($depositesSID >= 100000) {
+} elseif ($depositesSID >= 5000) {
   $cashback_rankt = '7';
   $rakeback_rank = "0.4";
   $bonusdr = 1000;
-} elseif ($depositesSID >= 500000) {
+} elseif ($depositesSID >= 10000) {
   $cashback_rankt = '10';
   $rakeback_rank = "0.5";
   $bonusdr = 5000;

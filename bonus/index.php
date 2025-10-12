@@ -13,6 +13,10 @@ if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
 require dirname(__DIR__, 1) . ("/panels/header.php");
 require dirname(__DIR__, 1) . ("/panels/sidebar.php");
 
+$getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE hash_user='$sid' AND status ='1'";
+$getDepsForLevel2 = mysqli_query($connection, $getDepsForLevel);
+$leveldeposits = mysqli_fetch_array($getDepsForLevel2);
+$depositesSID = $leveldeposits['SUM(amount)'];
 
 ?>
 <link href="/css/bonus.css" rel="stylesheet">
