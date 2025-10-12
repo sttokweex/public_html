@@ -17,7 +17,7 @@ $sql_select = "SELECT * FROM `users` WHERE hash='$sid'";
 $result = mysqli_query($connection, $sql_select);
 $row = mysqli_fetch_array($result);
 $idsdfsdfsdf = $row['id'];
-$getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE user_id='$idsdfsdfsdf'";
+$getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE user_id='$idsdfsdfsdf' AND status='1'";
 $getDepsForLevel2 = mysqli_query($connection, $getDepsForLevel);
 $leveldeposits = mysqli_fetch_array($getDepsForLevel2);
 $depositesSsadasdasdID = $leveldeposits['SUM(amount)'];
