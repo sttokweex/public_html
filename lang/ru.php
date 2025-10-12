@@ -1181,5 +1181,10 @@ return [
     'anonim' => 'Скрытый',
     'best_deals_small' => 'Лучшие предложения',
     'SPOTLIGHT' => 'В ЦЕНТРЕ ВНИМАНИЯ',
-    'bonus_deposit' => 'Бонус за депозит'
+    'bonus_deposit' => 'Бонус за депозит',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_100$' => 'Сумма депозитов за всё время должна быть больше 100$!',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_1000$' => 'Сумма депозитов за всё время должна быть больше 1000$!',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_5000$' => 'Сумма депозитов за всё время должна быть больше 5000$!',
+    'you_have_already_received_a_bonus_for_reposting' => 'Вы уже получали бонус за репост',
+    'you_have_already_received_a_bonus' => 'Вы уже получали бонус',
 ];

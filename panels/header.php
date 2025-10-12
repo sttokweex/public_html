@@ -547,7 +547,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
     function generateRandomBet() {
       const game = games[Math.floor(Math.random() * games.length)] || 'Unknown Game';
-      const betAmount = (Math.random() * (50000 - 1) + 1).toFixed(2);
+      const betAmount = (Math.random() * (500 - 1) + 1).toFixed(2);
       const multiplier = (Math.random() * 50).toFixed(2);
       const payout = (betAmount * multiplier).toFixed(2);
       const user = <?php echo json_encode($translations['anonim']); ?>;

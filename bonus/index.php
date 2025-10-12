@@ -249,7 +249,7 @@ require dirname(__DIR__, 1) . ("/panels/chat.php");
                         <div class="bonus">
                             <div class="mui">
                                 <div class="image">
-                                    <span class="currency">50$</span>
+                                    <span class="currency">500$</span>
                                     <div class="main bonusPhotoVk2"></div>
                                 </div>
                             </div>

@@ -1,116 +1,557 @@
-# Массив игр, изображения которых не были найдены (ошибка 404)
-$missingImages = @(
-    "DogHouse",
-    "PyramidKing",
-    "AztecKing",
-    "JokerKing",
-    "UltraHold",
-    "ReturnDead",
-    "CowboysGold",
-    "TheTigerWarrior",
-    "Hotfiesta",
-    "HotToBurn",
-    "EmptyTheBank",
-    "GatesOfOlympus",
-    "LuckyLightning",
-    "FruitParty",
-    "DogHouseMegaways",
-    "PandaFotune2",
-    "BuffaloKingMegaways",
-    "TweetyHouse",
-    "DragonHoldandSpin",
-    "SamuraiMegaways",
-    "5LionsMegaways",
-    "FloatingDragon",
-    "CongoCash",
-    "MadameDestinyMegaways",
-    "PirateGoldDeluxe",
-    "LuckyDragonBall",
-    "LionsGold",
-    "DaVinciTreasure",
-    "AztecTreasure",
-    "VegasNight",
-    "GoldenBeauty",
-    "ScarabQueen",
-    "BookofTut",
-    "PiggyBank",
-    "LionsDance",
-    "HeartOfRio",
-    "NudGeit",
-    "ChrismasBonanza",
-    "SantaWonder",
-    "CashElevator",
-    "BubblePop",
-    "HockeyAttack",
-    "BigBassMega",
-    "BookOfFallen",
-    "JohnBermuda",
-    "DayOfDead",
-    "CandyVillage",
-    "WildBooster",
-    "PowerOfThorMega",
-    "FiveLion",
-    "SuperSeven",
-    "ReleaseKraken",
-    "CaishenGold",
-    "AladdinSorcer",
-    "ChillyHeat",
-    "SevenPigs",
-    "CaishenCash",
-    "JokerJewels",
-    "WildGladiator",
-    "GoldenPig",
-    "Goldrush",
-    "ThreeKingdoms",
-    "Dragon888",
-    "HerculesPegasus",
-    "Honey",
-    "Seyugi",
-    "TheGreatChicken",
-    "Fortunetree",
-    "FairyTale",
-    "VampireWolfes",
-    "3GenieWishes",
-    "Hercules",
-    "WildMachine",
-    "LGodiba",
-    "MadMonkey",
-    "HotToBurn",
-    "EgyptFortune",
-    "HotRoll",
-    "Beowulf",
-    "QueenofAtlantis",
-    "MagicCrystal",
-    "Money",
-    "BroncoSpirit",
-    "DragoJewels",
-    "FuFuFu",
-    "StreetRacer",
-    "AztecGemsDeluxe",
-    "JungleGorilla",
-    "WerewolfMegaways",
-    "RiseofSamurai",
-    "GoldFever",
-    "BookOfKingdom",
-    "FishInReels",
-    "ChristmasCarolMega",
-    "JohnHunterAndMayanGods",
-    "GoldenOx",
-    "EmeraldKingRainbow",
-    "EyeOfStorm",
-    "StarsMegaways",
-    "AmazingMachine",
-    "LuckyGraceAndCharm",
-    "AztecKingMega",
-    "Phoenix",
-    "HokkWolf",
-    "RagingBull",
-    "PyramidBonanza",
-    "EmpCaishen",
-    "GatesOfValhalla",
-    "ExtraJuicyMega",
-    "MagificanSecret",
-    "CrystalCavensMega",
-    "Aztec",
-    "LegendOfHeroes"
-)
+
+package com.dronecontroller;
+
+import android.Manifest;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.media.MediaRecorder;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.handshake.ServerHandshake;
+import java.net.URI;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class MainActivity extends AppCompatActivity implements 
+        SurfaceHolder.Callback, SensorEventListener, LocationListener {
+    
+    private static final String TAG = "DroneController";
+    
+    // UI элементы
+    private TextView statusText, telemetryText, batteryText;
+    private TextView gpsText, orientationText, accelerationText;
+    private SurfaceView cameraView;
+    
+    // Компоненты системы
+    private WebSocketClient webSocket;
+    private UsbSerialController usbSerial;
+    private MediaRecorder mediaRecorder;
+    private SensorManager sensorManager;
+    private LocationManager locationManager;
+    private Handler mainHandler;
+    private ExecutorService executor;
+    
+    // Датчики
+    private Sensor accelerometer;
+    private Sensor gyroscope;
+    private Sensor magnetometer;
+    private Sensor rotationVector;
+    
+    // Данные сенсоров
+    private SensorData sensorData = new SensorData();
+    private GpsData gpsData = new GpsData();
+    private ControlData controlData = new ControlData();
+    
+    // Настройки
+    private String serverUrl = "ws://your-server.com:8080/drone";
+    private String rtmpUrl = "rtmp://your-server.com/live/drone";
+    private final int HEARTBEAT_INTERVAL = 100; // 100ms для быстрого отклика
+    
+    // Безопасность
+    private boolean rtlActive = false;
+    private boolean emergencyLanding = false;
+    private long lastServerHeartbeat = 0;
+    private final long SERVER_TIMEOUT = 60000; // 1 минута
+    
+    // ПИД регуляторы
+    private PIDController rollPID = new PIDController(0.1, 0.01, 0.05);
+    private PIDController pitchPID = new PIDController(0.1, 0.01, 0.05);
+    private PIDController yawPID = new PIDController(0.05, 0.005, 0.02);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        initViews();
+        initSystem();
+        requestPermissions();
+    }
+    
+    private void initViews() {
+        statusText = findViewById(R.id.status_text);
+        telemetryText = findViewById(R.id.telemetry_text);
+        batteryText = findViewById(R.id.battery_text);
+        gpsText = findViewById(R.id.gps_text);
+        orientationText = findViewById(R.id.orientation_text);
+        accelerationText = findViewById(R.id.acceleration_text);
+        cameraView = findViewById(R.id.camera_view);
+        cameraView.getHolder().addCallback(this);
+    }
+    
+    private void initSystem() {
+        mainHandler = new Handler();
+        executor = Executors.newFixedThreadPool(4);
+        
+        initSensors();
+        initLocation();
+        initWebSocket();
+        initUsbSerial();
+        startControlLoop();
+        
+        updateStatus("Система инициализирована");
+    }
+    
+    private void initSensors() {
+
+sttokweex, [09.10.2025 16:00]
+sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        rotationVector = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+        
+        // Регистрация слушателей с высокой частотой
+        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
+        sensorManager.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_FASTEST);
+        sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_FASTEST);
+        sensorManager.registerListener(this, rotationVector, SensorManager.SENSOR_DELAY_FASTEST);
+    }
+    
+    private void initLocation() {
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        
+        try {
+            locationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER, 
+                100, // 100ms
+                0.1f, // 0.1 meter
+                this
+            );
+        } catch (SecurityException e) {
+            Log.e(TAG, "GPS permission denied", e);
+        }
+    }
+    
+    private void initWebSocket() {
+        try {
+            webSocket = new WebSocketClient(URI.create(serverUrl)) {
+                @Override
+                public void onOpen(ServerHandshake handshake) {
+                    logMessage("WebSocket подключен");
+                    sendToServer("DRONE_CONNECTED");
+                }
+                
+                @Override
+                public void onMessage(String message) {
+                    handleServerMessage(message);
+                }
+                
+                @Override
+                public void onClose(int code, String reason, boolean remote) {
+                    logMessage("WebSocket отключен: " + reason);
+                    handleConnectionLost();
+                }
+                
+                @Override
+                public void onError(Exception ex) {
+                    Log.e(TAG, "WebSocket error", ex);
+                }
+            };
+            webSocket.connect();
+        } catch (Exception e) {
+            Log.e(TAG, "WebSocket init error", e);
+        }
+    }
+    
+    private void initUsbSerial() {
+        usbSerial = new UsbSerialController(this);
+        usbSerial.setBaudRate(115200);
+        
+        executor.execute(() -> {
+            if (usbSerial.connect()) {
+                runOnUiThread(() -> updateStatus("Arduino подключен"));
+            }
+        });
+    }
+    
+    private void startControlLoop() {
+        Handler controlHandler = new Handler();
+        Runnable controlTask = new Runnable() {
+            @Override
+            public void run() {
+                processControl();
+                sendControlToArduino();
+                sendTelemetryToServer();
+                controlHandler.postDelayed(this, HEARTBEAT_INTERVAL);
+            }
+        };
+        controlHandler.post(controlTask);
+    }
+    
+    private void processControl() {
+        // Стабилизация по данным сенсоров
+        if (rtlActive) {
+            executeRTL();
+        } else if (emergencyLanding) {
+            executeEmergencyLanding();
+        } else {
+            // Нормальное управление с стабилизацией
+            stabilizeFlight();
+        }
+    }
+    
+    private void stabilizeFlight() {
+        // Целевые углы (от веб-интерфейса или автопилота)
+        float targetRoll = controlData.targetRoll;
+        float targetPitch = controlData.targetPitch;
+        float targetYaw = controlData.targetYaw;
+        
+        // Текущие углы из датчиков
+        float currentRoll = sensorData.roll;
+
+sttokweex, [09.10.2025 16:00]
+float currentPitch = sensorData.pitch;
+        float currentYaw = sensorData.yaw;
+        
+        // ПИД регулирование
+        float rollCorrection = (float) rollPID.calculate(targetRoll, currentRoll);
+        float pitchCorrection = (float) pitchPID.calculate(targetPitch, currentPitch);
+        float yawCorrection = (float) yawPID.calculate(targetYaw, currentYaw);
+        
+        // Применение корректировок
+        controlData.roll = (int) (90 + rollCorrection * 45); // ±45 градусов
+        controlData.pitch = (int) (90 + pitchCorrection * 45);
+        controlData.yaw = (int) (90 + yawCorrection * 45);
+        
+        // Ограничения
+        controlData.roll = constrain(controlData.roll, 0, 180);
+        controlData.pitch = constrain(controlData.pitch, 0, 180);
+        controlData.yaw = constrain(controlData.yaw, 0, 180);
+    }
+    
+    private void executeRTL() {
+        // Возврат к точке взлета используя GPS
+        if (gpsData.homeLat == 0 || gpsData.homeLon == 0) {
+            // Сохраняем текущую позицию как домашнюю
+            gpsData.homeLat = gpsData.latitude;
+            gpsData.homeLon = gpsData.longitude;
+        }
+        
+        // Навигация к домашней точке
+        double distance = calculateDistance(gpsData.latitude, gpsData.longitude, 
+                                          gpsData.homeLat, gpsData.homeLon);
+        double bearing = calculateBearing(gpsData.latitude, gpsData.longitude,
+                                        gpsData.homeLat, gpsData.homeLon);
+        
+        if (distance > 10) { // 10 метров
+            // Наведение на домашнюю точку
+            float targetYaw = (float) bearing;
+            controlData.yaw = (int) (90 + (targetYaw - sensorData.yaw) * 0.1);
+            
+            // Регулировка высоты и скорости
+            controlData.throttle = 1300;
+            controlData.pitch = 95; // Легкий наклон вперед
+        } else {
+            // Прибыли - посадка
+            controlData.throttle = 1100;
+            rtlActive = false;
+            sendToServer("RTL_COMPLETED");
+        }
+    }
+    
+    private void executeEmergencyLanding() {
+        // Плавное снижение
+        if (controlData.throttle > 1100) {
+            controlData.throttle -= 2;
+        } else {
+            emergencyLanding = false;
+            sendToServer("EMERGENCY_LANDING_COMPLETE");
+        }
+    }
+    
+    private void sendControlToArduino() {
+        if (usbSerial != null && usbSerial.isConnected()) {
+            String command = String.format("THR:%d;ROL:%d;PIT:%d;YAW:%d;GR:%d",
+                controlData.throttle, controlData.roll, controlData.pitch, 
+                controlData.yaw, controlData.gear);
+            
+            usbSerial.write(command + "\n");
+        }
+    }
+    
+    private void sendTelemetryToServer() {
+        if (webSocket != null && webSocket.isOpen()) {
+            String telemetry = String.format(
+                "TELEMETRY:THR:%d;LAT:%.6f;LON:%.6f;ALT:%.1f;ROL:%.1f;PIT:%.1f;YAW:%.1f;SPD:%.1f;BAT:%d",
+                controlData.throttle, gpsData.latitude, gpsData.longitude,
+                gpsData.altitude, sensorData.roll, sensorData.pitch, sensorData.yaw,
+                gpsData.speed, getBatteryLevel()
+            );
+            
+            webSocket.send(telemetry);
+            lastServerHeartbeat = System.currentTimeMillis();
+        }
+    }
+    
+    // Обработчики сенсоров
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        switch (event.sensor.getType()) {
+            case Sensor.TYPE_ACCELEROMETER:
+                sensorData.accelX = event.values[0];
+                sensorData.accelY = event.values[1];
+                sensorData.accelZ = event.values[2];
+                break;
+                
+            case Sensor.TYPE_GYROSCOPE:
+                sensorData.gyroX = event.values[0];
+
+sttokweex, [09.10.2025 16:00]
+sensorData.gyroY = event.values[1];
+                sensorData.gyroZ = event.values[2];
+                break;
+                
+            case Sensor.TYPE_MAGNETIC_FIELD:
+                sensorData.magX = event.values[0];
+                sensorData.magY = event.values[1];
+                sensorData.magZ = event.values[2];
+                break;
+                
+            case Sensor.TYPE_ROTATION_VECTOR:
+                float[] rotationMatrix = new float[9];
+                float[] orientation = new float[3];
+                
+                SensorManager.getRotationMatrixFromVector(rotationMatrix, event.values);
+                SensorManager.getOrientation(rotationMatrix, orientation);
+                
+                // Конвертация радиан в градусы
+                sensorData.yaw = (float) Math.toDegrees(orientation[0]);
+                sensorData.pitch = (float) Math.toDegrees(orientation[1]);
+                sensorData.roll = (float) Math.toDegrees(orientation[2]);
+                
+                updateOrientationDisplay();
+                break;
+        }
+    }
+    
+    @Override
+    public void onLocationChanged(Location location) {
+        gpsData.latitude = location.getLatitude();
+        gpsData.longitude = location.getLongitude();
+        gpsData.altitude = location.getAltitude();
+        gpsData.speed = location.getSpeed() * 3.6f; // m/s to km/h
+        gpsData.accuracy = location.getAccuracy();
+        
+        updateGpsDisplay();
+        
+        // Проверка безопасности по GPS
+        checkGpsSafety();
+    }
+    
+    private void checkGpsSafety() {
+        // Проверка потери GPS сигнала
+        if (gpsData.accuracy > 50.0) { // Неточность более 50 метров
+            handleGpsSignalLost();
+        }
+        
+        // Проверка гео-зоны
+        if (isOutOfGeofence()) {
+            handleGeofenceViolation();
+        }
+    }
+    
+    private void handleConnectionLost() {
+        // Активация RTL при потере связи с сервером
+        if (!rtlActive) {
+            rtlActive = true;
+            sendToArduino("RTL");
+            logMessage("Связь потеряна - активирован RTL");
+        }
+    }
+    
+    private void handleGpsSignalLost() {
+        // Переход на сенсорную навигацию
+        logMessage("GPS сигнал потерян - переход на IMU навигацию");
+    }
+    
+    private void handleGeofenceViolation() {
+        // Автоматический возврат в разрешенную зону
+        rtlActive = true;
+        logMessage("Нарушение гео-зоны - возврат");
+    }
+    
+    // Вспомогательные методы
+    private void updateStatus(String message) {
+        runOnUiThread(() -> statusText.setText("Статус: " + message));
+        Log.i(TAG, message);
+    }
+    
+    private void updateGpsDisplay() {
+        runOnUiThread(() -> gpsText.setText(String.format(
+            "GPS: %.6f, %.6f\nВысота: %.1fм Скорость: %.1fкм/ч",
+            gpsData.latitude, gpsData.longitude, gpsData.altitude, gpsData.speed
+        )));
+    }
+    
+    private void updateOrientationDisplay() {
+        runOnUiThread(() -> orientationText.setText(String.format(
+            "Крен: %.1f° Тангаж: %.1f° Рыскание: %.1f°",
+            sensorData.roll, sensorData.pitch, sensorData.yaw
+        )));
+    }
+    
+    private void logMessage(String message) {
+        runOnUiThread(() -> Toast.makeText(this, message, Toast.LENGTH_SHORT).show());
+    }
+    
+    private int constrain(int value, int min, int max) {
+        return Math.min(Math.max(value, min), max);
+    }
+    
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        // Расчет расстояния между двумя точками (упрощенный)
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+
+sttokweex, [09.10.2025 16:00]
+Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                   Math.sin(dLon/2) * Math.sin(dLon/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return 6371000 * c; // Расстояние в метрах
+    }
+    
+    private double calculateBearing(double lat1, double lon1, double lat2, double lon2) {
+        double dLon = Math.toRadians(lon2 - lon1);
+        double y = Math.sin(dLon) * Math.cos(Math.toRadians(lat2));
+        double x = Math.cos(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) -
+                   Math.sin(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(dLon);
+        return Math.toDegrees(Math.atan2(y, x));
+    }
+    
+    private boolean isOutOfGeofence() {
+        // Проверка гео-зоны (упрощенная)
+        return calculateDistance(gpsData.latitude, gpsData.longitude, 
+                               gpsData.homeLat, gpsData.homeLon) > 500; // 500 метров
+    }
+    
+    private int getBatteryLevel() {
+        // Получение уровня батареи смартфона
+        return 85; // Заглушка
+    }
+    
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+    
+    @Override
+    public void onProviderDisabled(String provider) {}
+    
+    @Override
+    public void onProviderEnabled(String provider) {}
+    
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {}
+    
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        // Инициализация камеры
+        initCamera();
+    }
+    
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {}
+    
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        // Остановка камеры
+        if (mediaRecorder != null) {
+            mediaRecorder.stop();
+            mediaRecorder.release();
+        }
+    }
+    
+    private void initCamera() {
+        // Инициализация потоковой передачи видео
+        // Реализация зависит от конкретных требований
+    }
+    
+    private void requestPermissions() {
+        String[] permissions = {
+            Manifest.permission.CAMERA,
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.INTERNET,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        };
+        ActivityCompat.requestPermissions(this, permissions, 1);
+    }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        
+        // Очистка ресурсов
+        if (webSocket != null) webSocket.close();
+        if (usbSerial != null) usbSerial.disconnect();
+        if (sensorManager != null) sensorManager.unregisterListener(this);
+        if (locationManager != null) locationManager.removeUpdates(this);
+        if (executor != null) executor.shutdown();
+    }
+}
+
+// Вспомогательные классы данных
+class SensorData {
+    float accelX, accelY, accelZ;
+    float gyroX, gyroY, gyroZ;
+    float magX, magY, magZ;
+    float roll, pitch, yaw;
+}
+
+class GpsData {
+    double latitude, longitude;
+    double altitude;
+    float speed, accuracy;
+    double homeLat, homeLon;
+}
+
+class ControlData {
+    int throttle = 1000;
+    int roll = 90;
+    int pitch = 90;
+    int yaw = 90;
+    int gear = 0;
+    float targetRoll = 0;
+    float targetPitch = 0;
+    float targetYaw = 0;
+}
+
+class PIDController {
+    private double kp, ki, kd;
+    private double integral = 0;
+    private double previousError = 0;
+    
+    public PIDController(double kp, double ki, double kd) {
+        this.kp = kp;
+        this.ki = ki;
+        this.kd = kd;
+    }
+    
+    public double calculate(double setpoint, double current) {
+        double error = setpoint - current;
+        integral += error;
+        double derivative = error - previousError;
+        previousError = error;
+        
+        return kp * error + ki * integral + kd * derivative;
+    }
+}

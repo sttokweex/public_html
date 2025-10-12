@@ -9,14 +9,15 @@ $sid = $_SESSION['hash'];
 require("system/config.php");
 $type = $_POST['type'];
 $error = 0;
-$fa = "";
-
+$fa = '';
+$mess = '';
+$balancenew = '';
+$randomb = '';
 $sql_select = "SELECT * FROM `users` WHERE hash='$sid'";
 $result = mysqli_query($connection, $sql_select);
 $row = mysqli_fetch_array($result);
 $idsdfsdfsdf = $row['id'];
-
-$getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE user_id='$idsdfsdfsdf' AND status ='1'";
+$getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE user_id='$idsdfsdfsdf'";
 $getDepsForLevel2 = mysqli_query($connection, $getDepsForLevel);
 $leveldeposits = mysqli_fetch_array($getDepsForLevel2);
 $depositesSsadasdasdID = $leveldeposits['SUM(amount)'];
@@ -364,9 +365,9 @@ if ($type == "vkRepost") {
         $balance = $row['balance'];
         $vbonus1 = $row['vkrep'];
     }
-    if ($depositesSsadasdasdID < 50000) {
+    if ($depositesSsadasdasdID < 5000) {
         $error = 5;
-        $mess = $translations['the_amount_of_deposits_for_all_time_must_be_more_than_150$'];
+        $mess = $translations['the_amount_of_deposits_for_all_time_must_be_more_than_5000$'];
         $fa = "error";
     }
     if ($vbonus1 == 1) {
@@ -380,10 +381,10 @@ if ($type == "vkRepost") {
         $fa = "error";
     }
     if ($error == 0) {
-        $randomb = $vkrepostsize;
-        $balancenew = $balance + 5000;
+        $randomb = 0;
+        $balancenew = $balance + 500;
         $summavkre = $randomb * $coefbonus;
-        $vkbonusrep = $wager + $summavkre;
+        $vkbonusrep = $wagers + $summavkre;
         $update_sql = "Update users set balance='$balancenew', wager='$vkbonusrep' WHERE hash='$sid'";
         mysqli_query($connection, $update_sql) or die("Ошибка вставки" . mysqli_error($connection));
         $update_sql12 = "Update users set vkrep='1' WHERE hash='$sid'";
@@ -395,7 +396,7 @@ if ($type == "vkRepost") {
         'error' => "$mess",
         'balance' => "$balance",
         'new_balance' => "$balancenew",
-        'bonussize' => "$randomb",
+
     );
 }
 /////////////////////////////////////////////
@@ -403,14 +404,15 @@ if ($type == "vkBonus") {
     $sql_select = "SELECT * FROM users WHERE hash='$sid'";
     $result = mysqli_query($connection, $sql_select);
     $row = mysqli_fetch_array($result);
+
     if ($row) {
         $balance = $row['balance'];
         $vk = $row['social'];
         $vbonus = $row['vkb'];
     }
-    if ($depositesSsadasdasdID < 10000) {
+    if ($depositesSsadasdasdID  < 1000) {
         $error = 5;
-        $mess = $translations['the_amount_of_deposits_for_all_time_must_be_more_than_150$'];
+        $mess = $translations['the_amount_of_deposits_for_all_time_must_be_more_than_1000$'];
         $fa = "error";
     }
     if ($vbonus == 1) {
@@ -427,10 +429,10 @@ if ($type == "vkBonus") {
         $fa = "error";
     }
     if ($error == 0) {
-        $randomb = $vkgroupsize;
-        $balancenew = $balance + 1000;
+        $randomb = 0;
+        $balancenew = $balance + 100;
         $summavksub = $randomb * $coefbonus;
-        $vkbonussubs = $wager + $summavksub;
+        $vkbonussubs = $wagers + $summavksub;
         $update_sql = "Update users set balance='$balancenew', wager='$vkbonussubs' WHERE hash='$sid'";
         mysqli_query($connection, $update_sql) or die("Ошибка вставки" . mysqli_error($connection));
         $update_sql1 = "Update users set vkb='1' WHERE hash='$sid'";
@@ -442,7 +444,7 @@ if ($type == "vkBonus") {
         'error' => "$mess",
         'balance' => "$balance",
         'new_balance' => "$balancenew",
-        'bonussize' => "$randomb"
+
     );
 }
 if ($type == "vkBonsdfus") {
@@ -454,9 +456,9 @@ if ($type == "vkBonsdfus") {
         $vk = $row['social'];
         $vbonus = $row['tgg'];
     }
-    if ($depositesSsadasdasdID < 1000) {
+    if ($depositesSsadasdasdID < 100) {
         $error = 5;
-        $mess = $translations['the_amount_of_deposits_for_all_time_must_be_more_than_150$'];
+        $mess = $translations['the_amount_of_deposits_for_all_time_must_be_more_than_100$'];
         $fa = "error";
     }
     if ($vbonus == 1) {
@@ -473,10 +475,10 @@ if ($type == "vkBonsdfus") {
         $fa = "error";
     }
     if ($error == 0) {
-        $randomb = $vkgroupsize;
-        $balancenew = $balance + 100;
+        $randomb = 0;
+        $balancenew = $balance + 10;
         $summavksub = $randomb * $coefbonus;
-        $vkbonussubs = $wager + $summavksub;
+        $vkbonussubs = $wagers + $summavksub;
         $update_sql = "Update users set balance='$balancenew', wager='$vkbonussubs' WHERE hash='$sid'";
         mysqli_query($connection, $update_sql) or die("Ошибка вставки" . mysqli_error($connection));
         $update_sql1 = "Update users set tgg='1' WHERE hash='$sid'";
@@ -488,7 +490,6 @@ if ($type == "vkBonsdfus") {
         'error' => "$mess",
         'balance' => "$balance",
         'new_balance' => "$balancenew",
-        'bonussize' => "$randomb"
     );
 }
 /////////////////////////////////////////////
@@ -621,7 +622,7 @@ if ($type == "bonus") {
             $randomb = rand($min_daily_size, $max_daily_size);
             $balancenew = $balance + $randomb;
             $summadailywag = $randomb * $coefbonus;
-            $wagerdaily = $wager + $summadailywag;
+            $wagerdaily = $wagers + $summadailywag;
             $update_sql = "Update users set balance='$balancenew', wager='$wagerdaily'  WHERE hash='$sid'";
             mysqli_query($connection, $update_sql) or die("Insertion error" . mysqli_error($connection));
             $update_sql1 = "Update users set bdate='$time' WHERE hash='$sid'";

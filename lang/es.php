@@ -1159,5 +1159,11 @@ System: jugar con dinero real.',
     'anonim' => 'anónimo',
     'best_deals_small' => 'Mejores ofertas',
     'SPOTLIGHT' => 'EN EL FOCO',
-    'bonus_deposit' => 'Bono por depósito'
+    'bonus_deposit' => 'Bono por depósito',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_100$' => '¡El monto de los depósitos de todos los tiempos debe ser superior a $100!',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_1000$' => '¡El monto de los depósitos de todos los tiempos debe ser superior a $1000!',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_5000$' => '¡El monto de los depósitos de todos los tiempos debe ser superior a $5000!',
+    'you_have_already_received_a_bonus_for_reposting' => 'Ya has recibido un bono por compartir',
+    'you_have_already_received_a_bonus' => 'Ya has recibido un bono',
+
 ];

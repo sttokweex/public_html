@@ -1187,4 +1187,9 @@ return [
     'SPOTLIGHT' => 'SPOTLIGHT',
     'bonus_deposit' => 'Deposit Bonuse',
     'more_games' => 'More games',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_100$' => 'The total deposit amount must be more than $100!',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_1000$' => 'The total deposit amount must be more than $1000!',
+    'the_amount_of_deposits_for_all_time_must_be_more_than_5000$' => 'The total deposit amount must be more than $5000!',
+    'you_have_already_received_a_bonus_for_reposting' => 'You have already received a bonus for reposting',
+    'you_have_already_received_a_bonus' => 'You have already received a bonus',
 ];

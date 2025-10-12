@@ -254,10 +254,11 @@ function vkBonus() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        $('#userBalance').html(obj.new_balance);
-        return toastr['success'](T.you_received_1000_coins);
+        $('.balance-amount').html(obj.new_balance);
+
+        toastr['success']('+100');
       } else {
-        return toastr['error'](obj.error);
+        toastr['error'](obj.error);
       }
     },
   });
@@ -273,15 +274,14 @@ function vkBonsdfus() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        $('#userBalance').html(obj.new_balance);
-        return toastr['success'](T.you_received_100_coins);
+        $('.balance-amount').html(obj.new_balance);
+        toastr['success']('+10');
       } else {
-        return toastr['error'](obj.error);
+        toastr['error'](obj.error);
       }
     },
   });
 }
-
 function getRakeback() {
   $.ajax({
     type: 'POST',
@@ -349,16 +349,14 @@ function getDaily() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        toastr['success'](`${T.you_got} <b>` + obj.bonussize);
-        $('#userBalance').html(obj.new_balance);
-        updateBalance(obj.balance, obj.new_balance);
+        toastr['success'](`You got ${obj.bonussize}`);
+        $('.balance-amount').html(obj.new_balance);
       } else {
-        return toastr['error'](obj.error);
+        toastr['error'](obj.error);
       }
     },
   });
 }
-
 function vkRepost() {
   $.ajax({
     type: 'POST',
@@ -369,14 +367,14 @@ function vkRepost() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        return toastr['success'](T.you_received_1000_coins);
+        toastr['success']('+500');
+        $('.balance-amount').html(obj.new_balance);
       } else {
-        return toastr['error'](obj.error);
+        toastr['error'](obj.error);
       }
     },
   });
 }
-
 function deployPromo() {
   if ($('#promoCode').val() == '') {
     $('#promoCode').css('border', '2px solid #8d1818');
@@ -422,7 +420,7 @@ function activePromo() {
           toastr['success'](T.promo_code_activated);
         }
 
-        $('#userBalance').html(obj.new_balance);
+        $('.balance-amount').html(obj.new_balance);
         updateBalance(obj.balance, obj.new_balance);
       } else {
         return toastr['error'](obj.message);
