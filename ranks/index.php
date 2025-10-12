@@ -195,7 +195,7 @@ render_footer($translations,)
 ?>
 <script>
 	function loadTableRanks() {
-		var userDeps = $('#hashdeps').val();
+		var userDeps = <?php echo json_encode($depositesSID); ?>;
 
 		if (userDeps >= 0) {
 			$('#rankStarter').addClass(' active');
