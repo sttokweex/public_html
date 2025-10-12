@@ -14,7 +14,7 @@ if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
 
 require(dirname(__DIR__, 1) . "/panels/header.php");
 require(dirname(__DIR__, 1) . "/panels/sidebar.php");
-require(dirname(__DIR__, 1) . '/panels/chat.php');
+
 
 $total_deps_found = "SELECT SUM(amount) FROM deposits WHERE user_id = '$id' AND status = '1'";
 $total_deps_found_query = mysqli_query($connection, $total_deps_found);

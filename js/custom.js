@@ -314,22 +314,16 @@ function getCashback() {
   $.ajax({
     type: 'POST',
     url: '../scriptController.php',
-    beforeSend: function () {
-      $('#csbtn').html('<div class="loaderThink"></div>');
-    },
+
     data: {
       type: 'cashback',
     },
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        $('#csbtn').html(T.take);
         $('#cashbackval').html('0');
-        toastr['success'](
-          `${T.enrolled} Cashback: <b>` + obj.cashbacksize + '</b>'
-        );
-        $('#userBalance').html(obj.new_balance);
-        updateBalance(obj.balance, obj.new_balance);
+        toastr['success'](`You got Cashback: <b>` + obj.cashbacksize + '</b>');
+        $('.balance-amount').html(obj.new_balance);
       } else {
         $('#csbtn').html(T.take);
         return toastr['error'](obj.error);

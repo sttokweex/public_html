@@ -17,7 +17,7 @@ require(dirname(__DIR__, 1) . "/panels/sidebar.php");
 require_once(dirname(__DIR__, 1) . '/panels/slider.php');
 require_once(dirname(__DIR__, 1) . '/panels/footer.php');
 require_once(dirname(__DIR__, 1) . '/panels/livefeed.php');
-require_once(dirname(__DIR__, 1) . '/panels/chat.php');
+
 
 $hash = mysqli_real_escape_string($connection, $_SESSION['hash']);
 $query = "SELECT * FROM users WHERE hash = ?";

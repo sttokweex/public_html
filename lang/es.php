@@ -74,6 +74,8 @@ return [
     'deposit_500$_all_time' => 'Depósito de $500 en total',
     'deposit_1000$_all_time' => 'Depósito de $1000 en total',
     'deposit_10000$_all_time' => 'Depósito de $10000 en total',
+    'deposit_2500$_all_time' => 'Depósito de $2500 en total',
+    'deposit_5000$_all_time' => 'Depósito de $5000 en total',
     'ruby' => 'Rubí',
     'legend' => 'Leyenda',
     'at_site_since' => 'En el sitio desde',

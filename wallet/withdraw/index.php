@@ -12,7 +12,7 @@ if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
 
 require(dirname(__DIR__, 2) . "/panels/header.php");
 require(dirname(__DIR__, 2) . "/panels/sidebar.php");
-require(dirname(__DIR__, 2) . "/panels/chat.php");
+
 ?>
 
 <head>

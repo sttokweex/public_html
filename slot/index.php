@@ -13,7 +13,7 @@ require_once '../panels/livefeed.php';
 require_once '../panels/gameInfo.php';
 require_once '../panels/search.php';
 require_once '../panels/banners.php';
-require_once '../panels/chat.php';
+
 
 if (strpos($requestUri, '/slot/api/GetBalance') !== false) {
     require 'slot/api/getBalance.php';

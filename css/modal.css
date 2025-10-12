@@ -307,7 +307,10 @@
   justify-content: space-between;
   width: 100%;
 }
-
+.modal-header,
+.modal-body {
+  background-color: #011c38;
+}
 .fair-page .mainInfo .content .fairness h3 {
   color: var(--text-muted);
   margin-bottom: 0;

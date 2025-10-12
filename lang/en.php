@@ -72,6 +72,8 @@ return [
     'gold' => 'Gold',
     'deposit_10$_all_time' => 'Deposit $10 all time',
     'deposit_500$_all_time' => 'Deposit $500 all time',
+    'deposit_2500$_all_time' => 'Deposit $2500 all time',
+    'deposit_5000$_all_time' => 'Deposit $5000 all time',
     'deposit_1000$_all_time' => 'Deposit $1000 all time',
     'deposit_10000$_all_time' => 'Deposit $10000 all time',
     'ruby' => 'Ruby',
