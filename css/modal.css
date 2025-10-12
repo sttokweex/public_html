@@ -305,6 +305,12 @@
   color: white !important;
   border-radius: 0 !important;
 }
+.modal-header {
+  background-color: #1a2c38;
+}
+.modal-body {
+  background-color: #1a2c38;
+}
 .register-modal-header {
   display: flex;
   background-color: #1a2c38;
@@ -323,10 +329,10 @@
   width: 100%;
 }
 .px-5 {
-    padding-inline: 1.25rem !important;
+  padding-inline: 1.25rem !important;
 }
 .py-\[0\.75rem\] {
-    padding-block: .75rem;
+  padding-block: 0.75rem;
 }
 
 .register-content-container {
@@ -338,7 +344,7 @@
   padding-bottom: 1rem;
   gap: 1rem;
 }
-.auth-content-container{
+.auth-content-container {
   margin-top: 1.5rem;
 }
 .or.svelte-3naeku {
@@ -844,7 +850,8 @@ input[type='checkbox'].svelte-2vtt3n ~ .indicator:where(.svelte-2vtt3n) {
 .vault-modal-container,
 .vip-modal-container,
 .promo-modal-container,
-.register-modal-container,.auth-modal-container {
+.register-modal-container,
+.auth-modal-container {
   padding: 1rem;
   justify-content: center;
   align-items: center;
@@ -1482,8 +1489,8 @@ input[type='checkbox'].svelte-2vtt3n ~ .indicator:where(.svelte-2vtt3n) {
 .first-step {
 }
 .second-step {
-  display:none;
+  display: none;
 }
-.third-step{
+.third-step {
   display: none;
 }

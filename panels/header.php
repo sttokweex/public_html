@@ -219,7 +219,10 @@ if ($sid) {
 } else {
   $depositesSID = 0;
 }
-
+$getDepsForLevel = "SELECT SUM(amount) FROM deposits WHERE hash_user='$sid' AND status ='1'";
+$getDepsForLevel2 = mysqli_query($connection, $getDepsForLevel);
+$leveldeposits = mysqli_fetch_array($getDepsForLevel2);
+$depositesSID = $leveldeposits['SUM(amount)'];
 // Установка рангов
 
 

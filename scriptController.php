@@ -1167,7 +1167,7 @@ if ($type == "cancelBonusActive") {
 //
 ///////////////////////////////////////////////////////////
 if ($type == "cashback") {
-
+    $newcashback = 0;
     $sql_select = "SELECT * FROM users WHERE hash='$sid'";
     $result = mysqli_query($connection, $sql_select);
     $row = mysqli_fetch_array($result);

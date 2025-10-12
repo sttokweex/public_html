@@ -324,11 +324,8 @@ function getCashback() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        $('#csbtn').html(T.take);
         $('#cashbackval').html('0');
-        toastr['success'](
-          `${T.enrolled} Cashback: <b>` + obj.cashbacksize + '</b>'
-        );
+        toastr['success'](`You got Cashback: <b>` + obj.cashbacksize + '</b>');
         $('.balance-balance').html(obj.new_balance);
         updateBalance(obj.balance, obj.new_balance);
       } else {
