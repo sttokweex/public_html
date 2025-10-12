@@ -53,7 +53,7 @@ if ($ppResponseLocal !== false) {
   foreach ($ppGames as $game) {
     $games[] = [
       'name' => $game['g_title'],
-      'online' => rand(5000, 10000),
+      'online' => rand(500, 900),
       'gameid' => $game['g_id'],
       'iconurl' => $game['g_icon'] ?? '../images/slotsPreviews/' . str_replace(' ', '', $game['g_title']) . '.jpg',
       '__source' => 'PP_Local',
@@ -101,7 +101,7 @@ if ($ppResponseOnline !== false) {
     }
     $games[] = [
       'name' => $gameName,
-      'online' => rand(1000, 10000),
+      'online' => rand(300, 900),
       'gameid' => $game['gameid'],
       'iconurl' => $game['iconurl2'] ?? $game['iconurl'],
       '__source' => 'PP_Online',
@@ -536,7 +536,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
     function generateRandomBet() {
       const game = games[Math.floor(Math.random() * games.length)] || 'Unknown Game';
-      const betAmount = (Math.random() * (50000 - 1) + 1).toFixed(2);
+      const betAmount = (Math.random() * (500 - 1) + 1).toFixed(2);
       const multiplier = (Math.random() * 50).toFixed(2);
       const payout = (betAmount * multiplier).toFixed(2);
       const user = 'Скрытый';
