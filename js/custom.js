@@ -315,9 +315,7 @@ function getCashback() {
   $.ajax({
     type: 'POST',
     url: '../scriptController.php',
-    beforeSend: function () {
-      $('#csbtn').html('<div class="loaderThink"></div>');
-    },
+
     data: {
       type: 'cashback',
     },
@@ -327,9 +325,7 @@ function getCashback() {
         $('#cashbackval').html('0');
         toastr['success'](`You got Cashback: <b>` + obj.cashbacksize + '</b>');
         $('.balance-balance').html(obj.new_balance);
-        updateBalance(obj.balance, obj.new_balance);
       } else {
-        $('#csbtn').html(T.take);
         return toastr['error'](obj.error);
       }
     },
