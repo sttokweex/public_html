@@ -256,7 +256,7 @@ function vkBonus() {
       if (obj.success == 'success') {
         $('.balance-balance').html(obj.new_balance);
 
-        toastr['success']('+1000');
+        toastr['success']('+100');
       } else {
         toastr['error'](obj.error);
       }
@@ -275,7 +275,7 @@ function vkBonsdfus() {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
         $('.balance-balance').html(obj.new_balance);
-        toastr['success']('+100');
+        toastr['success']('+10');
       } else {
         toastr['error'](obj.error);
       }
@@ -363,7 +363,7 @@ function vkRepost() {
     success: function (data) {
       var obj = jQuery.parseJSON(data);
       if (obj.success == 'success') {
-        toastr['success']('+5000');
+        toastr['success']('+500');
       } else {
         toastr['error'](obj.error);
       }
