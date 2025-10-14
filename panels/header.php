@@ -648,7 +648,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
     // Функция для проверки полной загрузки страницы
     function checkResourcesLoaded() {
-      if (document.readyState === 'complete' && areCSSLoaded()) {
+      if (areCSSLoaded()) {
         // Скрываем лоадер
         $('.loader').hide();
       } else {
