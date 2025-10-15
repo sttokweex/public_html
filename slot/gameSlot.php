@@ -436,7 +436,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                     userID: userId,
                     isaffiliate: 'true',
                     lang: 'us',
-                    gameid: game?.gameid,
+                    gameid: game?.gameid ?? gameName,
                     lobbyUrl: "https://frenzycaz.online/slot"
                 });
                 authUrl = 'http://5.129.253.12:2200/slot/api/userAuthPP.php';
