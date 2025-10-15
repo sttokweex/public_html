@@ -22,7 +22,7 @@ require(dirname(__DIR__, 1) . "/panels/sidebar.php");
                 <?php echo $translations['sports_competitions_overview']; ?>
               </p>
               <p class="PlainText__text--1wg PlainText__medium--1_S PlainText__dark--3fd">
-                <a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh Button__btn--THI Button__large--6PM Button__primary--3wk Button__success--3NL Button__dark--2vB PlainText__dark--3fd" href="/library/Pages/information-sportorganisations/HCO%20Sports%20List.xlsx" target="_self"><?php echo $translations['download_overview_link']; ?></a>
+                <a class="PlainText__text--1wg PlainText__medium--1_S Link__link--3vh Button__btn--THI Button__large--6PM Button__primary--3wk Button__success--3NL Button__dark--2vB PlainText__dark--3fd" href="https://www.hollandcasino.nl/library/Pages/information-sportorganisations/HCO%20Sports%20List.xlsx" target="_self"><?php echo $translations['download_overview_link']; ?></a>
               </p>
               <p class="PlainText__text--1wg PlainText__medium--1_S PlainText__dark--3fd" paraeid="{37fac574-6bb4-4297-96d6-d49dc6cfa318}{231}" paraid="1714021246">
                 <?php echo $translations['match_fixing_prevention']; ?>
