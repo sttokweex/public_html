@@ -44,6 +44,7 @@
   display: grid;
   grid-gap: 0.5rem;
   align-content: flex-start;
+  margin: auto;
 }
 
 /* Section title */
@@ -76,6 +77,8 @@
 
 .footer-section ul li a:hover {
   color: #ffffff; /* Equivalent to hover:text-white */
+  text-decoration-line: underline;
+  text-underline-offset: 25%;
 }
 
 /* External link SVG */

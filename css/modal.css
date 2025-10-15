@@ -332,7 +332,7 @@
   padding-inline: 1.25rem !important;
 }
 .py-\[0\.75rem\] {
-  padding-block: 0.75rem;
+  padding-block: 0.75rem !important;
 }
 
 .register-content-container {
@@ -365,12 +365,8 @@
 .or.svelte-3naeku > * {
   padding: 0 0.5rem;
 }
-.whitespace-nowrap {
-  white-space: nowrap;
-}
-.\[font-weight\:var\(--ds-font-weight-thick\)\] {
-  font-weight: 600;
-}
+
+
 .py-\[0\.5rem\] {
   padding-block: 0.5rem;
 }
@@ -462,9 +458,7 @@ form.svelte-1w3iz8f:not(.is-inline) > * + * {
 .bg-blue-500 {
   background-color: #1475e1;
 }
-.rounded-\(--ds-radius-md\) {
-  border-radius: 0.5rem;
-}
+
 .justify-center {
   justify-content: center;
 }
@@ -481,12 +475,7 @@ svg.svelte-1hh3m2i {
 .w-full {
   width: 100%;
 }
-.inline-flex {
-  display: inline-flex;
-}
-.inline-flex {
-  display: inline-flex;
-}
+
 .input.svelte-dka04o::-moz-placeholder {
   color: #566671;
 }
@@ -622,9 +611,7 @@ input[type='checkbox'].svelte-2vtt3n ~ .indicator:where(.svelte-2vtt3n) {
 .h-full {
   height: 100%;
 }
-.inline-flex {
-  display: inline-flex;
-}
+
 .relative {
   position: relative;
 }
@@ -1271,9 +1258,7 @@ input[type='checkbox'].svelte-2vtt3n ~ .indicator:where(.svelte-2vtt3n) {
   font-weight: 600;
   font-size: 1rem;
 }
-.text-white {
-  color: white;
-}
+
 .promoMain {
   padding-right: 1rem;
   padding-left: 1rem;

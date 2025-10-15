@@ -256,7 +256,10 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   <link rel="stylesheet" href="/css/toastr.css" crossorigin="anonymous" />
   <link href="/css/livefeed.css" rel="stylesheet">
   <link href="/css/header.css" rel="stylesheet">
+  <link href="/css/policies.css" rel="stylesheet">
   <link href="/css/favorite.css" rel="stylesheet">
+  <link href="/css/blog.css" rel="stylesheet">
+
   <link href="/css/index.css" rel="stylesheet">
   <link href="/css/modal.css" rel="stylesheet">
   <link href="/css/ranks.css" rel="stylesheet">
@@ -520,7 +523,7 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
     // Функция для проверки полной загрузки страницы
     function checkResourcesLoaded() {
-      if (document.readyState === 'complete' && areCSSLoaded()) {
+      if (areCSSLoaded()) {
         // Скрываем лоадер
         $('.loading').hide();
       } else {

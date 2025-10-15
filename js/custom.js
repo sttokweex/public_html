@@ -832,6 +832,7 @@ function updateDash() {
 }
 
 $(document).ready(function () {
+
   document.querySelectorAll('.copy-slot-link-btn').forEach(button => {
     button.addEventListener('click', () => {
       const hostname = window.location.origin;

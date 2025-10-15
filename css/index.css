@@ -733,7 +733,7 @@ System: feature-link:hover {
   position: relative;
   column-gap: 1rem;
 }
-.hero {
+.hero-1 {
   overflow: hidden;
   container-type: inline-size;
   container-name: card-size;

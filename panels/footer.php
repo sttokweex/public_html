@@ -21,77 +21,32 @@ function render_footer($translations, $sitename = 'Stake')
 			<div class="footer-inner-main">
 				<div data-nosnippet="" class="footer-content">
 					<div class="footer-grid">
-						<div class="footer-section">
-							<p><?php echo $translations['casino'] ?? 'Казино'; ?></p>
-							<ul>
-								<li><a href="/ru/casino/home"><span><?php echo $translations['casino_games'] ?? 'Игры казино'; ?></span></a></li>
-								<li><a href="/ru/casino/group/slots"><span><?php echo $translations['slots'] ?? 'Слоты'; ?></span></a></li>
-								<li><a href="/ru/casino/group/live-casino"><span><?php echo $translations['live_casino'] ?? 'Казино лайв'; ?></span></a></li>
-								<li><a href="/ru/casino/group/roulette"><span><?php echo $translations['roulette'] ?? 'Roulette'; ?></span></a></li>
-								<li><a href="/ru/casino/group/blackjack"><span><?php echo $translations['blackjack'] ?? 'Blackjack'; ?></span></a></li>
-								<li><a href="/ru/casino/games/poker"><span><?php echo $translations['poker'] ?? 'Покер'; ?></span></a></li>
-								<li><a href="/ru/casino/collection/provider"><span><?php echo $translations['providers'] ?? 'Провайдеры'; ?></span></a></li>
-								<li><a href="/ru/promotions"><span><?php echo $translations['promotions'] ?? 'Акции и конкурсы'; ?></span></a></li>
-								<li><a href="https://engine.stake.com/" target="_blank" rel="external noreferrer noopener"><span><?php echo $translations['stake_engine'] ?? 'Движок Stake'; ?></span><?php echo $svg_external; ?></a></li>
-							</ul>
-						</div>
-						<div class="footer-section">
-							<p><?php echo $translations['sports'] ?? 'Спорт'; ?></p>
-							<ul>
-								<li><a href="/ru/sports/home"><span><?php echo $translations['sports_betting'] ?? 'Ставки на спорт'; ?></span></a></li>
-								<li><a href="/ru/sports/live"><span><?php echo $translations['live_sports'] ?? 'Спорт лайв'; ?></span></a></li>
-								<li><a href="/ru/sports/soccer"><span><?php echo $translations['soccer'] ?? 'Футбол'; ?></span></a></li>
-								<li><a href="/ru/sports/basketball"><span><?php echo $translations['basketball'] ?? 'Баскетбол'; ?></span></a></li>
-								<li><a href="/ru/sports/tennis"><span><?php echo $translations['tennis'] ?? 'Теннис'; ?></span></a></li>
-								<li><a href="/ru/sports/esports"><span><?php echo $translations['esports'] ?? 'Киберспорт'; ?></span></a></li>
-								<li><a href="/ru/promotions/category/sports"><span><?php echo $translations['sports_bonuses'] ?? 'Бонусы на ставки'; ?></span></a></li>
-								<li><a href="/ru/policies/sportsbook"><span><?php echo $translations['betting_rules'] ?? 'Правила ставок'; ?></span></a></li>
-								<li><a href="/ru/policies/racing-rules"><span><?php echo $translations['racing_rules'] ?? 'Правила по скачкам'; ?></span></a></li>
-							</ul>
-						</div>
-						<div class="footer-section">
-							<p><?php echo $translations['help'] ?? 'Помощь'; ?></p>
-							<ul>
-								<li><a href="https://help.stake.com" target="_blank" rel="external noreferrer noopener"><span><?php echo $translations['help_center'] ?? 'Центр помощи'; ?></span><?php echo $svg_external; ?></a></li>
-								<li><a href="/ru/provably-fair"><span><?php echo $translations['fairness'] ?? 'Честность'; ?></span></a></li>
-								<li><a href="https://www.gamblingtherapy.org" target="_blank" rel="external noreferrer noopener"><span><?php echo $translations['gambling_help'] ?? 'Помощь игроманам'; ?></span><?php echo $svg_external; ?></a></li>
-								<li><a href="https://www.gamblingtherapy.org" target="_blank" rel="external noreferrer noopener"><span><?php echo $translations['support'] ?? 'Поддержка'; ?></span></a></li>
-								<li><a href="/ru/policies/self-exclusion"><span><?php echo $translations['self_exclusion'] ?? 'Самоисключение'; ?></span></a></li>
-								<li><a href="/ru/law-enforcement/overview"><span><?php echo $translations['law_enforcement'] ?? 'Запрос на предмет соблюдения законов'; ?></span></a></li>
-							</ul>
-						</div>
+
+
+
+
 						<div class="footer-section">
 							<p><?php echo $translations['about_us'] ?? 'О нас'; ?></p>
 							<ul>
-								<li><a href="/ru/vip-club"><span><?php echo $translations['vip_club'] ?? 'ВИП-клуб'; ?></span></a></li>
-								<li><a href="/ru/affiliate"><span><?php echo $translations['affiliates'] ?? 'Партнерам'; ?></span></a></li>
-								<li><a href="/ru/policies/privacy"><span><?php echo $translations['privacy_policy'] ?? 'Политика конфиденциальности'; ?></span></a></li>
-								<li><a href="/ru/policies/anti-money-laundering"><span><?php echo $translations['aml_policy'] ?? 'Политика AML'; ?></span></a></li>
-								<li><a href="/ru/policies/terms"><span><?php echo $translations['terms'] ?? 'Пользовательское соглашение'; ?></span></a></li>
+								<li><a href="/vip-club"><span><?php echo $translations['vip_club'] ?? 'ВИП-клуб'; ?></span></a></li>
+								<li><a href="/referals"><span><?php echo $translations['affiliates'] ?? 'Партнерам'; ?></span></a></li>
+								<li><a href="/policies/privacy"><span><?php echo $translations['privacy_policy'] ?? 'Политика конфиденциальности'; ?></span></a></li>
+								<li><a href="/policies/aml"><span><?php echo $translations['aml_policy'] ?? 'Политика AML'; ?></span></a></li>
+								<li><a href="/policies/terms"><span><?php echo $translations['terms'] ?? 'Пользовательское соглашение'; ?></span></a></li>
 							</ul>
 						</div>
 						<div class="footer-section">
 							<p><?php echo $translations['payments'] ?? 'О платежах'; ?></p>
 							<ul>
-								<li><a href="/ru/blog/deposit-withdrawal-methods-online-betting"><span><?php echo $translations['deposits_withdrawals'] ?? 'Депозиты и выводы'; ?></span></a></li>
-								<li><a href="/ru/blog/local-currency-deposit-withdraw-guide"><span><?php echo $translations['currency_guide'] ?? 'Гид по денежным валютам'; ?></span></a></li>
-								<li><a href="/ru/blog/what-is-crypto-gambling-guide"><span><?php echo $translations['crypto_guide'] ?? 'Гид по криптовалютам'; ?></span></a></li>
-								<li><a href="/ru/blog/what-crypto-does-stake-offer"><span><?php echo $translations['supported_cryptos'] ?? 'Поддерживаемые криптовалюты'; ?></span></a></li>
-								<li><a href="/ru/blog/how-to-use-our-vault"><span><?php echo $translations['vault_guide'] ?? 'Как пользоваться хранилищем'; ?></span></a></li>
-								<li><a href="/ru/blog/how-much-to-gamble-budget-calculator"><span><?php echo $translations['budget_calculator'] ?? 'Как рассчитать игровой бюджет'; ?></span></a></li>
+								<li><a href="/blog/deposit-withdrawal-methods-online-betting"><span><?php echo $translations['deposits_withdrawals'] ?? 'Депозиты и выводы'; ?></span></a></li>
+								<li><a href="/blog/local-currency-deposit-withdraw-guide"><span><?php echo $translations['currency_guide'] ?? 'Гид по денежным валютам'; ?></span></a></li>
+								<li><a href="/blog/what-is-crypto-gambling-guide"><span><?php echo $translations['crypto_guide'] ?? 'Гид по криптовалютам'; ?></span></a></li>
+								<li><a href="/blog/what-crypto-does-stake-offer"><span><?php echo $translations['supported_cryptos'] ?? 'Поддерживаемые криптовалюты'; ?></span></a></li>
+								<li><a href="/blog/how-to-use-our-vault"><span><?php echo $translations['vault_guide_1'] ?? 'Как пользоваться хранилищем'; ?></span></a></li>
+								<li><a href="/blog/how-much-to-gamble-budget-calculator"><span><?php echo $translations['budget_calculator_1'] ?? 'Как рассчитать игровой бюджет'; ?></span></a></li>
 							</ul>
 						</div>
-						<div class="footer-section">
-							<p><?php echo $translations['faq'] ?? 'ЧАВО'; ?></p>
-							<ul>
-								<li><a href="/ru/blog/category/how-to-guides"><span><?php echo $translations['guides'] ?? 'Руководства'; ?></span></a></li>
-								<li><a href="/ru/blog/online-casino-guide"><span><?php echo $translations['casino_guide'] ?? 'Гид по онлайн-казино'; ?></span></a></li>
-								<li><a href="/ru/blog/sports-betting-guide"><span><?php echo $translations['sports_betting_guide'] ?? 'Гид по ставкам на спорт'; ?></span></a></li>
-								<li><a href="/ru/blog/how-to-watch-live-stream-sports-free"><span><?php echo $translations['live_streams'] ?? 'Как смотреть прямые трансляции'; ?></span></a></li>
-								<li><a href="/ru/blog/vip-program-levels-benefits-rewards"><span><?php echo $translations['vip_program_guide'] ?? 'Гид по программе ВИП Stake'; ?></span></a></li>
-								<li><a href="/ru/blog/casino-house-edge-guide"><span><?php echo $translations['house_edge_guide'] ?? 'Гид по преимуществу казино'; ?></span></a></li>
-							</ul>
-						</div>
+
 					</div>
 					<div class="footer-social-icons">
 						<ul>

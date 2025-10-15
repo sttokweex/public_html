@@ -281,10 +281,10 @@ span.svelte-rxhcv3 {
   display: block;
 }
 .py-3 {
-  padding-block: 0.75rem;
+  padding-block: 0.75rem !important;
 }
 .px-\[0\.75rem\] {
-  padding-inline: 0.75rem;
+  padding-inline: 0.75rem !important;
 }
 .bg-grey-400 {
   background-color: #2f4553;

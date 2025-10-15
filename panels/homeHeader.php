@@ -7,7 +7,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
     <div class="hero-wrapper-main home-has-padding">
       <div class="grid-heroes is-snap-start">
         <div class="hero-content-main scrollX hide-scrollbar" style="grid-auto-columns: calc(33.33% - 0.6875rem);">
-          <div class="hero relative h-full">
+          <div class="hero-1 relative h-full">
             <a class="block h-full modal-trigger" href="#" data-modal="modal-bonus-daily" data-analytics="hero-link-casino-1">
               <div class="hero-wrapper">
                 <div class="hero-content-wrapper">
@@ -33,7 +33,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
               <a class="modal-trigger" href="#" data-modal="modal-bonus-daily" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" data-analytics="hero-button-casino-1" style="min-width: 7.5rem; max-width: 10.625rem;"><?php echo htmlspecialchars($translations['learn_more']); ?></a>
             </div>
           </div>
-          <div class="hero relative h-full">
+          <div class="hero-1 relative h-full">
             <a class="block h-full modal-trigger" href="#" data-modal="modal-bonus-100" data-analytics="hero-link-casino-2">
               <div class="hero-wrapper">
                 <div class="hero-content-wrapper">
@@ -58,7 +58,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
               <a class="modal-trigger" href="#" data-modal="modal-bonus-100" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" data-analytics="hero-button-casino-2" style="min-width: 7.5rem; max-width: 10.625rem;"><?php echo htmlspecialchars($translations['learn_more']); ?></a>
             </div>
           </div>
-          <div class="hero relative h-full">
+          <div class="hero-1 relative h-full">
             <a class="block h-full modal-trigger" href="#" data-modal="modal-bonus-1000" data-analytics="hero-link-casino-3">
               <div class="hero-wrapper">
                 <div class="hero-content-wrapper">
@@ -83,7 +83,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
               <a class="modal-trigger" href="#" data-modal="modal-bonus-1000" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" data-analytics="hero-button-casino-3" style="min-width: 7.5rem; max-width: 10.625rem;"><?php echo htmlspecialchars($translations['learn_more']); ?></a>
             </div>
           </div>
-          <div class="hero relative h-full">
+          <div class="hero-1 relative h-full">
             <a class="block h-full modal-trigger" href="#" data-modal="modal-bonus-5000" data-analytics="hero-link-casino-4">
               <div class="hero-wrapper">
                 <div class="hero-content-wrapper">
@@ -155,7 +155,7 @@ function renderHomeHeader($translations, $login, $depositesSID)
         updateArrows();
         $container.on('scroll', updateArrows);
 
-        var scrollAmount = $('.hero').first().outerWidth(true);
+        var scrollAmount = $('.hero-1').first().outerWidth(true);
 
         $rightBtn.on('click', function() {
           $container.animate({

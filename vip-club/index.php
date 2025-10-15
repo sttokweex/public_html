@@ -26,7 +26,7 @@ require(dirname(__DIR__, 1) . "/panels/mobile.php");
 	<div class="rank-container">
 		<div class="rank-inner ">
 			<div class="rank-content">
-				<span class="separator separator_big separator_mb"><span><?= $translations['ranks'] ?></span></span>
+				<span class="separator separator_big separator_mb"><span><?= $translations['vip-club'] ?></span></span>
 				<div class="rank-page">
 					<div class="rank" id="rankStarter">
 						<img src="/images/ranks/starter.png" />
@@ -41,8 +41,8 @@ require(dirname(__DIR__, 1) . "/panels/mobile.php");
 						<span class="needDeposit"><?= $translations['none_deposits'] ?></span>
 						<hr />
 						<div class="progressWag">
-							<progress class="wagerProgress" value="<?= round($depositesSID, 2); ?>" max="2000"></progress>
-							<span class="progres" id="StarterProgress"><?= round($depositesSID, 2); ?>/2000</span>
+							<progress class="wagerProgress" value="<?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>" max="500"></progress>
+							<span class="progres" id="StarterProgress"><?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>/500</span>
 							<i id="StarterOk" class="fa fa-check symbolOk"></i>
 						</div>
 					</div>
@@ -56,11 +56,11 @@ require(dirname(__DIR__, 1) . "/panels/mobile.php");
 						<hr />
 						<span class="description"><?= $translations['bonus_birthday'] ?><span class="badges">0$</span></span>
 						<hr />
-						<span class="needDeposit"><?= $translations['deposit_10$_all_time'] ?></span>
+						<span class="needDeposit"><?= $translations['deposit_500$_all_time'] ?></span>
 						<hr />
 						<div class="progressWag">
-							<progress class="wagerProgress" value="<?= round($depositesSID, 2); ?>" max="1000"></progress>
-							<span class="progres" id="SilverProgress"><?= round($depositesSID, 2); ?>/10000</span>
+							<progress class="wagerProgress" value="<?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>" max="2500"></progress>
+							<span class="progres" id="SilverProgress"><?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>/2500</span>
 							<i id="SilverOk" class="fa fa-check symbolOk"></i>
 						</div>
 					</div>
@@ -74,11 +74,11 @@ require(dirname(__DIR__, 1) . "/panels/mobile.php");
 						<hr />
 						<span class="description"><?= $translations['bonus_birthday'] ?><span class="badges">5$</span></span>
 						<hr />
-						<span class="needDeposit"><?= $translations['deposit_500$_all_time'] ?></span>
+						<span class="needDeposit"><?= $translations['deposit_2500$_all_time'] ?></span>
 						<hr />
 						<div class="progressWag">
-							<progress class="wagerProgress" value="<?= round($depositesSID, 2); ?>" max="50000"></progress>
-							<span class="progres" id="GoldProgress"><?= round($depositesSID, 2); ?>/50000</span>
+							<progress class="wagerProgress" value="<?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>" max="5000"></progress>
+							<span class="progres" id="GoldProgress"><?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>/5000</span>
 							<i id="GoldOk" class="fa fa-check symbolOk"></i>
 						</div>
 					</div>
@@ -92,11 +92,11 @@ require(dirname(__DIR__, 1) . "/panels/mobile.php");
 						<hr />
 						<span class="description"><?= $translations['bonus_birthday'] ?><span class="badges">10$</span></span>
 						<hr />
-						<span class="needDeposit"><?= $translations['deposit_1000$_all_time'] ?></span>
+						<span class="needDeposit"><?= $translations['deposit_5000$_all_time'] ?></span>
 						<hr />
 						<div class="progressWag">
-							<progress class="wagerProgress" value="<?= round($depositesSID, 2); ?>" max="100000"></progress>
-							<span class="progres" id="RubyProgress"><?= round($depositesSID, 2); ?>/100000</span>
+							<progress class="wagerProgress" value="<?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>" max="10000"></progress>
+							<span class="progres" id="RubyProgress"><?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>/10000</span>
 							<i id="RubyOk" class="fa fa-check symbolOk"></i>
 						</div>
 					</div>
@@ -113,8 +113,8 @@ require(dirname(__DIR__, 1) . "/panels/mobile.php");
 						<span class="needDeposit"><?= $translations['deposit_10000$_all_time'] ?></span>
 						<hr />
 						<div class="progressWag" id="topRank" style="display:none;">
-							<progress class="wagerProgress" value="<?= round($depositesSID, 2); ?>" max="<?= round($depositesSID, 2); ?>"></progress>
-							<span class="progres" id="LegendProgress"><?= round($depositesSID, 2); ?>/500000</span>
+							<progress class="wagerProgress" value="<?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>" max="<?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>"></progress>
+							<span class="progres" id="LegendProgress"><?= isset($depositesSID) ? round($depositesSID, 2) : 0; ?>/500000</span>
 							<i id="LegendOk" class="fa fa-check symbolOk"></i>
 						</div>
 					</div>
@@ -129,7 +129,7 @@ require(dirname(__DIR__, 1) . "/panels/mobile.php");
 
 <script>
 	function loadTableRanks() {
-		var userDeps = $('#hashdeps').val();
+		var userDeps = <?php echo json_encode($depositesSID); ?>;
 
 		if (userDeps >= 0) {
 			$('#rankStarter').addClass(' active');
