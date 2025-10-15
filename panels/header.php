@@ -649,8 +649,11 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     // Функция для проверки полной загрузки страницы
     function checkResourcesLoaded() {
       if (areCSSLoaded()) {
+        setTimeout(function() {
+          $('.loader').hide();
+        }, 1000);
         // Скрываем лоадер
-        $('.loader').hide();
+
       } else {
         // Продолжаем проверять, если ресурсы ещё не загружены
         setTimeout(checkResourcesLoaded, 100);
