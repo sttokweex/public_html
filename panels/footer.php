@@ -67,9 +67,7 @@ function render_footer($translations, $sitename = 'Stake')
 						<p><?php echo $translations['responsible_gambling'] ?? 'Stake является приверженцем ответственного подхода к азартным играм. Для получения более подробной информации посетите ресурс'; ?> <a href="https://www.gamblingtherapy.org/" target="_blank" rel="external noreferrer noopener">Gamblingtherapy.org</a></p>
 					</div>
 					<p class="footer-btc-rate"><?php echo $translations['btc_rate'] ?? '1 BTC = $111,731.84'; ?></p>
-					<div class="footer-language-selector">
-						<div class="footer-dropdown"><button type="button"><?php echo $translations['language'] ?? 'Русский'; ?><?php echo $svg_dropdown_arrow; ?></button></div>
-					</div>
+
 					<div class="footer-logo">
 						<div class="footer-logo-wrap"><?php echo $svg_logo; ?></div>
 					</div>

@@ -1,3 +1,4 @@
+
 <?php
 require(dirname(__DIR__, 1) . "/system/config.php");
 if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -26,7 +27,7 @@ require_once(dirname(__DIR__, 1) . "/panels/footer.php");
                 <svg data-ds-icon="Security" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0 text-[var(--color-grey-200)]"><!---->
                   <path fill="currentColor" fill-rule="evenodd" d="M11.18 3a2.12 2.12 0 0 1 1.64 0l7.08 2.57c.73.31 1.2 1 1.2 1.77v1.65c0 8.62-4.98 11.2-7.57 12.61-.95.52-2.11.52-3.06 0C7.88 20.18 2.9 17.61 2.9 8.99V7.34c0-.76.47-1.46 1.2-1.77zM12 7a2.5 2.5 0 0 0-2.5 2.5c0 1.03.62 1.9 1.5 2.29V15c0 .55.45 1 1 1s1-.45 1-1v-3.21c.88-.39 1.5-1.27 1.5-2.29A2.5 2.5 0 0 0 12 7" clip-rule="evenodd"></path>
                 </svg>
-                <? echo htmlspecialchars($translations['policies']) ?>
+                <?php echo htmlspecialchars($translations['policies']); ?>
               </h1>
             </div>
             <a class="mybets-close-button" href="/casino/home">
@@ -40,17 +41,15 @@ require_once(dirname(__DIR__, 1) . "/panels/footer.php");
           <div class="mybets-sidebar-card" style="">
             <div class="mybets-nav-outer-wrapper">
               <div class="mybets-nav-wrapper">
-                <button class="mybets-nav-link " data-testid="global-navbar-Term-tab" onclick="window.location.href='/policies/terms'">
-                  <span class="mybets-nav-text">Terms of Service</span>
+                <button class="mybets-nav-link" data-testid="global-navbar-Term-tab" onclick="window.location.href='/policies/terms'">
+                  <span class="mybets-nav-text"><?php echo htmlspecialchars($translations['nav_terms_of_service']); ?></span>
                 </button>
                 <button class="mybets-nav-link" data-testid="global-navbar-AML-tab" onclick="window.location.href='/policies/aml'">
-                  <span class="mybets-nav-text"> Anti-Money Laundering</span>
+                  <span class="mybets-nav-text"><?php echo htmlspecialchars($translations['nav_aml']); ?></span>
                 </button>
                 <button class="mybets-nav-link mybets-nav-active" data-testid="global-navbar-Privacy-tab">
-                  <span class="mybets-nav-text"> Privacy</span>
+                  <span class="mybets-nav-text"><?php echo htmlspecialchars($translations['nav_privacy']); ?></span>
                 </button>
-
-
                 <div class="mybets-nav-dash"></div>
               </div>
             </div>
@@ -58,210 +57,411 @@ require_once(dirname(__DIR__, 1) . "/panels/footer.php");
           <div class="card variant-default p-6 overflow-hidden relative page-card svelte-1vf4wu3" id='terms'>
             <div style="">
               <div class="layout-spacing variant-normal svelte-tm71ti no-bottom-spacing"><!----><!---->
-                <div class="wrap svelte-1y88mpk "><!----><!----><!----><!----><!----><!----> <!---->
-                  <div class="content-block svelte-k165h5"><!--[--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <h1 type="heading" tag="h1" size="xl" variant="neutral-default" class="text-neutral-default ds-heading-xl" data-ds-text="true"><!--[--><!--[--><span id="Privacy_Policy">Privacy Policy</span><!--]--><!--]--><!----><!----></h1><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">This is the privacy policy of Medium Rare N.V. (owner and operator of Stake.) This Privacy Policy sets out how Stake.com will manage your personal information which we collect as a result of your membership of Stake, your use of our websites located at <!----><!----></span><!----><!--]--><!--]--><!----><!----><a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration-line:underline] [text-decoration-style:solid] [text-decoration-skip-ink:none] [text-decoration-thickness:8%] [text-underline-offset:25%] hover:[text-decoration-thickness:14%] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:outline-hidden var(--ds-font-size-sm) !bg-transparent !text-white [&amp;_svg]:!text-white focus-visible:text-white focus-visible!:[&amp;_svg]:text-white inline-flex items-center gap-1 whitespace-normal" href="/" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" external="false"><!----><span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><!---->https://stake.com/</span><!----></a><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!----> and any pages or websites under the 'Stake' brand including any mobile phone or tablet applications that are owned and/or operated by us or whenever we otherwise deal with you. We are committed to ensuring that the personal information we collect about you is protected and is used, stored and disclosed in accordance with the Privacy Act and this Privacy Policy.</span><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <h3 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!--[--><!--[--><span id="1._Website_Use">1. Website Use</span><!--]--><!--]--><!----><!----></h3><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">In using the website, you agree to be bound by the terms of this Privacy Policy. Stake.com may review the Privacy Policy periodically and reserves the right to change the Privacy Policy at any time at its discretion by posting such changes on the website. Changes will be effective immediately when posted on the website. Your continued use of the website following posting will constitute your acceptance of those changes. This Privacy Policy will not apply to websites which are linked to the website and over which Stake.com has no control.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="2._Personal_Information">2. Personal Information</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->The kinds of Personal Information that Stake.com may process about you is:</span></p><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!-->
+                <div class="wrap svelte-1y88mpk"><!----><!----><!----><!----><!----><!----><!---->
+                  <div class="content-block svelte-k165h5">
+                    <h1 type="heading" tag="h1" size="xl" variant="neutral-default" class="text-neutral-default ds-heading-xl" data-ds-text="true">
+                      <span id="Privacy_Policy"><?php echo htmlspecialchars($translations['privacy_title']); ?></span>
+                    </h1>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['intro_p1_part1']); ?></span>
+                      <a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration-line:underline] [text-decoration-style:solid] [text-decoration-skip-ink:none] [text-decoration-thickness:8%] [text-underline-offset:25%] hover:[text-decoration-thickness:14%] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:outline-hidden var(--ds-font-size-sm) !bg-transparent !text-white [&amp;_svg]:!text-white focus-visible:text-white focus-visible!:[&amp;_svg]:text-white inline-flex items-center gap-1 whitespace-normal" href="/" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" external="false">
+                        <span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true">https://stake.com/</span>
+                      </a>
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['intro_p1_part2']); ?></span>
+                    </p>
+                    <h3 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="1._Website_Use"><?php echo htmlspecialchars($translations['section_1_title']); ?></span>
+                    </h3>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_1_p1']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="2._Personal_Information"><?php echo htmlspecialchars($translations['section_2_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_p1']); ?></span>
+                    </p>
                     <ul class="svelte-42q2bt">
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Name</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_1']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Email Address</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_2']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Personally Submitted Preferences</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_3']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Date of Birth</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_4']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Country of Citizenship</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_5']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Physical Address</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_6']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Identification Number</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_7']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Government Issued Identification</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_8']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Location Data</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_9']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Device Information</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_10']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->IP Address</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_11']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Data related to the use of our Services and products as deposits, withdraws, wagers, VIP status, Affiliate ID, among others</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_12']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Data related to the enforcement of our Terms of Service and Policies. For further details, please refer to the relevant documents, which can be accessed here:</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_13']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-2 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration-line:underline] [text-decoration-style:solid] [text-decoration-skip-ink:none] [text-decoration-thickness:8%] [text-underline-offset:25%] hover:[text-decoration-thickness:14%] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex items-center gap-1 whitespace-normal" href="/policies/terms" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" external="false"><!----><span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><!---->Terms of Service</span><!----></a></p><!---->
+                      <li class="level-2 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration-line:underline] [text-decoration-style:solid] [text-decoration-skip-ink:none] [text-decoration-thickness:8%] [text-underline-offset:25%] hover:[text-decoration-thickness:14%] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex items-center gap-1 whitespace-normal" href="/policies/terms" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" external="false">
+                            <span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_14']); ?></span>
+                          </a>
+                        </p>
                       </li>
-                      <li class="level-2 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration-line:underline] [text-decoration-style:solid] [text-decoration-skip-ink:none] [text-decoration-thickness:8%] [text-underline-offset:25%] hover:[text-decoration-thickness:14%] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex items-center gap-1 whitespace-normal" href="/policies/anti-money-laundering" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" external="false"><!----><span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><!---->AML Policy</span><!----></a></p><!---->
+                      <li class="level-2 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration-line:underline] [text-decoration-style:solid] [text-decoration-skip-ink:none] [text-decoration-thickness:8%] [text-underline-offset:25%] hover:[text-decoration-thickness:14%] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex items-center gap-1 whitespace-normal" href="/policies/anti-money-laundering" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" external="false">
+                            <span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_15']); ?></span>
+                          </a>
+                        </p>
                       </li>
-                    </ul><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">The Company collects, or may collect, such information through methods including:<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!-->
+                    </ul>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_p2']); ?></span>
+                    </p>
                     <ul class="svelte-42q2bt">
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Data input during account registration processes</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_16']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Communications with Customers</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_17']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Data provided or created when you use our Services and products</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_18']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->From third-party data providers, in accordance with the terms set forth in this Privacy Policy, in our Terms of Service, or in our policies</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_2_list_19']); ?></span>
+                        </p>
                       </li>
-                    </ul><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <h3 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!--[--><!--[--><span id="3._Data_Processing_Purposes">3. Data Processing Purposes</span><!--]--><!--]--><!----><!----></h3><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">Stake.com will process your Personal Information only by lawful and fair means and not in an intrusive way to operate its business as a licensed online wagering bookmaker for the following purposes:<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!-->
+                    </ul>
+                    <h3 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="3._Data_Processing_Purposes"><?php echo htmlspecialchars($translations['section_3_title']); ?></span>
+                    </h3>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_p1']); ?></span>
+                    </p>
                     <ul class="svelte-42q2bt">
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->For know-your-customer (KYC) identity verification.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_1']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->If you wish to subscribe to Stake.com's marketing communications.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_2']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To process your application to become a Member of Stake.com or any managed subdomains.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_3']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To provide and improve services to you as a Member.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_4']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To identify you as a Member and authenticate your identity for security purposes and to comply with our legal obligations.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_5']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To maintain your Member account.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_6']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To upgrade and enhance your experience within the website or over the telephone, or to tailor or develop information, services or products to suit your needs which may include market research and conducting promotions.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_7']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To tell you about our products or services that we think may be of interest to you by communicating with you via email, SMS or telephone.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_8']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To create aggregate data about Members through demographic profiling, statistical analysis of the database to provide to potential and existing stakeholders, and to allow for more efficient operation of Stake.com’s business.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_9']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To respond to your questions, comments, or requests.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_10']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To determine Members' liability to pay goods and services tax and other taxes where applicable.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_11']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To comply with Stake.com’s contractual, legal, and statutory obligations.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_12']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->For taking appropriate action if Stake.com has reason to suspect that unlawful activity or misconduct of a serious nature has been, is being or may be engaged in that relates to our functions and activities.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_13']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To establish, exercise or defend any legal claims.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_14']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To enforce our Terms of Service and Policies.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_15']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To provide you with benefits related to our VIP program, as well as other campaigns and benefits offered by Stake.com or any managed subdomains.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_16']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To manage job applications.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_list_17']); ?></span>
+                        </p>
                       </li>
-                    </ul><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">If you do not provide Stake.com with the Personal Information we request, we may be unable to process your application to become a Member, provide you with our services or respond to your enquiry or complaint.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">By using Stake.com, becoming a Member or otherwise choosing to provide Stake.com with Personal Information you acknowledge that Stake.com may collect, use, process and potentially disclose your Personal Information for the above purposes and on the bases described in this Privacy Policy.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="4._Direct_Marketing_and_Opting_Out">4. Direct Marketing and Opting Out</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">From time to time we may use your Personal Information to inform you about our products or services or about promotional activities which Stake.com believes may be of interest or of benefit to you. We may do this via email, SMS, telephone or mail. If you no longer wish to receive marketing or promotional material from Stake.com at all or in any particular form, you may contact us at any time by email to <!----><!----></span><!----><!--]--><!--]--><!----><!----><a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration:none] hover:[text-decoration:none] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex gap-1 items-center" href="mailto:support@stake.com" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="" target="_blank" rel="external noreferrer noopener" external="true"><!----><!----><!----><span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><!---->support@stake.com</span><!----> <svg data-ds-icon="External" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!---->
+                    </ul>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_p2']); ?></span>
+                    </p>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_3_p3']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="4._Direct_Marketing_and_Opting_Out"><?php echo htmlspecialchars($translations['section_4_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_4_p1_part1']); ?></span>
+                      <a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration:none] hover:[text-decoration:none] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex gap-1 items-center" href="mailto:support@stake.com" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="" target="_blank" rel="external noreferrer noopener" external="true">
+                        <span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true">support@stake.com</span>
+                        <svg data-ds-icon="External" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0">
                           <path fill="currentColor" d="M20 13.4c-.55 0-1 .45-1 1v4c0 .33-.27.6-.6.6H5.6c-.33 0-.6-.27-.6-.6V5.6c0-.33.27-.6.6-.6h4.8c.55 0 1-.45 1-1s-.45-1-1-1H5.6C4.17 3 3 4.17 3 5.6v12.8C3 19.83 4.17 21 5.6 21h12.8c1.43 0 2.6-1.17 2.6-2.6v-4c0-.55-.45-1-1-1"></path>
                           <path fill="currentColor" d="M14.4 3c-.55 0-1 .45-1 1s.45 1 1 1h3.19L8.1 14.49a.996.996 0 0 0 .71 1.7c.26 0 .51-.1.71-.29l9.49-9.49V9.6c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1z"></path>
-                        </svg><!----><!----></a><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!----> with your request with which we will comply as soon as is practical.</span><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">From time to time we may contact you in relation to the management and administration of your Stake.com account. These communications can be via any of the modes of contact recorded when registering as a Member. Such communication does not affect your opt-in or opt-out status for direct marketing communications.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <h3 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!--[--><!--[--><span id="5._Management_and_Sharing_of_your_Personal_Information">5. Management and Sharing of your Personal Information</span><!--]--><!--]--><!----><!----></h3><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">Stake.com will take all reasonable steps to ensure that the Personal Information which it collects, uses or discloses is correct and is stored in a secure environment which is accessed only by authorised persons. We store the personal information we receive as described in this Privacy Policy for as long as you use our Services or as necessary to fulfil the purpose(s) for which it was collected, provide our Services, resolve disputes, establish legal defences, conduct audits, pursue legitimate business purposes, enforce our agreements, and comply with applicable laws.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">Stake.com can share or disclose Personal Information in order to provide our Services, enforce our Terms of Service and policies, protect or defend our rights and interests, particularly in the following cases:<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!-->
+                        </svg>
+                      </a>
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_4_p1_part2']); ?></span>
+                    </p>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_4_p2']); ?></span>
+                    </p>
+                    <h3 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="5._Management_and_Sharing_of_your_Personal_Information"><?php echo htmlspecialchars($translations['section_5_title']); ?></span>
+                    </h3>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_5_p1']); ?></span>
+                    </p>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_5_p2']); ?></span>
+                    </p>
                     <ul class="svelte-42q2bt">
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->Within our Group: Any reference to the "Group" in this Privacy Policy includes Medium Rare N.V. (the owner and operator of Stake.) as well as our websites located at https://stake.com and any pages or websites under the "Stake" brand, including any mobile phone or tablet applications owned and/or operated by us or whenever we otherwise interact with you.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_5_list_1']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->To our service providers and third-party partners: In some cases, we may use third party service providers to provide you with our Services or products. In this case, we may need to share or disclose Personal Information. In each case, Stake.com will take reasonable steps to ensure that your Personal Information is protected and processed as set out in this Policy. Whenever possible, we will choose to contract with a data processor to handle your Personal Information.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_5_list_2']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->For legal or regulatory reasons: In certain circumstances, we may be required to disclose your Personal Information in response to lawful requests by public authorities.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_5_list_3']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->In the event of a business sale or restructuring: If the ownership of all or part of our business changes or if we undergo a reorganization or restructuring, we may transfer your Personal Information to the new owner or successor company so that we can continue to provide the Services requested.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_5_list_4']); ?></span>
+                        </p>
                       </li>
-                    </ul><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">Whenever we share Personal Information and whatever the circumstances, we will always do so lawfully and with due regard to your privacy. Stake.com will destroy or permanently de-identify the Personal Information we hold when it is no longer required for any purpose permitted under this Privacy Policy or our legal or operational obligations.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">Stake.com will destroy or permanently de-identify the Personal Information we hold when it is no longer required for any purpose permitted under our legal or operational obligations.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="6._Security_of_Personal_Information">6. Security of Personal Information</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">You acknowledge that no data transmission over the Internet is totally secure. Accordingly, Stake.com does not guarantee or warrant the security of any information which you transmit to it. Any information which you transmit to Stake.com is transmitted at your own risk. However, once Stake.com receives your transmission, Stake.com will take reasonable steps to protect your Personal Information from misuse, loss and unauthorized access, modification and disclosure including by using password protected systems and databases and Secure Socket Layer (SSL) technology. By using our Services or providing personal information to us, you must be aware that we may communicate with you electronically regarding security, privacy, and administrative issues relating to your use of the Services.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">Stake.com’s employees, agents and contractors are required to maintain the confidentiality of Members' Personal Information and trading behavior. Information posted on bulletin boards or communicated within a social media environment (for example, Facebook, Twitter, Chat Rooms) becomes public information. Stake.com cannot guarantee the security of this type of disclosed information.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">We take seriously the responsibility to exclude children from access to our services. We will not accept their information for the purposes of opening a wagering account. It is however, ultimately the responsibility of parents or guardians to monitor their children’s Internet activities including where appropriate by using Internet screening software.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">Remember to always log out of your account when you have completed your time on the website. This is particularly important if you share a computer with another person. You are responsible for the security of and access to your own computer, mobile device or any other handset used to access the website.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">Ultimately, you are solely responsible for maintaining the secrecy of your username, password and any account information. Please be careful whenever using the Internet and our website.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="7._Access_to_Personal_Information">7. Access to Personal Information</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">You may access the Personal Information collected by Stake.com by following the “Settings” link on the website or by contacting us on <!----><!----></span><!----><!--]--><!--]--><!----><!----><a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration:none] hover:[text-decoration:none] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex gap-1 items-center" href="mailto:support@stake.com" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="" target="_blank" rel="external noreferrer noopener" external="true"><!----><!----><!----><span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><!---->support@stake.com</span><!----> <svg data-ds-icon="External" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!---->
+                    </ul>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_5_p3']); ?></span>
+                    </p>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_5_p4']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="6._Security_of_Personal_Information"><?php echo htmlspecialchars($translations['section_6_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_6_p1']); ?></span>
+                    </p>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_6_p2']); ?></span>
+                    </p>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_6_p3']); ?></span>
+                    </p>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_6_p4']); ?></span>
+                    </p>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_6_p5']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="7._Access_to_Personal_Information"><?php echo htmlspecialchars($translations['section_7_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_7_p1_part1']); ?></span>
+                      <a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration:none] hover:[text-decoration:none] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex gap-1 items-center" href="mailto:support@stake.com" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="" target="_blank" rel="external noreferrer noopener" external="true">
+                        <span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true">support@stake.com</span>
+                        <svg data-ds-icon="External" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0">
                           <path fill="currentColor" d="M20 13.4c-.55 0-1 .45-1 1v4c0 .33-.27.6-.6.6H5.6c-.33 0-.6-.27-.6-.6V5.6c0-.33.27-.6.6-.6h4.8c.55 0 1-.45 1-1s-.45-1-1-1H5.6C4.17 3 3 4.17 3 5.6v12.8C3 19.83 4.17 21 5.6 21h12.8c1.43 0 2.6-1.17 2.6-2.6v-4c0-.55-.45-1-1-1"></path>
                           <path fill="currentColor" d="M14.4 3c-.55 0-1 .45-1 1s.45 1 1 1h3.19L8.1 14.49a.996.996 0 0 0 .71 1.7c.26 0 .51-.1.71-.29l9.49-9.49V9.6c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1z"></path>
-                        </svg><!----><!----></a><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->. We will give you access to your Personal Information in the manner requested if that is possible and within a reasonable period. If we refuse your request or cannot give you access in the manner you have requested, we will do what we can to meet your requirements by other means. We may not be required to give you access to your Personal Information in certain circumstances which are set out in the APPs including where it may have an unreasonable impact on another individual's privacy. If we refuse access for such reasons, we will advise you in writing of the refusal and our reasons and the complaint mechanisms available to you.</span><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="8._Delete_Personal_Data">8. Delete Personal Data</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">You can request to have your personal data deleted if Stake.com no longer have a legal reason to continue to process or store it. Please note that this right is not guaranteed - in the sense that Stake.com do not have the ability to comply with your request if it is subject to a legal obligation to store your data. You can request the deletion of your personal data by sending an email to&nbsp;<!----><!----></span><!----><!--]--><!--]--><!----><!----><a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration:none] hover:[text-decoration:none] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex gap-1 items-center" href="mailto:support@stake.com" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="" target="_blank" rel="external noreferrer noopener" external="true"><!----><!----><!----><span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><!---->support@stake.com</span><!----> <svg data-ds-icon="External" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!---->
+                        </svg>
+                      </a>
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_7_p1_part2']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="8._Delete_Personal_Data"><?php echo htmlspecialchars($translations['section_8_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_8_p1_part1']); ?></span>
+                      <a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration:none] hover:[text-decoration:none] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex gap-1 items-center" href="mailto:support@stake.com" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="" target="_blank" rel="external noreferrer noopener" external="true">
+                        <span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true">support@stake.com</span>
+                        <svg data-ds-icon="External" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0">
                           <path fill="currentColor" d="M20 13.4c-.55 0-1 .45-1 1v4c0 .33-.27.6-.6.6H5.6c-.33 0-.6-.27-.6-.6V5.6c0-.33.27-.6.6-.6h4.8c.55 0 1-.45 1-1s-.45-1-1-1H5.6C4.17 3 3 4.17 3 5.6v12.8C3 19.83 4.17 21 5.6 21h12.8c1.43 0 2.6-1.17 2.6-2.6v-4c0-.55-.45-1-1-1"></path>
                           <path fill="currentColor" d="M14.4 3c-.55 0-1 .45-1 1s.45 1 1 1h3.19L8.1 14.49a.996.996 0 0 0 .71 1.7c.26 0 .51-.1.71-.29l9.49-9.49V9.6c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1z"></path>
-                        </svg><!----><!----></a><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!---->.</span><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="9._Contact_Details">9. Contact Details</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">If you have any queries, requests for access or correction or complaints relating to the handling of your personal information, please contact us by email at <!----><!----></span><!----><!--]--><!--]--><!----><!----><a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration:none] hover:[text-decoration:none] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex gap-1 items-center" href="mailto:support@stake.com" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="" target="_blank" rel="external noreferrer noopener" external="true"><!----><!----><!----><span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><!---->support@stake.com</span><!----> <svg data-ds-icon="External" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!---->
+                        </svg>
+                      </a>
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_8_p1_part2']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="9._Contact_Details"><?php echo htmlspecialchars($translations['section_9_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_9_p1_part1']); ?></span>
+                      <a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration:none] hover:[text-decoration:none] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:text-white focus-visible:outline-hidden var(--ds-font-size-sm) inline-flex gap-1 items-center" href="mailto:support@stake.com" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="" target="_blank" rel="external noreferrer noopener" external="true">
+                        <span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true">support@stake.com</span>
+                        <svg data-ds-icon="External" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0">
                           <path fill="currentColor" d="M20 13.4c-.55 0-1 .45-1 1v4c0 .33-.27.6-.6.6H5.6c-.33 0-.6-.27-.6-.6V5.6c0-.33.27-.6.6-.6h4.8c.55 0 1-.45 1-1s-.45-1-1-1H5.6C4.17 3 3 4.17 3 5.6v12.8C3 19.83 4.17 21 5.6 21h12.8c1.43 0 2.6-1.17 2.6-2.6v-4c0-.55-.45-1-1-1"></path>
                           <path fill="currentColor" d="M14.4 3c-.55 0-1 .45-1 1s.45 1 1 1h3.19L8.1 14.49a.996.996 0 0 0 .71 1.7c.26 0 .51-.1.71-.29l9.49-9.49V9.6c0 .55.45 1 1 1s1-.45 1-1V4c0-.55-.45-1-1-1z"></path>
-                        </svg><!----><!----></a><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!----> or by the site customer support chat function.</span><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="10._International_Data_Transfers">10. International Data Transfers</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">All information processed by us may be transferred, processed, and stored anywhere in the world, including but not limited to other countries, which may have data protection laws that are different from the laws where you live. We endeavor to safeguard your information consistent with the requirements of applicable laws.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="11._Legal_Basis_for_Processing">11. Legal Basis for Processing</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">For purposes of the EU General Data Protection Regulation, Stake.com’s processing of your personal information is supported by the following lawful bases:<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!-->
+                        </svg>
+                      </a>
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_9_p1_part2']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="10._International_Data_Transfers"><?php echo htmlspecialchars($translations['section_10_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_10_p1']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="11._Legal_Basis_for_Processing"><?php echo htmlspecialchars($translations['section_11_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_p1']); ?></span>
+                    </p>
                     <ul class="svelte-42q2bt">
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="true" class="ds-body-md-strong" data-ds-text="true"><!---->Performance of a Contract:</span><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!----> Stake.com needs to process your personal information to perform our contract with you or our Customer.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="true" class="ds-body-md-strong" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_list_1_title']); ?></span>
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_list_1_description']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="true" class="ds-body-md-strong" data-ds-text="true"><!---->Legitimate Interest:</span><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!----> Stake.com processes your personal information to further our legitimate interests but only where our interests are not overridden by your interests or fundamental rights and freedoms.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="true" class="ds-body-md-strong" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_list_2_title']); ?></span>
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_list_2_description']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="true" class="ds-body-md-strong" data-ds-text="true"><!---->Consent:</span><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!----> In some cases, Stake.com also relies on your consent to process your personal information.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="true" class="ds-body-md-strong" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_list_3_title']); ?></span>
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_list_3_description']); ?></span>
+                        </p>
                       </li>
-                      <li class="level-1 svelte-42q2bt"><!---->
-                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!----><!----><!----><!----><!----><span type="body" size="md" tag="span" strong="true" class="ds-body-md-strong" data-ds-text="true"><!---->Compliance with Legal Obligations:</span><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!----> Stake.com may process your personal information to comply with our legal obligations.</span></p><!---->
+                      <li class="level-1 svelte-42q2bt">
+                        <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                          <span type="body" size="md" tag="span" strong="true" class="ds-body-md-strong" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_list_4_title']); ?></span>
+                          <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_11_list_4_description']); ?></span>
+                        </p>
                       </li>
-                    </ul><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="12._Supervisor_Authority">12. Supervisor Authority</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">If you are located in the European Economic Area, you have the right to lodge a complaint with a supervisory authority if you believe our processing of your personal information violates applicable law.<!----><!----></span><!----><!--]--><!--]--><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!----><!---->
-                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true"><!----><!----><!----><span id="13._Updates_to_this_Privacy_Policy">13. Updates to this Privacy Policy</span></h2><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[!--><!--[--><!---->
-                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true"><!--[--><!--[!--><!--[!--><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true">As noted, Stake.com may review, change and update this Privacy Policy from time to time reflect our current practices and obligations. We will publish our current Privacy Policy on our website at <!----><!----></span><!----><!--]--><!--]--><!----><!----><a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration-line:underline] [text-decoration-style:solid] [text-decoration-skip-ink:none] [text-decoration-thickness:8%] [text-underline-offset:25%] hover:[text-decoration-thickness:14%] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:outline-hidden var(--ds-font-size-sm) !bg-transparent !text-white [&amp;_svg]:!text-white focus-visible:text-white focus-visible!:[&amp;_svg]:text-white inline-flex items-center gap-1 whitespace-normal" href="/" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" external="false"><!----><span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true"><!---->https://stake.com/</span><!----></a><!----><!----><!----><span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><!----> and the changes will take effect at the time of publishing. You should review this privacy policy regularly and remain familiar with its terms.</span><!--]--><!----><!----></p><!----><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]--><!--]-->
+                    </ul>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="12._Supervisor_Authority"><?php echo htmlspecialchars($translations['section_12_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_12_p1']); ?></span>
+                    </p>
+                    <h2 type="heading" tag="h2" size="lg" variant="neutral-default" class="text-neutral-default ds-heading-lg" data-ds-text="true">
+                      <span id="13._Updates_to_this_Privacy_Policy"><?php echo htmlspecialchars($translations['section_13_title']); ?></span>
+                    </h2>
+                    <p type="body" tag="p" size="md" class="ds-body-md inline-text" data-ds-text="true">
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_13_p1_part1']); ?></span>
+                      <a class="[font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] relative justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] [text-decoration-line:underline] [text-decoration-style:solid] [text-decoration-skip-ink:none] [text-decoration-thickness:8%] [text-underline-offset:25%] hover:[text-decoration-thickness:14%] bg-transparent text-grey-200 hover:bg-transparent hover:text-white focus-visible:outline-hidden var(--ds-font-size-sm) !bg-transparent !text-white [&amp;_svg]:!text-white focus-visible:text-white focus-visible!:[&amp;_svg]:text-white inline-flex items-center gap-1 whitespace-normal" href="/" data-sveltekit-reload="off" data-sveltekit-preload-data="off" data-sveltekit-noscroll="off" external="false">
+                        <span type="body" tag="span" size="md" class="ds-body-md" data-ds-text="true">https://stake.com/</span>
+                      </a>
+                      <span type="body" size="md" tag="span" strong="false" class="ds-body-md" data-ds-text="true"><?php echo htmlspecialchars($translations['section_13_p1_part2']); ?></span>
+                    </p>
                   </div>
-                </div><!---->
-              </div><!---->
-            </div> <!----><!---->
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
       </div>
-
     </div>
-  </div><? render_footer($translations) ?>
+  </div>
+  <?php render_footer($translations); ?>
 </div>

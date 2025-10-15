@@ -2,7 +2,12 @@
 function render_slider($games, $hasMargin, $translations, $type)
 {
   // Определяем текст и иконку в зависимости от $type
-
+  $userAgent = $_SERVER['HTTP_USER_AGENT'];
+  $isSafari = false;
+  if (strpos($userAgent, 'Safari') !== false && strpos($userAgent, 'Chrome') === false) {
+    // Обнаружен Safari (не Chrome)
+    $isSafari = true;
+  }
   if ($type === "ourGames") {
     $text = $translations['new_releases'];
     $icon = '<svg data-ds-icon="New" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0">
@@ -117,7 +122,9 @@ function render_slider($games, $hasMargin, $translations, $type)
               <div class="game-slider-game-card-wrap">
                 <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars($game['name']); ?>">
                   <div class="game-slider-img-wrap">
-                    <img class="game-slider-game-image" loading="lazy" src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>">
+                    <img class="game-slider-game-image" <?php if (!$isSafari): ?>
+                      loading="lazy"
+                      <?php endif; ?> src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>">
                   </div>
                 </a>
                 <div class="hover-button svelte-zglogk"><!----><!----><button type="button" data-gamename="<?php echo htmlspecialchars($game['name'], ENT_QUOTES); ?>" tabindex=" 0" class="copy-slot-link-btn [font-family:var(--ds-font-family-default)] [font-variant-numeric:var(--ds-font-variant-numeric,lining-nums_tabular-nums)] [font-feature-settings:var(--ds-font-feature-settings,&quot;salt&quot;_on)] inline-flex relative items-center gap-2 justify-center rounded-(--ds-radius-md) [font-weight:var(--ds-font-weight-thick)] whitespace-nowrap ring-offset-background transition disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98] bg-grey-400 text-white hover:bg-grey-300 hover:text-white focus-visible:outline-white var(--ds-font-size-xs) shadow-md px-[0.75rem] py-3" data-button-root=""><!----><!----><svg data-ds-icon="Popout" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!---->
