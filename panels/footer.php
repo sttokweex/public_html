@@ -33,14 +33,12 @@ function render_footer($translations, $current_language = 'en')
 							<li class="col-mob-4 col-dsk-3 footer-menu-block">
 								<span class="footer-menu-title"><?php echo $translations['footer_holland_casino_online']; ?></span>
 								<ul class="footer-menu-inner">
-									<li><a class="footer-menu-link" href="https://www.hollandcasino.nl/en/terms-conditions" target="_self"><?php echo $translations['footer_terms_conditions']; ?></a></li>
-									<li><a class="footer-menu-link" href="https://www.hollandcasino.nl/en/online/veilig-en-verantwoord-spelen" target="_self"><?php echo $translations['footer_play_responsibly']; ?></a></li>
-									<li><a class="footer-menu-link" href="https://www.hollandcasino.nl/en/privacy-policy" target="_self"><?php echo $translations['footer_privacy_statement']; ?></a></li>
-									<li><a class="footer-menu-link" href="https://www.hollandcasino.nl/en/wedregels" target="_self"><?php echo $translations['footer_betting_rules']; ?></a></li>
-									<li><a class="footer-menu-link" href="https://www.hollandcasino.nl/en/informatie-sportorganisaties" target="_self"><?php echo $translations['footer_info_sports_organisations']; ?></a></li>
-									<li><a class="footer-menu-link" href="https://www.hollandcasino.nl/en/cookie-policy" target="_self"><?php echo $translations['footer_cookie_statement']; ?></a></li>
-									<li><a class="footer-menu-link" href="https://www.hollandcasino.nl/en/cookie-settings" target="_self"><?php echo $translations['footer_cookie_settings']; ?></a></li>
-									<li><a class="footer-menu-link" href="https://www.hollandcasino.nl/en/afmelden-advertenties" target="_self"><?php echo $translations['footer_ad_preferences']; ?></a></li>
+									<li><a class="footer-menu-link" href="/terms-conditions" target="_self"><?php echo $translations['footer_terms_conditions']; ?></a></li>
+									<li><a class="footer-menu-link" href="/privacy-policy" target="_self"><?php echo $translations['footer_privacy_statement']; ?></a></li>
+									<li><a class="footer-menu-link" href="/wedregels" target="_self"><?php echo $translations['footer_betting_rules']; ?></a></li>
+									<li><a class="footer-menu-link" href="/informatie-sportorganisaties" target="_self"><?php echo $translations['footer_info_sports_organisations']; ?></a></li>
+									<li><a class="footer-menu-link" href="/cookie-policy" target="_self"><?php echo $translations['footer_cookie_statement']; ?></a></li>
+									<li><a class="footer-menu-link" href="/afmelden-advertenties" target="_self"><?php echo $translations['footer_ad_preferences']; ?></a></li>
 								</ul>
 							</li>
 						</ul>

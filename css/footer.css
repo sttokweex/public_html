@@ -155,4 +155,109 @@
   color: white;
   text-decoration: none;
 }
-@media ; /* Если футер светлый, используйте эти альтернативы */
+.Articles__articles--12Q {
+  margin: 0 auto;
+}
+.Articles__article--3SO {
+  margin: var(--hc-distance-between-components) 0;
+}
+.Articles__content--2Mi {
+  margin-bottom: 2.5rem;
+}
+.Headings__h1--284 {
+  font-size: 2.5rem;
+  line-height: 3rem;
+}
+.Headings__bold--iD3 {
+  font-weight: 700;
+}
+h1 {
+  padding: 0;
+}
+.Articles__content--2Mi p {
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.PlainText__medium--1_S {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.PlainText__dark--3fd {
+  color: var(--dark-theme-font-color);
+  --underline-color: var(--dark-theme-underline-color);
+}
+.PlainText__text--1wg {
+  line-height: 1.5rem;
+  margin: 0;
+}
+.Articles__title--2MR {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.dropdown.active .dropdown-header img {
+  transform: rotate(180deg);
+}
+.Headings__h4--2JP {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.dropdown-header img {
+  height: 18px;
+  width: 18px;
+  margin-right: 10px;
+  transition: transform 0.4s;
+}
+.dropdown.active .dropdown-content {
+  min-height: 100px !important;
+  max-height: 400px;
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  background-color: rgba(95, 92, 109, 0.33);
+  border-radius: 7px;
+  margin-top: 6px;
+  transition:
+    max-height 0.4s ease-out,
+    padding 0.4s ease-out;
+}
+.dropdown-content p,
+.dropdown-content ol,
+.dropdown-content ul {
+  margin-bottom: 20px;
+}
+.dropdown-content ul {
+  margin: 1.25rem 0;
+  padding-left: 1rem;
+}
+.dropdown-content ul li {
+  list-style-type: none;
+  position: relative;
+  margin-bottom: 0;
+  padding-left: 30px;
+  font-family: 'Cadiz' !important;
+  font-weight: 300 !important;
+  margin-bottom: 0.86em;
+}
+.dropdown-content li {
+  margin: 1.25rem 0;
+}
+
+@media (max-width: 1000px) {
+  .Headings__h1--284 {
+    font-size: 1.875rem;
+    line-height: 2.125rem;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .hero__content {
+    max-width: 45%;
+    margin-bottom: 0;
+  }
+  .hero__content {
+    gap: 1rem;
+  }
+}
