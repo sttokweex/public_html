@@ -435,7 +435,7 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
                     agentID: 'frenzycazUSD',
                     userID: userId,
                     isaffiliate: 'true',
-                    lang: 'en',
+                    lang: 'us',
                     gameid: game?.gameid,
                     lobbyUrl: "https://frenzycaz.online/slot"
                 });
