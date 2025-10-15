@@ -389,9 +389,10 @@ $gamename = (string)$gameid; // Fallback: использовать gameid как
         // Function to load demo game
         async function loadDemoGame() {
             const gameName = <?= json_encode($gameid) ?>;
+            const lang = <?= json_encode($lang) ?>;
             const userId = <?= json_encode($user['id'] ?? '') ?>;
             try {
-                const response = await fetch(`http://5.129.253.12:2000/gameStartDemo?gameName=${encodeURIComponent(gameName)}&userId=${encodeURIComponent(userId)}`, {
+                const response = await fetch(`http://5.129.253.12:2000/gameStartDemo?gameName=${encodeURIComponent(gameName)}&userId=${encodeURIComponent(userId)}&lang=${encodeURIComponent(lang)}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json'
