@@ -1,6 +1,12 @@
 <?php
 function render_slider($games, $hasMargin, $translations, $type)
 {
+  $userAgent = $_SERVER['HTTP_USER_AGENT'];
+  $isSafari = false;
+  if (strpos($userAgent, 'Safari') !== false && strpos($userAgent, 'Chrome') === false) {
+    // Обнаружен Safari (не Chrome)
+    $isSafari = true;
+  }
   // Filter games if isOurGames is true
   if ($type === "ourGames") {
     $text = $translations['best_deals_small'];
@@ -81,7 +87,9 @@ function render_slider($games, $hasMargin, $translations, $type)
           <div class="game-slider-wrap" data-analytics="slider-ru-trending-games-<?php echo htmlspecialchars($game['gameid']); ?>">
             <div class="game-slider-game-card-wrap">
               <a class="game-slider-game-link" href="/slot/<?php echo htmlspecialchars($game['name']); ?>">
-                <img class="game-slider-game-image" loading="lazy" src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>">
+                <img class="game-slider-game-image" <?php if (!$isSafari): ?>
+                  loading="lazy"
+                  <?php endif; ?> src="<?php echo htmlspecialchars($game['iconurl2'] ?? $game['iconurl'] ?? $game['icon']); ?>" alt="<?php echo htmlspecialchars($game['name']); ?>">
                 <div tabindex="0" class="GameViewBasic__container--1nm cms-games-grid-basic-view AccessibilityElement__wrapper--3x7" title="Fire Blaze: Orange Wizard" aria-label="Game Fire Blaze: Orange Wizard">
 
                   <div class="GameViewBasic__hoverContainer--1St cms-games-grid-game-hover-state">
