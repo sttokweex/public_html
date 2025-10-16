@@ -79,7 +79,7 @@ $bubblesicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill
           <hr class="spacing">
         </div>
         <div class="wrapper-text"><span class="" style="max-width: 100%;"><?php echo htmlspecialchars($translations['games']); ?></span></div>
-        <a class="sidebar_anchor_base" href="group/new-releases">
+        <a class="sidebar_anchor_base" href="/group/new-releases">
           <button type="button" tabindex="0" class="anchor_button" data-button-root="">
             <svg data-ds-icon="New" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="inline-block shrink-0"><!---->
               <path fill="currentColor" d="M22 12c-7.8 1.21-8.79 2.2-10 10-1.21-7.8-2.2-8.79-10-10 7.8-1.21 8.79-2.2 10-10 1.21 7.8 2.2 8.79 10 10m2-7c-3.12.48-3.52.88-4 4-.48-3.12-.88-3.52-4-4 3.12-.48 3.52-.88 4-4 .48 3.12.88 3.52 4 4M8 19c-3.12.48-3.52.88-4 4-.48-3.12-.88-3.52-4-4 3.12-.48 3.52-.88 4-4 .48 3.12.88 3.52 4 4"></path>
