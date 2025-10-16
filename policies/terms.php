@@ -1,7 +1,5 @@
 <?php
 require(dirname(__DIR__, 1) . "/system/config.php");
-
-
 if (!isset($_SESSION['hash']) || empty($_SESSION['hash'])) {
   header('Location: /');
   die();
