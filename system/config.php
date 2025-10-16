@@ -3,9 +3,6 @@ require("connect.php");
 require("carset.php");
 
 // Начинаем сессию, если она еще не начата
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 
 
