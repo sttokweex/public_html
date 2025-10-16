@@ -1,9 +1,6 @@
-
 <?php
 require(dirname(__DIR__, 1) . "/system/config.php");
-if (session_status() !== PHP_SESSION_ACTIVE) {
-  session_start();
-}
+
 
 
 
