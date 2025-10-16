@@ -630,7 +630,7 @@ if ($depositesSID >= $progressMax) $progressValue = 100;
                 if(valid){
             $.ajax({
                 type: 'POST',
-                   url: 'http://5.129.253.12/auth/auth.php',
+                   url: 'http://5.129.253.12:2202/auth/auth.php',
                 data: {
                     type: 'login',
                     login: loginInput.value.trim(),
@@ -1670,7 +1670,7 @@ if ($depositesSID >= $progressMax) $progressValue = 100;
             // Perform AJAX registration
             $.ajax({
                 type: 'POST',
-                url: 'http://5.129.253.12/auth/auth.php',
+                url: 'http://5.129.253.12:2202/auth/auth.php',
                 data: {
                     type: 'reg',
                     email: email,
@@ -1728,7 +1728,7 @@ if ($depositesSID >= $progressMax) $progressValue = 100;
 
         $.ajax({
             type: 'POST',
-            url:  'http://5.129.253.12/auth/auth.php',
+            url:  'http://5.129.253.12:2202/auth/auth.php',
             data: {
                 type: 'reg',
                 email: $('#signupemail').val(),
