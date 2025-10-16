@@ -2,14 +2,12 @@
 
 
 
+require(dirname(__DIR__, 1) . "/system/config.php");
 
 require(dirname(__DIR__, 1) . "/panels/header.php");
 require(dirname(__DIR__, 1) . "/panels/sidebar.php");
 require_once(dirname(__DIR__, 1) . "/panels/footer.php");
-require(dirname(__DIR__, 1) . "/system/config.php");
-if (session_status() !== PHP_SESSION_ACTIVE) {
-  session_start();
-}
+
 ?>
 
 <div class="main-container scrollable-1 ScrollY" id="main-content">
