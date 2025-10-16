@@ -3,6 +3,9 @@ require("connect.php");
 require("carset.php");
 
 // Начинаем сессию, если она еще не начата
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 
 
@@ -31,4 +34,3 @@ if (is_file($path) && is_readable($path)) {
     $path = dirname(__DIR__, 1) . "/lang/en.php";
     $translations = is_file($path) && is_readable($path) ? require $path : [];
 }
-?>
