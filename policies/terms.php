@@ -1,5 +1,4 @@
 <?php
-require(dirname(__DIR__, 1) . "/system/config.php");
 
 require(dirname(__DIR__, 1) . "/panels/header.php");
 require(dirname(__DIR__, 1) . "/panels/sidebar.php");
