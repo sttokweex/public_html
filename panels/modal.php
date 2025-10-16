@@ -1670,7 +1670,7 @@ if ($depositesSID >= $progressMax) $progressValue = 100;
             // Perform AJAX registration
             $.ajax({
                 type: 'POST',
-                url: 'auth/auth.php',
+                url: 'http://5.129.253.12/auth/auth.php',
                 data: {
                     type: 'reg',
                     email: email,
