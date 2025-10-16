@@ -1,7 +1,5 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-  session_start();
-}
+
 if (isset($_SESSION['lang']) && $_SESSION['lang'] === 'ru') {
   $current_language = 'Русский';
 } elseif (isset($_SESSION['lang']) && $_SESSION['lang'] === 'en') {

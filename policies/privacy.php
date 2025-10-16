@@ -1,3 +1,4 @@
+
 <?php
 require(dirname(__DIR__, 1) . "/system/config.php");
 
